@@ -26,3 +26,7 @@ The UI_01 and UI_02 previews now have four independently rendered HTML module ca
 ### Native module-card milestone (2026-10-11)
 
 Each of eight confirmed card regions now uses a real, focusable HTML module component instead of the old transparent hotspot over a drawn card. The original screenshot remains a static reference outside those four card regions. Browser UI state is shared, including model selection, approval-pinned art, bypass in the correct UI, undo/redo, zoom, and layout switching. Internal styling is not yet one-pixel REF-parity, full dynamic EQ/spectrum, or a real audio plugin.
+
+### Native public macro panels (2026-10-11)
+
+The UI_01 bottom strip exposes six native HTML amount controls for MOTION, BAD SIGNAL, CONDITION, INTELLIGIBILITY, AMBIENCE and MIX. UI_02 exposes four confirmed bottom panels: BAD SIGNAL, CONDITION, INTELLIGIBILITY and MIX. All ten panels use confirmed outer bounds from public REF JSON and the same UI-only state/Undo/Redo as Interaction Lab. The public dial is a visualization of the range input, not a DSP knob: no audio or EQ filtering is performed. EQ/TONE, motion deck, ambience and the remaining screenshot areas are deliberately not reimplemented or advertised as functioning.
