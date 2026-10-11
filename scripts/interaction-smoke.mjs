@@ -1,0 +1,24 @@
+// One deterministic UI-state smoke. No DSP/safety/stress work.
+import assert from "node:assert/strict";
+import {createState,OPTIONS,CONTROLS,validateState,makeHistory,dispatch,undo,redo,apply} from "../interaction-state.mjs";
+let history=makeHistory();
+assert.equal(validateState(history.present),true);
+assert.equal(history.present.ui,"UI_01");
+history=dispatch(history,{type:"ui",ui:"UI_02"});
+history=dispatch(history,{type:"select",group:"SOURCE",index:5});
+history=dispatch(history,{type:"bypass",group:"SOURCE"});
+history=dispatch(history,{type:"param",id:"motion",value:82});
+assert.equal(history.present.ui,"UI_02");
+assert.equal(history.present.selected.SOURCE,5);
+assert.equal(history.present.bypass.SOURCE,true);
+assert.equal(history.present.params.motion,82);
+history=undo(history);
+assert.equal(history.present.params.motion,50);
+history=redo(history);
+assert.equal(history.present.params.motion,82);
+assert.equal(apply(history.present,{type:"select",group:"SOURCE",index:OPTIONS.SOURCE.length}).selected.SOURCE,0);
+assert.equal(apply(history.present,{type:"reset"}).ui,"UI_02");
+assert.equal(CONTROLS.length,6);
+assert.equal(validateState({...history.present,params:{...history.present.params,mix:999}}),false);
+assert.throws(()=>apply(history.present,{type:"param",id:"not-real",value:50}));
+console.log("PASS: UI-only state, modules, bypass, values, undo/redo, reset and validation");
