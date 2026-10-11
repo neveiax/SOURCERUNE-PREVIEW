@@ -14,3 +14,7 @@ This is **not a full interactive plugin demo or audio processor**. The screensho
 ### Security and limits
 
 Public paths are enforced by `scripts/check_allowlist.py`; do not weaken it merely to make a build pass. Any full interactive public implementation requires separate review for browser-visible IP, audio processing access control, and UI parity. The original SOURCERUNE must remain intact and **must not become Private solely on the basis of this static preview** if interactive Web testing is still required.
+
+### Approved module artwork
+
+The UI-only Interaction Lab uses 50 pinned, previously public `art-approved-v2` PNGs from the four core module categories across both interfaces. `assets/approved_ui_manifest.json` supplies per-file source paths, sizes and immutable Git blob SHAs. The workflow verifies and stores only this allowlisted art inside the clean Preview repo; there is no cross-repository runtime dependency after the one-time capture. Assets change visually when you select modules. The original UI screenshot remains fixed; audio processing and proprietary implementation stay excluded.
