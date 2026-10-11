@@ -1,0 +1,38 @@
+name: Verify and save public visual snapshots
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "viewer.css"
+      - "viewer.js"
+      - "scripts/**"
+      - ".github/workflows/snapshot-ui.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  visual-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download only two pinned published UI PNGs, or verify local copies
+        run: python3 scripts/bootstrap_assets.py
+      - name: Verify public allowlist (fail closed)
+        run: python3 scripts/check_allowlist.py
+      - name: Check JavaScript syntax
+        run: node --check viewer.js
+      - name: Persist approved PNGs within clean-history public repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/UI_01.png assets/UI_02.png
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: publish verified UI-only snapshots [skip ci]"
+            git push origin HEAD:main
+          fi
