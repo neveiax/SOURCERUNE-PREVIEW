@@ -2,6 +2,14 @@
 
 > 此倉為 **Public**，只允許經核准的 Web UI 外觀、操作、可公開圖資與部署檔案。本檔為可公開的**安全摘要**；正式的三倉協作細節與研發規範僅在已授權的 Private KNOWLEDGE 倉庫提供。與使用者溝通使用繁體中文。
 
+## UI 更新必須同輪同步安全 Web 預覽（SR-20261011-UI-WEB-SAME-BATCH；2026-10-11）
+
+**以後所有 UI_01／UI_02／Common Runtime／旋鈕／圖資／文字／控制與材質修改，SOURCE 原版 Web 開發的同一批次，必須同步修改本 Public PREVIEW 的安全原版 UI**；不能再把公開網頁延後好幾輪，不能另畫第二份假 UI。開工先檢查三倉最新 HEAD／進行中 PR／CI，使用同一 Work ID；每批依複雜度集中 10～50 個相關細節，分組 commit、原則上本倉只推送一次，完成後以真實 Web 截圖核對 UI_01／UI_02 操作與比例。
+
+**安全條件高於同步速度**：Public commit／PR 建立前必須確認來源 SOURCE SHA、逐檔 allowlist、Git blob/hash 與公開資料安全；只允許已核准可公開的原始 HTML/CSS/GUI/PNG，聲音路徑要以最小方式停用並明示，**不准複製 DSP／C++、WASM、AudioWorklet／processor.js、私人 Preset、研究與秘密資訊，也不得全量 mirror Private SOURCE**。Common 美術仍在審核者禁止提前傳到此 Public 倉庫；安全檢查不通過時本倉註記 `BLOCKED: PUBLIC ALLOWLIST`，停止公開推送，不以 SOURCE 已完成冒稱 PREVIEW 同步。
+
+**每批完成條件**：SOURCE Web 與 PREVIEW 對應分支／PR、來源 SHA、可公開檔案差異清單、安全檢查、必要 Fast、一次真 Chromium 圖與可操作狀態；未通過則 `PARTIAL/PENDING`。Native UI 未真 Host 驗收也不得聲稱 parity。使用者說「修改／繼續」即同批做安全 Web 候選，只有說「部署」才合併／正式更新 Pages；不得以同步命令擅自新增 Release、壓力測試或更改私人 DSP。正式私人規則是 `SR-CROSS-REPO-SYNC` 第 3A 節；本檔只保存可公開摘要。
+
 ## 三倉一起推進，但絕不混淆權限
 
 - **SOURCERUNE（Private）**：唯一正式 Native VST3、完整 Web、UI_01／UI_02、DSP／WASM／AudioWorklet／REF 來源。先在正式原版程式實作及驗證。
