@@ -84,7 +84,7 @@ def main():
         ALLOWED.add("Web/App/audio/engine.js")
         if list((root/"Web/App").rglob("*.wasm")) or (root/"Web/App/audio/processor.js").exists():
             raise SystemExit("BLOCKED: audio DSP/Worklet unexpectedly included")
-        tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
+    tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
     untracked=set(subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True,cwd=root).splitlines())
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
