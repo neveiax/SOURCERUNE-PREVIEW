@@ -69,10 +69,8 @@ export function mountMacroPanels({frame,image,lab}){
       const model=macroView(state,panel),w=widgets.get(panel);
       for(const key of ["left","top","width","height"])
         w.panel.style[key]=model.bounds[key]+"%";
-      if(w.range!==document.activeElement||w.range.value===String(model.value)){
-        w.range.value=String(model.value);
-        w.preview();
-      }
+      w.range.value=String(model.value);
+      w.preview();
     }
   }
   lab.subscribe(render);
