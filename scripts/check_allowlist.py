@@ -1,14 +1,14 @@
 """Fail-closed published path and SHA allowlist for SOURCERUNE-PREVIEW."""
 from pathlib import Path
-import subprocess, json, re
+import subprocess, json, re, struct
 from hashlib import sha1
 
 ALLOWED = {
     "README.md", "index.html", "viewer.css", "viewer.js",
-    "interaction-state.mjs", "interaction-lab.mjs", ".nojekyll",
+    "interaction-state.mjs", "interaction-lab.mjs", "card-layout.mjs", "stage-controls.mjs", ".nojekyll",
     ".github/workflows/snapshot-ui.yml",
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
-    "scripts/interaction-smoke.mjs",
+    "scripts/interaction-smoke.mjs", "scripts/card-layout-smoke.mjs",
     "assets/UI_01.png", "assets/UI_02.png", "assets/approved_ui_manifest.json",
 }
 PINNED={"UI_01":"d2fc997e788361954726e712097373da75a4cec6",
@@ -36,12 +36,17 @@ def main():
         image=root/"assets"/(name+".png")
         if not image.is_file() or blobsha(image.read_bytes())!=sha:
             raise SystemExit("BLOCKED: pinned UI screenshot missing or tampered")
+        raw=image.read_bytes()
+        expected={"UI_01":(1499,807),"UI_02":(1672,941)}[name]
+        actual=struct.unpack(">II",raw[16:24]) if raw.startswith(b"\x89PNG\r\n\x1a\n") else None
+        if actual!=expected:
+            raise SystemExit(f"BLOCKED: {name} screenshot {actual} does not match approved shell {expected}")
     tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
     untracked=set(subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True,cwd=root).splitlines())
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
         raise SystemExit("BLOCKED: unapproved public files: "+", ".join(unexpected))
-    for name in ("index.html","viewer.css","viewer.js","interaction-lab.mjs","interaction-state.mjs"):
+    for name in ("index.html","viewer.css","viewer.js","interaction-lab.mjs","interaction-state.mjs","stage-controls.mjs","card-layout.mjs"):
         content=(root/name).read_text(encoding="utf-8")
         for forbidden in ("raw.githubusercontent.com","github.com/ureia-dev/SOURCERUNE/blob",
                           '<script src="https://',"https://api.github.com","AudioWorklet","WebAssembly","createSceneNode"):

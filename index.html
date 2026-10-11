@@ -23,7 +23,7 @@
     </header>
     <main>
       <div class="context">
-        <div><h1 id="viewTitle">UI_01</h1><p>Reference image from an approved public Web render. Switch between both layouts and inspect the details.</p></div>
+        <div><h1 id="viewTitle">UI_01</h1><p>Approved public UI image with directly editable module cards. Spectrum, meters and other sections remain visual reference only.</p></div>
         <button id="interactionToggle" class="lab-open-btn" type="button" aria-pressed="false" aria-expanded="false" aria-controls="interactionLab">Test UI controls</button>
         <div class="zoom" role="group" aria-label="Image zoom">
           <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
@@ -32,8 +32,10 @@
           <button type="button" id="zoomFit">Fit</button>
         </div>
       </div>
-      <div class="workspace"><div class="stage" id="stage" tabindex="0" aria-label="UI image preview; scroll to inspect at enlarged zoom">
-        <img id="previewImage" alt="SOURCERUNE UI_01 interface visual reference" src="./assets/UI_01.png" draggable="false">
+      <div class="workspace"><div class="stage" id="stage" tabindex="0" aria-label="UI image preview with direct module-card controls; scroll to inspect at enlarged zoom">
+        <div class="preview-frame" id="previewFrame">
+          <img id="previewImage" alt="SOURCERUNE UI_01 interface visual reference" src="./assets/UI_01.png" draggable="false">
+        </div>
         <div id="imageError" class="image-error" role="alert" hidden>The preview image is not published yet. Check the GitHub preview build.</div>
       </div>
       <aside id="interactionLab" hidden aria-label="Live UI-only state controls"></aside></div>
@@ -43,7 +45,7 @@
       </div>
     </main>
     <footer>
-      <span>This public site displays visual UI snapshots. The screenshot is a fixed image. The separate Interaction Lab edits live UI-only preview state.</span>
+      <span>This public site displays visual UI snapshots. The screenshot is a fixed reference. SOURCE, TRANSMISSION, WALL/COVER and SPACE card overlays are editable and share state with Interaction Lab.</span>
       <span>No audio processing, playable demo, DSP source, or private research documents are included.</span>
     </footer>
   </div>

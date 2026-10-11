@@ -8,6 +8,8 @@ on:
       - "viewer.css"
       - "viewer.js"
       - "interaction-*.mjs"
+      - "card-layout.mjs"
+      - "stage-controls.mjs"
       - "assets/approved_ui_manifest.json"
       - "scripts/**"
       - ".github/workflows/snapshot-ui.yml"
@@ -32,7 +34,10 @@ jobs:
           node --check viewer.js
           node --check interaction-lab.mjs
           node --check interaction-state.mjs
+          node --check card-layout.mjs
+          node --check stage-controls.mjs
           node scripts/interaction-smoke.mjs
+          node scripts/card-layout-smoke.mjs
       - name: Persist approved PNGs within clean-history public repo
         run: |
           git config user.name "github-actions[bot]"

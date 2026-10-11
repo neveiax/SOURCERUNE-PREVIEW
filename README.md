@@ -2,7 +2,7 @@
 
 A standalone **visual** preview for UI_01 and UI_02, with switching and image zoom. The new **Interaction Lab** provides separate live UI-only controls for module selection, bypass, six macro values, undo/redo, reset and JSON export. These values are display state and never run audio processing. It does not contain or expose processing code, WASM, audio worklets, product research documents, the private specification, or original repository Git history.
 
-This is **not a full interactive plugin demo or audio processor**. The screenshots remain fixed. The separate controls in Interaction Lab are functional as a state sandbox only; adjustments are not rendered back onto the screenshot.
+This is **not a full interactive plugin demo or audio processor**. The large reference screenshots remain unchanged, but the four confirmed module-card bounds contain a directly clickable UI overlay synchronized with Interaction Lab. The separate controls in Interaction Lab are functional as a state sandbox only; adjustments are not rendered back onto the screenshot.
 
 ### Publish
 
@@ -18,3 +18,7 @@ Public paths are enforced by `scripts/check_allowlist.py`; do not weaken it mere
 ### Approved module artwork
 
 The UI-only Interaction Lab uses 50 pinned, previously public `art-approved-v2` PNGs from the four core module categories across both interfaces. `assets/approved_ui_manifest.json` supplies per-file source paths, sizes and immutable Git blob SHAs. The workflow verifies and stores only this allowlisted art inside the clean Preview repo; there is no cross-repository runtime dependency after the one-time capture. Assets change visually when you select modules. The original UI screenshot remains fixed; audio processing and proprietary implementation stay excluded.
+
+### Direct card controls
+
+The UI_01 and UI_02 screenshots have four reference-geometry-anchored, editable module-card overlays. Click a card to focus its Interaction Lab editor; use the small arrows to change its selected approved picture and BYP to change UI-only bypass. Geometry is fail-closed if the displayed screenshot's natural dimensions differ from the approved REF shell. The overlays are an incremental public UI-only interaction layer, **not** full pixel parity, true EQ/spectrum DSP or VST3 audio.
