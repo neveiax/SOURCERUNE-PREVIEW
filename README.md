@@ -2,7 +2,7 @@
 
 A standalone **visual** preview for UI_01 and UI_02, with switching and image zoom. The new **Interaction Lab** provides separate live UI-only controls for module selection, bypass, six macro values, undo/redo, reset and JSON export. These values are display state and never run audio processing. It does not contain or expose processing code, WASM, audio worklets, product research documents, the private specification, or original repository Git history.
 
-This is **not a full interactive plugin demo or audio processor**. The large reference screenshots remain unchanged, but the four confirmed module-card bounds contain a directly clickable UI overlay synchronized with Interaction Lab. The separate controls in Interaction Lab are functional as a state sandbox only; adjustments are not rendered back onto the screenshot.
+This is **not a full interactive plugin demo or audio processor**. The large reference screenshots remain unchanged, but the four confirmed module-card bounds are independent, opaque HTML controls synchronized with Interaction Lab. The rest of the reference screenshot stays unchanged. The separate controls in Interaction Lab are functional as a state sandbox only; adjustments are not rendered back onto the screenshot.
 
 ### Publish
 
@@ -21,4 +21,8 @@ The UI-only Interaction Lab uses 50 pinned, previously public `art-approved-v2` 
 
 ### Direct card controls
 
-The UI_01 and UI_02 screenshots have four reference-geometry-anchored, editable module-card overlays. Click a card to focus its Interaction Lab editor; use the small arrows to change its selected approved picture and BYP to change UI-only bypass. Geometry is fail-closed if the displayed screenshot's natural dimensions differ from the approved REF shell. The overlays are an incremental public UI-only interaction layer, **not** full pixel parity, true EQ/spectrum DSP or VST3 audio.
+The UI_01 and UI_02 previews now have four independently rendered HTML module cards with approved source art, native model selectors, previous/next controls, and editor focus. UI_01 shows a bypass switch on each card; UI_02 keeps bypass in Interaction Lab per its public UI template. Geometry is fail-closed if the displayed screenshot's natural dimensions differ from the approved REF shell. The HTML cards are an incremental public UI-only layer, **not** full pixel parity, true EQ/spectrum DSP or VST3 audio.
+
+### Native module-card milestone (2026-10-11)
+
+Each of eight confirmed card regions now uses a real, focusable HTML module component instead of the old transparent hotspot over a drawn card. The original screenshot remains a static reference outside those four card regions. Browser UI state is shared, including model selection, approval-pinned art, bypass in the correct UI, undo/redo, zoom, and layout switching. Internal styling is not yet one-pixel REF-parity, full dynamic EQ/spectrum, or a real audio plugin.

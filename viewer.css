@@ -45,25 +45,86 @@
 .lab-module-art.missing{font-size:10px;color:#82958e}
 
 
-/* Confirmed plugin-local card bounds are percentage-based relative to the image itself. */
-.preview-frame{position:relative;display:block;width:100%;margin:0 auto;min-width:650px;line-height:0}
+/* Four real UI-only HTML module cards at confirmed public REF outer bounds.
+   Internal styling is an incremental approximation, not exact private VST parity. */
+.preview-frame{position:relative;display:block;width:100%;min-width:650px;margin:0 auto;line-height:0;container-type:inline-size}
 .preview-frame>img#previewImage{display:block;width:100%;height:auto;max-width:none;margin:0}
-.stage-hotspot-layer{position:absolute;inset:0;pointer-events:none;text-align:left;line-height:normal}
-.stage-card{position:absolute;pointer-events:auto;overflow:hidden;border:1px solid rgba(119,149,144,.22);border-radius:4px;background:rgba(11,18,20,.18);box-shadow:inset 0 0 12px rgba(0,0,0,.2);font-size:clamp(8px,.8vw,12px);color:#d6e2df}
-.stage-card:focus-within,.stage-card:hover{border-color:rgba(139,194,177,.82);background:rgba(10,19,20,.32)}
-.stage-card.is-bypassed{filter:saturate(.58)}
-.stage-card-open{position:absolute;inset:0;z-index:1;border:0;background:transparent;cursor:pointer;color:transparent;font-size:0}
-.stage-card-open:focus-visible{outline:3px solid #b5d9c9;outline-offset:-4px}
-.stage-card-title{pointer-events:none;position:absolute;z-index:2;top:3px;left:6px;font-size:clamp(7px,.68vw,10px);font-weight:700;letter-spacing:.07em;color:#cae2dc;text-shadow:0 1px 3px #000}
-.stage-card-picture{pointer-events:none;position:absolute;z-index:2;top:25%;left:4%;width:65%;height:54%;display:block;object-fit:contain;filter:drop-shadow(0 2px 3px #0008)}
-.stage-card-selected{pointer-events:none;position:absolute;z-index:2;left:5px;right:32%;bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(7px,.73vw,11px);color:#ecf1ee;text-shadow:0 1px 3px #000;font-weight:600}
-.stage-card-tools{position:absolute;z-index:3;right:3px;top:23%;bottom:6%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;min-width:20px}
-.stage-card-tool,.stage-card-bypass{cursor:pointer;display:grid;place-items:center;border:1px solid rgba(118,158,150,.55);border-radius:3px;background:rgba(17,29,29,.88);color:#d4e6e0;min-width:20px;min-height:19px;font-size:14px;line-height:1;padding:1px}
-.stage-card-bypass{font-size:8px;min-height:18px;padding:2px}
-.stage-card-bypass[aria-pressed=true]{color:#f3cfbb;border-color:#8b6856;background:#44382e}
-.stage-card-tool:hover,.stage-card-bypass:hover{background:#36534e}
-.stage-card-tool:focus-visible,.stage-card-bypass:focus-visible{outline:2px solid #c0e7d8}
-.hotspot-dimension-warning{pointer-events:none;position:absolute;top:2%;left:8%;right:8%;margin:0;padding:10px;font-size:12px;line-height:1.5;color:#ffdfbf;background:rgba(44,25,15,.92);border:1px solid #bb8d70;border-radius:5px}
-@media(max-width:820px){.stage-card-title,.stage-card-selected{font-size:9px}.stage-card-picture{left:3%;width:65%}.stage-card-tools{top:12%;bottom:3%}}
-
-.stage .stage-card .stage-card-picture{width:65%;height:54%;margin:0;max-width:65%;object-fit:contain}
+.stage-hotspot-layer{position:absolute;inset:0;pointer-events:none;line-height:normal;text-align:left}
+.stage-card-native{
+  position:absolute;pointer-events:auto;box-sizing:border-box;overflow:hidden;
+  color:#e0e7e3;border:1px solid #414e4b;border-radius:4px;
+  background:linear-gradient(155deg,#343b39 0%,#262d2c 49%,#1d2525 100%);
+  box-shadow:inset 0 1px 1px #ffffff12,inset 0 -2px 6px #0007,0 1px 5px #0009;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:clamp(7px,.78cqw,12px);
+}
+.stage-card-native:hover{border-color:#657a73}
+.stage-card-native:focus-within{outline:1px solid #8ebba9;outline-offset:-2px}
+.stage-card-native.is-active{box-shadow:inset 0 1px 1px #ffffff20,inset 0 -2px 8px #0007,0 0 0 1px #729b8c}
+.stage-card-native.is-bypassed .native-card-image{filter:grayscale(.85);opacity:.42}
+.native-card-header{
+  position:absolute;top:0;left:0;right:0;height:23%;min-height:10px;
+  padding:0 4%;display:flex;align-items:center;justify-content:space-between;gap:5px;
+  background:linear-gradient(180deg,#3d4643,#2d3633);
+  border-bottom:1px solid #58676050;
+}
+.native-card-heading{
+  min-width:0;max-width:100%;border:0;padding:0;background:transparent;color:#e0e8e2;
+  font-size:1em;letter-spacing:.05em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  cursor:pointer;text-shadow:0 1px 1px #0008
+}
+.native-card-bypass{
+  flex:0 0 auto;padding:2px 4px;border:1px solid #63756f;border-radius:3px;
+  font-size:.75em;font-weight:700;color:#b6d8c8;background:#253d35;cursor:pointer
+}
+.native-card-bypass[aria-pressed=true]{border-color:#987960;color:#e0bba0;background:#45372d}
+.native-card-body{
+  position:absolute;top:24%;bottom:25%;left:4%;right:4%;
+  display:flex;align-items:center;gap:3%;min-height:0
+}
+.native-card-art{
+  position:relative;flex:0 0 49%;min-width:0;height:100%;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(ellipse at center,#46514b 0%,#303b37 57%,#25312f 100%);
+  border:1px solid #6a786820;border-radius:2px
+}
+.native-card-image{max-width:100%;max-height:100%;width:auto;height:auto;margin:0;object-fit:contain;filter:drop-shadow(0 1px 2px #0008)}
+.stage .stage-card-native .native-card-image{display:block;width:auto;max-width:100%;max-height:100%;height:auto;margin:0}
+.native-card-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#89978d;font-size:.8em;text-align:center}
+.native-card-selection{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:5%}
+.native-card-model-label{display:block;color:#9dab9d;font-size:.75em;font-weight:600;letter-spacing:.08em}
+.native-card-select{
+  display:block;max-width:100%;min-width:0;width:100%;border:1px solid #6d827960;border-radius:2px;
+  color:#e3ede6;background:#1d2927;padding:1px 2px;font:600 1em Inter,"Segoe UI",Arial,sans-serif;
+  height:clamp(14px,1.8cqw,25px);cursor:pointer;text-overflow:ellipsis
+}
+.native-card-actions{
+  position:absolute;left:3%;right:3%;bottom:2%;height:22%;min-height:10px;
+  display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:3%;align-items:stretch
+}
+.native-card-actions button{
+  display:grid;place-items:center;min-width:0;min-height:0;padding:0 2px;
+  color:#cfdfd4;border:1px solid #61786e;border-radius:2px;
+  background:linear-gradient(#3c5048,#26372f);font:600 1em Inter,"Segoe UI",Arial,sans-serif;cursor:pointer
+}
+.native-card-actions .native-card-arrow{font-size:1.45em;line-height:1}
+.native-card-actions button:hover,.native-card-bypass:hover{background:#48645a}
+.native-card-actions button:focus-visible,.native-card-heading:focus-visible,.native-card-select:focus-visible,.native-card-bypass:focus-visible{
+  outline:2px solid #d0ebda;outline-offset:-1px
+}
+.stage-card-native[data-ui=UI_01][data-module=SPACE_ENVIRONMENT] .native-card-header{height:22%}
+.stage-card-native[data-ui=UI_01][data-module=SPACE_ENVIRONMENT] .native-card-body{top:23%;bottom:25%}
+.stage-card-native[data-ui=UI_02] .native-card-header{height:27%}
+.stage-card-native[data-ui=UI_02] .native-card-body{top:28%;bottom:23%}
+.stage-card-native[data-ui=UI_02] .native-card-actions{height:20%}
+.hotspot-dimension-warning{
+  position:absolute;pointer-events:none;top:2%;left:8%;right:8%;margin:0;padding:10px;
+  font-size:12px;line-height:1.5;color:#ffdfbf;background:#2c1917e8;
+  border:1px solid #bb8d70;border-radius:5px
+}
+@media(max-width:820px){
+  .native-card-header{padding:0 3%}
+  .native-card-bypass{padding:0 2px}
+  .native-card-model-label{display:none}
+  .native-card-selection{justify-content:center}
+  .native-card-actions .native-card-edit{font-size:.9em}
+}

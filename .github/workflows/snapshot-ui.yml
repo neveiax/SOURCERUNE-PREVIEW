@@ -38,6 +38,7 @@ jobs:
           node --check stage-controls.mjs
           node scripts/interaction-smoke.mjs
           node scripts/card-layout-smoke.mjs
+          node scripts/native-card-smoke.mjs
       - name: Persist approved PNGs within clean-history public repo
         run: |
           git config user.name "github-actions[bot]"
