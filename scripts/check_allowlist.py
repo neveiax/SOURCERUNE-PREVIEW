@@ -1,6 +1,6 @@
 """Fail-closed published path and SHA allowlist for SOURCERUNE-PREVIEW."""
 from pathlib import Path
-import subprocess, json, re
+import subprocess, json, re, struct
 from hashlib import sha1
 
 ALLOWED = {
@@ -36,6 +36,11 @@ def main():
         image=root/"assets"/(name+".png")
         if not image.is_file() or blobsha(image.read_bytes())!=sha:
             raise SystemExit("BLOCKED: pinned UI screenshot missing or tampered")
+        raw=image.read_bytes()
+        expected={"UI_01":(1499,807),"UI_02":(1672,941)}[name]
+        actual=struct.unpack(">II",raw[16:24]) if raw.startswith(b"\x89PNG\r\n\x1a\n") else None
+        if actual!=expected:
+            raise SystemExit(f"BLOCKED: {name} screenshot {actual} does not match approved shell {expected}")
     tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
     untracked=set(subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True,cwd=root).splitlines())
     unexpected=sorted((tracked|untracked)-ALLOWED)
