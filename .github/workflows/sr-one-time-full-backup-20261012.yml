@@ -1,0 +1,66 @@
+name: SR one-time complete repository backup (PUBLIC PREVIEW)
+
+on:
+  push:
+    branches:
+      - "backup/sr-20261012-three-repos-main-071ed8ce"
+    paths:
+      - ".github/workflows/sr-one-time-full-backup-20261012.yml"
+permissions:
+  contents: read
+concurrency:
+  group: sr-complete-backup-preview-20261012
+  cancel-in-progress: false
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout all Git branch and tag history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Export repository folder and full history bundle
+        shell: bash
+        env:
+          EXPECTED_MAIN: "071ed8cee40d9ca5199cd8ccd831498319f6c435"
+        run: |
+          set -euo pipefail
+          REPO="${GITHUB_REPOSITORY##*/}"
+          BASE="$GITHUB_WORKSPACE/backup"
+          mkdir -p "$BASE/$REPO"
+          test "$(git rev-parse refs/remotes/origin/main)" = "$EXPECTED_MAIN"
+          test ! -f .git/shallow
+          git fetch origin --force '+refs/pull/*/head:refs/backup/pulls/*/head'
+          git fsck --full --no-reflogs
+          git archive --format=tar "$EXPECTED_MAIN" | tar -xf - -C "$BASE/$REPO"
+          git show-ref | sort > "$BASE/ALL_REFS.txt"
+          git ls-tree -r --name-only "$EXPECTED_MAIN" > "$BASE/MAIN_TRACKED_PATHS.txt"
+          git bundle create "$BASE/$REPO-all-refs.bundle" --all
+          git bundle verify "$BASE/$REPO-all-refs.bundle"
+          git clone -q "$BASE/$REPO-all-refs.bundle" "$RUNNER_TEMP/recovery-check"
+          git -C "$RUNNER_TEMP/recovery-check" cat-file -e "$EXPECTED_MAIN^{commit}"
+          cd "$BASE"
+          find "$REPO" -type f -print0 | sort -z | xargs -0 -r sha256sum > MAIN_FILES_SHA256SUMS.txt
+          sha256sum "$REPO-all-refs.bundle" > BUNDLE_SHA256SUMS.txt
+          printf 'repository=%s\nmain=%s\nbackup_run=%s\ntracked_paths=%s\n' "$GITHUB_REPOSITORY" "$EXPECTED_MAIN" "$GITHUB_RUN_ID" "$(wc -l < MAIN_TRACKED_PATHS.txt)" > BACKUP_INFO.txt
+          cat > RESTORE_README.txt <<'EOF'
+          SOURCERUNE three-repository snapshot, public UI preview repository.
+          Repository folder: directly accessible complete tracked main contents (dotfiles included).
+          *-all-refs.bundle: complete reachable Git history for branch/tag/PR head refs.
+          Verify: sha256sum -c BUNDLE_SHA256SUMS.txt
+          Recover: git clone SOURCERUNE-PREVIEW-all-refs.bundle RECOVERED
+          Then: git -C RECOVERED switch -C main origin/main
+          Main SHA in BACKUP_INFO.txt must match the expected deployment checkpoint.
+          This backup includes public PREVIEW only; private SOURCE or KNOWLEDGE are never copied.
+          GitHub Actions logs, secrets, settings and external dependencies not contained.
+          EOF
+          ls -lh "$REPO-all-refs.bundle" BACKUP_INFO.txt
+      - name: Store public repository complete backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SR-FULL-BACKUP-PREVIEW-20261012-071ed8ce
+          path: backup/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 90
