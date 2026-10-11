@@ -15,11 +15,13 @@ export function mountInteractionLab({getUi,onUi}) {
   const panel=byId("interactionLab"),main=document.querySelector("main"),toggle=byId("interactionToggle");
   let opened=false;
   const approvedArt=new Map();
+  const subscribers=new Set();
+  const notify=()=>{for(const fn of subscribers)fn();};
   const persist=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(history.present));}catch{}};
   const status=message=>{const x=byId("labStatus");if(x)x.textContent=message};
   const exec=(action,label)=>{
     history=dispatch(history,action);
-    persist();render();status(label);
+    persist();render();status(label);notify();
   };
   const render=()=>{
     const state=history.present;
@@ -65,8 +67,8 @@ export function mountInteractionLab({getUi,onUi}) {
       });
       input.addEventListener("change",()=>exec({type:"param",id:input.dataset.param,value:Number(input.value)},"Control value changed"));
     });
-    byId("labUndo")?.addEventListener("click",()=>{history=undo(history);persist();render();status("Undo");});
-    byId("labRedo")?.addEventListener("click",()=>{history=redo(history);persist();render();status("Redo");});
+    byId("labUndo")?.addEventListener("click",()=>{history=undo(history);persist();render();status("Undo");notify();});
+    byId("labRedo")?.addEventListener("click",()=>{history=redo(history);persist();render();status("Redo");notify();});
     byId("labReset")?.addEventListener("click",()=>exec({type:"reset"},"UI values reset"));
     byId("labExport")?.addEventListener("click",()=>{
       const data=new Blob([JSON.stringify({product:"SOURCERUNE",kind:"public-ui-preview-only",state:history.present},null,2)],{type:"application/json"});
@@ -94,6 +96,7 @@ export function mountInteractionLab({getUi,onUi}) {
         approvedArt.set(entry.ui+":"+entry.group+":"+entry.index,entry.output_path);
       }
       if(opened){render();status("Approved module artwork loaded")}
+      notify();
     })
     .catch(error=>{console.warn("UI-only artwork not available",error);if(opened)status("Artwork unavailable · state controls still work")});
   toggle.addEventListener("click",()=>setOpen(!opened));
@@ -103,6 +106,19 @@ export function mountInteractionLab({getUi,onUi}) {
       history=dispatch(history,{type:"ui",ui:next});
       persist();
       if(opened)render();
+      notify();
     }
-  },close(){setOpen(false)}};
+  },
+  getState(){return history.present;},
+  getArtwork(ui,group,index){return approvedArt.get(ui+":"+group+":"+index)||null;},
+  perform(action,label="UI updated"){exec(action,label);},
+  subscribe(fn){subscribers.add(fn);return ()=>subscribers.delete(fn);},
+  openGroup(group){
+    setOpen(true);
+    exec({type:"group",group},"Editing "+GROUP_LABELS[group]);
+    const control=panel.querySelector('[data-choice="'+group+'"]');
+    control?.focus();
+    control?.scrollIntoView({block:"nearest"});
+  },
+  close(){setOpen(false)}};
 }
