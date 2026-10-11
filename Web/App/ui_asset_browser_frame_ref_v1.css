@@ -642,7 +642,7 @@
   border:0;
   border-radius:2px;
 }
-.asset-browser .preview-art:not(:has(img))::after{
+.asset-browser .preview-art:not(:has(img)):not(:has(.preview-fallback))::after{
   content:"Preview unavailable";
   color:#819ba7;
   font-size:11px;
@@ -746,4 +746,45 @@
     min-height:100px;
     max-height:140px;
   }
+}
+
+/* SR-20261012-UI-LIBRARY-STATES: accessible empty/error and keyboard states. */
+.asset-browser .asset-empty{
+  grid-column:1/-1;
+  align-self:start;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  margin:6px 2px;
+  padding:18px 14px;
+  border:1px dashed #415965;
+  border-radius:5px;
+  background:#0d1a22;
+  color:#b1c7d1;
+  font-size:12px;
+  line-height:1.4;
+}
+.asset-browser .asset-empty strong{color:#d9e6eb;font-weight:600}
+.asset-browser .asset-empty span{color:#8ca7b3}
+.asset-browser .preview-empty{
+  position:relative;
+  padding:18px 10px;
+  color:#8ca7b3;
+  font-size:12px;
+}
+.asset-browser .preview-art.image-unavailable{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+.asset-browser .preview-fallback{
+  color:#9cb7c3;
+  font-size:11px;
+  letter-spacing:.025em;
+  text-align:center;
+}
+.asset-browser .asset-item:focus-visible{
+  outline:2px solid #90b0bd;
+  outline-offset:-3px;
 }

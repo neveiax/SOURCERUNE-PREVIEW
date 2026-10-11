@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - "Web/App/index.html"
+      - "Web/App/app.js"
       - "Web/App/ui01_*"
       - "Web/App/ui02_*"
       - "Web/App/ui_ref_text_guard_*"
@@ -82,6 +83,17 @@ jobs:
                    frame.imageBorder!=="1px"||frame.split!=="1px"||frame.items<10||!(frame.frameZ>frame.transportZ)||!frame.lowerEdgeVisible)
                   throw Error("Public original modal still uses ugly stretched frame: "+JSON.stringify(frame));
                 await page.screenshot({path:"public_MODAL_"+ui+".png",fullPage:false});
+                if(!(await page.$eval("#assetSearch",el=>el===document.activeElement)))throw Error(ui+" search focus absent");
+                await page.$eval("#assetSearch",el=>{el.value="__unmatched_asset_20261012__";el.dispatchEvent(new Event("input",{bubbles:true}))});
+                if(!(await page.$eval(".asset-empty",el=>el.textContent.includes("No assets found"))))throw Error(ui+" missing empty state");
+                await page.$eval("#assetSearch",el=>{el.value="";el.dispatchEvent(new Event("input",{bubbles:true}))});
+                await page.click(".asset-item:nth-child(3)");
+                if(!(await page.$eval(".asset-item.active",el=>el===document.activeElement)))throw Error(ui+" selected focus lost");
+                await page.$eval(".preview-art img",el=>el.dispatchEvent(new Event("error")));
+                if(!(await page.$eval(".preview-fallback",el=>el.textContent==="Preview unavailable")))throw Error(ui+" image fallback absent");
+                await page.keyboard.press("Escape");
+                if(!(await page.evaluate(()=>document.querySelector("#assetBrowser").classList.contains("hidden") && document.activeElement===document.querySelector('.module-card[data-type="WALL_COVER"]'))))throw Error(ui+" Escape focus return missing");
+                await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el.click());
                 await page.click("#browserClose");
                 if(!(await page.$eval("#assetBrowser",x=>x.classList.contains("hidden"))))
                   throw Error("Original modal close lost");
