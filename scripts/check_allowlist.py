@@ -36,6 +36,8 @@ REVIEWED_CSS_SHA={
 ALLOWED.update(REVIEWED_CSS_SHA)
 ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
 ALLOWED.add('public_ui_style_sync_manifest.json')
+# Existing public repository collaboration policy files, not Source-private material.
+ALLOWED.update({'.github/PULL_REQUEST_TEMPLATE.md','.github/copilot-instructions.md','AGENTS.md'})
 PINNED={"UI_01":"d2fc997e788361954726e712097373da75a4cec6",
         "UI_02":"df0623a87b3c2405ee5adfcba2b44f387d50887b"}
 def blobsha(content):
