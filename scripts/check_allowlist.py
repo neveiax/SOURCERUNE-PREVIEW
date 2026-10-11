@@ -5,11 +5,12 @@ from hashlib import sha1
 
 ALLOWED = {
     "README.md", "index.html", "viewer.css", "viewer.js",
-    "interaction-state.mjs", "interaction-lab.mjs", "card-layout.mjs", "stage-controls.mjs", ".nojekyll",
+    "interaction-state.mjs", "interaction-lab.mjs", "card-layout.mjs", "stage-controls.mjs",
+    "macro-layout.mjs", "macro-controls.mjs", ".nojekyll",
     ".github/workflows/snapshot-ui.yml",
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
     "scripts/interaction-smoke.mjs", "scripts/card-layout-smoke.mjs",
-    "scripts/native-card-smoke.mjs",
+    "scripts/native-card-smoke.mjs", "scripts/macro-smoke.mjs",
     "assets/UI_01.png", "assets/UI_02.png", "assets/approved_ui_manifest.json",
 }
 PINNED={"UI_01":"d2fc997e788361954726e712097373da75a4cec6",
@@ -47,7 +48,7 @@ def main():
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
         raise SystemExit("BLOCKED: unapproved public files: "+", ".join(unexpected))
-    for name in ("index.html","viewer.css","viewer.js","interaction-lab.mjs","interaction-state.mjs","stage-controls.mjs","card-layout.mjs"):
+    for name in ("index.html","viewer.css","viewer.js","interaction-lab.mjs","interaction-state.mjs","stage-controls.mjs","card-layout.mjs","macro-layout.mjs","macro-controls.mjs"):
         content=(root/name).read_text(encoding="utf-8")
         for forbidden in ("raw.githubusercontent.com","github.com/ureia-dev/SOURCERUNE/blob",
                           '<script src="https://',"https://api.github.com","AudioWorklet","WebAssembly","createSceneNode"):

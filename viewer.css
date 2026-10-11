@@ -128,3 +128,52 @@
   .native-card-selection{justify-content:center}
   .native-card-actions .native-card-edit{font-size:.9em}
 }
+
+
+/* Native macro UI panels, with approved public outer REF bounds. UI state only. */
+.macro-overlay{position:absolute;inset:0;pointer-events:none;line-height:normal}
+.native-macro-panel{
+  position:absolute;box-sizing:border-box;pointer-events:auto;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:0;
+  border:1px solid #48554f;border-radius:4px;color:#e1e8e1;
+  background:linear-gradient(165deg,#3c4741,#242e2a 58%,#1d2524);
+  box-shadow:inset 0 1px 1px #ffffff13,inset 0 -2px 7px #0007;
+  padding:clamp(3px,.45cqw,9px) clamp(2px,.42cqw,9px);font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-size:clamp(7px,.78cqw,12px)
+}
+.native-macro-panel:focus-within{outline:1px solid #9fc5b4;outline-offset:-2px}
+.native-macro-heading{
+  font-size:.95em;letter-spacing:.035em;font-weight:700;
+  max-width:100%;color:#cadbcb;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.native-macro-face{
+  position:relative;flex:1 1 0;min-height:0;min-width:0;width:min(70%,13cqw);
+  aspect-ratio:1;display:grid;place-items:center;
+  border-radius:50%;
+  background:conic-gradient(from 225deg,#779f88 0 var(--level,0%),#2e3f38 var(--level,0%) 75%,#1a2321 75% 100%);
+  box-shadow:inset 0 1px 5px #0008,0 1px 2px #ffffff0d;
+  margin:2% 0;isolation:isolate
+}
+.native-macro-face:before{
+  content:"";position:absolute;inset:11%;border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,#56615a,#29342f 67%,#192521);
+  box-shadow:inset 0 1px 2px #ffffff10,inset 0 -2px 6px #0006;
+  z-index:-1
+}
+.native-macro-value{font-weight:700;font-size:1.13em;text-align:center;color:#d9e9da;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px #000}
+.native-macro-control-label{max-width:100%;font-size:.78em;color:#a9b9aa;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.native-macro-range{
+  display:block;flex:0 0 auto;width:94%;margin:3% 0 2%;height:clamp(6px,.8cqw,12px);
+  accent-color:#8dae95;cursor:pointer
+}
+.native-macro-range:focus-visible{outline:2px solid #d5e6d9;outline-offset:2px}
+.native-macro-panel[data-ui=UI_01] .native-macro-face{width:min(65%,12cqw)}
+.native-macro-panel[data-ui=UI_01][data-macro=MIX] .native-macro-face{width:75%}
+.native-macro-panel[data-ui=UI_02]{padding:clamp(3px,.35cqw,8px) clamp(2px,.4cqw,8px)}
+.native-macro-panel[data-ui=UI_02] .native-macro-face{width:min(48%,8.5cqw)}
+@media(max-width:850px){
+  .native-macro-panel{padding:3px 3px}
+  .native-macro-control-label{display:none}
+  .native-macro-value{font-size:1em}
+  .native-macro-panel[data-ui=UI_01] .native-macro-heading{font-size:.78em}
+}
