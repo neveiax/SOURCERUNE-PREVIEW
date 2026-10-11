@@ -63,6 +63,15 @@ jobs:
                   return {sheetLoaded:!!link?.sheet,source:link?.getAttribute("href")};
                 });
                 if(!modalStyle.sheetLoaded)throw Error("Allowlisted modal CSS did not load "+JSON.stringify(modalStyle));
+                await page.focus('.module-card[data-type="WALL_COVER"]');
+                if(!(await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el===document.activeElement&&el.tabIndex===0)))throw Error(ui+" module card focus missing");
+                await page.keyboard.press("Enter");
+                if(!(await page.$eval("#assetBrowser",el=>!el.classList.contains("hidden"))))throw Error(ui+" Enter failed");
+                await page.keyboard.press("Escape");
+                if(!(await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el===document.activeElement)))throw Error(ui+" return focus failed");
+                await page.keyboard.press("Space");
+                if(!(await page.$eval("#assetBrowser",el=>!el.classList.contains("hidden"))))throw Error(ui+" Space failed");
+                await page.keyboard.press("Escape");
                 await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el.click());
                 await page.waitForSelector('#assetBrowser:not(.hidden) .preview-art img',{timeout:12000});
                 const frame=await page.evaluate(()=>{
