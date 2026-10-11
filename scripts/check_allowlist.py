@@ -9,6 +9,7 @@ ALLOWED = {
     ".github/workflows/snapshot-ui.yml",
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
     "scripts/interaction-smoke.mjs", "scripts/card-layout-smoke.mjs",
+    "scripts/native-card-smoke.mjs",
     "assets/UI_01.png", "assets/UI_02.png", "assets/approved_ui_manifest.json",
 }
 PINNED={"UI_01":"d2fc997e788361954726e712097373da75a4cec6",
