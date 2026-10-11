@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/original-web-port.yml"
       - "scripts/port_original_ui.py"
+      - "scripts/check_original_port.py"
   workflow_dispatch:
 
 permissions:
