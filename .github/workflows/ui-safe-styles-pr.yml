@@ -72,11 +72,14 @@ jobs:
                     imageFrame:s(".asset-preview.selected .preview-art").backgroundImage,
                     imageBorder:s(".asset-preview.selected .preview-art").borderTopWidth,
                     split:s(".asset-preview").borderLeftWidth,
+                    frameZ:Number(s(".asset-browser").zIndex),
+                    transportZ:Number(s("#webAudioTransport").zIndex),
+                    lowerEdgeVisible:(()=>{const r=document.querySelector(".browser-card").getBoundingClientRect();const el=document.elementFromPoint(Math.round(r.left+r.width/2),Math.round(r.bottom-2));return !!el?.closest(".browser-card");})(),
                     items:document.querySelectorAll(".asset-item").length};
                 });
                 if(frame.title!=="WALL / COVER"||frame.border!=="1px"||
                    frame.oldFrame!=="none"||frame.imageFrame!=="none"||
-                   frame.imageBorder!=="1px"||frame.split!=="1px"||frame.items<10)
+                   frame.imageBorder!=="1px"||frame.split!=="1px"||frame.items<10||!(frame.frameZ>frame.transportZ)||!frame.lowerEdgeVisible)
                   throw Error("Public original modal still uses ugly stretched frame: "+JSON.stringify(frame));
                 await page.screenshot({path:"public_MODAL_"+ui+".png",fullPage:false});
                 await page.click("#browserClose");

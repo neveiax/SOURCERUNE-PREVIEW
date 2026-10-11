@@ -4,6 +4,7 @@
    This exact CSS file is mirrored to the allowlisted Public PREVIEW. */
 .asset-browser{
   background:rgba(3,9,13,.74);
+  z-index:1200!important; /* above fixed #webAudioTransport (1000) */
   backdrop-filter:blur(1.5px);
   -webkit-backdrop-filter:blur(1.5px);
 }
