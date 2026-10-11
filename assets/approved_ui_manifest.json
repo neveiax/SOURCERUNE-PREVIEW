@@ -1,0 +1,508 @@
+{
+  "schema": 1,
+  "source_repository": "ureia-dev/SOURCERUNE",
+  "source_commit": "c035db4d6d5f409cdbedc4f9c874089ea1750fda",
+  "scope": "50 previously public art-approved-v2 runtime UI images; no audio/DSP/private documents",
+  "entries": [
+    {
+      "group": "SOURCE",
+      "index": 0,
+      "name": "Smartphone Earpiece",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "output_path": "assets/library/UI_01/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "git_blob_sha": "4b6323eb84f5357e4912d3ad0f2fe470b9fa4f20",
+      "bytes": 44437
+    },
+    {
+      "group": "SOURCE",
+      "index": 0,
+      "name": "Smartphone Earpiece",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "output_path": "assets/library/UI_02/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "git_blob_sha": "4e3de74aea317c3e61b37d08a13768e3bbe59ca4",
+      "bytes": 72077
+    },
+    {
+      "group": "SOURCE",
+      "index": 1,
+      "name": "Smartphone Bottom Speaker",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "output_path": "assets/library/UI_01/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "git_blob_sha": "0e280e3cd877e8c7690bfbc6249703494ac59465",
+      "bytes": 57838
+    },
+    {
+      "group": "SOURCE",
+      "index": 1,
+      "name": "Smartphone Bottom Speaker",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "output_path": "assets/library/UI_02/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "git_blob_sha": "353fec8577e9adb684dcf1c34cc61ce7675a0800",
+      "bytes": 110480
+    },
+    {
+      "group": "SOURCE",
+      "index": 2,
+      "name": "Smartphone Speakerphone",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "output_path": "assets/library/UI_01/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "git_blob_sha": "4493cff24d2eaf5e6d400dfcddea9887db3e9873",
+      "bytes": 72321
+    },
+    {
+      "group": "SOURCE",
+      "index": 2,
+      "name": "Smartphone Speakerphone",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "output_path": "assets/library/UI_02/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "git_blob_sha": "3e22b7063aee3d0a848349a517d692552e11bf99",
+      "bytes": 138230
+    },
+    {
+      "group": "SOURCE",
+      "index": 3,
+      "name": "Feature Phone",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SOURCE/SRC_004_Feature_Phone.png",
+      "output_path": "assets/library/UI_01/SOURCE/SRC_004_Feature_Phone.png",
+      "git_blob_sha": "d64f0b28ef472dff534313303344f6577b1041f7",
+      "bytes": 39893
+    },
+    {
+      "group": "SOURCE",
+      "index": 3,
+      "name": "Feature Phone",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SOURCE/SRC_004_Feature_Phone.png",
+      "output_path": "assets/library/UI_02/SOURCE/SRC_004_Feature_Phone.png",
+      "git_blob_sha": "3e06b11810a8c2efbf0cb1285783ab2ce25ee803",
+      "bytes": 75458
+    },
+    {
+      "group": "SOURCE",
+      "index": 4,
+      "name": "Cordless Home Phone",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "output_path": "assets/library/UI_01/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "git_blob_sha": "366e625cd943ad9faad7ffbe286c695950ef4e8e",
+      "bytes": 51347
+    },
+    {
+      "group": "SOURCE",
+      "index": 4,
+      "name": "Cordless Home Phone",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "output_path": "assets/library/UI_02/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "git_blob_sha": "bc7e8987f7bf4e295c4a7f25a8290fcb5677b3e7",
+      "bytes": 100576
+    },
+    {
+      "group": "SOURCE",
+      "index": 5,
+      "name": "Office Desk Phone",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "output_path": "assets/library/UI_01/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "git_blob_sha": "ec2517cce5f941e51c3fbdcda4a3494ce1745505",
+      "bytes": 67397
+    },
+    {
+      "group": "SOURCE",
+      "index": 5,
+      "name": "Office Desk Phone",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "output_path": "assets/library/UI_02/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "git_blob_sha": "15dc63e21425c6c3aa6e2d2037052fd3a590f7cd",
+      "bytes": 135186
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 0,
+      "name": "Direct Clean",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "output_path": "assets/library/UI_01/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "git_blob_sha": "c949a33ef5879d8d1e73bf852233ac2ac6c5f3ea",
+      "bytes": 78104
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 0,
+      "name": "Direct Clean",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "output_path": "assets/library/UI_02/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "git_blob_sha": "35110c8577e90cdae0580c80dcd0935d0b5f371c",
+      "bytes": 149125
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 1,
+      "name": "Narrowband Clean",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "output_path": "assets/library/UI_01/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "git_blob_sha": "b1fabb1d71a06fc7f310530e344060974d758693",
+      "bytes": 70317
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 1,
+      "name": "Narrowband Clean",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "output_path": "assets/library/UI_02/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "git_blob_sha": "193e35931975df09798e489b0140a0aaeceef438",
+      "bytes": 132444
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 2,
+      "name": "PSTN Landline",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "output_path": "assets/library/UI_01/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "git_blob_sha": "5a091ab796bd87a93ac2bce62ac5c882b4045ced",
+      "bytes": 71152
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 2,
+      "name": "PSTN Landline",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "output_path": "assets/library/UI_02/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "git_blob_sha": "b51a059d0efa5236763c76e0cfc2dff563cd13ed",
+      "bytes": 142234
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 3,
+      "name": "Noisy Analog Line",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "output_path": "assets/library/UI_01/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "git_blob_sha": "f284c2b5c21d396fe11e3b645bfd074ae9b4c102",
+      "bytes": 101574
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 3,
+      "name": "Noisy Analog Line",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "output_path": "assets/library/UI_02/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "git_blob_sha": "28d099c7b351fad67237a4221a2f52d4acb9c4ab",
+      "bytes": 207581
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 4,
+      "name": "GSM Stable",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "output_path": "assets/library/UI_01/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "git_blob_sha": "f6987a7338e4f82ea5aeb1aead345db3c84bccdd",
+      "bytes": 157235
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 4,
+      "name": "GSM Stable",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "output_path": "assets/library/UI_02/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "git_blob_sha": "f6987a7338e4f82ea5aeb1aead345db3c84bccdd",
+      "bytes": 157235
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 5,
+      "name": "GSM Weak",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "output_path": "assets/library/UI_01/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "git_blob_sha": "bf19273936810797771c78480513dad98058623e",
+      "bytes": 150500
+    },
+    {
+      "group": "TRANSMISSION",
+      "index": 5,
+      "name": "GSM Weak",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "output_path": "assets/library/UI_02/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "git_blob_sha": "bf19273936810797771c78480513dad98058623e",
+      "bytes": 150500
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 0,
+      "name": "None / Open",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/WALL_COVER/CVR_001_None_Open.png",
+      "output_path": "assets/library/UI_01/WALL_COVER/CVR_001_None_Open.png",
+      "git_blob_sha": "90c57d0830ca0e111309278f09861f097e3f4cb8",
+      "bytes": 102945
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 0,
+      "name": "None / Open",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/WALL_COVER/CVR_001_None_Open.png",
+      "output_path": "assets/library/UI_02/WALL_COVER/CVR_001_None_Open.png",
+      "git_blob_sha": "e04fafd49de0ec25bb67784d1dad4c71c3565d18",
+      "bytes": 211394
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 1,
+      "name": "T-Shirt Cloth",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "output_path": "assets/library/UI_01/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "git_blob_sha": "01e6418ca9062f15cbf8f1ff557068dc71f9c372",
+      "bytes": 84531
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 1,
+      "name": "T-Shirt Cloth",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "output_path": "assets/library/UI_02/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "git_blob_sha": "f9b39d1c85039d3a6c0dbd53f77ae485cab3e651",
+      "bytes": 177208
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 2,
+      "name": "Thin Blanket",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "output_path": "assets/library/UI_01/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "git_blob_sha": "52a14f31005990dd90509dfdcbda5b29024293b9",
+      "bytes": 93468
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 2,
+      "name": "Thin Blanket",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "output_path": "assets/library/UI_02/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "git_blob_sha": "0cd9a4069ec49d4e2eaf9dba60e96a7403cd3da3",
+      "bytes": 196106
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 3,
+      "name": "Thick Blanket",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "output_path": "assets/library/UI_01/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "git_blob_sha": "ee95ea399a54c612f865d8db73319a84d3057782",
+      "bytes": 89444
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 3,
+      "name": "Thick Blanket",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "output_path": "assets/library/UI_02/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "git_blob_sha": "8a7a4b004a17e0ff135c8338af641c9912964f17",
+      "bytes": 183424
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 4,
+      "name": "Pillow",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/WALL_COVER/CVR_005_Pillow.png",
+      "output_path": "assets/library/UI_01/WALL_COVER/CVR_005_Pillow.png",
+      "git_blob_sha": "679ff388032f57693045014e3315b4420e7399ca",
+      "bytes": 80456
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 4,
+      "name": "Pillow",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/WALL_COVER/CVR_005_Pillow.png",
+      "output_path": "assets/library/UI_02/WALL_COVER/CVR_005_Pillow.png",
+      "git_blob_sha": "39a8d334827b089673c55e88fb22a1f137377d08",
+      "bytes": 166052
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 5,
+      "name": "Bedsheet",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/WALL_COVER/CVR_006_Bedsheet.png",
+      "output_path": "assets/library/UI_01/WALL_COVER/CVR_006_Bedsheet.png",
+      "git_blob_sha": "f8701286b65e8e5d546b18907a411c104709e890",
+      "bytes": 66941
+    },
+    {
+      "group": "WALL_COVER",
+      "index": 5,
+      "name": "Bedsheet",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/WALL_COVER/CVR_006_Bedsheet.png",
+      "output_path": "assets/library/UI_02/WALL_COVER/CVR_006_Bedsheet.png",
+      "git_blob_sha": "3388b2f2aa0a09241d9a9ed80df848ec6e5142eb",
+      "bytes": 136756
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 0,
+      "name": "Vocal Booth",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "git_blob_sha": "b83e88cac6b8bb655393948de5147410a5a800cb",
+      "bytes": 79143
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 0,
+      "name": "Vocal Booth",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "git_blob_sha": "584337533c645a14b62cc22294bde82622dfe864",
+      "bytes": 157339
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 1,
+      "name": "Bedroom",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "git_blob_sha": "842009006f64d50069f2b3fb00f31e09f6b53d92",
+      "bytes": 80250
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 1,
+      "name": "Bedroom",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "git_blob_sha": "9277f81f84148d550bad7c4eb5c48df6edd6c460",
+      "bytes": 161439
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 2,
+      "name": "Bathroom",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "git_blob_sha": "a7ef45250faf9c98d0284c327c4910a27d246c9a",
+      "bytes": 69256
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 2,
+      "name": "Bathroom",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "git_blob_sha": "3b50a78c257b8e3840bebba7d5acc3fd00ee7d2a",
+      "bytes": 141134
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 3,
+      "name": "Kitchen",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "git_blob_sha": "cc10cda3302e835fc52f3446652107e84e28590e",
+      "bytes": 73416
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 3,
+      "name": "Kitchen",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "git_blob_sha": "5dab684be7978fbc061b39583f2926ddc0167e95",
+      "bytes": 144201
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 4,
+      "name": "Living Room",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "git_blob_sha": "5bbc71c5e8ef4481164a958cdf8dc141659a55a1",
+      "bytes": 83680
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 4,
+      "name": "Living Room",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "git_blob_sha": "cd2e54acbaaaa81705ce42505e70cf8b08c1e11a",
+      "bytes": 164962
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 5,
+      "name": "Small Office",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "git_blob_sha": "f0c352e760ea192f624f255836c357ba8ca7cc8c",
+      "bytes": 82105
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 5,
+      "name": "Small Office",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "git_blob_sha": "cbe2d8d2ba00640e731a208a84f098e01b574fc3",
+      "bytes": 164563
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 6,
+      "name": "Busy City Street",
+      "ui": "UI_01",
+      "source_path": "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "output_path": "assets/library/UI_01/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "git_blob_sha": "2227163ce0fa0456e0bf3ae75c69d522cd8d7b10",
+      "bytes": 96460
+    },
+    {
+      "group": "SPACE_ENVIRONMENT",
+      "index": 6,
+      "name": "Busy City Street",
+      "ui": "UI_02",
+      "source_path": "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "output_path": "assets/library/UI_02/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "git_blob_sha": "e1bee669ba5fe174b0f6c76f4295b96f25b2b39b",
+      "bytes": 199910
+    }
+  ]
+}

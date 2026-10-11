@@ -14,6 +14,7 @@ export function mountInteractionLab({getUi,onUi}) {
   let history=makeHistory(fromStorage(getUi()));
   const panel=byId("interactionLab"),main=document.querySelector("main"),toggle=byId("interactionToggle");
   let opened=false;
+  const approvedArt=new Map();
   const persist=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(history.present));}catch{}};
   const status=message=>{const x=byId("labStatus");if(x)x.textContent=message};
   const exec=(action,label)=>{
@@ -24,8 +25,11 @@ export function mountInteractionLab({getUi,onUi}) {
     const state=history.present;
     const names=GROUPS.map(group=>{
       const options=OPTIONS[group],idx=state.selected[group],selected=options[idx],bypassed=state.bypass[group];
+      const art=approvedArt.get(state.ui+":"+group+":"+idx);
+      const artMarkup=art?'<div class="lab-module-art"><img loading="lazy" src="./'+escapeHTML(art)+'" alt="'+escapeHTML(selected)+' visual asset"></div>':'<div class="lab-module-art missing">No approved public art loaded</div>';
       return '<div class="lab-module">'+
         '<div class="lab-module-heading"><strong>'+GROUP_LABELS[group]+'</strong><button type="button" data-bypass="'+group+'" aria-pressed="'+String(bypassed)+'" class="'+(bypassed?'is-bypassed':'')+'">'+(bypassed?'BYPASSED':'ACTIVE')+'</button></div>'+
+        artMarkup+
         '<div class="lab-cycle"><button type="button" data-cycle="'+group+'" data-dir="-1" aria-label="Previous '+GROUP_LABELS[group]+'">‹</button>'+
         '<select data-choice="'+group+'" aria-label="'+GROUP_LABELS[group]+' visual selection">'+
         options.map((name,i)=>'<option value="'+i+'" '+(i===idx?'selected':'')+'>'+escapeHTML(name)+'</option>').join("")+
@@ -81,6 +85,17 @@ export function mountInteractionLab({getUi,onUi}) {
     toggle.textContent=opened?"Close UI controls":"Test UI controls";
     if(opened)render();
   }
+  fetch("./assets/approved_ui_manifest.json", {cache:"force-cache"})
+    .then(response=>{if(!response.ok)throw Error("Approved art manifest unavailable");return response.json()})
+    .then(manifest=>{
+      if(manifest.schema!==1||manifest.entries?.length!==50)throw Error("Invalid public art manifest");
+      for(const entry of manifest.entries){
+        if(!GROUPS.includes(entry.group)||!["UI_01","UI_02"].includes(entry.ui)||!Number.isInteger(entry.index)||!/^assets\/library\/UI_0[12]\/(SOURCE|TRANSMISSION|WALL_COVER|SPACE_ENVIRONMENT)\/[A-Za-z0-9_]+\.png$/.test(entry.output_path))throw Error("Unapproved art");
+        approvedArt.set(entry.ui+":"+entry.group+":"+entry.index,entry.output_path);
+      }
+      if(opened){render();status("Approved module artwork loaded")}
+    })
+    .catch(error=>{console.warn("UI-only artwork not available",error);if(opened)status("Artwork unavailable · state controls still work")});
   toggle.addEventListener("click",()=>setOpen(!opened));
   render();
   return {setUi(next) {
