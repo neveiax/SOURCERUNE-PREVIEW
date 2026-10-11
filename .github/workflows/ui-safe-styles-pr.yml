@@ -7,6 +7,7 @@ on:
       - "Web/App/ui01_*"
       - "Web/App/ui02_*"
       - "Web/App/ui_ref_text_guard_*"
+      - "Web/App/ui_asset_browser_frame_ref_v1.css"
       - "scripts/check_allowlist.py"
       - "public_ui_style_sync_manifest.json"
       - ".github/workflows/ui-safe-styles-pr.yml"
@@ -56,6 +57,35 @@ jobs:
                 });
                 if(ok.css!==9||!ok.live||ok.missing.length)throw Error("Original public UI cosmetic styles not loaded "+JSON.stringify({ui,ok}));
                 await page.screenshot({path:"public_"+ui+".png",fullPage:false});
+                const modalStyle=await page.evaluate(()=>{
+                  const link=document.querySelector('link[href="./ui_asset_browser_frame_ref_v1.css"]');
+                  return {sheetLoaded:!!link?.sheet,source:link?.getAttribute("href")};
+                });
+                if(!modalStyle.sheetLoaded)throw Error("Allowlisted modal CSS did not load "+JSON.stringify(modalStyle));
+                await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el.click());
+                await page.waitForSelector('#assetBrowser:not(.hidden) .preview-art img',{timeout:12000});
+                const frame=await page.evaluate(()=>{
+                  const s=q=>getComputedStyle(document.querySelector(q));
+                  return {title:document.querySelector("#browserTitle")?.textContent,
+                    border:s(".browser-card").borderTopWidth,
+                    oldFrame:s(".browser-card").backgroundImage,
+                    imageFrame:s(".asset-preview.selected .preview-art").backgroundImage,
+                    imageBorder:s(".asset-preview.selected .preview-art").borderTopWidth,
+                    split:s(".asset-preview").borderLeftWidth,
+                    frameZ:Number(s(".asset-browser").zIndex),
+                    transportZ:Number(s("#webAudioTransport").zIndex),
+                    lowerEdgeVisible:(()=>{const r=document.querySelector(".browser-card").getBoundingClientRect();const el=document.elementFromPoint(Math.round(r.left+r.width/2),Math.round(r.bottom-2));return !!el?.closest(".browser-card");})(),
+                    items:document.querySelectorAll(".asset-item").length};
+                });
+                if(frame.title!=="WALL / COVER"||frame.border!=="1px"||
+                   frame.oldFrame!=="none"||frame.imageFrame!=="none"||
+                   frame.imageBorder!=="1px"||frame.split!=="1px"||frame.items<10||!(frame.frameZ>frame.transportZ)||!frame.lowerEdgeVisible)
+                  throw Error("Public original modal still uses ugly stretched frame: "+JSON.stringify(frame));
+                await page.screenshot({path:"public_MODAL_"+ui+".png",fullPage:false});
+                await page.click("#browserClose");
+                if(!(await page.$eval("#assetBrowser",x=>x.classList.contains("hidden"))))
+                  throw Error("Original modal close lost");
+
                 await page.close();
               }
               console.log("PUBLIC_UI_PREVIEW_PASS two views, 12 exact-source cosmetic CSS, no audio");
@@ -68,4 +98,6 @@ jobs:
           path: |
             public_UI_01.png
             public_UI_02.png
+            public_MODAL_UI_01.png
+            public_MODAL_UI_02.png
           retention-days: 7
