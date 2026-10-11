@@ -1,0 +1,55 @@
+/* UI_02 REF batch C: fix Intelligibility overflow and bottom-card optics.
+   No new parameter, state, disabled DSP function or artwork substitution. */
+body.ui-02 .macro-intelligibility{position:relative;overflow:hidden}
+body.ui-02 .macro-strip .macro-intelligibility .macro-knob{
+ position:absolute;top:44px;left:18px;margin:0!important;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-knob-value{
+ left:calc(100% + 7px);top:50%;transform:translateY(-50%);
+ font-size:18px;line-height:23px;font-variant-numeric:tabular-nums;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row{
+ box-sizing:border-box;position:absolute;top:43px;right:14px;left:auto;
+ width:110px;margin:0!important;display:grid;grid-template-columns:minmax(0,1fr);gap:4px;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button{
+ box-sizing:border-box;flex:none;width:100%;height:26px;min-height:26px;
+ padding:0 4px;border:0;border-radius:0;color:#b4c9d1;font-size:9px;font-weight:500;
+ background:transparent url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png") center/100% 100% no-repeat;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button.active{
+ color:#e7f4f7;background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png");
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button:not(.active):hover{
+ color:#e1eff4;background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_HOVER.png");
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button:focus-visible{
+ outline:1px solid #89c4d7;outline-offset:0;
+}
+body.ui-02 .macro-strip .macro h3{color:#c2d3db;letter-spacing:.025em;font-weight:500}
+body.ui-02 .macro-badsignal .macro-device-name{color:#b9cbd2!important;text-overflow:ellipsis}
+body.ui-02 .macro-condition .macro-select{color:#c2d4dc;background-color:#101e24;border-color:#415a66}
+body.ui-02 .macro-condition .macro-select:focus-visible{outline:1px solid #89c4d7;outline-offset:1px}
+body.ui-02 .macro-mix .macro-mix-mode{color:#c3dce5;border-color:#527487;background:#11212a}
+body.ui-02 .macro-eq .macro-eq-svg{border-color:rgba(87,125,141,.52);background:#091820}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .ambience-preview img{
+ filter:saturate(.83) contrast(.96) brightness(1.04);
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob:after{
+ color:#d7e9ee;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px rgba(0,0,0,.36);
+}
+body.ui-02 .macro-strip button:focus-visible,
+body.ui-02 .macro-strip select:focus-visible{outline:1px solid rgba(131,193,211,.8);outline-offset:1px}
+
+/* UI_02: keep all three real modes inside their locked 172px card.
+   Never clip a long translated label into a neighbouring mode or the knob readout. */
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row{
+ min-width:0;z-index:1;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button{
+ min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+ line-height:26px;letter-spacing:.005em;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button[aria-pressed="true"]{
+ color:#e7f4f7;
+}

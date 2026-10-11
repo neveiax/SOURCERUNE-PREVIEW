@@ -1,0 +1,66 @@
+/* SOURCERUNE UI_01 REF finishing pass, checkpoint A: Condition.
+   Appearance only: existing Rattle / Wow Flutter / Used / numeric IDs remain.
+   Approved independent Runtime PNG caps, not screenshots or invented DSP. */
+
+body.ui-01 .macro-condition .macro-two-col{
+  align-items:start;
+  gap:7px;
+}
+body.ui-01 .macro-condition .macro-side{
+  min-width:0;
+  gap:7px;
+  padding-top:0;
+}
+body.ui-01 .macro-condition .macro-select{
+  box-sizing:border-box;
+  width:100%;
+  min-height:26px;
+  height:26px;
+  margin:0;
+  padding-left:8px;
+  font-size:9px;
+  font-weight:500;
+  color:#bacdd5;
+  background-color:#0c171d;
+}
+body.ui-01 .macro-condition .macro-condition-toggles{
+  gap:8px;
+  padding:3px 0 0 2px;
+}
+body.ui-01 .macro-condition .macro-condition-toggle{
+  min-height:18px;
+  height:18px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:9px;
+  line-height:16px;
+  color:#b9c9d0;
+  letter-spacing:0;
+}
+body.ui-01 .macro-condition .macro-condition-toggle input[type="checkbox"]{
+  -webkit-appearance:none!important;
+  appearance:none!important;
+  box-sizing:border-box;
+  position:relative;
+  flex:0 0 14px;
+  width:14px!important;
+  min-width:14px!important;
+  height:14px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_OFF.png")
+    center/contain no-repeat!important;
+  cursor:pointer;
+  opacity:.92;
+}
+body.ui-01 .macro-condition .macro-condition-toggle input[type="checkbox"]:checked{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_ON.png")!important;
+}
+body.ui-01 .macro-condition .macro-condition-toggle input[type="checkbox"]:focus-visible{
+  outline:1px solid #8ad1e4;
+  outline-offset:1px;
+}
+body.ui-01 .macro-condition .macro-condition-toggle:hover{color:#deebee}

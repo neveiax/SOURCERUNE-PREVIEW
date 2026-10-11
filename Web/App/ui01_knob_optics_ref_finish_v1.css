@@ -1,0 +1,43 @@
+/* UI_01 REF finishing pass, checkpoint C: analog knob optical balance.
+   The approved PNG dial remains the face; only ring, pointer and typography
+   are adjusted. Exact knob dimensions/hitboxes/parameters are unchanged. */
+body.ui-01 #macroStrip .macro-knob-face{
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.29));
+  box-shadow:inset 0 1px 2px rgba(200,225,231,.045),
+             inset 0 -5px 9px rgba(0,0,0,.24);
+}
+body.ui-01 #macroStrip .macro-knob-face::before{
+  opacity:.67;
+  filter:saturate(.83);
+}
+body.ui-01 #macroStrip .macro-knob-face::after{
+  width:1.5px;
+  height:24%;
+  top:17%;
+  border-radius:1px;
+  background:linear-gradient(180deg,rgba(240,247,247,.92) 0 56%,rgba(149,213,227,.76) 57% 100%);
+  box-shadow:0 0 2px rgba(106,182,208,.26);
+  transform-origin:50% 136%;
+}
+body.ui-01 #macroStrip .macro-knob .macro-knob-label{
+  font-size:9px;
+  line-height:13px;
+  color:#bacbd1;
+  font-weight:500;
+  letter-spacing:.015em;
+}
+body.ui-01 #macroStrip .macro-knob .macro-knob-value{
+  font-family:"Segoe UI",Arial,sans-serif;
+  font-size:13px;
+  font-weight:500;
+  line-height:18px;
+  font-variant-numeric:tabular-nums;
+  color:#e1edf1;
+  text-shadow:0 1px 2px rgba(0,0,0,.58);
+}
+body.ui-01 #macroStrip .macro-motion .macro-knob.compact .macro-knob-value{
+  font-size:12px;
+}
+body.ui-01 #macroStrip .macro-knob.adjusting .macro-knob-face{
+  filter:drop-shadow(0 2px 4px rgba(69,161,190,.29));
+}

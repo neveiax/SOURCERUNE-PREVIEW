@@ -1,0 +1,27 @@
+/* SOURCERUNE UI_01 Batch polish A: shell, cards, scene and analysis.
+   APPROX optical work only; card geometry, DSP and all parameter IDs locked. */
+/* A01: Source/Transmission/Wall/Space labels, no semantic-model changes. */
+body.ui-01 .module-rail .module-meta span{color:#b8cbd2;letter-spacing:.025em;font-weight:500}
+body.ui-01 .module-rail .module-meta strong{font-weight:500;color:#e2edf1;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+body.ui-01 .module-rail .module-art img{filter:saturate(.79) contrast(.94) brightness(1.06)}
+body.ui-01 .module-rail .module-art{border-color:rgba(81,118,134,.30);box-shadow:inset 0 1px 0 rgba(143,189,207,.055)}
+/* A02: Preserve already-approved card arrow/EDIT hitboxes. */
+body.ui-01 .module-rail .module-actions button{color:#a9bdc6;text-shadow:0 1px 1px #050c10;letter-spacing:.025em}
+body.ui-01 .module-rail .module-actions button:hover,
+body.ui-01 .module-rail .module-actions button:focus-visible{color:#e3f2f6}
+body.ui-01 .module-card .module-cycle-next:hover{filter:brightness(1.08)}
+/* A03: Source scene control/readout/material balance. */
+body.ui-01 .scene-panel .panel-head h1{letter-spacing:.025em;color:#dfedf2}
+body.ui-01 .scene-ref-zoom output{font-variant-numeric:tabular-nums;color:#bed5df}
+body.ui-01 .scene-ref-zoom button{color:#c2dbe4}
+body.ui-01 .scene-ref-zoom button:focus-visible{outline:1px solid #8cbfd0;outline-offset:1px}
+body.ui-01 .scene-guide text{fill:#a3b9c3;opacity:.79;text-shadow:none}
+body.ui-01 .scene-time-ruler{color:#a4bfcb;letter-spacing:.02em}
+body.ui-01 .scene-time-cursor{width:1px;box-shadow:0 0 2px rgba(142,201,222,.56)}
+/* A04: Analysers still use the same real IN/OUT FFT, no fake trace. */
+body.ui-01 .analysis-panel .tabs button{color:#9aaeb8;letter-spacing:.018em}
+body.ui-01 .analysis-panel .tabs button.active{color:#e2f3f8;background:#0a1921}
+body.ui-01 .analysis-rta-controls button:not(.active){color:#adc2cd}
+body.ui-01 .analysis-rta-controls button.active{color:#e1f3f9}
+body.ui-01 .analysis-rta-controls .spectrum-channel-label{color:#c5d9e1}
+body.ui-01 #spectrumCanvas{border-color:rgba(66,93,105,.38)}

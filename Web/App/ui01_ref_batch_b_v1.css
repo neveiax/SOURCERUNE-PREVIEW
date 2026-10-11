@@ -1,0 +1,38 @@
+/* SOURCERUNE UI_01 Batch polish B: meter + bottom first four macro zones.
+   All current state/Undo wiring and dimensions remain exactly as before. */
+/* B01: Real two-meter frame, scale and non-fabricated LUFS placeholder. */
+body.ui-01 .meter-block .meter-label{color:#c7d9df;letter-spacing:.045em}
+body.ui-01 .meter-db-scale span{color:#a6bec8;font-variant-numeric:tabular-nums;text-shadow:0 1px 1px #07131a}
+body.ui-01 .meter-slot::before{opacity:.16}
+body.ui-01 .meter-values{border-color:rgba(72,105,123,.55);background:linear-gradient(180deg,#0b171d,#09141a)}
+body.ui-01 .meter-values>div:last-child span{color:#a1bac5}
+body.ui-01 .meter-values>div:last-child em{color:#748b95}
+/* B02: Motion selection state remains the real data-motion control. */
+body.ui-01 .macro-motion .macro-mode-row button{font-weight:500;letter-spacing:.01em;color:#acbfca}
+body.ui-01 .macro-motion .macro-mode-row button.active{color:#e4f4f8}
+body.ui-01 .macro-motion .macro-knob-label{color:#b6c9d1}
+/* B03: Bad Signal four true Boolean-state visuals use official 3-state PNG. */
+body.ui-01 .macro-badsignal .macro-signal-toggles{gap:6px}
+body.ui-01 .macro-badsignal .macro-signal-toggle{min-height:14px;gap:5px;font-size:8.5px;color:#b6c9d1}
+body.ui-01 .macro-badsignal .macro-signal-toggle input[type="checkbox"]{
+  -webkit-appearance:none!important;appearance:none!important;box-sizing:border-box;
+  flex:0 0 12px;width:12px!important;min-width:12px!important;height:12px!important;
+  padding:0!important;margin:0!important;border:0!important;border-radius:0!important;
+  background:transparent url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_OFF.png") center/contain no-repeat!important;
+}
+body.ui-01 .macro-badsignal .macro-signal-toggle input[type="checkbox"]:checked{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_ON.png")!important;
+}
+body.ui-01 .macro-badsignal .macro-signal-toggle input[type="checkbox"]:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_DISABLED.png")!important;
+}
+body.ui-01 .macro-badsignal .macro-signal-toggle input[type="checkbox"]:focus-visible{
+  outline:1px solid #8cbfd0;outline-offset:1px;
+}
+/* B04: Condition used/checkbox and Intelligibility true mode lights. */
+body.ui-01 .macro-condition .macro-condition-toggle{color:#b9cbd3;letter-spacing:.01em}
+body.ui-01 .macro-condition .macro-select{color:#bcd3de}
+body.ui-01 .macro-intelligibility .macro-mode-row button{color:#b3c8d1;letter-spacing:.015em;font-weight:500}
+body.ui-01 .macro-intelligibility .macro-mode-row button.active{color:#e3f4f8}
+body.ui-01 .sr-intel-ref-options label{color:#8da4af}
+body.ui-01 .sr-intel-ref-options input:disabled{opacity:.75}

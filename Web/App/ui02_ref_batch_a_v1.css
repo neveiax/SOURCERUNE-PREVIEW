@@ -1,0 +1,17 @@
+/* UI_02 REF batch A: visual-only card and live-scene convergence.
+   Approved rectangles, semantic assets, model selection and audio are unchanged. */
+body.ui-02 .module-card{border-color:#2d4049;box-shadow:inset 0 1px rgba(192,213,221,.035),0 6px 16px rgba(0,0,0,.18)}
+body.ui-02 .module-card:hover{border-color:#526c79}
+body.ui-02 .module-meta{background:linear-gradient(180deg,rgba(7,13,17,.97),rgba(9,16,20,.84) 75%,transparent)}
+body.ui-02 .module-meta span{color:#b9cbd3;letter-spacing:.03em;font-weight:500}
+body.ui-02 .module-meta strong{color:#e5eef1;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+body.ui-02 .module-art{border-color:rgba(87,124,140,.30);box-shadow:inset 0 0 0 1px rgba(147,180,191,.075)}
+body.ui-02 .module-art img{filter:saturate(.83) contrast(.97) brightness(1.04);opacity:.96}
+body.ui-02 .module-actions [data-edit]:focus-visible,
+body.ui-02 .module-cycle:focus-visible{outline:1px solid #85bbce;outline-offset:1px}
+body.ui-02 .module-cycle:hover{filter:drop-shadow(0 0 2px rgba(116,178,199,.28))}
+body.ui-02 .scene-panel{border-color:#2b414c;box-shadow:inset 0 1px rgba(166,196,207,.055)}
+body.ui-02 #motionPath{stroke:#c4e0e9;opacity:.86;filter:drop-shadow(0 0 2px rgba(117,180,201,.24))}
+body.ui-02 #distanceLine{stroke:#b5ced8;opacity:.62}
+body.ui-02 #sourceNode,body.ui-02 #listenerNode{filter:drop-shadow(0 0 2px rgba(126,184,203,.30))}
+body.ui-02 .scene-guide text{fill:#b0c5cd;opacity:.8}

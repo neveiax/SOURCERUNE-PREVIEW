@@ -1,0 +1,17 @@
+/* UI_02 REF batch B: real motion dials and real IN/OUT meter optics.
+   Preserve approved 300px/54px PNG sizes, hitboxes, live data and sound. */
+body.ui-02 .motion-readouts{border-top-color:rgba(83,112,126,.42)}
+body.ui-02 .motion-readouts>div:nth-child(5) strong{font-variant-numeric:tabular-nums;color:#e5edf0;text-shadow:0 1px 2px rgba(0,0,0,.46)}
+body.ui-02 .motion-readouts>div:nth-child(5):before{background:linear-gradient(180deg,#e4edf0,#91c3d1);box-shadow:0 0 2px rgba(92,168,191,.30)}
+body.ui-02 .motion-readouts>div[data-motion-adjust] span{color:#b3c7cf!important;letter-spacing:.012em!important}
+body.ui-02 .motion-readouts>div[data-motion-adjust] strong{color:#e3eef2!important;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+body.ui-02 .motion-readouts>div[data-motion-adjust]:after{background:linear-gradient(180deg,#e5f0f3,#87bfd1);box-shadow:0 0 2px rgba(105,181,206,.30)}
+body.ui-02 .motion-readouts>div[data-motion-adjust]:focus-visible{outline:1px solid rgba(124,190,211,.75);outline-offset:-1px}
+body.ui-02 .meter-label{color:#b9cbd3;letter-spacing:.04em;font-weight:500}
+body.ui-02 .meter-slot{border-color:#3a535f;background:repeating-linear-gradient(90deg,rgba(94,125,140,.12) 0 1px,transparent 1px 8px),#071318;box-shadow:inset 0 1px 2px rgba(0,0,0,.60)}
+body.ui-02 .meter-fill{
+ background:repeating-linear-gradient(90deg,transparent 0 7px,rgba(6,19,25,.54) 7px 8px),
+ linear-gradient(90deg,#4a9fb0 0 72%,#bd995e 72% 90%,#bd665f 90%);
+ box-shadow:0 0 3px rgba(90,174,193,.18);
+}
+body.ui-02 .meter-block{color:#b8cad2}
