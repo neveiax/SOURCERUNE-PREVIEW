@@ -9,7 +9,7 @@ import {ambienceRefMarkup,bindAmbienceRef,paintAmbienceOutput,intelligibilityRef
 const $=(q,r=document)=>r.querySelector(q),$$=(q,r=document)=>[...r.querySelectorAll(q)];
 const TYPES=["SOURCE","TRANSMISSION","WALL_COVER","SPACE_ENVIRONMENT"],LABEL={SOURCE:"SOURCE",TRANSMISSION:"TRANSMISSION",WALL_COVER:"WALL / COVER",SPACE_ENVIRONMENT:"SPACE / ENVIRONMENT",SCENE_PRESET_HERO:"SCENE PRESET HERO"};
 const DEFSEL={SOURCE:"SRC_003_Smartphone_Speakerphone",TRANSMISSION:"TRN_005_GSM_Stable",WALL_COVER:"CVR_001_None_Open",SPACE_ENVIRONMENT:"SPC_022_Busy_City_Street"};
-let schema,catalog,scenePresets={},byId,state,userPresets={},undo=[],redo=[],browserType="SOURCE",stateClipboard=null,browserReturnFocus=null;
+let schema,catalog,scenePresets={},byId,state,userPresets={},undo=[],redo=[],browserType="SOURCE",stateClipboard=null,browserReturnFocus=null,browserReturnType=null;
 let sceneNode,audioSetup,audioUrl,audioName="",audioLoadGeneration=0;
 let audioCtx,media,inAn,outAn,inGain,outGain,peakIn=-Infinity,peakOut=-Infinity,meterMode="PEAK";
 const audio=$("#audioElement");
@@ -521,6 +521,7 @@ function importState(e){const f=e.target.files?.[0];if(!f)return;const r=new Fil
 function snapshot(s,b){if(!state.snapshots[s])state.snapshots[s]=core();else{push();const keep=state.snapshots;state=migrateLegacyEq(keep[s]);state.snapshots=keep;refresh()}$$("[data-snapshot]").forEach(x=>x.classList.toggle("active",x===b));mark("SNAPSHOT "+s)}
 function openBrowser(t,opener=null){
   browserReturnFocus=(opener||document.activeElement) instanceof HTMLElement?(opener||document.activeElement):null;
+  browserReturnType=t;
   browserType=t;
   $("#browserTitle").textContent=LABEL[t];
   const cats=[...new Set(catalog.filter(x=>x.type===t).map(x=>x.category))];
@@ -536,11 +537,14 @@ function closeBrowser(){
   modal.classList.add("hidden");
   const opener=browserReturnFocus;
   browserReturnFocus=null;
-  if(opener?.isConnected){
-    const temporary=!opener.matches("button,input,select,textarea,a[href],[tabindex]");
-    if(temporary)opener.tabIndex=-1;
-    opener.focus({preventScroll:true});
-    if(temporary)opener.removeAttribute("tabindex");
+  // The module cards are rebuilt by refresh() on selection; restore to the replacement card.
+  const target=opener?.isConnected?opener:(browserReturnType?document.querySelector('.module-card[data-type="'+browserReturnType+'"]'):null);
+  browserReturnType=null;
+  if(target){
+    const temporary=!target.matches("button,input,select,textarea,a[href],[tabindex]");
+    if(temporary)target.tabIndex=-1;
+    target.focus({preventScroll:true});
+    if(temporary)target.removeAttribute("tabindex");
   }
 }
 function onBrowserKeydown(e){
