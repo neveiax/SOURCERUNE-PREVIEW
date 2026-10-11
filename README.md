@@ -30,3 +30,7 @@ Each of eight confirmed card regions now uses a real, focusable HTML module comp
 ### Native public macro panels (2026-10-11)
 
 The UI_01 bottom strip exposes six native HTML amount controls for MOTION, BAD SIGNAL, CONDITION, INTELLIGIBILITY, AMBIENCE and MIX. UI_02 exposes four confirmed bottom panels: BAD SIGNAL, CONDITION, INTELLIGIBILITY and MIX. All ten panels use confirmed outer bounds from public REF JSON and the same UI-only state/Undo/Redo as Interaction Lab. The public dial is a visualization of the range input, not a DSP knob: no audio or EQ filtering is performed. EQ/TONE, motion deck, ambience and the remaining screenshot areas are deliberately not reimplemented or advertised as functioning.
+
+### UI_02 Motion and Ambience UI-only controls (2026-10-11)
+
+The UI_02 center MOTION/DISTANCE and right AMBIENCE panels now expose native HTML controls based on the previously published UI contract: five motion modes, UI position, three distance markers, speed, Doppler display amount, width/perspective, ten ambience choices, amount, level, duck, seed and UI-only bypass. The outer bounds are from the confirmed UI_02 REF (Motion x356/y444 972x283; Ambience x1337/y380 322x350); the internal geometry remains approximate and is not REF pixel-level parity. Existing v1 browser state is migrated safely. These are *display-only values*; no signal, motion simulation, ducking, ambience generator, reverb, or audio processing runs in Public Preview.
