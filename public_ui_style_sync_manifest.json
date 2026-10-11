@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261011-UI-FRAME-SYSTEM",
+  "work_id": "SR-20261012-UI-LIBRARY-STATES",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "7a8cee746d8b84fe3cc1ff3f7a11791f43708075",
-  "kind": "Approved scope: CSS-only scalable Asset Library frame/list/preview; no audio",
+  "source_commit": "2455d743ad970654b43cf77507d003b6d691a921",
+  "kind": "Reviewed UI-only search empty, image fallback, keyboard focus behaviour; no audio",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -17,6 +17,6 @@
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
-    "Web/App/ui_asset_browser_frame_ref_v1.css": "27a962b331ae86506e469c10d41e80f6b5621c51"
+    "Web/App/ui_asset_browser_frame_ref_v1.css": "8e5de6f4382901862bd67075b1c97b7b3e2dc471"
   }
 }

@@ -55,10 +55,10 @@
 <div class="app">
 <header class="topbar">
   <div class="brand"><div class="brand-mark"></div><div><strong>SOURCERUNE</strong><span>ACOUSTIC SCENE ENGINE</span></div></div>
-  <div class="build-status"><span class="dot"></span><span id="buildLabel">ORIGINAL WEB UI PREVIEW · AUDIO DSP DISABLED</span></div>
+  <div class="build-status"><span class="dot"></span><span id="buildLabel">WEB TEST · SHARED C++ DSP · SOURCE / TRANSMISSION MVP</span></div>
   <div class="top-actions"><label class="file-btn">LOAD AUDIO<input id="audioFile" type="file" accept="audio/*"></label><button id="playBtn">PLAY</button><button id="stopBtn">STOP</button><label class="loop-toggle"><input id="loopToggle" type="checkbox"> LOOP</label><div class="segmented"><button data-ui="UI_01" class="active">UI_01</button><button data-ui="UI_02">UI_02</button></div></div><button id="settingsBtn" title="Tools / Settings">Settings</button><div id="globalToolsPopover" class="global-tools-popover"><button data-global-action="undo">Undo</button><button data-global-action="redo">Redo</button><button data-global-action="save">Save Preset</button><button data-global-action="import">Import State</button><button data-global-action="export">Export State</button><button data-global-action="bypass">Global Bypass</button><div class="mini-pair"><button data-global-ui="UI_01">UI_01</button><button data-global-ui="UI_02">UI_02</button><button data-snapshot="C">C</button><button data-snapshot="D">D</button></div></div>
 </header>
-<div id="diagnosticBar" class="diagnostic hidden">PUBLIC UI-ONLY PREVIEW · ORIGINAL CONTROLS · NO AUDIO</div>
+<div id="diagnosticBar" class="diagnostic hidden">TEST HARNESS · Shared state · Local transport · Real IN/OUT Peak/RMS · Shared C++ / WASM / AudioWorklet · Other modules pending</div>
 <section class="presetbar">
   <div class="preset-label">SCENE PRESET</div><button id="presetPrevBtn" title="Previous preset">Previous</button><button id="presetNextBtn" title="Next preset">Next</button><select id="presetSelect"></select>
   <button id="savePresetBtn">SAVE PRESET</button><button id="presetVisualsBtn">PRESET VISUALS</button><button id="importStateBtn">IMPORT</button><button id="exportStateBtn">EXPORT</button><button id="copyStateBtn">COPY</button><button id="pasteStateBtn" disabled>PASTE</button><button id="undoBtn">UNDO</button><button id="redoBtn">REDO</button>
@@ -66,7 +66,7 @@
   <button id="globalBypass" class="bypass">GLOBAL BYPASS</button><div class="transport-time" id="transportTime">00:00.000</div>
 </section>
 <section class="runtime-strip">
-  <div><span>ENGINE</span><strong>UI ONLY / NO DSP</strong></div><div><span>SR</span><strong id="sampleRateReadout">—</strong></div><div><span>BLOCK</span><strong id="blockReadout">—</strong></div><div><span>SEED</span><strong id="seedReadout">48151623</strong></div><div><span>SYNC</span><strong id="syncReadout">WEB TIMELINE</strong></div><div class="seek-wrap"><span>SEEK</span><input id="seekSlider" type="range" min="0" max="1000" value="0"></div><div><span>STATE</span><strong id="stateStatus">READY</strong></div>
+  <div><span>ENGINE</span><strong>WEB PASS-THROUGH</strong></div><div><span>SR</span><strong id="sampleRateReadout">—</strong></div><div><span>BLOCK</span><strong id="blockReadout">—</strong></div><div><span>SEED</span><strong id="seedReadout">48151623</strong></div><div><span>SYNC</span><strong id="syncReadout">WEB TIMELINE</strong></div><div class="seek-wrap"><span>SEEK</span><input id="seekSlider" type="range" min="0" max="1000" value="0"></div><div><span>STATE</span><strong id="stateStatus">READY</strong></div>
 </section>
 <main class="workspace">
   <aside class="module-rail" id="moduleRail"></aside>
@@ -94,6 +94,6 @@
 <section class="macro-strip" id="macroStrip"></section>
 <section class="advanced-drawer panel"><div class="advanced-head"><div><span class="eyebrow">DETAILED CONTROL</span><h2 id="advancedTitle">MOTION / DISTANCE</h2></div><div class="advanced-nav" id="advancedNav"></div><button type="button" id="advancedCloseBtn" aria-label="Close advanced controls">CLOSE</button></div><div id="advancedBody" class="advanced-body"></div></section>
 </div>
-<div id="assetBrowser" class="asset-browser hidden"><div class="browser-card"><div class="browser-head"><div><span class="eyebrow">ASSET LIBRARY</span><h2 id="browserTitle">SOURCE</h2></div><button id="browserClose">CLOSE</button></div><div class="browser-tools"><input id="assetSearch" placeholder="Search"><select id="categorySelect"></select></div><div class="browser-body"><div id="assetList" class="asset-list"></div><div id="assetPreview" class="asset-preview"></div></div></div></div>
+<div id="assetBrowser" class="asset-browser hidden" role="dialog" aria-modal="true" aria-labelledby="browserTitle"><div class="browser-card"><div class="browser-head"><div><span class="eyebrow">ASSET LIBRARY</span><h2 id="browserTitle">SOURCE</h2></div><button type="button" id="browserClose" aria-label="Close asset library">CLOSE</button></div><div class="browser-tools"><input id="assetSearch" type="search" aria-label="Search assets" placeholder="Search"><select id="categorySelect" aria-label="Asset category"></select></div><div class="browser-body"><div id="assetList" class="asset-list"></div><div id="assetPreview" class="asset-preview"></div></div></div></div>
 <input id="stateImportFile" type="file" accept="application/json,.json" hidden><audio id="audioElement" preload="metadata"></audio><script src="./geometry_audit.js"></script><script type="module" src="./app.js"></script>
 </body></html>
