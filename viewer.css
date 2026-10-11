@@ -138,7 +138,7 @@
   border:1px solid #48554f;border-radius:4px;color:#e1e8e1;
   background:linear-gradient(165deg,#3c4741,#242e2a 58%,#1d2524);
   box-shadow:inset 0 1px 1px #ffffff13,inset 0 -2px 7px #0007;
-  padding:3% 4%;font-family:Inter,"Segoe UI",Arial,sans-serif;
+  padding:clamp(3px,.45cqw,9px) clamp(2px,.42cqw,9px);font-family:Inter,"Segoe UI",Arial,sans-serif;
   font-size:clamp(7px,.78cqw,12px)
 }
 .native-macro-panel:focus-within{outline:1px solid #9fc5b4;outline-offset:-2px}
@@ -169,10 +169,10 @@
 .native-macro-range:focus-visible{outline:2px solid #d5e6d9;outline-offset:2px}
 .native-macro-panel[data-ui=UI_01] .native-macro-face{width:min(65%,12cqw)}
 .native-macro-panel[data-ui=UI_01][data-macro=MIX] .native-macro-face{width:75%}
-.native-macro-panel[data-ui=UI_02]{padding:2% 4%}
+.native-macro-panel[data-ui=UI_02]{padding:clamp(3px,.35cqw,8px) clamp(2px,.4cqw,8px)}
 .native-macro-panel[data-ui=UI_02] .native-macro-face{width:min(48%,8.5cqw)}
 @media(max-width:850px){
-  .native-macro-panel{padding:2% 3%}
+  .native-macro-panel{padding:3px 3px}
   .native-macro-control-label{display:none}
   .native-macro-value{font-size:1em}
   .native-macro-panel[data-ui=UI_01] .native-macro-heading{font-size:.78em}
