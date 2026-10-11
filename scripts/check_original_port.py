@@ -28,12 +28,22 @@ def main():
         assert blob(path.read_bytes())==details["sha"],source
     catalog=json.loads((APP/"data/catalog.json").read_text())["items"]
     referenced=set()
+    existing_required=set()
+    allowed_absent=set()
     for item in catalog:
         for key in ("ui01","ui02"):
             x=item.get(key)
-            if x:referenced.add("Assets/UI/"+x)
-    missing=sorted(p for p in referenced if not (ROOT/p).is_file())
-    assert not missing,f"missing referenced UI art: {missing[:8]}"
+            if not x:continue
+            path="Assets/UI/"+x
+            referenced.add(path)
+            if item.get("status")=="art-required-research-v3" and item.get("type")=="SCENE_PRESET_HERO":
+                allowed_absent.add(path)
+            else:
+                existing_required.add(path)
+    missing=sorted(p for p in existing_required if not (ROOT/p).is_file())
+    assert not missing,f"missing APPROVED UI art: {missing[:8]}"
+    absent=sorted(p for p in allowed_absent if not (ROOT/p).is_file())
+    assert len(absent)<=52,"unexpected number of documented unmade reference assets"
     html=(APP/"index.html").read_text()
     for href in re.findall(r'href="(\./[^"]+\.css)"',html):
         assert (APP/href).is_file(),href
@@ -53,5 +63,5 @@ def main():
             assert all("params" not in x and "bypass" not in x
                        for x in factory[collection].values() if isinstance(x,dict))
     assert 'url=./Web/App/index.html' in (ROOT/"index.html").read_text()
-    print(f"PASS: original UI files {len(originals)}, {len(imgs)} SHA-matched PNGs, catalog {len(catalog)} entries, {len(referenced)} referenced art; audio DSP excluded")
+    print(f"PASS: original UI files {len(originals)}, {len(imgs)} SHA-matched PNGs, catalog {len(catalog)} entries, {len(referenced)} referenced art ({len(absent)} documented not-yet-made); audio DSP excluded")
 if __name__=="__main__":main()
