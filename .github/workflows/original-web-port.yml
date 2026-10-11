@@ -1,0 +1,59 @@
+name: One-time pinned original Web UI port
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/original-web-port.yml"
+      - "scripts/port_original_ui.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: original-ui-port-20261011
+  cancel-in-progress: false
+
+jobs:
+  port-original-web-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - name: Checkout clean public preview repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch pinned upstream exact Web UI and public artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/ureia-dev/SOURCERUNE.git "$RUNNER_TEMP/source-pinned"
+          git -C "$RUNNER_TEMP/source-pinned" sparse-checkout set Web/App Assets/UI
+          test "$(git -C "$RUNNER_TEMP/source-pinned" rev-parse HEAD)" = "c035db4d6d5f409cdbedc4f9c874089ea1750fda"
+      - name: Copy ONLY pinned original Web UI / artwork and disable protected audio
+        shell: bash
+        run: |
+          set -euo pipefail
+          ORIGINAL_UI_UPSTREAM="$RUNNER_TEMP/source-pinned" python3 scripts/port_original_ui.py
+      - name: Verify exact source UI files, all PNGs and no processing core
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/check_original_port.py
+          python3 scripts/check_allowlist.py
+          find Web/App -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+          ! find Web/App -type f \( -name '*.wasm' -o -name 'processor.js' \) | grep .
+          test -z "$(git status --porcelain --untracked-files=all | grep -E '(^|/)Source/|\.wasm|audio/processor\.js' || true)"
+      - name: Commit independently hosted original UI / assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Web/App Assets/UI index.html README.md original_web_port_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(preview): publish SHA-verified original Web UI without protected audio [skip ci]"
+            git push origin HEAD:main
+          fi
+          echo "COMPLETE: original Web UI available at /Web/App/index.html"

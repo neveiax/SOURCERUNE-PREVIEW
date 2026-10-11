@@ -10,6 +10,8 @@ ALLOWED = {
     "ui02-extended-layout.mjs", "ui02-extended.mjs", ".nojekyll",
     ".github/workflows/snapshot-ui.yml",
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
+    "scripts/port_original_ui.py", "scripts/check_original_port.py",
+    ".github/workflows/original-web-port.yml", "original_web_port_manifest.json",
     "scripts/interaction-smoke.mjs", "scripts/card-layout-smoke.mjs",
     "scripts/native-card-smoke.mjs", "scripts/macro-smoke.mjs",
     "scripts/ui02-extended-smoke.mjs",
@@ -45,7 +47,44 @@ def main():
         actual=struct.unpack(">II",raw[16:24]) if raw.startswith(b"\x89PNG\r\n\x1a\n") else None
         if actual!=expected:
             raise SystemExit(f"BLOCKED: {name} screenshot {actual} does not match approved shell {expected}")
-    tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
+    # Permit exactly the pinned original Web UI files/PNG blobs once mirrored;
+    # not a wildcard exception for arbitrary program or DSP files.
+    provenance=root/"original_web_port_manifest.json"
+    if provenance.is_file():
+        port=json.loads(provenance.read_text(encoding="utf-8"))
+        if port.get("source_commit")!="c035db4d6d5f409cdbedc4f9c874089ea1750fda":
+            raise SystemExit("BLOCKED: original port source SHA differs")
+        approved=port.get("approved_png",{})
+        originals=port.get("original_web_app_files",{})
+        if len(approved)<780 or len(originals)<35:
+            raise SystemExit("BLOCKED: original UI port incomplete")
+        for name,meta in approved.items():
+            if not name.startswith("Assets/UI/") or not name.endswith(".png") or ".." in Path(name).parts:
+                raise SystemExit("BLOCKED: invalid port PNG path")
+            data=(root/name).read_bytes()
+            if blobsha(data)!=meta["sha"] or len(data)!=meta["bytes"]:
+                raise SystemExit("BLOCKED: original UI PNG checksum differs "+name)
+            ALLOWED.add(name)
+        for name,meta in originals.items():
+            if not name.startswith("Web/App/") or ".." in Path(name).parts:
+                raise SystemExit("BLOCKED: unexpected original Web path")
+            relative=Path(name).relative_to("Web/App")
+            valid=(len(relative.parts)==1 and relative.suffix in (".css",".js",".html")) or (
+                relative.parts[0] in ("UI_01","UI_02") and relative.suffix==".css") or (
+                relative.parts[0]=="data" and relative.suffix==".json") or (
+                relative.as_posix()=="audio/transport.css")
+            if not valid:raise SystemExit("BLOCKED: unapproved Web UI source "+name)
+            data=(root/name).read_bytes()
+            if name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
+                if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
+            ALLOWED.add(name)
+        engine=root/"Web/App/audio/engine.js"
+        if not engine.is_file() or "export async function createSceneNode()" not in engine.read_text():
+            raise SystemExit("BLOCKED: missing public no-audio engine stub")
+        ALLOWED.add("Web/App/audio/engine.js")
+        if list((root/"Web/App").rglob("*.wasm")) or (root/"Web/App/audio/processor.js").exists():
+            raise SystemExit("BLOCKED: audio DSP/Worklet unexpectedly included")
+        tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
     untracked=set(subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True,cwd=root).splitlines())
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
