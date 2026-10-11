@@ -544,7 +544,7 @@ function closeBrowser(){
     const temporary=!target.matches("button,input,select,textarea,a[href],[tabindex]");
     if(temporary)target.tabIndex=-1;
     target.focus({preventScroll:true});
-    if(temporary)target.removeAttribute("tabindex");
+    // Keep tabindex=-1: removing it immediately can blur a non-native-focusable card.
   }
 }
 function onBrowserKeydown(e){
