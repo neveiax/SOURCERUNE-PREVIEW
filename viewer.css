@@ -65,3 +65,5 @@
 .stage-card-tool:focus-visible,.stage-card-bypass:focus-visible{outline:2px solid #c0e7d8}
 .hotspot-dimension-warning{pointer-events:none;position:absolute;top:2%;left:8%;right:8%;margin:0;padding:10px;font-size:12px;line-height:1.5;color:#ffdfbf;background:rgba(44,25,15,.92);border:1px solid #bb8d70;border-radius:5px}
 @media(max-width:820px){.stage-card-title,.stage-card-selected{font-size:9px}.stage-card-picture{left:3%;width:65%}.stage-card-tools{top:12%;bottom:3%}}
+
+.stage .stage-card .stage-card-picture{width:65%;height:54%;margin:0;max-width:65%;object-fit:contain}
