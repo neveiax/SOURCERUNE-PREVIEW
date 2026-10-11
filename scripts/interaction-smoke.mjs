@@ -4,6 +4,8 @@ import {createState,OPTIONS,CONTROLS,validateState,makeHistory,dispatch,undo,red
 let history=makeHistory();
 assert.equal(validateState(history.present),true);
 assert.equal(history.present.ui,"UI_01");
+assert.equal(history.present.selected.SPACE_ENVIRONMENT,6);
+assert.equal(OPTIONS.SPACE_ENVIRONMENT[history.present.selected.SPACE_ENVIRONMENT],"Busy City Street");
 history=dispatch(history,{type:"ui",ui:"UI_02"});
 history=dispatch(history,{type:"select",group:"SOURCE",index:5});
 history=dispatch(history,{type:"bypass",group:"SOURCE"});
