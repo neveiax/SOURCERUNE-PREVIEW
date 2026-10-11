@@ -1,8 +1,8 @@
 # SOURCERUNE — Public Visual Preview
 
-A standalone **visual-only** preview for UI_01 and UI_02, with interface switching and image zoom. It does not contain or expose processing code, WASM, audio worklets, product research documents, the private specification, or original repository Git history.
+A standalone **visual** preview for UI_01 and UI_02, with switching and image zoom. The new **Interaction Lab** provides separate live UI-only controls for module selection, bypass, six macro values, undo/redo, reset and JSON export. These values are display state and never run audio processing. It does not contain or expose processing code, WASM, audio worklets, product research documents, the private specification, or original repository Git history.
 
-This is **not a live audio or fully interactive plugin demo**. Controls visible inside the screenshots do not process audio.
+This is **not a full interactive plugin demo or audio processor**. The screenshots remain fixed. The separate controls in Interaction Lab are functional as a state sandbox only; adjustments are not rendered back onto the screenshot.
 
 ### Publish
 

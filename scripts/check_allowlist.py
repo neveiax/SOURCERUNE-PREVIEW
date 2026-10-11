@@ -2,9 +2,9 @@
 from pathlib import Path
 import subprocess
 ALLOWED = {
-    "README.md", "index.html", "viewer.css", "viewer.js", ".nojekyll",
+    "README.md", "index.html", "viewer.css", "viewer.js", "interaction-lab.mjs", "interaction-state.mjs", ".nojekyll",
     ".github/workflows/snapshot-ui.yml",
-    "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
+    "scripts/bootstrap_assets.py", "scripts/check_allowlist.py", "scripts/interaction-smoke.mjs",
     "assets/UI_01.png", "assets/UI_02.png",
 }
 def main():
@@ -14,7 +14,7 @@ def main():
     if unexpected: raise SystemExit("BLOCKED: disallowed files: "+", ".join(unexpected))
     for name in ("assets/UI_01.png","assets/UI_02.png"):
         if not Path(name).is_file(): raise SystemExit("BLOCKED: missing "+name)
-    for name in ("index.html","viewer.css","viewer.js"):
+    for name in ("index.html","viewer.css","viewer.js","interaction-lab.mjs","interaction-state.mjs"):
         content=Path(name).read_text(encoding="utf-8")
         for forbidden in ("raw.githubusercontent.com", "github.com/ureia-dev/SOURCERUNE/blob",
                           "<script src=\"https://", "https://api.github.com", "AudioWorklet",
