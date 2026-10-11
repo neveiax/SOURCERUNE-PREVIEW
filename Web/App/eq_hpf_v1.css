@@ -1,0 +1,43 @@
+/* Functional HPF surface only; exact same live state in UI_01/UI_02.
+   Keep the approved bottom EQ panel dimensions and use no animation loop. */
+body.ui-01 .macro-eq .macro-eq-foot,
+body.ui-02 .macro-eq .macro-eq-foot {
+  display:flex;flex-direction:column;gap:2px;align-items:stretch;
+  margin-top:4px;padding:0;
+}
+.macro-eq .eq-hpf-control {
+  display:flex;align-items:center;gap:8px;min-height:23px;
+  color:#dae5eb;font-size:10px;white-space:nowrap;
+}
+.macro-eq .eq-hpf-control>span {flex:0 0 25px;}
+.macro-eq .eq-hpf-control input[type=range] {
+  flex:1 1 auto;min-width:45px;width:100%;
+  margin:0;padding:0;accent-color:#70cee9;cursor:ew-resize;
+  height:20px;position:relative;z-index:10;touch-action:pan-y;
+}
+.macro-eq .eq-hpf-control output {
+  flex:0 0 54px;min-width:54px;color:#f0f6f9;
+  text-align:right;font:500 11px/16px ui-monospace,Consolas,monospace;
+}
+.macro-eq .eq-pending {
+  font-size:8px;color:#74858f;line-height:11px;letter-spacing:.02em;
+}
+.macro-eq [data-eq-hpf-marker] {
+  fill:#79d7ed;stroke:#d7f9ff;stroke-width:.65;
+  pointer-events:none;
+}
+body.ui-01 .macro-eq .macro-eq-svg {height:94px;margin-top:8px;}
+body.ui-02 .macro-eq .macro-eq-svg {height:72px;margin-top:5px;}
+body.ui-01 .macro-eq-head .macro-eq-power,
+body.ui-02 .macro-eq-head .macro-eq-power {
+  flex:0 0 auto;padding:2px 8px;min-height:22px;
+  border:1px solid #596570;border-radius:3px;color:#aebcc3;
+  font:500 9px/14px "Segoe UI",Arial,sans-serif;
+  background:#142026;cursor:pointer;
+}
+body.ui-01 .macro-eq-head .macro-eq-power.active,
+body.ui-02 .macro-eq-head .macro-eq-power.active {
+  color:#e3f8ff;border-color:#50add0;background:#102b37;
+}
+
+/* Main EQ panel remains REF-sized; test fixes do not alter this geometry. */

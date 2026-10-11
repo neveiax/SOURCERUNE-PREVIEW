@@ -1,0 +1,39 @@
+/* SOURCERUNE Reference Geometry Lock V6
+   Confirmed by direct pixel/Hough scan of the approved UI_02 REF.
+   Only confirmed UI_02 geometry deltas from V5 are overridden. */
+
+:root{
+  --r02-row1:213px;
+  --r02-row2:63px;
+  --r02-row3:94px;
+  --r02-row4:247px;
+  --r02-ambience-top:380px;
+  --r02-ambience-h:350px;
+}
+
+body.ui-02 .macro-strip{
+  grid-template-columns:337px 315px 297px 316px 337px;
+  column-gap:11px;
+  row-gap:0;
+}
+
+
+/* Fill the V6 scanned rows; V4 legacy card heights must not win. */
+body.ui-02 .module-card[data-type="SOURCE"]{
+  height:var(--r02-row1);
+  min-height:var(--r02-row1);
+}
+body.ui-02 .module-card[data-type="TRANSMISSION"]{
+  height:calc(var(--r02-row2) + var(--r02-gap) + var(--r02-row3));
+  min-height:calc(var(--r02-row2) + var(--r02-gap) + var(--r02-row3));
+}
+body.ui-02 .module-card[data-type="WALL_COVER"]{
+  height:var(--r02-row4);
+  min-height:var(--r02-row4);
+}
+body.ui-02 .module-card[data-type="SPACE_ENVIRONMENT"]{
+  height:calc(var(--r02-row1) + var(--r02-gap) + var(--r02-row2));
+  min-height:calc(var(--r02-row1) + var(--r02-gap) + var(--r02-row2));
+}
+
+/* Native parity: UI_02 card rows and meter visibility synced. */

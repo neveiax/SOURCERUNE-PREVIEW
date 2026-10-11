@@ -1,0 +1,91 @@
+/* EQ Focus: one enlarged view of the SAME interactive SVG, no extra renderer.
+   Positioned inside the displayed plugin shell in viewport pixels so both
+   UI_01 and UI_02 scale correctly; no modifications to approved card sizes. */
+.sr-eq-focus-overlay{
+  position:fixed;z-index:220;box-sizing:border-box;
+  background:rgba(2,7,10,.65);
+  backdrop-filter:none;overflow:hidden;pointer-events:auto;
+}
+.sr-eq-focus{
+  position:absolute;display:flex;flex-direction:column;
+  min-width:290px;min-height:230px;overflow:hidden;box-sizing:border-box;
+  background:#10191f;border:1px solid #647882;border-radius:6px;
+  box-shadow:0 18px 55px rgba(0,0,0,.67),inset 0 1px 0 rgba(151,185,203,.09);
+  color:#d3e0e6;font-family:"Segoe UI",Arial,sans-serif;
+}
+.sr-eq-focus-head{
+  flex:0 0 44px;min-height:44px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:#142128;border-bottom:1px solid #3b4e59;
+  padding:6px 12px;cursor:move;user-select:none;touch-action:none;
+}
+.sr-eq-focus-title{display:flex;flex-direction:column;gap:2px;outline:none}
+.sr-eq-focus-title strong{font-size:13px;letter-spacing:.065em;font-weight:600;color:#e9f0f4}
+.sr-eq-focus-title small{font-size:9px;color:#90a8b3;letter-spacing:.07em}
+.sr-eq-focus-actions{display:flex;align-items:center;gap:7px;cursor:auto}
+.sr-eq-focus-actions button{
+  flex:0 0 auto;height:26px;min-width:27px;padding:2px 8px;
+  border:1px solid #586b77;border-radius:3px;background:#1c2a33;
+  color:#ccdce4;font:600 11px/20px "Segoe UI",Arial,sans-serif;cursor:pointer;
+}
+.sr-eq-focus-actions button.active{color:#bfefff;border-color:#4eacc5;background:#173440}
+.sr-eq-focus-actions button:hover{border-color:#8ab5c5;background:#253a46}
+.sr-eq-focus-actions button:focus-visible,.sr-eq-focus-readouts button:focus-visible,
+.macro-eq [data-eq-zoom-in]:focus-visible{outline:2px solid #85cada;outline-offset:2px}
+.sr-eq-focus-main{flex:1 1 auto;min-height:105px;display:flex;gap:6px;padding:10px 15px 0 9px}
+.sr-eq-focus-y{width:31px;flex:0 0 31px;position:relative;color:#8295a2;font:10px/1 Consolas,monospace}
+.sr-eq-focus-y span{position:absolute;right:0;transform:translateY(-50%)}
+.sr-eq-focus-plot{position:relative;flex:1 1 auto;min-width:0;min-height:0;
+  display:flex;flex-direction:column}
+.sr-eq-focus-graph-host{flex:1 1 auto;min-height:70px;border:1px solid #33454e;
+  background:repeating-linear-gradient(90deg,transparent,transparent calc(25% - 1px),#21313b 25%),
+  linear-gradient(#111b22,#0a1218);}
+.sr-eq-focus-graph-host .macro-eq-svg{
+  display:block!important;position:relative!important;width:100%!important;
+  height:100%!important;max-width:none!important;min-height:0!important;
+  margin:0!important;padding:0!important;overflow:visible!important;
+  border:0!important;transform:none!important;pointer-events:auto!important;
+}
+.sr-eq-focus-graph-host .macro-eq-svg [data-eq-node]{
+  cursor:grab;stroke-width:1.15;pointer-events:all;
+}
+.sr-eq-focus-x{height:17px;flex:0 0 17px;position:relative;
+  color:#8295a2;font:10px/16px Consolas,monospace}
+.sr-eq-focus-x span{position:absolute;top:0;transform:translateX(-50%)}
+.sr-eq-focus-x span:nth-child(1){left:0;transform:none}
+.sr-eq-focus-x span:nth-child(2){left:23.3%}
+.sr-eq-focus-x span:nth-child(3){left:56.7%}
+.sr-eq-focus-x span:nth-child(4){left:90%}
+.sr-eq-focus-x span:nth-child(5){right:0;transform:none}
+.sr-eq-focus-readouts{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:6px;padding:5px 14px 8px;flex:0 0 83px;min-height:83px;
+}
+.sr-eq-focus-readouts button{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:6px 8px;gap:4px;min-width:0;text-align:left;overflow:hidden;
+  color:#d4e1e9;background:#16232b;border:1px solid #394e59;
+  border-radius:4px;cursor:pointer;
+}
+.sr-eq-focus-readouts button:hover{border-color:#6b9daf}
+.sr-eq-focus-readouts strong{font:600 10px "Segoe UI",Arial,sans-serif;color:#88b6c9}
+.sr-eq-focus-readouts span{font:10px Consolas,monospace;color:#e4ecef;white-space:nowrap}
+.sr-eq-focus-foot{flex:0 0 27px;min-height:27px;display:flex;justify-content:space-between;
+  gap:5px;padding:6px 14px 5px;border-top:1px solid #293944;background:#0f171d;
+  font:9px/15px "Segoe UI",Arial,sans-serif;color:#7c919e;white-space:nowrap}
+.sr-eq-focus ~ .sr-eq-float{z-index:350}
+.sr-eq-float{z-index:350!important}
+.macro-eq .macro-eq-head{display:flex;align-items:center}
+.macro-eq .macro-eq-head h3{flex:1 1 auto;min-width:0}
+.macro-eq [data-eq-zoom-in]{
+  flex:0 0 24px;width:24px;height:22px;min-height:22px;padding:0;
+  margin:0 4px 0 0;line-height:20px;text-align:center;
+  background:#18272f;border:1px solid #596d77;border-radius:3px;
+  color:#9dc9d8;font-size:14px;cursor:zoom-in;
+}
+.macro-eq [data-eq-zoom-in]:hover{color:#e3f4fa;border-color:#74b7d0}
+.macro-eq .macro-eq-svg[data-eq-focus-ghost]{pointer-events:none!important;}
+@media(max-height:560px){
+  .sr-eq-focus-foot{display:none}
+  .sr-eq-focus-readouts{flex-basis:62px;min-height:62px}
+}

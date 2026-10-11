@@ -1,0 +1,431 @@
+/* SOURCERUNE UI_01 / UI_02 Layout Convergence V1
+   Geometry is derived from the two approved reference images.
+   Visual-only: no DSP or preset semantics changed. */
+
+:root{
+  --ui01-shell-w:1499;
+  --ui01-shell-h:807;
+  --ui02-ref-w:1672;
+  --ui02-ref-h:941;
+}
+.app{position:relative}
+
+/* Hide WEB test transport from the production composition. It remains in DOM. */
+body.ui-01 .top-actions>.file-btn,
+body.ui-01 #playBtn,
+body.ui-01 #stopBtn,
+body.ui-01 .loop-toggle,
+body.ui-02 .top-actions>.file-btn,
+body.ui-02 #playBtn,
+body.ui-02 #stopBtn,
+body.ui-02 .loop-toggle{display:none}
+
+/* ---------- UI_01: reference shell x17..1516, y116..923 ---------- */
+body.ui-01 .topbar{
+  height:58px;
+  padding:0 14px;
+  gap:12px;
+  position:relative;
+}
+body.ui-01 .brand{min-width:300px}
+body.ui-01 .build-status{display:none}
+body.ui-01 .top-actions{margin-left:auto;gap:6px}
+
+body.ui-01 .presetbar{
+  position:absolute;
+  z-index:12;
+  top:8px;
+  left:34%;
+  right:190px;
+  height:42px;
+  padding:0;
+  gap:7px;
+  border:0;
+  background:transparent!important;
+  pointer-events:auto;
+}
+body.ui-01 .preset-label,
+body.ui-01 #savePresetBtn,
+body.ui-01 #presetVisualsBtn,
+body.ui-01 #importStateBtn,
+body.ui-01 #exportStateBtn,
+body.ui-01 #globalBypass,
+body.ui-01 .transport-time,
+body.ui-01 .snapshots button:nth-child(n+3){display:none}
+body.ui-01 .presetbar select{width:min(340px,32vw);height:34px}
+body.ui-01 .presetbar #copyStateBtn,
+body.ui-01 .presetbar #pasteStateBtn{height:34px;padding:5px 9px}
+body.ui-01 .snapshots{margin-left:0}
+body.ui-01 .snapshots button{height:34px;min-width:42px}
+body.ui-01 .runtime-strip{display:none}
+
+body.ui-01 .workspace{
+  grid-template-columns:minmax(286px,21fr) minmax(680px,66fr) minmax(156px,12fr);
+  grid-template-areas:"modules center meter";
+  gap:10px;
+  padding:0 10px 8px;
+}
+body.ui-01 .module-rail{
+  gap:8px;
+  height:520px;
+}
+body.ui-01 .module-rail:before{display:none}
+body.ui-01 .module-card{
+  min-height:124px;
+  height:124px;
+  border-radius:7px;
+}
+body.ui-01 .module-art{inset:48px 8px 8px 8px;border-radius:5px;overflow:hidden}
+body.ui-01 .module-art img{opacity:.86;filter:saturate(.82) contrast(.98)}
+body.ui-01 .module-meta{
+  inset:0 0 auto 0;
+  height:48px;
+  padding:9px 54px 5px 12px;
+  background:linear-gradient(180deg,rgba(10,15,18,.98),rgba(10,15,18,.74),transparent);
+}
+body.ui-01 .module-meta strong{font-size:12px;margin-top:2px}
+body.ui-01 .module-actions{top:10px;right:8px}
+body.ui-01 .module-actions [data-byp]{display:none}
+body.ui-01 .module-actions button{height:28px;min-width:42px;font-size:8px}
+
+body.ui-01 .center{
+  grid-template-rows:262px 247px;
+  gap:8px;
+}
+body.ui-01 .scene-panel{min-height:262px;height:262px;position:relative}
+body.ui-01 .panel-head{
+  height:34px;
+  min-height:34px;
+  padding:5px 9px;
+}
+body.ui-01 .panel-head .eyebrow{display:none}
+body.ui-01 .panel-head h1{font-size:11px;text-transform:uppercase;margin:0}
+body.ui-01 .scene-head-controls{gap:5px}
+body.ui-01 .scene-head-controls .segmented.small button{height:28px;padding:4px 12px;font-size:8px}
+body.ui-01 .scene-head-controls>[data-view],
+body.ui-01 #sceneFullscreenBtn{display:none}
+body.ui-01 .scene-commandbar{
+  position:absolute;
+  z-index:7;
+  right:10px;
+  bottom:41px;
+  width:auto;
+  height:30px;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+body.ui-01 .scene-commandbar button,
+body.ui-01 .scene-commandbar .marker-status{display:none}
+body.ui-01 .scene-commandbar .toggle-chip{
+  padding:6px 8px;
+  border:1px solid #34444e;
+  border-radius:5px;
+  background:#0d151a;
+}
+body.ui-01 #sceneSvg{
+  min-height:0;
+  height:186px;
+}
+body.ui-01 #sceneBuildings{opacity:.18}
+body.ui-01 .motion-readouts{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:40px;
+  min-height:40px;
+  display:none;
+}
+body.ui-01 .analysis-panel{height:247px}
+body.ui-01 .tabs{height:37px}
+body.ui-01 .tabs button{min-width:105px;font-size:9px}
+body.ui-01 .tab-content{height:210px}
+body.ui-01 .response-svg{height:184px}
+
+body.ui-01 .meter-rail{
+  min-height:520px;
+  height:520px;
+  padding:12px 10px;
+}
+body.ui-01 .meters{min-height:250px}
+body.ui-01 .meter-slot{min-height:250px;width:24px}
+body.ui-01 .meter-values{margin-top:8px}
+body.ui-01 .meter-values>div{padding:5px 0}
+body.ui-01 .meter-values strong{font-size:11px}
+
+body.ui-01 .macro-strip{
+  grid-template-columns:1.80fr 1.18fr 1.31fr 1.31fr 1.03fr .76fr 2.05fr;
+  gap:8px;
+  height:216px;
+  padding:0 10px 8px;
+}
+body.ui-01 .macro{
+  height:216px;
+  min-width:0;
+  padding:11px 10px;
+  overflow:hidden;
+}
+body.ui-01 .macro h3{font-size:9px}
+body.ui-01 .macro-read strong{font-size:14px}
+body.ui-01 .advanced-drawer{display:none}
+
+/* ---------- UI_02: reference 1672x941 ---------- */
+body.ui-02 .app{min-height:941px;overflow:hidden}
+body.ui-02 .topbar{
+  height:78px;
+  padding:0 14px 0 24px;
+  gap:10px;
+  position:relative;
+}
+body.ui-02 .brand{min-width:330px}
+body.ui-02 .brand strong{font-size:18px}
+body.ui-02 .brand span{font-size:9px}
+body.ui-02 .build-status{display:none}
+body.ui-02 .top-actions{margin-left:auto;gap:5px}
+
+body.ui-02 .presetbar{
+  position:absolute;
+  z-index:12;
+  top:10px;
+  left:430px;
+  right:560px;
+  height:56px;
+  padding:0;
+  gap:7px;
+  border:0;
+  background:transparent!important;
+}
+body.ui-02 .preset-label,
+body.ui-02 #savePresetBtn,
+body.ui-02 #presetVisualsBtn,
+body.ui-02 #importStateBtn,
+body.ui-02 #exportStateBtn,
+body.ui-02 #globalBypass,
+body.ui-02 .transport-time,
+body.ui-02 .snapshots button:nth-child(n+3){display:none}
+body.ui-02 .presetbar select{width:min(330px,27vw);height:42px}
+body.ui-02 .presetbar #copyStateBtn,
+body.ui-02 .presetbar #pasteStateBtn{display:none}
+body.ui-02 .snapshots{margin-left:0}
+body.ui-02 .snapshots button{height:42px;min-width:44px}
+body.ui-02 .runtime-strip{display:none}
+
+body.ui-02 .workspace{
+  height:653px;
+  display:grid;
+  grid-template-columns:minmax(300px,20.3fr) minmax(720px,59.1fr) minmax(290px,19.6fr);
+  grid-template-rows:196px 74px 100px 244px;
+  grid-template-areas:none;
+  gap:9px;
+  padding:8px 13px 0;
+  position:relative;
+  align-items:stretch;
+}
+body.ui-02 .module-rail{display:contents}
+body.ui-02 .module-rail:before{display:none}
+body.ui-02 .module-card{height:auto;min-height:0}
+body.ui-02 .module-card[data-type="SOURCE"]{grid-column:1;grid-row:1}
+body.ui-02 .module-card[data-type="TRANSMISSION"]{grid-column:1;grid-row:2 / 4}
+body.ui-02 .module-card[data-type="WALL_COVER"]{grid-column:1;grid-row:4}
+body.ui-02 .module-card[data-type="SPACE_ENVIRONMENT"]{grid-column:3;grid-row:1 / 3}
+body.ui-02 .module-card .module-art{inset:74px 14px 14px;border-radius:7px;overflow:hidden}
+body.ui-02 .module-card .module-art img{opacity:.94;filter:saturate(.9) contrast(1.02)}
+body.ui-02 .module-card .module-meta{
+  inset:0 0 auto 0;height:74px;padding:15px 62px 8px 18px;
+  background:linear-gradient(180deg,rgba(10,15,18,.98),rgba(10,15,18,.80),transparent);
+}
+body.ui-02 .module-card .module-meta span{font-size:10px}
+body.ui-02 .module-card .module-meta strong{font-size:15px}
+body.ui-02 .module-actions{top:13px;right:12px}
+body.ui-02 .module-actions [data-byp]{display:none}
+
+body.ui-02 .center{
+  grid-column:2;
+  grid-row:1 / 5;
+  display:block;
+  min-width:0;
+}
+body.ui-02 .scene-panel{
+  position:relative;
+  height:641px;
+  min-height:641px;
+  overflow:hidden;
+}
+body.ui-02 .analysis-panel{display:none}
+body.ui-02 .panel-head{
+  position:absolute;
+  z-index:8;
+  top:10px;
+  right:12px;
+  left:auto;
+  width:auto;
+  height:42px;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+body.ui-02 .panel-head>div:first-child{display:none}
+body.ui-02 .panel-head .motion-mode-group{display:none}
+body.ui-02 .scene-commandbar{display:none}
+body.ui-02 #sceneSvg{
+  display:block;
+  width:100%;
+  height:358px;
+  min-height:358px;
+  background-color:#101820;
+  background-image:
+    linear-gradient(180deg,rgba(4,8,10,.02),rgba(4,8,10,.18)),
+    var(--ui02-scene-bg);
+  background-size:cover,cover;
+  background-position:center,center;
+  background-repeat:no-repeat;
+}
+body.ui-02 #sceneSvg>rect{opacity:0}
+body.ui-02 #sceneBuildings{opacity:0!important}
+body.ui-02 #motionPath{stroke:#9be4ff;stroke-width:2.2;stroke-dasharray:none;filter:drop-shadow(0 0 3px rgba(74,196,255,.45))}
+body.ui-02 #distanceLine{stroke:#d9eef5;opacity:.75}
+body.ui-02 #sourceNode,body.ui-02 #listenerNode{filter:drop-shadow(0 0 4px rgba(74,196,255,.5))}
+body.ui-02 #sourceLabel{display:none}
+body.ui-02 .motion-readouts{
+  position:relative;
+  display:block;
+  height:283px;
+  min-height:283px;
+  border-top:1px solid #26343d;
+  background:
+    url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_L_BASE.png") 22px 50%/300px 300px no-repeat,
+    linear-gradient(180deg,#0d151a,#091014);
+}
+body.ui-02 .motion-readouts>div{
+  position:absolute;
+  border:0!important;
+  padding:0;
+  background:none!important;
+}
+body.ui-02 .motion-readouts>div span{font-size:10px;letter-spacing:.06em;color:#9aabb4}
+body.ui-02 .motion-readouts>div strong{font-size:15px;margin-top:4px}
+body.ui-02 .motion-readouts>div:nth-child(1),
+body.ui-02 .motion-readouts>div:nth-child(9){display:none}
+body.ui-02 .motion-readouts>div:nth-child(5){
+  left:80px;top:93px;width:190px;text-align:center
+}
+body.ui-02 .motion-readouts>div:nth-child(5) span{font-size:11px}
+body.ui-02 .motion-readouts>div:nth-child(5) strong{font-size:34px;color:#e4eef2}
+body.ui-02 .motion-readouts>div:nth-child(2){left:48%;top:108px}
+body.ui-02 .motion-readouts>div:nth-child(3){left:65%;top:108px}
+body.ui-02 .motion-readouts>div:nth-child(4){left:82%;top:108px}
+body.ui-02 .motion-readouts>div:nth-child(6){left:48%;top:196px}
+body.ui-02 .motion-readouts>div:nth-child(7){left:65%;top:196px}
+body.ui-02 .motion-readouts>div:nth-child(8){left:82%;top:196px}
+
+/* Right ambience panel is the existing live AMBIENCE macro, repositioned rather than duplicated. */
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{
+  position:absolute;
+  z-index:9;
+  top:375px;
+  right:13px;
+  width:calc((100% - 44px) * .196);
+  height:356px;
+  padding:18px;
+  border-radius:8px;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] h3{font-size:14px;margin-bottom:18px}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-read strong{font-size:28px}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] input{margin-top:30px}
+
+body.ui-02 .meter-rail{
+  position:absolute;
+  z-index:15;
+  top:8px;
+  right:72px;
+  width:440px;
+  height:62px;
+  min-height:0;
+  padding:0;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  border:0;
+  box-shadow:none;
+  background:transparent!important;
+}
+body.ui-02 .meter-head,
+body.ui-02 .meter-values{display:none}
+body.ui-02 .meters{
+  min-height:0;
+  height:54px;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:22px;
+}
+body.ui-02 .meter-block{
+  display:grid;
+  grid-template-columns:48px 150px;
+  gap:8px;
+  align-items:center;
+}
+body.ui-02 .meter-label{font-size:10px;text-align:right}
+body.ui-02 .meter-slot{
+  width:150px;
+  height:15px;
+  min-height:15px;
+  flex:none;
+  padding:0;
+  background:#071014;
+}
+body.ui-02 .meter-fill{
+  left:2px;
+  top:2px;
+  bottom:2px;
+  right:auto;
+  height:auto!important;
+  width:0;
+  transition:width .05s linear;
+  background:linear-gradient(90deg,#4b8996 0 72%,#b78a56 72% 90%,#b55e55 90%);
+}
+
+body.ui-02 .macro-strip{
+  position:relative;
+  height:190px;
+  display:grid;
+  grid-template-columns:1.08fr 1.08fr 1fr .98fr 1.35fr;
+  gap:9px;
+  padding:10px 13px 18px;
+}
+body.ui-02 .macro-strip .macro{height:171px;padding:15px 16px}
+body.ui-02 .macro-strip .macro[data-open="MOTION"]{display:none}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{display:block}
+body.ui-02 .macro-strip .macro[data-open="TRANSMISSION"]{grid-column:1}
+body.ui-02 .macro-strip .macro[data-open="CONDITION"]{grid-column:2}
+body.ui-02 .macro-strip .macro[data-open="INTELLIGIBILITY"]{grid-column:3}
+body.ui-02 .macro-strip .macro[data-open="MIX"]{grid-column:4}
+body.ui-02 .macro-strip .macro[data-open="EQ_TONE"]{grid-column:5}
+body.ui-02 .advanced-drawer{display:none}
+
+/* Interaction-only Advanced layer. The approved UI_01/UI_02 REF
+   remains unchanged until a user activates EDIT or a macro panel.
+   No REF bitmap/crop is used, and all controls remain live. */
+body.advanced-open .app::after{
+  content:"";position:absolute;inset:0;z-index:39;
+  background:rgba(0,0,0,.62);
+}
+body.ui-01.advanced-open .advanced-drawer,
+body.ui-02.advanced-open .advanced-drawer{
+  display:flex;flex-direction:column;position:absolute;z-index:40;
+  top:64px;left:20px;right:20px;bottom:18px;
+  margin:0;min-height:0;overflow:hidden;
+  border:1px solid #4e6671;border-radius:8px;
+  background:#0d151a;
+  box-shadow:0 18px 65px rgba(0,0,0,.72);
+}
+body.ui-02.advanced-open .advanced-drawer{top:86px}
+body.advanced-open .advanced-body{flex:1;min-height:0;overflow:auto}
+body.advanced-open #advancedCloseBtn{
+  flex:0 0 auto;align-self:center;padding:8px 14px;
+  color:#d7e5ea;background:#18252b;border:1px solid #526a75;
+  border-radius:4px;cursor:pointer;
+}
+body.advanced-open #advancedCloseBtn:focus-visible{
+  outline:2px solid #76bed7;outline-offset:2px;
+}

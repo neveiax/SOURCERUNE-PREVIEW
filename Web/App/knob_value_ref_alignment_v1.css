@@ -1,0 +1,117 @@
+/* REF-guided knob and live numeric typography alignment.
+ * UI_01: 142-point clean scan (1508x808 original PNG still transfer-pending);
+ * UI_02: approved SHA256 dc41cbce... 1672x941 RGB / 139-point scan.
+ * Do not bake in sample numeric values, invent IDs, alter state or change DSP.
+ * This sheet follows geometry locks and the actual hitbox overlay fix. */
+body.ui-01 .macro-knob-face,
+body.ui-02 .macro-strip .macro-knob-face{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_M_BASE.png");
+}
+body.ui-01 .macro-motion .macro-knob-face{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_S_BASE.png");
+}
+body.ui-01 .macro-knob .macro-knob-face:before,
+body.ui-02 .macro-strip .macro-knob .macro-knob-face:before{
+  background:conic-gradient(from 225deg,
+    var(--dial-ring,#70ceef) 0deg,
+    var(--dial-ring,#70ceef) calc(var(--pct)*2.7deg),
+    rgba(94,112,120,.20) calc(var(--pct)*2.7deg),
+    rgba(94,112,120,.20) 270deg, transparent 270deg);
+}
+body.ui-01 .macro-condition,body.ui-02 .macro-condition{--dial-ring:#d0b27c;}
+body.ui-01 .macro-badsignal,body.ui-02 .macro-badsignal{--dial-ring:#91d9ec;}
+body.ui-01 .macro-intelligibility,body.ui-02 .macro-intelligibility{--dial-ring:#63cce9;}
+body.ui-01 .macro-mix,body.ui-02 .macro-mix{--dial-ring:#a3e1f1;}
+
+/* UI_01 approved composition: labels ABOVE the metal faces, live values BELOW.
+   Preserve each face/input pairing so a drag still changes the real parameter. */
+body.ui-01 .macro-knob .macro-knob-label{
+  position:absolute;left:50%;top:-18px;bottom:auto;
+  transform:translateX(-50%);margin:0;line-height:13px;
+  width:max-content;max-width:88px;white-space:nowrap;
+  color:#d4e0e5;font-size:9px;letter-spacing:0;
+  pointer-events:none;
+}
+body.ui-01 .macro-knob .macro-knob-value{
+  position:absolute;left:50%;top:calc(100% + 6px);
+  transform:translateX(-50%);width:max-content;
+  font:500 14px/18px "Segoe UI",Arial,sans-serif;
+  color:#edf3f6;text-shadow:0 1px 2px #000;
+  pointer-events:none;
+}
+body.ui-01 .macro-motion .macro-knob.compact .macro-knob-value{font-size:12px;}
+body.ui-01 .macro-motion .motion-knob-row{margin-top:35px;}
+body.ui-01 .macro-motion .macro-knob.compact{
+  --knob-size:43px;
+  transform:translateX(16px);
+}
+body.ui-01 .macro-badsignal .macro-two-col,
+body.ui-01 .macro-condition .macro-two-col{margin-top:35px;}
+body.ui-01 .macro-intelligibility{position:relative;}
+body.ui-01 .macro-intelligibility .macro-knob{
+  position:absolute;top:75px;left:15px;margin:0;
+}
+body.ui-01 .macro-intelligibility .macro-mode-row{
+  position:absolute;top:46px;left:105px;right:8px;
+  display:flex;flex-direction:column;gap:8px;margin:0;
+}
+body.ui-01 .macro-intelligibility .macro-mode-row button{flex:0 0 27px;height:27px;}
+body.ui-01 .macro-ambience .macro-knob{margin-top:16px;}
+body.ui-01 .macro-mix .macro-knob{margin-top:10px;}
+body.ui-01 .macro-mix .macro-mix-mode{margin-top:27px;}
+
+/* UI_02 screenshot: bottom macro value to the RIGHT of its metallic face,
+   except MIX which shows a value below; CONDITION displays its Used selector. */
+body.ui-02 .macro-strip .macro-knob .macro-knob-label{display:none;}
+body.ui-02 .macro-strip .macro-knob .macro-knob-value{
+  position:absolute;left:calc(100% + 20px);top:50%;
+  transform:translateY(-50%);
+  width:max-content;font:500 22px/28px "Segoe UI",Arial,sans-serif;
+  color:#edf3f6;text-align:left;white-space:nowrap;
+  pointer-events:none;
+}
+body.ui-02 .macro-strip .macro-badsignal .macro-two-col{
+  margin-left:29px;margin-top:6px;
+  column-gap:80px;
+}
+body.ui-02 .macro-strip .macro-condition .macro-two-col{
+  margin-left:14px;margin-top:4px;column-gap:20px;
+}
+body.ui-02 .macro-strip .macro-condition .macro-knob-value{visibility:hidden;}
+body.ui-02 .macro-strip .macro-intelligibility .macro-knob{
+  margin:7px 0 0 14px!important;
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-knob-value{
+  left:calc(100% + 36px);
+}
+body.ui-02 .macro-strip .macro-mix .macro-knob{
+  margin:0 0 0 26px!important;
+}
+body.ui-02 .macro-strip .macro-mix .macro-knob-value{
+  left:calc(50% + 20px);top:calc(100% + 4px);
+  transform:translateX(-50%);font-size:15px;line-height:20px;
+}
+
+/* UI_02 approved 54px motion small-cap positions and separate live readouts.
+   Transform only the small (86x76) knob/readout pair, NOT the Motion deck. */
+body.ui-02 .motion-readouts>div[data-motion-adjust]{
+  padding:0!important;text-align:left!important;
+}
+body.ui-02 .motion-readouts>div[data-motion-adjust="speed"]{transform:translate(-47px,18px);}
+body.ui-02 .motion-readouts>div[data-motion-adjust="doppler"]{transform:translate(-41px,18px);}
+body.ui-02 .motion-readouts>div[data-motion-adjust="width"]{transform:translate(-18px,18px);}
+body.ui-02 .motion-readouts>div[data-motion-adjust] span{
+  position:absolute;left:90px!important;right:auto!important;
+  top:2px!important;width:95px;font:500 13px/19px "Segoe UI",Arial,sans-serif!important;
+  color:#bfcdd2!important;text-align:left;letter-spacing:0;
+}
+body.ui-02 .motion-readouts>div[data-motion-adjust] strong{
+  position:absolute;left:90px!important;right:auto!important;
+  top:27px!important;width:100px;font:500 17px/23px "Segoe UI",Arial,sans-serif!important;
+  color:#f1f5f6;text-align:left;white-space:nowrap;overflow:visible;
+}
+/* Preserve existing horizontal AMBIENCE: no round dial/value override here. */
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob-value{display:none;}
+
+/* Browser REF audit compares face diameter in unscaled CSS pixels; the WEB
+   plugin shell is deliberately transformed to fit the current viewport. */

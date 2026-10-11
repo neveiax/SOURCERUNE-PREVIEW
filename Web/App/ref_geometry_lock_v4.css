@@ -1,0 +1,162 @@
+/* SOURCERUNE REF Geometry Lock V4
+   Exact geometry constants from Source/UI/UI_01/LayoutSpec.h and UI_02/LayoutSpec.h.
+   This layer intentionally overrides optical drift introduced by V3. No DSP/state changes. */
+
+:root{
+  --ui01-ref-w:1499px;
+  --ui01-ref-h:807px;
+  --ui01-top-h:58px;
+  --ui01-left-w:313px;
+  --ui01-center-w:967px;
+  --ui01-meter-w:179px;
+  --ui01-scene-h:262px;
+  --ui01-analysis-h:247px;
+  --ui01-bottom-h:216px;
+  --ui01-macro-strip-h:221px;
+  --ui01-shell-bottom-pad:5px;
+  --ui01-card-h:124px;
+  --ui01-card-gap:8px;
+  --ui01-workspace-gap:10px;
+  --ui01-workspace-pad-x:10px;
+  --ui01-workspace-pad-bottom:8px;
+  --ui01-scene-head-h:34px;
+  --ui01-scene-graph-h:186px;
+  --ui01-tabs-h:37px;
+  --ui01-knob-motion:55px;
+  --ui01-knob-standard:68px;
+  --ui01-knob-mix:82px;
+  --ui01-card-head-h:48px;
+  --ui01-card-actions-top:10px;
+  --ui01-meter-slot-w:24px;
+  --ui01-meter-slot-h:250px;
+
+  --ui02-ref-w:1672px;
+  --ui02-card-gap:8px;
+  --ui02-workspace-gap:9px;
+  --ui02-workspace-pad-x:13px;
+  --ui02-workspace-pad-top:8px;
+  --ui02-ref-h:941px;
+  --ui02-top-h:78px;
+  --ui02-left-w:334px;
+  --ui02-center-w:972px;
+  --ui02-right-w:322px;
+  --ui02-scene-h:358px;
+  --ui02-motion-h:283px;
+  --ui02-bottom-h:172px;
+  --ui02-macro-strip-h:210px;
+  --ui02-macro-top-gap:20px;
+  --ui02-shell-bottom-pad:18px;
+  --ui02-source-h:196px;
+  --ui02-transmission-h:183px;
+  --ui02-wall-h:244px;
+  --ui02-space-h:279px;
+  --ui02-ambience-h:356px;
+  --ui02-distance-dial:300px;
+  --ui02-motion-knob:54px;
+  --ui02-bottom-knob:76px;
+  --ui02-meter-right:72px;
+  --ui02-meter-w:440px;
+  --ui02-meter-label-w:48px;
+  --ui02-meter-slot-w:150px;
+  --ui02-meter-slot-h:15px;
+}
+
+/* UI_01: geometry wins over optical styling. */
+body.ui-01 .topbar{height:var(--ui01-top-h)}
+body.ui-01 .workspace{
+  grid-template-columns:var(--ui01-left-w) minmax(0,var(--ui01-center-w)) var(--ui01-meter-w);
+  grid-template-areas:"modules center meter";
+  gap:var(--ui01-workspace-gap);
+  padding:0 var(--ui01-workspace-pad-x) var(--ui01-workspace-pad-bottom);
+}
+body.ui-01 .module-rail{
+  gap:var(--ui01-card-gap);
+  height:calc(var(--ui01-card-h) * 4 + var(--ui01-card-gap) * 3);
+}
+body.ui-01 .module-card{height:var(--ui01-card-h);min-height:var(--ui01-card-h)}
+body.ui-01 .module-meta{height:var(--ui01-card-head-h)}
+body.ui-01 .module-art{top:var(--ui01-card-head-h);bottom:8px}
+body.ui-01 .module-actions{top:var(--ui01-card-actions-top)}
+body.ui-01 .meters{min-height:var(--ui01-meter-slot-h)}
+body.ui-01 .meter-slot{width:var(--ui01-meter-slot-w);min-height:var(--ui01-meter-slot-h)}
+body.ui-01 .center{grid-template-rows:var(--ui01-scene-h) var(--ui01-analysis-h);gap:var(--ui01-card-gap)}
+body.ui-01 .scene-panel{height:var(--ui01-scene-h);min-height:var(--ui01-scene-h)}
+body.ui-01 .panel-head{height:var(--ui01-scene-head-h);min-height:var(--ui01-scene-head-h)}
+body.ui-01 #sceneSvg{height:var(--ui01-scene-graph-h)!important}
+body.ui-01 .analysis-panel{height:var(--ui01-analysis-h)}
+body.ui-01 .tabs{height:var(--ui01-tabs-h)}
+body.ui-01 .macro-strip{
+  height:var(--ui01-macro-strip-h);
+  gap:var(--ui01-card-gap);
+  padding:0 var(--ui01-workspace-pad-x) var(--ui01-shell-bottom-pad);
+}
+body.ui-01 .macro{height:var(--ui01-bottom-h)}
+body.ui-01 .macro-motion .macro-knob{--knob-size:var(--ui01-knob-motion)}
+body.ui-01 .macro-motion .macro-knob.compact{--knob-size:var(--ui01-knob-motion)}
+body.ui-01 .macro-badsignal .macro-knob,
+body.ui-01 .macro-condition .macro-knob,
+body.ui-01 .macro-intelligibility .macro-knob,
+body.ui-01 .macro-ambience .macro-knob{--knob-size:var(--ui01-knob-standard)}
+body.ui-01 .macro-mix .macro-knob{--knob-size:var(--ui01-knob-mix)}
+
+/* UI_02: exact approved reference geometry. */
+body.ui-02 .app{min-height:var(--ui02-ref-h)}
+body.ui-02 .topbar{height:var(--ui02-top-h)}
+body.ui-02 .workspace{
+  position:static;
+  gap:var(--ui02-workspace-gap);
+  padding:var(--ui02-workspace-pad-top) var(--ui02-workspace-pad-x) 0;
+}
+body.ui-02 .workspace{
+  grid-template-columns:var(--ui02-left-w) minmax(0,var(--ui02-center-w)) var(--ui02-right-w);
+}
+body.ui-02 .module-card[data-type="SOURCE"]{height:var(--ui02-source-h)}
+body.ui-02 .module-card[data-type="TRANSMISSION"]{height:var(--ui02-transmission-h)}
+body.ui-02 .module-card[data-type="WALL_COVER"]{height:var(--ui02-wall-h)}
+body.ui-02 .module-card[data-type="SPACE_ENVIRONMENT"]{height:var(--ui02-space-h)}
+body.ui-02 #sceneSvg{height:var(--ui02-scene-h);min-height:var(--ui02-scene-h)}
+body.ui-02 .motion-readouts{height:var(--ui02-motion-h);min-height:var(--ui02-motion-h)}
+body.ui-02 .motion-readouts{
+  background:
+    radial-gradient(circle at 172px 142px,rgba(24,44,54,.30),transparent 165px),
+    url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_L_BASE.png") 22px 50%/var(--ui02-distance-dial) var(--ui02-distance-dial) no-repeat,
+    linear-gradient(180deg,#0d151a,#081014);
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{height:var(--ui02-ambience-h)}
+body.ui-02 .macro-strip .macro{height:var(--ui02-bottom-h)}
+body.ui-02 .meter-rail{right:var(--ui02-meter-right);width:var(--ui02-meter-w)}
+body.ui-02 .meter-block{grid-template-columns:var(--ui02-meter-label-w) var(--ui02-meter-slot-w)}
+body.ui-02 .meter-slot{height:var(--ui02-meter-slot-h);min-height:var(--ui02-meter-slot-h)}
+body.ui-02 .macro-strip .macro-knob{--knob-size:var(--ui02-bottom-knob)}
+body.ui-02 .motion-readouts>div:nth-child(6),
+body.ui-02 .motion-readouts>div:nth-child(7),
+body.ui-02 .motion-readouts>div:nth-child(8){
+  width:var(--ui02-motion-knob);
+  height:var(--ui02-motion-knob);
+}
+body.ui-02 .motion-readouts>div:nth-child(6):after,
+body.ui-02 .motion-readouts>div:nth-child(7):after,
+body.ui-02 .motion-readouts>div:nth-child(8):after{transform-origin:50% 20px}
+
+
+
+
+/* UI_02 absolute rails are shell-relative, matching the approved pixel scan. */
+body.ui-02 .macro-strip{
+  position:static;
+  height:var(--ui02-macro-strip-h);
+  padding:var(--ui02-macro-top-gap) var(--ui02-workspace-pad-x) var(--ui02-shell-bottom-pad);
+}
+body.ui-02 .macro-strip .macro{height:var(--ui02-bottom-h)}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{
+  top:374px;
+  right:var(--ui02-workspace-pad-x);
+  width:var(--ui02-right-w);
+  height:var(--ui02-ambience-h);
+}
+body.ui-02 .meter-rail{
+  top:8px;
+  right:var(--ui02-meter-right);
+  width:var(--ui02-meter-w);
+  height:62px;
+}

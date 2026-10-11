@@ -1,0 +1,2506 @@
+{
+  "version": 2,
+  "count": 250,
+  "items": [
+    {
+      "id": "SRC_001_Smartphone_Earpiece",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Smartphone Earpiece",
+      "ui01": "UI_01/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "ui02": "UI_02/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "master": "Shared/SOURCE/SRC_001_Smartphone_Earpiece.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_002_Smartphone_Bottom_Speaker",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Smartphone Bottom Speaker",
+      "ui01": "UI_01/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "master": "Shared/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_003_Smartphone_Speakerphone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Smartphone Speakerphone",
+      "ui01": "UI_01/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "ui02": "UI_02/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "master": "Shared/SOURCE/SRC_003_Smartphone_Speakerphone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_004_Feature_Phone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Feature Phone",
+      "ui01": "UI_01/SOURCE/SRC_004_Feature_Phone.png",
+      "ui02": "UI_02/SOURCE/SRC_004_Feature_Phone.png",
+      "master": "Shared/SOURCE/SRC_004_Feature_Phone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_005_Cordless_Home_Phone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Cordless Home Phone",
+      "ui01": "UI_01/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "ui02": "UI_02/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "master": "Shared/SOURCE/SRC_005_Cordless_Home_Phone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_006_Office_Desk_Phone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Office Desk Phone",
+      "ui01": "UI_01/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "ui02": "UI_02/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "master": "Shared/SOURCE/SRC_006_Office_Desk_Phone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_007_Vintage_Rotary_Phone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Vintage Rotary Phone",
+      "ui01": "UI_01/SOURCE/SRC_007_Vintage_Rotary_Phone.png",
+      "ui02": "UI_02/SOURCE/SRC_007_Vintage_Rotary_Phone.png",
+      "master": "Shared/SOURCE/SRC_007_Vintage_Rotary_Phone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_008_Hotel_Room_Phone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Hotel Room Phone",
+      "ui01": "UI_01/SOURCE/SRC_008_Hotel_Room_Phone.png",
+      "ui02": "UI_02/SOURCE/SRC_008_Hotel_Room_Phone.png",
+      "master": "Shared/SOURCE/SRC_008_Hotel_Room_Phone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_009_Public_Payphone",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Public Payphone",
+      "ui01": "UI_01/SOURCE/SRC_009_Public_Payphone.png",
+      "ui02": "UI_02/SOURCE/SRC_009_Public_Payphone.png",
+      "master": "Shared/SOURCE/SRC_009_Public_Payphone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_010_Conference_Speakerphone_Unit",
+      "type": "SOURCE",
+      "category": "Phones / Telephony",
+      "name": "Conference Speakerphone Unit",
+      "ui01": "UI_01/SOURCE/SRC_010_Conference_Speakerphone_Unit.png",
+      "ui02": "UI_02/SOURCE/SRC_010_Conference_Speakerphone_Unit.png",
+      "master": "Shared/SOURCE/SRC_010_Conference_Speakerphone_Unit.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_011_Walkie_Talkie",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Walkie-Talkie",
+      "ui01": "UI_01/SOURCE/SRC_011_Walkie_Talkie.png",
+      "ui02": "UI_02/SOURCE/SRC_011_Walkie_Talkie.png",
+      "master": "Shared/SOURCE/SRC_011_Walkie_Talkie.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_012_Police_Handheld_Radio",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Police Handheld Radio",
+      "ui01": "UI_01/SOURCE/SRC_012_Police_Handheld_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_012_Police_Handheld_Radio.png",
+      "master": "Shared/SOURCE/SRC_012_Police_Handheld_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_013_Dispatch_Base_Radio",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Dispatch Base Radio",
+      "ui01": "UI_01/SOURCE/SRC_013_Dispatch_Base_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_013_Dispatch_Base_Radio.png",
+      "master": "Shared/SOURCE/SRC_013_Dispatch_Base_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_014_Security_Intercom",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Security Intercom",
+      "ui01": "UI_01/SOURCE/SRC_014_Security_Intercom.png",
+      "ui02": "UI_02/SOURCE/SRC_014_Security_Intercom.png",
+      "master": "Shared/SOURCE/SRC_014_Security_Intercom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_015_Building_Entry_Intercom",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Building Entry Intercom",
+      "ui01": "UI_01/SOURCE/SRC_015_Building_Entry_Intercom.png",
+      "ui02": "UI_02/SOURCE/SRC_015_Building_Entry_Intercom.png",
+      "master": "Shared/SOURCE/SRC_015_Building_Entry_Intercom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_016_Drive_Thru_Speaker_Box",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Drive-Thru Speaker Box",
+      "ui01": "UI_01/SOURCE/SRC_016_Drive_Thru_Speaker_Box.png",
+      "ui02": "UI_02/SOURCE/SRC_016_Drive_Thru_Speaker_Box.png",
+      "master": "Shared/SOURCE/SRC_016_Drive_Thru_Speaker_Box.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_017_Aviation_Headset",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Aviation Headset",
+      "ui01": "UI_01/SOURCE/SRC_017_Aviation_Headset.png",
+      "ui02": "UI_02/SOURCE/SRC_017_Aviation_Headset.png",
+      "master": "Shared/SOURCE/SRC_017_Aviation_Headset.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_018_Helicopter_Intercom_Pack",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Helicopter Intercom Pack",
+      "ui01": "UI_01/SOURCE/SRC_018_Helicopter_Intercom_Pack.png",
+      "ui02": "UI_02/SOURCE/SRC_018_Helicopter_Intercom_Pack.png",
+      "master": "Shared/SOURCE/SRC_018_Helicopter_Intercom_Pack.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_019_Military_Field_Radio",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Military Field Radio",
+      "ui01": "UI_01/SOURCE/SRC_019_Military_Field_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_019_Military_Field_Radio.png",
+      "master": "Shared/SOURCE/SRC_019_Military_Field_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_020_Portable_Comms_Unit",
+      "type": "SOURCE",
+      "category": "Radios / Communication",
+      "name": "Portable Comms Unit",
+      "ui01": "UI_01/SOURCE/SRC_020_Portable_Comms_Unit.png",
+      "ui02": "UI_02/SOURCE/SRC_020_Portable_Comms_Unit.png",
+      "master": "Shared/SOURCE/SRC_020_Portable_Comms_Unit.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_021_CRT_Television",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "CRT Television",
+      "ui01": "UI_01/SOURCE/SRC_021_CRT_Television.png",
+      "ui02": "UI_02/SOURCE/SRC_021_CRT_Television.png",
+      "master": "Shared/SOURCE/SRC_021_CRT_Television.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_022_Flat_TV_Speaker",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Flat TV Speaker",
+      "ui01": "UI_01/SOURCE/SRC_022_Flat_TV_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_022_Flat_TV_Speaker.png",
+      "master": "Shared/SOURCE/SRC_022_Flat_TV_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_023_Kitchen_Radio",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Kitchen Radio",
+      "ui01": "UI_01/SOURCE/SRC_023_Kitchen_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_023_Kitchen_Radio.png",
+      "master": "Shared/SOURCE/SRC_023_Kitchen_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_024_Clock_Radio",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Clock Radio",
+      "ui01": "UI_01/SOURCE/SRC_024_Clock_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_024_Clock_Radio.png",
+      "master": "Shared/SOURCE/SRC_024_Clock_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_025_Pocket_Transistor_Radio",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Pocket Transistor Radio",
+      "ui01": "UI_01/SOURCE/SRC_025_Pocket_Transistor_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_025_Pocket_Transistor_Radio.png",
+      "master": "Shared/SOURCE/SRC_025_Pocket_Transistor_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_026_Boombox",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Boombox",
+      "ui01": "UI_01/SOURCE/SRC_026_Boombox.png",
+      "ui02": "UI_02/SOURCE/SRC_026_Boombox.png",
+      "master": "Shared/SOURCE/SRC_026_Boombox.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_027_Laptop_Speakers",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Laptop Speakers",
+      "ui01": "UI_01/SOURCE/SRC_027_Laptop_Speakers.png",
+      "ui02": "UI_02/SOURCE/SRC_027_Laptop_Speakers.png",
+      "master": "Shared/SOURCE/SRC_027_Laptop_Speakers.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_028_Tablet_Speaker",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Tablet Speaker",
+      "ui01": "UI_01/SOURCE/SRC_028_Tablet_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_028_Tablet_Speaker.png",
+      "master": "Shared/SOURCE/SRC_028_Tablet_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_029_Desktop_Monitor_Speaker",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Desktop Monitor Speaker",
+      "ui01": "UI_01/SOURCE/SRC_029_Desktop_Monitor_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_029_Desktop_Monitor_Speaker.png",
+      "master": "Shared/SOURCE/SRC_029_Desktop_Monitor_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_030_Smart_Speaker",
+      "type": "SOURCE",
+      "category": "TV / Consumer Playback",
+      "name": "Smart Speaker",
+      "ui01": "UI_01/SOURCE/SRC_030_Smart_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_030_Smart_Speaker.png",
+      "master": "Shared/SOURCE/SRC_030_Smart_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_031_Car_Dashboard_Speaker",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Car Dashboard Speaker",
+      "ui01": "UI_01/SOURCE/SRC_031_Car_Dashboard_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_031_Car_Dashboard_Speaker.png",
+      "master": "Shared/SOURCE/SRC_031_Car_Dashboard_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_032_Car_Door_Speaker",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Car Door Speaker",
+      "ui01": "UI_01/SOURCE/SRC_032_Car_Door_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_032_Car_Door_Speaker.png",
+      "master": "Shared/SOURCE/SRC_032_Car_Door_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_033_Truck_Cab_Radio",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Truck Cab Radio",
+      "ui01": "UI_01/SOURCE/SRC_033_Truck_Cab_Radio.png",
+      "ui02": "UI_02/SOURCE/SRC_033_Truck_Cab_Radio.png",
+      "master": "Shared/SOURCE/SRC_033_Truck_Cab_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_034_Bus_PA_Speaker",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Bus PA Speaker",
+      "ui01": "UI_01/SOURCE/SRC_034_Bus_PA_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_034_Bus_PA_Speaker.png",
+      "master": "Shared/SOURCE/SRC_034_Bus_PA_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_035_Train_Cabin_Speaker",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Train Cabin Speaker",
+      "ui01": "UI_01/SOURCE/SRC_035_Train_Cabin_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_035_Train_Cabin_Speaker.png",
+      "master": "Shared/SOURCE/SRC_035_Train_Cabin_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_036_Airplane_Cabin_PA",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Airplane Cabin PA",
+      "ui01": "UI_01/SOURCE/SRC_036_Airplane_Cabin_PA.png",
+      "ui02": "UI_02/SOURCE/SRC_036_Airplane_Cabin_PA.png",
+      "master": "Shared/SOURCE/SRC_036_Airplane_Cabin_PA.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_037_Ceiling_PA_Speaker",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Ceiling PA Speaker",
+      "ui01": "UI_01/SOURCE/SRC_037_Ceiling_PA_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_037_Ceiling_PA_Speaker.png",
+      "master": "Shared/SOURCE/SRC_037_Ceiling_PA_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_038_Wall_Mounted_PA_Horn",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Wall-Mounted PA Horn",
+      "ui01": "UI_01/SOURCE/SRC_038_Wall_Mounted_PA_Horn.png",
+      "ui02": "UI_02/SOURCE/SRC_038_Wall_Mounted_PA_Horn.png",
+      "master": "Shared/SOURCE/SRC_038_Wall_Mounted_PA_Horn.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_039_Stadium_PA_Horn",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Stadium PA Horn",
+      "ui01": "UI_01/SOURCE/SRC_039_Stadium_PA_Horn.png",
+      "ui02": "UI_02/SOURCE/SRC_039_Stadium_PA_Horn.png",
+      "master": "Shared/SOURCE/SRC_039_Stadium_PA_Horn.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_040_Bullhorn_Megaphone",
+      "type": "SOURCE",
+      "category": "Vehicle / PA",
+      "name": "Bullhorn / Megaphone",
+      "ui01": "UI_01/SOURCE/SRC_040_Bullhorn_Megaphone.png",
+      "ui02": "UI_02/SOURCE/SRC_040_Bullhorn_Megaphone.png",
+      "master": "Shared/SOURCE/SRC_040_Bullhorn_Megaphone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_041_Cassette_Recorder",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Cassette Recorder",
+      "ui01": "UI_01/SOURCE/SRC_041_Cassette_Recorder.png",
+      "ui02": "UI_02/SOURCE/SRC_041_Cassette_Recorder.png",
+      "master": "Shared/SOURCE/SRC_041_Cassette_Recorder.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_042_Microcassette_Recorder",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Microcassette Recorder",
+      "ui01": "UI_01/SOURCE/SRC_042_Microcassette_Recorder.png",
+      "ui02": "UI_02/SOURCE/SRC_042_Microcassette_Recorder.png",
+      "master": "Shared/SOURCE/SRC_042_Microcassette_Recorder.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_043_Dictaphone",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Dictaphone",
+      "ui01": "UI_01/SOURCE/SRC_043_Dictaphone.png",
+      "ui02": "UI_02/SOURCE/SRC_043_Dictaphone.png",
+      "master": "Shared/SOURCE/SRC_043_Dictaphone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_044_Answering_Machine",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Answering Machine",
+      "ui01": "UI_01/SOURCE/SRC_044_Answering_Machine.png",
+      "ui02": "UI_02/SOURCE/SRC_044_Answering_Machine.png",
+      "master": "Shared/SOURCE/SRC_044_Answering_Machine.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_045_Toy_Recorder",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Toy Recorder",
+      "ui01": "UI_01/SOURCE/SRC_045_Toy_Recorder.png",
+      "ui02": "UI_02/SOURCE/SRC_045_Toy_Recorder.png",
+      "master": "Shared/SOURCE/SRC_045_Toy_Recorder.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_046_Toy_Megaphone",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Toy Megaphone",
+      "ui01": "UI_01/SOURCE/SRC_046_Toy_Megaphone.png",
+      "ui02": "UI_02/SOURCE/SRC_046_Toy_Megaphone.png",
+      "master": "Shared/SOURCE/SRC_046_Toy_Megaphone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_047_Cheap_Voice_Recorder",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Cheap Voice Recorder",
+      "ui01": "UI_01/SOURCE/SRC_047_Cheap_Voice_Recorder.png",
+      "ui02": "UI_02/SOURCE/SRC_047_Cheap_Voice_Recorder.png",
+      "master": "Shared/SOURCE/SRC_047_Cheap_Voice_Recorder.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_048_Baby_Monitor",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Baby Monitor",
+      "ui01": "UI_01/SOURCE/SRC_048_Baby_Monitor.png",
+      "ui02": "UI_02/SOURCE/SRC_048_Baby_Monitor.png",
+      "master": "Shared/SOURCE/SRC_048_Baby_Monitor.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_049_Portable_DVD_Media_Player",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Portable DVD / Media Player",
+      "ui01": "UI_01/SOURCE/SRC_049_Portable_DVD_Media_Player.png",
+      "ui02": "UI_02/SOURCE/SRC_049_Portable_DVD_Media_Player.png",
+      "master": "Shared/SOURCE/SRC_049_Portable_DVD_Media_Player.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_050_Small_Portable_Wireless_Speaker",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Small Portable Wireless Speaker",
+      "ui01": "UI_01/SOURCE/SRC_050_Small_Portable_Wireless_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_050_Small_Portable_Wireless_Speaker.png",
+      "master": "Shared/SOURCE/SRC_050_Small_Portable_Wireless_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_051_Game_Console_Speaker",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Game Console Speaker",
+      "ui01": "UI_01/SOURCE/SRC_051_Game_Console_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_051_Game_Console_Speaker.png",
+      "master": "Shared/SOURCE/SRC_051_Game_Console_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_052_Cheap_Earbuds_Leakage",
+      "type": "SOURCE",
+      "category": "Recorders / Toys / Lo-Fi",
+      "name": "Cheap Earbuds Leakage",
+      "ui01": "UI_01/SOURCE/SRC_052_Cheap_Earbuds_Leakage.png",
+      "ui02": "UI_02/SOURCE/SRC_052_Cheap_Earbuds_Leakage.png",
+      "master": "Shared/SOURCE/SRC_052_Cheap_Earbuds_Leakage.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_053_Small_Guitar_Combo_Amp",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Small Guitar Combo Amp",
+      "ui01": "UI_01/SOURCE/SRC_053_Small_Guitar_Combo_Amp.png",
+      "ui02": "UI_02/SOURCE/SRC_053_Small_Guitar_Combo_Amp.png",
+      "master": "Shared/SOURCE/SRC_053_Small_Guitar_Combo_Amp.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_054_Practice_Amp",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Practice Amp",
+      "ui01": "UI_01/SOURCE/SRC_054_Practice_Amp.png",
+      "ui02": "UI_02/SOURCE/SRC_054_Practice_Amp.png",
+      "master": "Shared/SOURCE/SRC_054_Practice_Amp.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_055_Gramophone_Horn",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Gramophone Horn",
+      "ui01": "UI_01/SOURCE/SRC_055_Gramophone_Horn.png",
+      "ui02": "UI_02/SOURCE/SRC_055_Gramophone_Horn.png",
+      "master": "Shared/SOURCE/SRC_055_Gramophone_Horn.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_056_Phonograph_Box",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Phonograph Box",
+      "ui01": "UI_01/SOURCE/SRC_056_Phonograph_Box.png",
+      "ui02": "UI_02/SOURCE/SRC_056_Phonograph_Box.png",
+      "master": "Shared/SOURCE/SRC_056_Phonograph_Box.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_057_Portable_Karaoke_Speaker",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Portable Karaoke Speaker",
+      "ui01": "UI_01/SOURCE/SRC_057_Portable_Karaoke_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_057_Portable_Karaoke_Speaker.png",
+      "master": "Shared/SOURCE/SRC_057_Portable_Karaoke_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_058_Portable_PA_Column",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Portable PA Column",
+      "ui01": "UI_01/SOURCE/SRC_058_Portable_PA_Column.png",
+      "ui02": "UI_02/SOURCE/SRC_058_Portable_PA_Column.png",
+      "master": "Shared/SOURCE/SRC_058_Portable_PA_Column.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_059_Old_Public_Announcement_Box",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Old Public Announcement Box",
+      "ui01": "UI_01/SOURCE/SRC_059_Old_Public_Announcement_Box.png",
+      "ui02": "UI_02/SOURCE/SRC_059_Old_Public_Announcement_Box.png",
+      "master": "Shared/SOURCE/SRC_059_Old_Public_Announcement_Box.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_060_Cabinet_Speaker_Small",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Cabinet Speaker Small",
+      "ui01": "UI_01/SOURCE/SRC_060_Cabinet_Speaker_Small.png",
+      "ui02": "UI_02/SOURCE/SRC_060_Cabinet_Speaker_Small.png",
+      "master": "Shared/SOURCE/SRC_060_Cabinet_Speaker_Small.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_061_Cabinet_Speaker_Mid",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Cabinet Speaker Mid",
+      "ui01": "UI_01/SOURCE/SRC_061_Cabinet_Speaker_Mid.png",
+      "ui02": "UI_02/SOURCE/SRC_061_Cabinet_Speaker_Mid.png",
+      "master": "Shared/SOURCE/SRC_061_Cabinet_Speaker_Mid.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_062_Cabinet_Speaker_Large",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Cabinet Speaker Large",
+      "ui01": "UI_01/SOURCE/SRC_062_Cabinet_Speaker_Large.png",
+      "ui02": "UI_02/SOURCE/SRC_062_Cabinet_Speaker_Large.png",
+      "master": "Shared/SOURCE/SRC_062_Cabinet_Speaker_Large.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_063_Helmet_Intercom_Speaker",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Helmet Intercom Speaker",
+      "ui01": "UI_01/SOURCE/SRC_063_Helmet_Intercom_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_063_Helmet_Intercom_Speaker.png",
+      "master": "Shared/SOURCE/SRC_063_Helmet_Intercom_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SRC_064_Hidden_Pocket_Bag_Speaker",
+      "type": "SOURCE",
+      "category": "Amp / Vintage / Special",
+      "name": "Hidden Pocket / Bag Speaker",
+      "ui01": "UI_01/SOURCE/SRC_064_Hidden_Pocket_Bag_Speaker.png",
+      "ui02": "UI_02/SOURCE/SRC_064_Hidden_Pocket_Bag_Speaker.png",
+      "master": "Shared/SOURCE/SRC_064_Hidden_Pocket_Bag_Speaker.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_001_Direct_Clean",
+      "type": "TRANSMISSION",
+      "category": "Direct / Clean",
+      "name": "Direct Clean",
+      "ui01": "UI_01/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "master": "Shared/TRANSMISSION/TRN_001_Direct_Clean.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_002_Narrowband_Clean",
+      "type": "TRANSMISSION",
+      "category": "Direct / Clean",
+      "name": "Narrowband Clean",
+      "ui01": "UI_01/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "master": "Shared/TRANSMISSION/TRN_002_Narrowband_Clean.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_003_PSTN_Landline",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "PSTN Landline",
+      "ui01": "UI_01/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "master": "Shared/TRANSMISSION/TRN_003_PSTN_Landline.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_004_Noisy_Analog_Line",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "Noisy Analog Line",
+      "ui01": "UI_01/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "master": "Shared/TRANSMISSION/TRN_004_Noisy_Analog_Line.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_005_GSM_Stable",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "GSM Stable",
+      "ui01": "UI_01/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "master": "Shared/TRANSMISSION/TRN_005_GSM_Stable.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_006_GSM_Weak",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "GSM Weak",
+      "ui01": "UI_01/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "master": "Shared/TRANSMISSION/TRN_006_GSM_Weak.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_007_3G_Cellular",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "3G Cellular",
+      "ui01": "UI_01/TRANSMISSION/TRN_007_3G_Cellular.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_007_3G_Cellular.png",
+      "master": "Shared/TRANSMISSION/TRN_007_3G_Cellular.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_008_4G_VoLTE",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "4G / VoLTE",
+      "ui01": "UI_01/TRANSMISSION/TRN_008_4G_VoLTE.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_008_4G_VoLTE.png",
+      "master": "Shared/TRANSMISSION/TRN_008_4G_VoLTE.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_009_VoIP_Clean",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "VoIP Clean",
+      "ui01": "UI_01/TRANSMISSION/TRN_009_VoIP_Clean.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_009_VoIP_Clean.png",
+      "master": "Shared/TRANSMISSION/TRN_009_VoIP_Clean.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_010_VoIP_Unstable",
+      "type": "TRANSMISSION",
+      "category": "Telephone / Cellular",
+      "name": "VoIP Unstable",
+      "ui01": "UI_01/TRANSMISSION/TRN_010_VoIP_Unstable.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_010_VoIP_Unstable.png",
+      "master": "Shared/TRANSMISSION/TRN_010_VoIP_Unstable.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_011_Walkie_Narrowband",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Walkie Narrowband",
+      "ui01": "UI_01/TRANSMISSION/TRN_011_Walkie_Narrowband.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_011_Walkie_Narrowband.png",
+      "master": "Shared/TRANSMISSION/TRN_011_Walkie_Narrowband.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_012_Dispatch_Radio",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Dispatch Radio",
+      "ui01": "UI_01/TRANSMISSION/TRN_012_Dispatch_Radio.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_012_Dispatch_Radio.png",
+      "master": "Shared/TRANSMISSION/TRN_012_Dispatch_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_013_Police_Radio",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Police Radio",
+      "ui01": "UI_01/TRANSMISSION/TRN_013_Police_Radio.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_013_Police_Radio.png",
+      "master": "Shared/TRANSMISSION/TRN_013_Police_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_014_Aviation_Comms",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Aviation Comms",
+      "ui01": "UI_01/TRANSMISSION/TRN_014_Aviation_Comms.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_014_Aviation_Comms.png",
+      "master": "Shared/TRANSMISSION/TRN_014_Aviation_Comms.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_015_Helicopter_Intercom",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Helicopter Intercom",
+      "ui01": "UI_01/TRANSMISSION/TRN_015_Helicopter_Intercom.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_015_Helicopter_Intercom.png",
+      "master": "Shared/TRANSMISSION/TRN_015_Helicopter_Intercom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_016_Drive_Thru_Link",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Drive-Thru Link",
+      "ui01": "UI_01/TRANSMISSION/TRN_016_Drive_Thru_Link.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_016_Drive_Thru_Link.png",
+      "master": "Shared/TRANSMISSION/TRN_016_Drive_Thru_Link.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_017_Security_Intercom_Link",
+      "type": "TRANSMISSION",
+      "category": "Radio / Comms",
+      "name": "Security Intercom Link",
+      "ui01": "UI_01/TRANSMISSION/TRN_017_Security_Intercom_Link.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_017_Security_Intercom_Link.png",
+      "master": "Shared/TRANSMISSION/TRN_017_Security_Intercom_Link.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_018_AM_Radio",
+      "type": "TRANSMISSION",
+      "category": "Broadcast / Media",
+      "name": "AM Radio",
+      "ui01": "UI_01/TRANSMISSION/TRN_018_AM_Radio.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_018_AM_Radio.png",
+      "master": "Shared/TRANSMISSION/TRN_018_AM_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_019_FM_Radio",
+      "type": "TRANSMISSION",
+      "category": "Broadcast / Media",
+      "name": "FM Radio",
+      "ui01": "UI_01/TRANSMISSION/TRN_019_FM_Radio.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_019_FM_Radio.png",
+      "master": "Shared/TRANSMISSION/TRN_019_FM_Radio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_020_TV_Broadcast",
+      "type": "TRANSMISSION",
+      "category": "Broadcast / Media",
+      "name": "TV Broadcast",
+      "ui01": "UI_01/TRANSMISSION/TRN_020_TV_Broadcast.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_020_TV_Broadcast.png",
+      "master": "Shared/TRANSMISSION/TRN_020_TV_Broadcast.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_021_Streaming_Codec_Audio",
+      "type": "TRANSMISSION",
+      "category": "Broadcast / Media",
+      "name": "Streaming / Codec Audio",
+      "ui01": "UI_01/TRANSMISSION/TRN_021_Streaming_Codec_Audio.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_021_Streaming_Codec_Audio.png",
+      "master": "Shared/TRANSMISSION/TRN_021_Streaming_Codec_Audio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_022_Packet_Loss_Digital",
+      "type": "TRANSMISSION",
+      "category": "Failure / Degradation",
+      "name": "Packet Loss Digital",
+      "ui01": "UI_01/TRANSMISSION/TRN_022_Packet_Loss_Digital.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_022_Packet_Loss_Digital.png",
+      "master": "Shared/TRANSMISSION/TRN_022_Packet_Loss_Digital.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_023_Signal_Dropout",
+      "type": "TRANSMISSION",
+      "category": "Failure / Degradation",
+      "name": "Signal Dropout",
+      "ui01": "UI_01/TRANSMISSION/TRN_023_Signal_Dropout.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_023_Signal_Dropout.png",
+      "master": "Shared/TRANSMISSION/TRN_023_Signal_Dropout.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "TRN_024_Tuning_Out_of_Range_Search",
+      "type": "TRANSMISSION",
+      "category": "Failure / Degradation",
+      "name": "Tuning / Out-of-Range Search",
+      "ui01": "UI_01/TRANSMISSION/TRN_024_Tuning_Out_of_Range_Search.png",
+      "ui02": "UI_02/TRANSMISSION/TRN_024_Tuning_Out_of_Range_Search.png",
+      "master": "Shared/TRANSMISSION/TRN_024_Tuning_Out_of_Range_Search.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_001_None_Open",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "None / Open",
+      "ui01": "UI_01/WALL_COVER/CVR_001_None_Open.png",
+      "ui02": "UI_02/WALL_COVER/CVR_001_None_Open.png",
+      "master": "Shared/WALL_COVER/CVR_001_None_Open.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_002_T_Shirt_Cloth",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "T-Shirt Cloth",
+      "ui01": "UI_01/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "ui02": "UI_02/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "master": "Shared/WALL_COVER/CVR_002_T_Shirt_Cloth.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_003_Thin_Blanket",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "Thin Blanket",
+      "ui01": "UI_01/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "ui02": "UI_02/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "master": "Shared/WALL_COVER/CVR_003_Thin_Blanket.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_004_Thick_Blanket",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "Thick Blanket",
+      "ui01": "UI_01/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "ui02": "UI_02/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "master": "Shared/WALL_COVER/CVR_004_Thick_Blanket.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_005_Pillow",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "Pillow",
+      "ui01": "UI_01/WALL_COVER/CVR_005_Pillow.png",
+      "ui02": "UI_02/WALL_COVER/CVR_005_Pillow.png",
+      "master": "Shared/WALL_COVER/CVR_005_Pillow.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_006_Bedsheet",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "Bedsheet",
+      "ui01": "UI_01/WALL_COVER/CVR_006_Bedsheet.png",
+      "ui02": "UI_02/WALL_COVER/CVR_006_Bedsheet.png",
+      "master": "Shared/WALL_COVER/CVR_006_Bedsheet.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_007_Curtain",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "Curtain",
+      "ui01": "UI_01/WALL_COVER/CVR_007_Curtain.png",
+      "ui02": "UI_02/WALL_COVER/CVR_007_Curtain.png",
+      "master": "Shared/WALL_COVER/CVR_007_Curtain.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_008_Inside_Pocket",
+      "type": "WALL_COVER",
+      "category": "Soft Covers",
+      "name": "Inside Pocket",
+      "ui01": "UI_01/WALL_COVER/CVR_008_Inside_Pocket.png",
+      "ui02": "UI_02/WALL_COVER/CVR_008_Inside_Pocket.png",
+      "master": "Shared/WALL_COVER/CVR_008_Inside_Pocket.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_009_Cardboard_Box",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Cardboard Box",
+      "ui01": "UI_01/WALL_COVER/CVR_009_Cardboard_Box.png",
+      "ui02": "UI_02/WALL_COVER/CVR_009_Cardboard_Box.png",
+      "master": "Shared/WALL_COVER/CVR_009_Cardboard_Box.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_010_Thick_Carton",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Thick Carton",
+      "ui01": "UI_01/WALL_COVER/CVR_010_Thick_Carton.png",
+      "ui02": "UI_02/WALL_COVER/CVR_010_Thick_Carton.png",
+      "master": "Shared/WALL_COVER/CVR_010_Thick_Carton.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_011_Paper_Bag",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Paper Bag",
+      "ui01": "UI_01/WALL_COVER/CVR_011_Paper_Bag.png",
+      "ui02": "UI_02/WALL_COVER/CVR_011_Paper_Bag.png",
+      "master": "Shared/WALL_COVER/CVR_011_Paper_Bag.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_012_Plastic_Bin",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Plastic Bin",
+      "ui01": "UI_01/WALL_COVER/CVR_012_Plastic_Bin.png",
+      "ui02": "UI_02/WALL_COVER/CVR_012_Plastic_Bin.png",
+      "master": "Shared/WALL_COVER/CVR_012_Plastic_Bin.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_013_Backpack",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Backpack",
+      "ui01": "UI_01/WALL_COVER/CVR_013_Backpack.png",
+      "ui02": "UI_02/WALL_COVER/CVR_013_Backpack.png",
+      "master": "Shared/WALL_COVER/CVR_013_Backpack.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_014_Suitcase",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Suitcase",
+      "ui01": "UI_01/WALL_COVER/CVR_014_Suitcase.png",
+      "ui02": "UI_02/WALL_COVER/CVR_014_Suitcase.png",
+      "master": "Shared/WALL_COVER/CVR_014_Suitcase.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_015_Drawer_Cabinet",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Drawer / Cabinet",
+      "ui01": "UI_01/WALL_COVER/CVR_015_Drawer_Cabinet.png",
+      "ui02": "UI_02/WALL_COVER/CVR_015_Drawer_Cabinet.png",
+      "master": "Shared/WALL_COVER/CVR_015_Drawer_Cabinet.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_016_Under_Desk",
+      "type": "WALL_COVER",
+      "category": "Containers / Objects",
+      "name": "Under Desk",
+      "ui01": "UI_01/WALL_COVER/CVR_016_Under_Desk.png",
+      "ui02": "UI_02/WALL_COVER/CVR_016_Under_Desk.png",
+      "master": "Shared/WALL_COVER/CVR_016_Under_Desk.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_017_Car_Glove_Box",
+      "type": "WALL_COVER",
+      "category": "Vehicle Occlusion",
+      "name": "Car Glove Box",
+      "ui01": "UI_01/WALL_COVER/CVR_017_Car_Glove_Box.png",
+      "ui02": "UI_02/WALL_COVER/CVR_017_Car_Glove_Box.png",
+      "master": "Shared/WALL_COVER/CVR_017_Car_Glove_Box.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_018_Car_Trunk",
+      "type": "WALL_COVER",
+      "category": "Vehicle Occlusion",
+      "name": "Car Trunk",
+      "ui01": "UI_01/WALL_COVER/CVR_018_Car_Trunk.png",
+      "ui02": "UI_02/WALL_COVER/CVR_018_Car_Trunk.png",
+      "master": "Shared/WALL_COVER/CVR_018_Car_Trunk.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_019_Behind_Car_Seat",
+      "type": "WALL_COVER",
+      "category": "Vehicle Occlusion",
+      "name": "Behind Car Seat",
+      "ui01": "UI_01/WALL_COVER/CVR_019_Behind_Car_Seat.png",
+      "ui02": "UI_02/WALL_COVER/CVR_019_Behind_Car_Seat.png",
+      "master": "Shared/WALL_COVER/CVR_019_Behind_Car_Seat.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_020_Closed_Car_Window",
+      "type": "WALL_COVER",
+      "category": "Vehicle Occlusion",
+      "name": "Closed Car Window",
+      "ui01": "UI_01/WALL_COVER/CVR_020_Closed_Car_Window.png",
+      "ui02": "UI_02/WALL_COVER/CVR_020_Closed_Car_Window.png",
+      "master": "Shared/WALL_COVER/CVR_020_Closed_Car_Window.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_021_Hollow_Wooden_Door",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Hollow Wooden Door",
+      "ui01": "UI_01/WALL_COVER/CVR_021_Hollow_Wooden_Door.png",
+      "ui02": "UI_02/WALL_COVER/CVR_021_Hollow_Wooden_Door.png",
+      "master": "Shared/WALL_COVER/CVR_021_Hollow_Wooden_Door.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_022_Solid_Wooden_Door",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Solid Wooden Door",
+      "ui01": "UI_01/WALL_COVER/CVR_022_Solid_Wooden_Door.png",
+      "ui02": "UI_02/WALL_COVER/CVR_022_Solid_Wooden_Door.png",
+      "master": "Shared/WALL_COVER/CVR_022_Solid_Wooden_Door.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_023_Office_Drywall",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Office Drywall",
+      "ui01": "UI_01/WALL_COVER/CVR_023_Office_Drywall.png",
+      "ui02": "UI_02/WALL_COVER/CVR_023_Office_Drywall.png",
+      "master": "Shared/WALL_COVER/CVR_023_Office_Drywall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_024_Apartment_Thin_Wall",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Apartment Thin Wall",
+      "ui01": "UI_01/WALL_COVER/CVR_024_Apartment_Thin_Wall.png",
+      "ui02": "UI_02/WALL_COVER/CVR_024_Apartment_Thin_Wall.png",
+      "master": "Shared/WALL_COVER/CVR_024_Apartment_Thin_Wall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_025_Brick_Wall",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Brick Wall",
+      "ui01": "UI_01/WALL_COVER/CVR_025_Brick_Wall.png",
+      "ui02": "UI_02/WALL_COVER/CVR_025_Brick_Wall.png",
+      "master": "Shared/WALL_COVER/CVR_025_Brick_Wall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_026_Concrete_Wall",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Concrete Wall",
+      "ui01": "UI_01/WALL_COVER/CVR_026_Concrete_Wall.png",
+      "ui02": "UI_02/WALL_COVER/CVR_026_Concrete_Wall.png",
+      "master": "Shared/WALL_COVER/CVR_026_Concrete_Wall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_027_Glass_Window",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Glass Window",
+      "ui01": "UI_01/WALL_COVER/CVR_027_Glass_Window.png",
+      "ui02": "UI_02/WALL_COVER/CVR_027_Glass_Window.png",
+      "master": "Shared/WALL_COVER/CVR_027_Glass_Window.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_028_Metal_Door",
+      "type": "WALL_COVER",
+      "category": "Architectural Barriers",
+      "name": "Metal Door",
+      "ui01": "UI_01/WALL_COVER/CVR_028_Metal_Door.png",
+      "ui02": "UI_02/WALL_COVER/CVR_028_Metal_Door.png",
+      "master": "Shared/WALL_COVER/CVR_028_Metal_Door.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_029_Bathroom_Stall_Door",
+      "type": "WALL_COVER",
+      "category": "Special Covers",
+      "name": "Bathroom Stall Door",
+      "ui01": "UI_01/WALL_COVER/CVR_029_Bathroom_Stall_Door.png",
+      "ui02": "UI_02/WALL_COVER/CVR_029_Bathroom_Stall_Door.png",
+      "master": "Shared/WALL_COVER/CVR_029_Bathroom_Stall_Door.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_030_Floor_Ceiling_Above",
+      "type": "WALL_COVER",
+      "category": "Special Covers",
+      "name": "Floor / Ceiling Above",
+      "ui01": "UI_01/WALL_COVER/CVR_030_Floor_Ceiling_Above.png",
+      "ui02": "UI_02/WALL_COVER/CVR_030_Floor_Ceiling_Above.png",
+      "master": "Shared/WALL_COVER/CVR_030_Floor_Ceiling_Above.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_031_Helmet_Visor_Cover",
+      "type": "WALL_COVER",
+      "category": "Special Covers",
+      "name": "Helmet / Visor Cover",
+      "ui01": "UI_01/WALL_COVER/CVR_031_Helmet_Visor_Cover.png",
+      "ui02": "UI_02/WALL_COVER/CVR_031_Helmet_Visor_Cover.png",
+      "master": "Shared/WALL_COVER/CVR_031_Helmet_Visor_Cover.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "CVR_032_Appliance_Behind_Fridge",
+      "type": "WALL_COVER",
+      "category": "Special Covers",
+      "name": "Appliance / Behind Fridge",
+      "ui01": "UI_01/WALL_COVER/CVR_032_Appliance_Behind_Fridge.png",
+      "ui02": "UI_02/WALL_COVER/CVR_032_Appliance_Behind_Fridge.png",
+      "master": "Shared/WALL_COVER/CVR_032_Appliance_Behind_Fridge.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_001_Vocal_Booth",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Vocal Booth",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_002_Bedroom",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Bedroom",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_002_Bedroom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_003_Bathroom",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Bathroom",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_003_Bathroom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_004_Kitchen",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Kitchen",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_004_Kitchen.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_005_Living_Room",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Living Room",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_005_Living_Room.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_006_Small_Office",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Small Office",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_006_Small_Office.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_007_Large_Office",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Large Office",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_007_Large_Office.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_007_Large_Office.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_007_Large_Office.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_008_Conference_Room",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Conference Room",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_008_Conference_Room.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_008_Conference_Room.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_008_Conference_Room.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_009_Hallway",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Hallway",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_009_Hallway.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_009_Hallway.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_009_Hallway.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_010_Stairwell",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Stairwell",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_010_Stairwell.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_010_Stairwell.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_010_Stairwell.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_011_Elevator",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Elevator",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_011_Elevator.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_011_Elevator.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_011_Elevator.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_012_Basement",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Small Indoor",
+      "name": "Basement",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_012_Basement.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_012_Basement.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_012_Basement.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_013_Lobby",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Lobby",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_013_Lobby.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_013_Lobby.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_013_Lobby.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_014_Classroom",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Classroom",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_014_Classroom.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_014_Classroom.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_014_Classroom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_015_Restaurant",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Restaurant",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_015_Restaurant.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_015_Restaurant.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_015_Restaurant.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_016_Bar_Pub",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Bar / Pub",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_016_Bar_Pub.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_016_Bar_Pub.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_016_Bar_Pub.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_017_Club",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Club",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_017_Club.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_017_Club.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_017_Club.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_018_Shopping_Mall",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Shopping Mall",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_018_Shopping_Mall.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_018_Shopping_Mall.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_018_Shopping_Mall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_019_Warehouse",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Warehouse",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_019_Warehouse.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_019_Warehouse.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_019_Warehouse.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_020_Workshop",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Public Indoor",
+      "name": "Workshop",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_020_Workshop.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_020_Workshop.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_020_Workshop.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_021_Quiet_Street",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Quiet Street",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_021_Quiet_Street.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_021_Quiet_Street.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_021_Quiet_Street.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_022_Busy_City_Street",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Busy City Street",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_023_Alley",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Alley",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_023_Alley.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_023_Alley.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_023_Alley.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_024_Courtyard",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Courtyard",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_024_Courtyard.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_024_Courtyard.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_024_Courtyard.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_025_Parking_Lot",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Parking Lot",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_025_Parking_Lot.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_025_Parking_Lot.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_025_Parking_Lot.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_026_Rooftop",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Rooftop",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_026_Rooftop.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_026_Rooftop.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_026_Rooftop.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_027_Bus_Stop",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Bus Stop",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_027_Bus_Stop.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_027_Bus_Stop.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_027_Bus_Stop.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_028_Train_Platform",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Train Platform",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_028_Train_Platform.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_028_Train_Platform.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_028_Train_Platform.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_029_Station_Concourse",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Station Concourse",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_029_Station_Concourse.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_029_Station_Concourse.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_029_Station_Concourse.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_030_Airport_Curbside",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Airport Curbside",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_030_Airport_Curbside.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_030_Airport_Curbside.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_030_Airport_Curbside.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_031_Construction_Site",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Construction Site",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_031_Construction_Site.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_031_Construction_Site.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_031_Construction_Site.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_032_Stadium_Concourse",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Stadium Concourse",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_032_Stadium_Concourse.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_032_Stadium_Concourse.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_032_Stadium_Concourse.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_033_Stadium_Bowl",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Stadium Bowl",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_033_Stadium_Bowl.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_033_Stadium_Bowl.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_033_Stadium_Bowl.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_034_Tunnel_Underpass",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Urban Outdoor",
+      "name": "Tunnel / Underpass",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_034_Tunnel_Underpass.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_034_Tunnel_Underpass.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_034_Tunnel_Underpass.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_035_Compact_Car_Interior",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Compact Car Interior",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_035_Compact_Car_Interior.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_035_Compact_Car_Interior.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_035_Compact_Car_Interior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_036_Sedan_Interior",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Sedan Interior",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_036_Sedan_Interior.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_036_Sedan_Interior.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_036_Sedan_Interior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_037_Van_Interior",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Van Interior",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_037_Van_Interior.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_037_Van_Interior.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_037_Van_Interior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_038_Truck_Cab",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Truck Cab",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_038_Truck_Cab.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_038_Truck_Cab.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_038_Truck_Cab.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_039_Bus_Interior",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Bus Interior",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_039_Bus_Interior.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_039_Bus_Interior.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_039_Bus_Interior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_040_Train_Carriage",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Train Carriage",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_040_Train_Carriage.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_040_Train_Carriage.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_040_Train_Carriage.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_041_Subway_Car",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Subway Car",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_041_Subway_Car.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_041_Subway_Car.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_041_Subway_Car.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_042_Airplane_Cabin",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Airplane Cabin",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_042_Airplane_Cabin.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_042_Airplane_Cabin.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_042_Airplane_Cabin.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_043_Helicopter_Cabin",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Helicopter Cabin",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_043_Helicopter_Cabin.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_043_Helicopter_Cabin.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_043_Helicopter_Cabin.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_044_Ferry_Ship_Interior",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Vehicles",
+      "name": "Ferry / Ship Interior",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_044_Ferry_Ship_Interior.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_044_Ferry_Ship_Interior.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_044_Ferry_Ship_Interior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_045_Open_Field",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Open Field",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_045_Open_Field.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_045_Open_Field.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_045_Open_Field.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_046_Forest",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Forest",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_046_Forest.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_046_Forest.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_046_Forest.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_047_Forest_Trail",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Forest Trail",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_047_Forest_Trail.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_047_Forest_Trail.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_047_Forest_Trail.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_048_Mountain_Slope",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Mountain Slope",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_048_Mountain_Slope.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_048_Mountain_Slope.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_048_Mountain_Slope.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_049_Canyon",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Canyon",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_049_Canyon.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_049_Canyon.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_049_Canyon.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_050_Beach",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Beach",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_050_Beach.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_050_Beach.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_050_Beach.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_051_Seaside_Pier",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Seaside Pier",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_051_Seaside_Pier.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_051_Seaside_Pier.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_051_Seaside_Pier.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_052_Campsite",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Nature / Open Air",
+      "name": "Campsite",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_052_Campsite.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_052_Campsite.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_052_Campsite.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_053_Drive_Thru_Window",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Utility / Specialty",
+      "name": "Drive-Thru Window",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_053_Drive_Thru_Window.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_053_Drive_Thru_Window.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_053_Drive_Thru_Window.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_054_Security_Checkpoint",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Utility / Specialty",
+      "name": "Security Checkpoint",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_054_Security_Checkpoint.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_054_Security_Checkpoint.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_054_Security_Checkpoint.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_055_Prison_Visiting_Room",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Utility / Specialty",
+      "name": "Prison Visiting Room",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_055_Prison_Visiting_Room.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_055_Prison_Visiting_Room.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_055_Prison_Visiting_Room.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SPC_056_Phone_Booth",
+      "type": "SPACE_ENVIRONMENT",
+      "category": "Utility / Specialty",
+      "name": "Phone Booth",
+      "ui01": "UI_01/SPACE_ENVIRONMENT/SPC_056_Phone_Booth.png",
+      "ui02": "UI_02/SPACE_ENVIRONMENT/SPC_056_Phone_Booth.png",
+      "master": "Shared/SPACE_ENVIRONMENT/SPC_056_Phone_Booth.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_001_Mobile_Call_Busy_Sidewalk",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Mobile Call - Busy Sidewalk",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_001_Mobile_Call_Busy_Sidewalk.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_001_Mobile_Call_Busy_Sidewalk.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_001_Mobile_Call_Busy_Sidewalk.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_003_Office_Desk_Phone_Small_Office",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Office Desk Phone - Small Office",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_003_Office_Desk_Phone_Small_Office.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_003_Office_Desk_Phone_Small_Office.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_003_Office_Desk_Phone_Small_Office.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_006_Payphone_Street_Corner",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Payphone - Street Corner",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_006_Payphone_Street_Corner.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_006_Payphone_Street_Corner.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_006_Payphone_Street_Corner.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_007_Conference_Call_Glass_Office",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Conference Call - Glass Office",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_007_Conference_Call_Glass_Office.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_007_Conference_Call_Glass_Office.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_007_Conference_Call_Glass_Office.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_011_Walkie_Talkie_Construction_Site",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Walkie Talkie - Construction Site",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_011_Walkie_Talkie_Construction_Site.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_011_Walkie_Talkie_Construction_Site.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_011_Walkie_Talkie_Construction_Site.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_012_Police_Radio_Street_Exterior",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Police Radio - Street Exterior",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_012_Police_Radio_Street_Exterior.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_012_Police_Radio_Street_Exterior.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_012_Police_Radio_Street_Exterior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_016_Aviation_Headset_Cockpit_Style",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Aviation Headset - Cockpit Style",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_016_Aviation_Headset_Cockpit_Style.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_016_Aviation_Headset_Cockpit_Style.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_016_Aviation_Headset_Cockpit_Style.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_017_Security_Intercom_Building_Entrance",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Security Intercom - Building Entrance",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_017_Security_Intercom_Building_Entrance.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_017_Security_Intercom_Building_Entrance.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_017_Security_Intercom_Building_Entrance.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_018_Drive_Thru_Speaker_Fast_Food_Lane",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Drive-Thru Speaker - Fast Food Lane",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_018_Drive_Thru_Speaker_Fast_Food_Lane.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_018_Drive_Thru_Speaker_Fast_Food_Lane.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_018_Drive_Thru_Speaker_Fast_Food_Lane.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_021_Bullhorn_Street_Protest",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Bullhorn - Street Protest",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_021_Bullhorn_Street_Protest.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_021_Bullhorn_Street_Protest.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_021_Bullhorn_Street_Protest.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_022_Stadium_PA",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Stadium PA",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_022_Stadium_PA.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_022_Stadium_PA.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_022_Stadium_PA.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_023_Train_Station_Announcement",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Train Station Announcement",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_023_Train_Station_Announcement.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_023_Train_Station_Announcement.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_023_Train_Station_Announcement.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_027_Airplane_Cabin_PA",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Airplane Cabin PA",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_027_Airplane_Cabin_PA.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_027_Airplane_Cabin_PA.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_027_Airplane_Cabin_PA.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_041_Subway_Car_Announcement",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Subway Car Announcement",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_041_Subway_Car_Announcement.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_041_Subway_Car_Announcement.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_041_Subway_Car_Announcement.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_043_Cheap_Wireless_Speaker_In_Room",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Cheap Wireless Speaker In Room",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_043_Cheap_Wireless_Speaker_In_Room.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_043_Cheap_Wireless_Speaker_In_Room.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_043_Cheap_Wireless_Speaker_In_Room.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_045_CCTV_Security_Monitor_Audio",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "CCTV / Security Monitor Audio",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_045_CCTV_Security_Monitor_Audio.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_045_CCTV_Security_Monitor_Audio.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_045_CCTV_Security_Monitor_Audio.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_046_Cassette_Recorder_Kitchen_Table",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Cassette Recorder - Kitchen Table",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_046_Cassette_Recorder_Kitchen_Table.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_046_Cassette_Recorder_Kitchen_Table.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_046_Cassette_Recorder_Kitchen_Table.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_047_Vintage_Radio_Living_Room",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Vintage Radio - Living Room",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_047_Vintage_Radio_Living_Room.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_047_Vintage_Radio_Living_Room.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_047_Vintage_Radio_Living_Room.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_049_Flat_TV_Living_Room",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Flat TV - Living Room",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_049_Flat_TV_Living_Room.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_049_Flat_TV_Living_Room.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_049_Flat_TV_Living_Room.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_050_Baby_Monitor_Bedroom",
+      "type": "SCENE_PRESET_HERO",
+      "category": "01 Source / Emitter",
+      "name": "Baby Monitor - Bedroom",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_050_Baby_Monitor_Bedroom.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_050_Baby_Monitor_Bedroom.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_050_Baby_Monitor_Bedroom.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_037_Car_Pass_By_City_Street",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Car Pass By - City Street",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_037_Car_Pass_By_City_Street.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_037_Car_Pass_By_City_Street.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_037_Car_Pass_By_City_Street.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_040_Truck_Cab_Radio_Highway_Pull_Away",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Truck Cab Radio - Highway Pull Away",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_040_Truck_Cab_Radio_Highway_Pull_Away.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_040_Truck_Cab_Radio_Highway_Pull_Away.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_040_Truck_Cab_Radio_Highway_Pull_Away.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_042_Bus_PA_Curb_Arrival",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Bus PA - Curb Arrival",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_042_Bus_PA_Curb_Arrival.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_042_Bus_PA_Curb_Arrival.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_042_Bus_PA_Curb_Arrival.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_051_Voice_Approaches_Hallway",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Voice Approaches - Hallway",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_051_Voice_Approaches_Hallway.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_051_Voice_Approaches_Hallway.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_051_Voice_Approaches_Hallway.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_052_Voice_Walks_Past_Quiet_Street",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Voice Walks Past - Quiet Street",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_052_Voice_Walks_Past_Quiet_Street.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_052_Voice_Walks_Past_Quiet_Street.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_052_Voice_Walks_Past_Quiet_Street.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_053_Voice_Leaves_Down_Corridor",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Voice Leaves - Down Corridor",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_053_Voice_Leaves_Down_Corridor.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_053_Voice_Leaves_Down_Corridor.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_053_Voice_Leaves_Down_Corridor.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_054_Train_Approaches_Platform",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Train PA Approaches - Platform",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_054_Train_Approaches_Platform.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_054_Train_Approaches_Platform.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_054_Train_Approaches_Platform.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_055_Train_Passes_Platform",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Train PA Pass By - Platform",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_055_Train_Passes_Platform.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_055_Train_Passes_Platform.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_055_Train_Passes_Platform.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_056_Subway_Announcement_Pulls_Away",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Subway Announcement - Pull Away",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_056_Subway_Announcement_Pulls_Away.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_056_Subway_Announcement_Pulls_Away.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_056_Subway_Announcement_Pulls_Away.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_057_Bullhorn_Marcher_Approaches",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Bullhorn Marcher Approaches",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_057_Bullhorn_Marcher_Approaches.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_057_Bullhorn_Marcher_Approaches.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_057_Bullhorn_Marcher_Approaches.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_058_Portable_PA_Pass_By_Courtyard",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Portable PA Pass By - Courtyard",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_058_Portable_PA_Pass_By_Courtyard.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_058_Portable_PA_Pass_By_Courtyard.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_058_Portable_PA_Pass_By_Courtyard.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_059_Car_Radio_Closed_Window_Pass_By",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Car Radio Through Window - Pass By",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_059_Car_Radio_Closed_Window_Pass_By.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_059_Car_Radio_Closed_Window_Pass_By.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_059_Car_Radio_Closed_Window_Pass_By.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_060_Phone_In_Backpack_Walk_By_Concourse",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Phone In Backpack - Walk By Concourse",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_060_Phone_In_Backpack_Walk_By_Concourse.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_060_Phone_In_Backpack_Walk_By_Concourse.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_060_Phone_In_Backpack_Walk_By_Concourse.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_061_Bus_PA_Pulls_Away_From_Stop",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Bus PA Pull Away - Bus Stop",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_061_Bus_PA_Pulls_Away_From_Stop.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_061_Bus_PA_Pulls_Away_From_Stop.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_061_Bus_PA_Pulls_Away_From_Stop.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_062_Car_Door_Speaker_Approaches_Parking_Lot",
+      "type": "SCENE_PRESET_HERO",
+      "category": "02 Motion / Distance",
+      "name": "Car Door Speaker Approaches - Parking Lot",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_062_Car_Door_Speaker_Approaches_Parking_Lot.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_062_Car_Door_Speaker_Approaches_Parking_Lot.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_062_Car_Door_Speaker_Approaches_Parking_Lot.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_029_Upstairs_TV_Through_Wall",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Upstairs TV Through Wall",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_029_Upstairs_TV_Through_Wall.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_029_Upstairs_TV_Through_Wall.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_029_Upstairs_TV_Through_Wall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_033_Voice_Behind_Closed_Wooden_Door",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Voice Behind Closed Wooden Door",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_033_Voice_Behind_Closed_Wooden_Door.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_033_Voice_Behind_Closed_Wooden_Door.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_033_Voice_Behind_Closed_Wooden_Door.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_036_Radio_In_Car_Trunk",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Radio In Car Trunk",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_036_Radio_In_Car_Trunk.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_036_Radio_In_Car_Trunk.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_036_Radio_In_Car_Trunk.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_063_ADR_Small_Office",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "ADR Match - Small Office",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_063_ADR_Small_Office.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_063_ADR_Small_Office.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_063_ADR_Small_Office.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_064_Direct_Voice_Bathroom",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Bathroom",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_064_Direct_Voice_Bathroom.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_064_Direct_Voice_Bathroom.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_064_Direct_Voice_Bathroom.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_065_Direct_Voice_Stairwell",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Stairwell",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_065_Direct_Voice_Stairwell.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_065_Direct_Voice_Stairwell.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_065_Direct_Voice_Stairwell.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_066_Direct_Voice_Warehouse",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Warehouse",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_066_Direct_Voice_Warehouse.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_066_Direct_Voice_Warehouse.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_066_Direct_Voice_Warehouse.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_067_Direct_Voice_Tunnel_Underpass",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Tunnel / Underpass",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_067_Direct_Voice_Tunnel_Underpass.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_067_Direct_Voice_Tunnel_Underpass.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_067_Direct_Voice_Tunnel_Underpass.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_068_Direct_Voice_Open_Field",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Open Field",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_068_Direct_Voice_Open_Field.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_068_Direct_Voice_Open_Field.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_068_Direct_Voice_Open_Field.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_069_Direct_Voice_Forest",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Forest",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_069_Direct_Voice_Forest.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_069_Direct_Voice_Forest.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_069_Direct_Voice_Forest.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_070_Direct_Voice_Canyon",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Canyon",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_070_Direct_Voice_Canyon.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_070_Direct_Voice_Canyon.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_070_Direct_Voice_Canyon.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_071_Direct_Voice_Beach",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Beach",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_071_Direct_Voice_Beach.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_071_Direct_Voice_Beach.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_071_Direct_Voice_Beach.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_072_Direct_Voice_Sedan_Interior",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Sedan Interior",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_072_Direct_Voice_Sedan_Interior.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_072_Direct_Voice_Sedan_Interior.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_072_Direct_Voice_Sedan_Interior.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_073_Direct_Voice_Airplane_Cabin",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Direct Voice - Airplane Cabin",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_073_Direct_Voice_Airplane_Cabin.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_073_Direct_Voice_Airplane_Cabin.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_073_Direct_Voice_Airplane_Cabin.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_074_Voice_Behind_Concrete_Wall",
+      "type": "SCENE_PRESET_HERO",
+      "category": "03 Space / Environment",
+      "name": "Voice Behind Concrete Wall",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_074_Voice_Behind_Concrete_Wall.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_074_Voice_Behind_Concrete_Wall.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_074_Voice_Behind_Concrete_Wall.png",
+      "status": "art-required-research-v3"
+    },
+    {
+      "id": "SCN_002_Mobile_Call_Weak_Signal",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Phone / Telephony",
+      "name": "Mobile Call - Weak Signal",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_002_Mobile_Call_Weak_Signal.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_002_Mobile_Call_Weak_Signal.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_002_Mobile_Call_Weak_Signal.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_004_Hotel_Phone_Corridor_Spill",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Phone / Telephony",
+      "name": "Hotel Phone - Corridor Spill",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_004_Hotel_Phone_Corridor_Spill.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_004_Hotel_Phone_Corridor_Spill.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_004_Hotel_Phone_Corridor_Spill.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_005_Prison_Visiting_Phone",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Phone / Telephony",
+      "name": "Prison Visiting Phone",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_005_Prison_Visiting_Phone.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_005_Prison_Visiting_Phone.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_005_Prison_Visiting_Phone.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_008_Cordless_Phone_Living_Room",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Phone / Telephony",
+      "name": "Cordless Phone - Living Room",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_008_Cordless_Phone_Living_Room.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_008_Cordless_Phone_Living_Room.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_008_Cordless_Phone_Living_Room.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_009_Phone_In_Pocket_Busy_Street",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Phone / Telephony",
+      "name": "Phone In Pocket - Busy Street",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_009_Phone_In_Pocket_Busy_Street.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_009_Phone_In_Pocket_Busy_Street.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_009_Phone_In_Pocket_Busy_Street.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_010_Phone_In_Backpack_Station_Concourse",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Phone / Telephony",
+      "name": "Phone In Backpack - Station Concourse",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_010_Phone_In_Backpack_Station_Concourse.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_010_Phone_In_Backpack_Station_Concourse.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_010_Phone_In_Backpack_Station_Concourse.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_013_Dispatch_Radio_Vehicle_Interior",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Radio / Comms",
+      "name": "Dispatch Radio - Vehicle Interior",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_013_Dispatch_Radio_Vehicle_Interior.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_013_Dispatch_Radio_Vehicle_Interior.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_013_Dispatch_Radio_Vehicle_Interior.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_014_Helicopter_Intercom_Clear",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Radio / Comms",
+      "name": "Helicopter Intercom - Clear",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_014_Helicopter_Intercom_Clear.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_014_Helicopter_Intercom_Clear.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_014_Helicopter_Intercom_Clear.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_015_Helicopter_Intercom_Half_Understandable",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Radio / Comms",
+      "name": "Helicopter Intercom - Half Understandable",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_015_Helicopter_Intercom_Half_Understandable.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_015_Helicopter_Intercom_Half_Understandable.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_015_Helicopter_Intercom_Half_Understandable.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_019_Radio_In_Back_Office",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Radio / Comms",
+      "name": "Radio In Back Office",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_019_Radio_In_Back_Office.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_019_Radio_In_Back_Office.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_019_Radio_In_Back_Office.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_020_Car_Radio_Out_of_Range",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Radio / Comms",
+      "name": "Car Radio - Out of Range",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_020_Car_Radio_Out_of_Range.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_020_Car_Radio_Out_of_Range.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_020_Car_Radio_Out_of_Range.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_024_Airport_Gate_Announcement",
+      "type": "SCENE_PRESET_HERO",
+      "category": "PA / Public Address",
+      "name": "Airport Gate Announcement",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_024_Airport_Gate_Announcement.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_024_Airport_Gate_Announcement.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_024_Airport_Gate_Announcement.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_025_Ceiling_PA_Shopping_Mall",
+      "type": "SCENE_PRESET_HERO",
+      "category": "PA / Public Address",
+      "name": "Ceiling PA - Shopping Mall",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_025_Ceiling_PA_Shopping_Mall.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_025_Ceiling_PA_Shopping_Mall.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_025_Ceiling_PA_Shopping_Mall.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_026_Bus_Interior_Announcement",
+      "type": "SCENE_PRESET_HERO",
+      "category": "PA / Public Address",
+      "name": "Bus Interior Announcement",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_026_Bus_Interior_Announcement.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_026_Bus_Interior_Announcement.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_026_Bus_Interior_Announcement.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_028_Captain_Announcement",
+      "type": "SCENE_PRESET_HERO",
+      "category": "PA / Public Address",
+      "name": "Captain Announcement",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_028_Captain_Announcement.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_028_Captain_Announcement.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_028_Captain_Announcement.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_030_Party_At_The_Neighbors",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Through / Behind / Cover",
+      "name": "Party At The Neighbors",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_030_Party_At_The_Neighbors.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_030_Party_At_The_Neighbors.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_030_Party_At_The_Neighbors.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_031_Restaurant_Kitchen_Through_Door",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Through / Behind / Cover",
+      "name": "Restaurant Kitchen Through Door",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_031_Restaurant_Kitchen_Through_Door.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_031_Restaurant_Kitchen_Through_Door.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_031_Restaurant_Kitchen_Through_Door.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_032_TV_In_Living_Room_From_Hallway",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Through / Behind / Cover",
+      "name": "TV In Living Room From Hallway",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_032_TV_In_Living_Room_From_Hallway.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_032_TV_In_Living_Room_From_Hallway.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_032_TV_In_Living_Room_From_Hallway.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_034_Voice_Behind_Glass_Window",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Through / Behind / Cover",
+      "name": "Voice Behind Glass Window",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_034_Voice_Behind_Glass_Window.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_034_Voice_Behind_Glass_Window.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_034_Voice_Behind_Glass_Window.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_035_Phone_Inside_Suitcase",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Through / Behind / Cover",
+      "name": "Phone Inside Suitcase",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_035_Phone_Inside_Suitcase.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_035_Phone_Inside_Suitcase.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_035_Phone_Inside_Suitcase.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_038_Car_Pass_By_Parking_Lot",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Vehicle / Motion",
+      "name": "Car Pass By - Parking Lot",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_038_Car_Pass_By_Parking_Lot.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_038_Car_Pass_By_Parking_Lot.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_038_Car_Pass_By_Parking_Lot.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_039_Car_Door_Speaker_Slow_Drive_By",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Vehicle / Motion",
+      "name": "Car Door Speaker - Slow Drive By",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_039_Car_Door_Speaker_Slow_Drive_By.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_039_Car_Door_Speaker_Slow_Drive_By.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_039_Car_Door_Speaker_Slow_Drive_By.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_044_Toy_Recorder_Bedroom",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Special / Lo-Fi / Consumer",
+      "name": "Toy Recorder - Bedroom",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_044_Toy_Recorder_Bedroom.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_044_Toy_Recorder_Bedroom.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_044_Toy_Recorder_Bedroom.png",
+      "status": "art-approved-v2"
+    },
+    {
+      "id": "SCN_048_Small_Guitar_Combo_Garage_Room",
+      "type": "SCENE_PRESET_HERO",
+      "category": "Special / Lo-Fi / Consumer",
+      "name": "Small Guitar Combo - Garage Room",
+      "ui01": "UI_01/SCENE_PRESET_HERO/SCN_048_Small_Guitar_Combo_Garage_Room.png",
+      "ui02": "UI_02/SCENE_PRESET_HERO/SCN_048_Small_Guitar_Combo_Garage_Room.png",
+      "master": "Shared/SCENE_PRESET_HERO/SCN_048_Small_Guitar_Combo_Garage_Room.png",
+      "status": "art-approved-v2"
+    }
+  ]
+}

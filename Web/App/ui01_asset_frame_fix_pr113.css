@@ -1,0 +1,104 @@
+/* PR #113 UI_01 REF raster assembly checkpoint: two user-marked regions.
+   True Runtime PNG pieces retain corners and state, while waveform/seek stay live.
+   UI_02, UI geometry, audio algorithms and ReferenceSheets are untouched. */
+
+/* Preserve source PNG corner radii instead of stretching its 192px raster to 950px.
+   The border-image is a nine-slice of the approved RT_WAVEFORM_STRIP_BG asset. */
+body.ui-01 .scene-waveform-strip{
+  box-sizing:border-box;
+  height:38px!important;
+  margin:0 9px 4px!important;
+  border:7px solid transparent!important;
+  border-image-source:url("../../Assets/UI/Runtime/UI_01/Scene/RT_WAVEFORM_STRIP_BG.png")!important;
+  border-image-slice:16 18 16 18 fill!important;
+  border-image-width:7px 9px 7px 9px!important;
+  border-image-repeat:stretch!important;
+  background:#08151b!important;
+  border-radius:0!important;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+body.ui-01 .scene-waveform-strip::before{
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  z-index:1;
+  top:2px;bottom:12px;left:7px;right:7px;
+  background:
+    repeating-linear-gradient(90deg,rgba(98,159,178,.30) 0 1px,transparent 1px 30px),
+    linear-gradient(0deg,transparent calc(50% - .5px),rgba(123,183,204,.30) 50%,transparent calc(50% + .5px));
+  opacity:.7;
+}
+body.ui-01 .scene-waveform-strip canvas{
+  z-index:2;
+  top:3px!important;left:7px!important;right:7px!important;bottom:12px!important;
+  width:calc(100% - 14px)!important;
+  height:calc(100% - 15px)!important;
+  opacity:.95!important;
+}
+body.ui-01 .scene-waveform-strip .scene-time-ruler{
+  z-index:4;
+  left:7px;right:7px;bottom:0;height:11px;
+  background:linear-gradient(0deg,rgba(7,18,25,.92),rgba(9,21,28,.48));
+  padding:0 5px;
+  box-shadow:inset 0 1px rgba(78,147,175,.28);
+  color:#a4c2ce;
+  font-size:8px;
+}
+body.ui-01 .scene-waveform-strip .scene-time-cursor{
+  z-index:3;
+  top:2px;bottom:12px;
+  background:#e4f7fb;
+  box-shadow:0 0 5px rgba(101,205,244,.65);
+}
+
+/* REF specifies three distinct 78/82/79px cap states on the bottom baseline.
+   Raster state is the existing Runtime/Common/Controls SEGMENT series. */
+body.ui-01 .macro-motion .macro-mode-row{
+  position:absolute;
+  left:12px;right:12px;bottom:16px;
+  margin:0!important;
+  padding:0;
+  z-index:5;
+  display:grid!important;
+  grid-template-columns:78fr 82fr 79fr;
+  gap:4px;
+  align-items:stretch;
+  height:36px;
+}
+body.ui-01 .macro-motion .macro-mode-row button{
+  box-sizing:border-box;
+  flex:none!important;
+  width:100%;
+  min-width:0;
+  height:36px!important;
+  padding:0 4px!important;
+  font-size:8px!important;
+  font-weight:500;
+  letter-spacing:.02em;
+  line-height:36px;
+  border:0!important;
+  border-radius:0!important;
+  color:#b7cbd4;
+  background-color:transparent!important;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png")!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:100% 100%!important;
+  box-shadow:none!important;
+  cursor:pointer;
+}
+body.ui-01 .macro-motion .macro-mode-row button:hover,
+body.ui-01 .macro-motion .macro-mode-row button:focus-visible{
+  color:#f0f9fc;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_HOVER.png")!important;
+  outline:0;
+}
+body.ui-01 .macro-motion .macro-mode-row button.active{
+  color:#ecfaff;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png")!important;
+}
+body.ui-01 .macro-motion .macro-mode-row button:active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png")!important;
+}

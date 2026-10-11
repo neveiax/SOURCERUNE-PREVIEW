@@ -1,0 +1,32 @@
+/* Mouse-only / keyboard-friendly floating EQ numeric editor.
+   Attached directly to BODY so neither UI_01 nor UI_02 clip the popup.
+   All panel/graph/native reference geometry remains unchanged. */
+.sr-eq-float{
+  position:fixed;z-index:350;width:158px;box-sizing:border-box;
+  color:#d6e5ec;border:1px solid #758b95;border-radius:5px;
+  background:#101a20;box-shadow:0 6px 15px #000a,0 0 0 1px #1b2a31;
+  padding:4px 6px 6px;user-select:none;touch-action:none;
+  font-family:"Segoe UI",Arial,sans-serif;font-size:11px;
+}
+.sr-eq-float[hidden]{display:none!important}
+.sr-eq-float-head{height:20px;display:flex;align-items:center;justify-content:space-between;
+  font:600 10px/20px "Segoe UI",Arial,sans-serif;color:#e7eff4;
+  letter-spacing:.03em;border-bottom:1px solid #344651;margin-bottom:4px}
+.sr-eq-float-head button{
+  color:#b9cad2;cursor:pointer;background:none;border:0;padding:0;
+  width:20px;height:19px;line-height:17px;font-size:15px}
+.sr-eq-float-head button:hover,.sr-eq-float-head button:focus-visible{color:#fff}
+.sr-eq-float-row{height:23px;display:flex;align-items:center;justify-content:space-between;gap:5px}
+.sr-eq-float-row>span{flex:0 0 42px;font:600 9px "Segoe UI",Arial,sans-serif;color:#91a8b4;pointer-events:none}
+.sr-eq-float-row input{
+  box-sizing:border-box;flex:1 1 auto;width:90px;min-width:0;height:20px;
+  padding:1px 4px;text-align:right;border:1px solid transparent;border-radius:2px;
+  background:#17252d;color:#f1f5f7;
+  font:600 11px/16px ui-monospace,Consolas,monospace;
+  cursor:ns-resize;touch-action:none;user-select:text}
+.sr-eq-float-row input:hover{border-color:#657d89}
+.sr-eq-float-row input:focus{outline:0;border-color:#77bace;background:#0b1921;cursor:text}
+body.ui-01 .macro-eq-svg [data-eq-node],
+body.ui-02 .macro-eq-svg [data-eq-node]{cursor:grab}
+body.ui-01 .macro-eq-svg [data-eq-node]:active,
+body.ui-02 .macro-eq-svg [data-eq-node]:active{cursor:grabbing}

@@ -1,0 +1,21 @@
+/* SOURCERUNE viewport fit V1
+   Preserve approved UI_01/UI_02 reference geometry while fitting the WEB shell
+   into the current browser viewport. No DSP/state changes. */
+html{width:100%;height:100%}
+body.ui-01,body.ui-02{
+  width:100vw;
+  height:100vh;
+  min-width:0!important;
+  min-height:0!important;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+body.ui-01 .app,body.ui-02 .app{
+  flex:0 0 auto;
+  transform-origin:top center;
+  will-change:transform;
+}
+body.ui-01 .app{width:1499px;height:807px;min-height:807px}
+body.ui-02 .app{width:1672px;height:941px;min-height:941px}

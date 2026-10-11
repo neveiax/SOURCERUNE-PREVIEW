@@ -1,36 +1,14 @@
-# SOURCERUNE — Public Visual Preview
+# SOURCERUNE — Public Original Web UI (no audio processor)
 
-A standalone **visual** preview for UI_01 and UI_02, with switching and image zoom. The new **Interaction Lab** provides separate live UI-only controls for module selection, bypass, six macro values, undo/redo, reset and JSON export. These values are display state and never run audio processing. It does not contain or expose processing code, WASM, audio worklets, product research documents, the private specification, or original repository Git history.
+The live site now serves the **original SOURCERUNE Web/App index, CSS and UI controls** from pinned SOURCE main `c035db4d`, instead of an independently recreated UI.
 
-This is **not a full interactive plugin demo or audio processor**. The large reference screenshots remain unchanged, but the four confirmed module-card bounds are independent, opaque HTML controls synchronized with Interaction Lab. The rest of the reference screenshot stays unchanged. The separate controls in Interaction Lab are functional as a state sandbox only; adjustments are not rendered back onto the screenshot.
+- Live path: `Web/App/index.html` (root redirects automatically).
+- UI artwork: all pinned public PNGs copied byte-exact into `Assets/UI/`.
+- GUI JavaScript/CSS: source-exact except narrowly scoped public-audio disabling and public labels.
+- DSP C++/AudioWorklet/WASM: **not copied**.
+- Factory sound recipes: removed from public preset JSON; preset names, artwork and selection remain.
+- Play/audio meters/spectrum driven by audio are **disabled**, not secretly implemented or simulated. Display-only EQ curve and other original visual frontend source remain browser-visible.
+- Source SHA and per-file Git hashes: `original_web_port_manifest.json`.
+- Secure verification: `scripts/check_original_port.py`, `scripts/check_allowlist.py`.
 
-### Publish
-
-1. Merge the standalone site and its allowlist guard.
-2. The one-time GitHub Actions workflow downloads *only two pinned, already-public UI render PNGs*, validates their exact Git blob SHA, and commits them to this repository.
-3. In repository **Settings → Pages**, choose **Deploy from a branch**, branch **main**, folder **/(root)**, and save. The public website will then use the PNG files stored in this repository and not rely on continued access to the original source.
-4. Verify the website anonymously before changing the original SOURCERUNE repository visibility.
-
-### Security and limits
-
-Public paths are enforced by `scripts/check_allowlist.py`; do not weaken it merely to make a build pass. Any full interactive public implementation requires separate review for browser-visible IP, audio processing access control, and UI parity. The original SOURCERUNE must remain intact and **must not become Private solely on the basis of this static preview** if interactive Web testing is still required.
-
-### Approved module artwork
-
-The UI-only Interaction Lab uses 50 pinned, previously public `art-approved-v2` PNGs from the four core module categories across both interfaces. `assets/approved_ui_manifest.json` supplies per-file source paths, sizes and immutable Git blob SHAs. The workflow verifies and stores only this allowlisted art inside the clean Preview repo; there is no cross-repository runtime dependency after the one-time capture. Assets change visually when you select modules. The original UI screenshot remains fixed; audio processing and proprietary implementation stay excluded.
-
-### Direct card controls
-
-The UI_01 and UI_02 previews now have four independently rendered HTML module cards with approved source art, native model selectors, previous/next controls, and editor focus. UI_01 shows a bypass switch on each card; UI_02 keeps bypass in Interaction Lab per its public UI template. Geometry is fail-closed if the displayed screenshot's natural dimensions differ from the approved REF shell. The HTML cards are an incremental public UI-only layer, **not** full pixel parity, true EQ/spectrum DSP or VST3 audio.
-
-### Native module-card milestone (2026-10-11)
-
-Each of eight confirmed card regions now uses a real, focusable HTML module component instead of the old transparent hotspot over a drawn card. The original screenshot remains a static reference outside those four card regions. Browser UI state is shared, including model selection, approval-pinned art, bypass in the correct UI, undo/redo, zoom, and layout switching. Internal styling is not yet one-pixel REF-parity, full dynamic EQ/spectrum, or a real audio plugin.
-
-### Native public macro panels (2026-10-11)
-
-The UI_01 bottom strip exposes six native HTML amount controls for MOTION, BAD SIGNAL, CONDITION, INTELLIGIBILITY, AMBIENCE and MIX. UI_02 exposes four confirmed bottom panels: BAD SIGNAL, CONDITION, INTELLIGIBILITY and MIX. All ten panels use confirmed outer bounds from public REF JSON and the same UI-only state/Undo/Redo as Interaction Lab. The public dial is a visualization of the range input, not a DSP knob: no audio or EQ filtering is performed. EQ/TONE, motion deck, ambience and the remaining screenshot areas are deliberately not reimplemented or advertised as functioning.
-
-### UI_02 Motion and Ambience UI-only controls (2026-10-11)
-
-The UI_02 center MOTION/DISTANCE and right AMBIENCE panels now expose native HTML controls based on the previously published UI contract: five motion modes, UI position, three distance markers, speed, Doppler display amount, width/perspective, ten ambience choices, amount, level, duck, seed and UI-only bypass. The outer bounds are from the confirmed UI_02 REF (Motion x356/y444 972x283; Ambience x1337/y380 322x350); the internal geometry remains approximate and is not REF pixel-level parity. Existing v1 browser state is migrated safely. These are *display-only values*; no signal, motion simulation, ducking, ambience generator, reverb, or audio processing runs in Public Preview.
+The prior exploratory HTML preview remains available in legacy root files for rollback but is **not** the primary UI. Full actual audio testing must use the private source environment. Do not change the original repository to Private until current anonymous browser layout tests and private audio test path are verified.

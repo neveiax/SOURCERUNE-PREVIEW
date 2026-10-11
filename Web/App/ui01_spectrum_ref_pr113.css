@@ -1,0 +1,63 @@
+/* UI_01 Spectrum (REF U01-10). Analysis only, no audio routing or DSP change. */
+body.ui-01 .analysis-panel .tabs{
+  align-items:center;
+  gap:0;
+  padding-right:5px;
+}
+body.ui-01 .analysis-rta-controls{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-left:auto;
+  height:100%;
+  flex-shrink:0;
+}
+body.ui-01 .analysis-rta-controls button,
+body.ui-01 .analysis-rta-controls .spectrum-channel-label{
+  flex:0 0 auto;
+  box-sizing:border-box;
+  height:29px;
+  padding:0 7px;
+  font:8px ui-monospace,Consolas,monospace;
+  color:#9eb7c2;
+  border:0;
+  border-radius:0;
+  letter-spacing:.02em;
+  background-color:transparent;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+}
+body.ui-01 .analysis-rta-controls button{cursor:pointer}
+body.ui-01 .analysis-rta-controls button[data-spectrum-source]{width:63px}
+body.ui-01 .analysis-rta-controls button[data-spectrum-rta]{width:44px}
+body.ui-01 .analysis-rta-controls button[data-spectrum-smoothing]{width:49px}
+body.ui-01 .analysis-rta-controls .spectrum-channel-label{
+  width:63px;line-height:29px;text-align:center;
+  color:#bad0da;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png");
+}
+body.ui-01 .analysis-rta-controls button:hover,
+body.ui-01 .analysis-rta-controls button:focus-visible{
+  color:#edf9fc;
+  outline:0;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_HOVER.png");
+}
+body.ui-01 .analysis-rta-controls button.active{
+  color:#edfbff;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png");
+}
+body.ui-01 .analysis-rta-controls button:active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png");
+}
+body.ui-02 .analysis-rta-controls{display:none}
+
+/* Optical correction: inherited .tabs button min-width:116px must NOT stretch
+   the five REF-sized analyser controls. Approved scan has widths ~74/72/38/48/88. */
+body.ui-01 .analysis-rta-controls button{min-width:0!important}
+body.ui-01 .analysis-rta-controls button[data-spectrum-source="PRE"]{width:74px}
+body.ui-01 .analysis-rta-controls button[data-spectrum-source="POST"]{width:72px}
+body.ui-01 .analysis-rta-controls button[data-spectrum-rta]{width:38px}
+body.ui-01 .analysis-rta-controls button[data-spectrum-smoothing]{width:48px}
+body.ui-01 .analysis-rta-controls .spectrum-channel-label{width:88px}

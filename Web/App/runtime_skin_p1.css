@@ -1,0 +1,136 @@
+/* SOURCERUNE Runtime Skin P1 V1
+   Modular PNG runtime pieces only. Dynamic values, paths, graphs and meters remain code-driven. */
+
+:root{
+  --rt-p1-root:"../../Assets/UI/Runtime";
+}
+
+/* Brand mark replaces CSS placeholder geometry. */
+.brand-mark{
+  width:34px;height:34px;border:0!important;transform:none!important;
+  background:url("../../Assets/UI/Runtime/Common/Brand/RT_LOGO_MARK.png") center/contain no-repeat;
+}
+.brand-mark:after{display:none!important}
+
+/* UI_01 global bars use reusable 9-slice-style raster chrome. */
+body.ui-01 .presetbar{
+  background-color:#0d1215;
+  background-image:url("../../Assets/UI/Runtime/UI_01/Global/RT_PRESETBAR_BG.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+body.ui-01 .runtime-strip{
+  background-color:#0a0f12;
+  background-image:url("../../Assets/UI/Runtime/UI_01/Global/RT_RUNTIME_STRIP_BG.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+
+/* Reusable dividers. */
+.runtime-strip>div,.motion-readouts>div,.meter-values>div,.tabs{
+  border-color:transparent;
+}
+.runtime-strip>div:not(:last-child),.motion-readouts>div:not(:last-child){
+  border-right:0;
+  background-image:url("../../Assets/UI/Runtime/Common/Shell/RT_SECTION_DIVIDER_V.png");
+  background-position:right center;background-size:4px 100%;background-repeat:no-repeat;
+}
+.meter-values>div,.tabs{
+  background-image:url("../../Assets/UI/Runtime/Common/Shell/RT_SECTION_DIVIDER_H.png");
+  background-position:left bottom;background-size:100% 4px;background-repeat:no-repeat;
+}
+
+/* Dropdown caret stays separate from label/text and cap. */
+select{
+  appearance:none;-webkit-appearance:none;
+  background-image:
+    url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CARET_IDLE.png"),
+    url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_IDLE.png");
+  background-position:right 8px center,center;
+  background-size:16px 16px,100% 100%;
+  background-repeat:no-repeat,no-repeat;
+  padding-right:30px!important;
+}
+select:hover,select:focus{
+  background-image:
+    url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CARET_HOVER.png"),
+    url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_HOVER.png");
+}
+
+/* Real reusable checkbox art; browser still owns checked/disabled state. */
+input[type="checkbox"]{
+  appearance:none;-webkit-appearance:none;
+  width:16px;height:16px;min-width:16px;margin:0;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_OFF.png") center/contain no-repeat;
+  vertical-align:middle;cursor:pointer;
+}
+input[type="checkbox"]:checked{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_ON.png");
+}
+input[type="checkbox"]:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_DISABLED.png");
+  cursor:default;
+}
+
+/* Module icons are independent assets; semantic photos remain independent too. */
+.module-meta span,.macro h3{
+  display:flex;align-items:center;gap:7px;
+}
+.module-meta span:before,.macro h3:before{
+  content:"";display:inline-block;width:19px;height:19px;flex:0 0 19px;
+  background-position:center;background-size:contain;background-repeat:no-repeat;
+  opacity:.9;
+}
+.module-card[data-type="SOURCE"] .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SOURCE_DEFAULT.png")}
+.module-card[data-type="SOURCE"]:hover .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SOURCE_ACTIVE.png")}
+.module-card[data-type="TRANSMISSION"] .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_TRANSMISSION_DEFAULT.png")}
+.module-card[data-type="TRANSMISSION"]:hover .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_TRANSMISSION_ACTIVE.png")}
+.module-card[data-type="WALL_COVER"] .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_WALL_DEFAULT.png")}
+.module-card[data-type="WALL_COVER"]:hover .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_WALL_ACTIVE.png")}
+.module-card[data-type="SPACE_ENVIRONMENT"] .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SPACE_DEFAULT.png")}
+.module-card[data-type="SPACE_ENVIRONMENT"]:hover .module-meta span:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SPACE_ACTIVE.png")}
+
+.macro[data-open="MOTION"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MOTION_DEFAULT.png")}
+.macro[data-open="MOTION"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MOTION_ACTIVE.png")}
+.macro[data-open="TRANSMISSION"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_BADSIGNAL_DEFAULT.png")}
+.macro[data-open="TRANSMISSION"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_BADSIGNAL_ACTIVE.png")}
+.macro[data-open="CONDITION"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_CONDITION_DEFAULT.png")}
+.macro[data-open="CONDITION"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_CONDITION_ACTIVE.png")}
+.macro[data-open="INTELLIGIBILITY"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_INTELLIGIBILITY_DEFAULT.png")}
+.macro[data-open="INTELLIGIBILITY"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_INTELLIGIBILITY_ACTIVE.png")}
+.macro[data-open="AMBIENCE"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_AMBIENCE_DEFAULT.png")}
+.macro[data-open="AMBIENCE"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_AMBIENCE_ACTIVE.png")}
+.macro[data-open="MIX"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MIX_DEFAULT.png")}
+.macro[data-open="MIX"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MIX_ACTIVE.png")}
+.macro[data-open="EQ_TONE"] h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_EQ_DEFAULT.png")}
+.macro[data-open="EQ_TONE"].selected h3:before{background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_EQ_ACTIVE.png")}
+
+/* Meter remains live height; raster segment only supplies LED texture. */
+.meter-fill{
+  background:
+    linear-gradient(to top,rgba(77,145,157,.96) 0 75%,rgba(190,145,86,.98) 75% 92%,rgba(185,92,83,.98) 92%),
+    url("../../Assets/UI/Runtime/Common/Meter/RT_METER_SEGMENT.png") center bottom/100% 7px repeat-y;
+  background-blend-mode:multiply,normal;
+}
+
+/* Scene grid/markers are image components; geometry remains SVG/runtime. */
+body.ui-01 #sceneSvg{background-color:#0b1115}
+#motionCarGlyph{pointer-events:none;opacity:.92}
+
+/* Tool assets bound to existing folder-like actions without baking button labels. */
+#savePresetBtn,#presetVisualsBtn{
+  background-repeat:no-repeat,no-repeat;
+  background-position:8px center,center;
+  background-size:16px 16px,100% 100%;
+  padding-left:29px;
+}
+#savePresetBtn,#presetVisualsBtn{
+  background-image:
+    url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FOLDER_IDLE.png"),
+    url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png");
+}
+#savePresetBtn:hover,#presetVisualsBtn:hover{
+  background-image:
+    url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FOLDER_HOVER.png"),
+    url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png");
+}

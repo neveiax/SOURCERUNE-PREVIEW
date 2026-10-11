@@ -1,0 +1,64 @@
+/* SOURCERUNE Reference Geometry Lock V7
+   UI_01 left semantic-card vertical geometry from direct REF pixel scan.
+   No DSP/state/preset changes. */
+
+body.ui-01 .module-rail{
+  height:520px;
+  gap:0;
+}
+body.ui-01 .module-card[data-type="SOURCE"]{
+  height:136px;
+  min-height:136px;
+  margin-bottom:7px;
+}
+body.ui-01 .module-card[data-type="TRANSMISSION"]{
+  height:132px;
+  min-height:132px;
+  margin-bottom:7px;
+}
+body.ui-01 .module-card[data-type="WALL_COVER"]{
+  height:132px;
+  min-height:132px;
+  margin-bottom:6px;
+}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"]{
+  height:97px;
+  min-height:97px;
+  margin-bottom:0;
+}
+
+
+/* Checkpoint 27: confirmed UI_01 left-card internal REF rectangles. */
+body.ui-01 .module-card .module-art{
+  left:8px;
+  right:64px;
+}
+body.ui-01 .module-card .module-actions{
+  right:5px;
+}
+body.ui-01 .module-card .module-actions [data-edit]{
+  width:48px;
+  height:34px;
+  padding:0;
+}
+body.ui-01 .module-card .module-cycle-next{
+  right:5px;
+  width:49px;
+  transform:none;
+}
+
+body.ui-01 .module-card[data-type="SOURCE"] .module-art{top:56px;bottom:6px}
+body.ui-01 .module-card[data-type="SOURCE"] .module-actions{top:14px}
+body.ui-01 .module-card[data-type="SOURCE"] .module-cycle-next{top:57px;height:72px}
+
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-art{top:55px;bottom:5px}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-actions{top:12px}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-cycle-next{top:56px;height:70px}
+
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-art{top:56px;bottom:5px}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-actions{top:13px}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-cycle-next{top:57px;height:70px}
+
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-art{top:54px;bottom:6px}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-actions{top:11px}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-cycle-next{top:54px;height:36px}

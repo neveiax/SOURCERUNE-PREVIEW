@@ -1,0 +1,725 @@
+{
+  "schema": 1,
+  "groups": {
+    "SOURCE": {
+      "label": "SOURCE",
+      "assetType": "SOURCE",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "sourceCharacter",
+          "label": "SOURCE CHARACTER",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        }
+      ]
+    },
+    "TRANSMISSION": {
+      "label": "TRANSMISSION",
+      "assetType": "TRANSMISSION",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "badSignal",
+          "label": "BAD SIGNAL",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 20
+        },
+        {
+          "id": "dropout",
+          "label": "DROPOUT / PACKET LOSS",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 8
+        },
+        {
+          "id": "interference",
+          "label": "INTERFERENCE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 10
+        },
+        {
+          "id": "codecDamage",
+          "label": "CODEC DAMAGE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 5
+        },
+        {
+          "id": "bandwidthLoss",
+          "label": "BANDWIDTH LOSS",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "id": "noiseStatic",
+          "label": "NOISE / STATIC",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "id": "bitrateArtifacts",
+          "label": "BITRATE ARTIFACTS",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "id": "signalCompression",
+          "label": "SIGNAL COMPRESSION",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        }
+      ],
+      "behavior": {
+        "macro": "badSignal",
+        "mediumAware": true,
+        "drives": [
+          "bandwidthLoss",
+          "noiseStatic",
+          "dropout",
+          "bitrateArtifacts",
+          "interference",
+          "signalCompression"
+        ]
+      }
+    },
+    "CONDITION": {
+      "label": "CONDITION",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "conditionMode",
+          "label": "MODE",
+          "type": "select",
+          "options": [
+            "NEW",
+            "USED",
+            "OLD",
+            "DAMAGED"
+          ],
+          "default": "USED"
+        },
+        {
+          "id": "condition",
+          "label": "CONDITION AMOUNT",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 20
+        },
+        {
+          "id": "rattle",
+          "label": "RATTLE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 10
+        },
+        {
+          "id": "buzz",
+          "label": "BUZZ",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 5
+        },
+        {
+          "id": "deviceCompression",
+          "label": "DEVICE COMPRESSION",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 15
+        },
+        {
+          "id": "instability",
+          "label": "INSTABILITY",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 5
+        },
+        {
+          "id": "imbalance",
+          "label": "IMBALANCE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "id": "wowFlutter",
+          "label": "WOW / FLUTTER",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "id": "intermittentContact",
+          "label": "INTERMITTENT CONTACT",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        }
+      ]
+    },
+    "WALL_COVER": {
+      "label": "WALL / COVER",
+      "assetType": "WALL_COVER",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "coverAmount",
+          "label": "AMOUNT",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 65
+        },
+        {
+          "id": "coverLeak",
+          "label": "EDGE / LEAK",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 10
+        },
+        {
+          "id": "coverResonance",
+          "label": "PANEL / CAVITY RESONANCE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 25
+        }
+      ]
+    },
+    "MOTION": {
+      "label": "MOTION / DISTANCE",
+      "bypass": true,
+      "special": "motion",
+      "controls": [
+        {
+          "id": "motionMode",
+          "label": "MOTION MODE",
+          "type": "select",
+          "options": [
+            "STATIC",
+            "APPROACH",
+            "PASS_BY",
+            "LEAVE",
+            "MANUAL"
+          ],
+          "default": "PASS_BY"
+        },
+        {
+          "id": "startDistance",
+          "label": "START DISTANCE",
+          "type": "number",
+          "min": 0,
+          "max": 1000,
+          "step": 0.1,
+          "unit": "m",
+          "default": 80
+        },
+        {
+          "id": "closestDistance",
+          "label": "CLOSEST DISTANCE",
+          "type": "number",
+          "min": 0,
+          "max": 1000,
+          "step": 0.1,
+          "unit": "m",
+          "default": 3
+        },
+        {
+          "id": "endDistance",
+          "label": "END DISTANCE",
+          "type": "number",
+          "min": 0,
+          "max": 1000,
+          "step": 0.1,
+          "unit": "m",
+          "default": 120
+        },
+        {
+          "id": "motion",
+          "label": "MOTION POSITION",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "id": "speed",
+          "label": "SPEED",
+          "type": "range",
+          "min": 0,
+          "max": 300,
+          "step": 1,
+          "unit": "km/h",
+          "default": 60
+        },
+        {
+          "id": "doppler",
+          "label": "DOPPLER",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 70
+        },
+        {
+          "id": "width",
+          "label": "WIDTH",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 40
+        },
+        {
+          "id": "perspective",
+          "label": "PERSPECTIVE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        }
+      ]
+    },
+    "SPACE_ENVIRONMENT": {
+      "label": "SPACE / ENVIRONMENT",
+      "assetType": "SPACE_ENVIRONMENT",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "spaceAmount",
+          "label": "SPACE AMOUNT",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 65
+        },
+        {
+          "id": "spaceDecay",
+          "label": "DECAY",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 45
+        },
+        {
+          "id": "spaceCharacter",
+          "label": "CHARACTER",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "id": "direct",
+          "label": "DIRECT",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 75
+        },
+        {
+          "id": "early",
+          "label": "EARLY",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 45
+        },
+        {
+          "id": "tail",
+          "label": "TAIL",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 35
+        }
+      ]
+    },
+    "AMBIENCE": {
+      "label": "AMBIENCE",
+      "bypass": true,
+      "special": "seed",
+      "controls": [
+        {
+          "id": "ambienceType",
+          "label": "AMBIENCE TYPE",
+          "type": "select",
+          "options": [
+            "ROOM_TONE",
+            "OFFICE_HVAC",
+            "TRAFFIC",
+            "CROWD",
+            "WIND",
+            "RAIN",
+            "ELECTRICAL",
+            "VEHICLE",
+            "PUBLIC_SPACE",
+            "RADIO_STATIC"
+          ],
+          "default": "TRAFFIC"
+        },
+        {
+          "id": "ambience",
+          "label": "AMBIENCE MACRO",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 35
+        },
+        {
+          "id": "ambienceLevel",
+          "label": "LEVEL",
+          "type": "range",
+          "min": -60,
+          "max": 0,
+          "step": 0.5,
+          "unit": "dB",
+          "default": -18
+        },
+        {
+          "id": "ambienceDuck",
+          "label": "DUCK",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 45
+        }
+      ]
+    },
+    "INTELLIGIBILITY": {
+      "label": "INTELLIGIBILITY",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "intelligibilityMode",
+          "label": "MODE",
+          "type": "select",
+          "options": [
+            "NATURAL",
+            "DIALOGUE",
+            "AGGRESSIVE"
+          ],
+          "default": "NATURAL"
+        },
+        {
+          "id": "intelligibility",
+          "label": "INTELLIGIBILITY",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 70
+        }
+      ]
+    },
+    "EQ_TONE": {
+      "label": "EQ / TONE",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "hpf",
+          "label": "HPF",
+          "type": "range",
+          "min": 20,
+          "max": 1000,
+          "step": 1,
+          "unit": "Hz",
+          "default": 20
+        },
+        {
+          "id": "lpf",
+          "label": "LPF",
+          "type": "range",
+          "min": 1000,
+          "max": 20000,
+          "step": 10,
+          "unit": "Hz",
+          "default": 20000
+        },
+        {
+          "id": "b1Freq",
+          "label": "BAND 1 FREQ",
+          "type": "range",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "unit": "Hz",
+          "default": 120
+        },
+        {
+          "id": "b1Gain",
+          "label": "BAND 1 GAIN",
+          "type": "range",
+          "min": -18,
+          "max": 18,
+          "step": 0.1,
+          "unit": "dB",
+          "default": 0
+        },
+        {
+          "id": "b1Q",
+          "label": "BAND 1 Q",
+          "type": "range",
+          "min": 0.1,
+          "max": 12,
+          "step": 0.1,
+          "unit": "",
+          "default": 0.7
+        },
+        {
+          "id": "b2Freq",
+          "label": "BAND 2 FREQ",
+          "type": "range",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "unit": "Hz",
+          "default": 600
+        },
+        {
+          "id": "b2Gain",
+          "label": "BAND 2 GAIN",
+          "type": "range",
+          "min": -18,
+          "max": 18,
+          "step": 0.1,
+          "unit": "dB",
+          "default": 0
+        },
+        {
+          "id": "b2Q",
+          "label": "BAND 2 Q",
+          "type": "range",
+          "min": 0.1,
+          "max": 12,
+          "step": 0.1,
+          "unit": "",
+          "default": 1
+        },
+        {
+          "id": "b3Freq",
+          "label": "BAND 3 FREQ",
+          "type": "range",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "unit": "Hz",
+          "default": 2400
+        },
+        {
+          "id": "b3Gain",
+          "label": "BAND 3 GAIN",
+          "type": "range",
+          "min": -18,
+          "max": 18,
+          "step": 0.1,
+          "unit": "dB",
+          "default": 0
+        },
+        {
+          "id": "b3Q",
+          "label": "BAND 3 Q",
+          "type": "range",
+          "min": 0.1,
+          "max": 12,
+          "step": 0.1,
+          "unit": "",
+          "default": 1
+        },
+        {
+          "id": "finalTone",
+          "label": "FINAL TONE",
+          "type": "range",
+          "min": -100,
+          "max": 100,
+          "step": 1,
+          "unit": "",
+          "default": 0
+        }
+      ]
+    },
+    "MIX": {
+      "label": "MIX / OUTPUT",
+      "bypass": false,
+      "controls": [
+        {
+          "id": "inputGain",
+          "label": "INPUT GAIN",
+          "type": "range",
+          "min": -24,
+          "max": 24,
+          "step": 0.1,
+          "unit": "dB",
+          "default": 0
+        },
+        {
+          "id": "mix",
+          "label": "ORIGINAL ↔ FULL SCENE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100
+        },
+        {
+          "id": "outputGain",
+          "label": "OUTPUT GAIN",
+          "type": "range",
+          "min": -24,
+          "max": 24,
+          "step": 0.1,
+          "unit": "dB",
+          "default": 0
+        }
+      ]
+    },
+    "FEEDBACK": {
+      "label": "FEEDBACK",
+      "bypass": true,
+      "controls": [
+        {
+          "id": "feedback",
+          "label": "FEEDBACK AMOUNT",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "id": "feedbackTone",
+          "label": "FEEDBACK TONE",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        }
+      ]
+    },
+    "GENERATORS": {
+      "label": "GENERATORS",
+      "bypass": false,
+      "special": "generator",
+      "controls": [
+        {
+          "id": "generatorType",
+          "label": "GENERATOR TYPE",
+          "type": "select",
+          "options": [
+            "DTMF",
+            "DIAL_TONE",
+            "BUSY_TONE",
+            "RADIO_CARRIER",
+            "TEST_TONE",
+            "STATIC",
+            "HUM"
+          ],
+          "default": "STATIC"
+        },
+        {
+          "id": "generatorLevel",
+          "label": "GENERATOR LEVEL",
+          "type": "range",
+          "min": -60,
+          "max": 0,
+          "step": 0.5,
+          "unit": "dB",
+          "default": -24
+        }
+      ]
+    }
+  }
+}

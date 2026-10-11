@@ -1,0 +1,157 @@
+/* SOURCERUNE Runtime P0 Skin V1
+   Visual skin only. No DSP/state/parameter semantics are changed. */
+:root{
+  --rt-root:"../../Assets/UI/Runtime/Common";
+  --rt-cyan:#4ac4ff;
+  --rt-line:#34444e;
+}
+
+/* reusable raster skin binding; no full-interface screenshot */
+.app{
+  background-color:#050a0d;
+  background-image:url("../../Assets/UI/Runtime/Common/Shell/RT_SHELL_BG.png");
+  background-size:100% 100%;
+  background-attachment:fixed;
+}
+.topbar{
+  background-color:#090f13;
+  background-image:url("../../Assets/UI/Runtime/Common/Shell/RT_TOPBAR_BG.png");
+  background-size:100% 100%;
+}
+.panel{
+  background-color:#0d1419;
+  background-image:url("../../Assets/UI/Runtime/Common/Shell/RT_PANEL_FRAME.png");
+  background-size:100% 100%;
+}
+.module-card{
+  background-color:#10161a;
+}
+.module-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  background:url("../../Assets/UI/Runtime/Common/Shell/RT_CARD_FRAME.png") 0 0/100% 100% no-repeat;
+  opacity:.9;
+}
+.module-card .module-art,.module-card .module-meta,.module-card .module-actions{z-index:2}
+
+/* generic controls */
+button,.file-btn{
+  background-color:#141b20;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+button:hover,.file-btn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png");
+}
+button:active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_PRESSED.png");
+}
+button:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_DISABLED.png");
+}
+.segmented button{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png");
+}
+.segmented button:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_HOVER.png");
+}
+.segmented button.active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png");
+}
+.segmented button:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_DISABLED.png");
+}
+select{
+  background-color:#11181d;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_IDLE.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+select:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_HOVER.png");
+}
+select:focus{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_OPEN.png");
+}
+select:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_DISABLED.png");
+}
+
+/* icon-only buttons can opt into this class without new artwork */
+.rt-icon-button{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_IDLE.png");
+}
+.rt-icon-button:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_HOVER.png");
+}
+.rt-icon-button:active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_PRESSED.png");
+}
+.rt-icon-button.active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_ACTIVE.png");
+}
+
+/* range control: dynamic fill/value remains browser/runtime code */
+input[type="range"]{
+  appearance:none;
+  -webkit-appearance:none;
+  background:transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+  height:8px;
+  border:0;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_SLIDER_TRACK.png") 0 50%/100% 16px no-repeat;
+}
+input[type="range"]::-moz-range-track{
+  height:8px;
+  border:0;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_SLIDER_TRACK.png") 0 50%/100% 16px no-repeat;
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:16px;height:16px;
+  margin-top:-4px;
+  border:0;border-radius:50%;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_IDLE.png") 50% 50%/contain no-repeat;
+}
+input[type="range"]:hover::-webkit-slider-thumb{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_HOVER.png");
+}
+input[type="range"]:active::-webkit-slider-thumb{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_DRAG.png");
+}
+input[type="range"]::-moz-range-thumb{
+  width:16px;height:16px;
+  border:0;border-radius:50%;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_IDLE.png") 50% 50%/contain no-repeat;
+}
+
+/* graph grid asset under live code-drawn curves */
+#spectrumCanvas,.response-svg{
+  background-color:#091014;
+  background-image:url("../../Assets/UI/Runtime/Common/Analysis/RT_GRAPH_GRID.png");
+  background-repeat:repeat;
+  background-size:128px 128px;
+}
+
+/* meter frame; fill and meter math remain live */
+.meter-slot{
+  border:0;
+  background:#05090b url("../../Assets/UI/Runtime/Common/Meter/RT_METER_FRAME.png") 50% 50%/100% 100% no-repeat;
+  padding:2px;
+}
+
+/* P0 knob bases are available to live controls without baked pointer/value. */
+.rt-knob-s{background:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_S_BASE.png") 50%/contain no-repeat}
+.rt-knob-m{background:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_M_BASE.png") 50%/contain no-repeat}
+.rt-knob-l{background:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_L_BASE.png") 50%/contain no-repeat}
+
+/* source/listener marker skins; position and path remain live */
+.rt-source-marker{background:url("../../Assets/UI/Runtime/Common/Scene/RT_SCENE_SOURCE_MARKER_IDLE.png") 50%/contain no-repeat}
+.rt-source-marker.active{background-image:url("../../Assets/UI/Runtime/Common/Scene/RT_SCENE_SOURCE_MARKER_ACTIVE.png")}
+.rt-listener-marker{background:url("../../Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_MARKER_IDLE.png") 50%/contain no-repeat}
+.rt-listener-marker.active{background-image:url("../../Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_MARKER_ACTIVE.png")}

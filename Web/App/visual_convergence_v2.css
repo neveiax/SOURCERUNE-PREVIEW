@@ -1,0 +1,585 @@
+/* SOURCERUNE Visual Convergence V2
+   Fine sizing/typography/control convergence on top of layout_convergence_v1.css.
+   Runtime semantics stay live; no whole-interface bitmap. */
+
+:root{
+  --vc2-cyan:#4ac4ff;
+  --vc2-text:#e3edf1;
+  --vc2-muted:#8b9da6;
+  --vc2-line:#31434d;
+  --vc2-panel:#0c1317;
+}
+
+/* Global typography + control density */
+body.ui-01,body.ui-02{
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-weight:400;
+  letter-spacing:0;
+}
+body.ui-01 button,body.ui-01 select,
+body.ui-02 button,body.ui-02 select{
+  font-size:9px;
+}
+body.ui-01 .brand strong{font-size:16px;letter-spacing:.16em;font-weight:500}
+body.ui-01 .brand span{font-size:8px;letter-spacing:.13em}
+body.ui-02 .brand strong{font-size:19px;letter-spacing:.16em;font-weight:500}
+body.ui-02 .brand span{font-size:9px;letter-spacing:.12em}
+body.ui-01 .brand-mark{width:31px;height:31px}
+body.ui-02 .brand-mark{width:39px;height:39px}
+
+/* Cards: preserve semantic art as image content, tighten chrome around it. */
+body.ui-01 .module-card,
+body.ui-02 .module-card{box-shadow:inset 0 1px rgba(255,255,255,.025),0 7px 18px rgba(0,0,0,.20)}
+body.ui-01 .module-meta span{font-size:9px;line-height:1.1}
+body.ui-01 .module-meta strong{font-size:12px;line-height:1.15;font-weight:500}
+body.ui-01 .module-art{box-shadow:inset 0 0 0 1px rgba(112,137,149,.18)}
+body.ui-02 .module-meta span{font-size:11px;line-height:1.05}
+body.ui-02 .module-meta strong{font-size:16px;line-height:1.1;font-weight:500}
+body.ui-02 .module-art{box-shadow:inset 0 0 0 1px rgba(112,137,149,.18)}
+
+/* Compact real control system used inside macro cards. */
+.macro{position:relative}
+.macro h3{
+  color:#d6e2e7;
+  font-weight:500;
+  letter-spacing:.04em;
+  white-space:nowrap;
+}
+.macro-knob{
+  --knob-size:64px;
+  --pct:50;
+  position:relative;
+  width:var(--knob-size);
+  min-width:var(--knob-size);
+  text-align:center;
+  user-select:none;
+}
+.macro-knob-face{
+  position:relative;
+  width:var(--knob-size);
+  height:var(--knob-size);
+  margin:0 auto;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_S_BASE.png") 50%/contain no-repeat;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.45));
+}
+.macro-knob-face:before{
+  content:"";
+  position:absolute;
+  inset:3px;
+  border-radius:50%;
+  background:conic-gradient(from 225deg,
+    rgba(74,196,255,.98) 0deg,
+    rgba(74,196,255,.98) calc(var(--pct)*2.7deg),
+    rgba(82,106,118,.18) calc(var(--pct)*2.7deg),
+    rgba(82,106,118,.18) 270deg,
+    transparent 270deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 72%,#000 73% 82%,transparent 83%);
+  mask:radial-gradient(circle,transparent 0 72%,#000 73% 82%,transparent 83%);
+  transform:rotate(0deg);
+  opacity:.92;
+  pointer-events:none;
+}
+.macro-knob-value{
+  position:relative;
+  z-index:2;
+  font:600 11px/1 ui-monospace,Consolas,monospace;
+  color:#eef7fa;
+  text-shadow:0 1px 2px #000;
+}
+.macro-knob-label{
+  display:block;
+  margin-top:4px;
+  color:#8fa0a8;
+  font-size:7px;
+  letter-spacing:.04em;
+  white-space:nowrap;
+}
+.macro-knob-range{
+  position:absolute;
+  /* The face uses --knob-size; never size the invisible hit target
+     from a percentage of an auto-height container. */
+  inset:0 0 auto 0;
+  width:100%;
+  height:var(--knob-size);
+  opacity:0!important;
+  cursor:ns-resize;
+  touch-action:none;
+  z-index:4;
+}
+.macro-knob.compact{--knob-size:54px}
+.macro-knob.large{--knob-size:80px}
+.macro-knob.centered{margin-left:auto;margin-right:auto}
+.macro-knob-readonly .macro-knob-range{display:none}
+
+.macro-two-col{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:center;
+  gap:8px;
+}
+.macro-side{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  color:#899aa2;
+  font-size:7px;
+  line-height:1.15;
+}
+.macro-device-name{
+  color:#c9d8de!important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  margin-bottom:2px;
+}
+.macro-select{
+  width:100%;
+  min-width:0;
+  height:25px;
+  padding:2px 24px 2px 7px!important;
+  font-size:8px!important;
+}
+.macro-mode-row{
+  display:flex;
+  gap:4px;
+  justify-content:center;
+  margin-top:7px;
+}
+.macro-mode-row button{
+  flex:1 1 0;
+  min-width:0;
+  height:27px;
+  padding:3px 5px;
+  font-size:7px;
+  white-space:nowrap;
+}
+.motion-knob-row{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(48px,1fr));
+  justify-items:center;
+  align-items:start;
+  gap:3px;
+}
+.macro-wave{
+  height:25px;
+  margin-top:5px;
+  border:1px solid rgba(76,96,106,.50);
+  border-radius:4px;
+  background:
+    linear-gradient(90deg,transparent 0 4%,rgba(74,196,255,.7) 4% 5%,transparent 5% 10%,rgba(74,196,255,.35) 10% 11%,transparent 11% 15%,rgba(74,196,255,.9) 15% 16%,transparent 16% 23%,rgba(74,196,255,.45) 23% 24%,transparent 24% 31%,rgba(74,196,255,.65) 31% 32%,transparent 32% 42%,rgba(74,196,255,.85) 42% 43%,transparent 43% 54%,rgba(74,196,255,.4) 54% 55%,transparent 55% 63%,rgba(74,196,255,.75) 63% 64%,transparent 64% 76%,rgba(74,196,255,.35) 76% 77%,transparent 77% 89%,rgba(74,196,255,.7) 89% 90%,transparent 90%);
+  opacity:.75;
+}
+.macro-mix-mode{
+  display:block;
+  width:52px;
+  margin:5px auto 0;
+  padding:4px 0;
+  border:1px solid #426a7c;
+  border-radius:4px;
+  color:#cdebf5;
+  font-size:8px;
+  text-align:center;
+  background:#0c1920;
+}
+.macro-eq-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.macro-eq-head h3{margin:0}
+.macro-eq-head span{
+  font-size:7px;
+  padding:3px 7px;
+  border:1px solid #3c5662;
+  border-radius:4px;
+  color:#c7dbe2;
+}
+.macro-eq-svg{
+  display:block;
+  width:100%;
+  height:88px;
+  margin-top:10px;
+  border:1px solid #283a43;
+  border-radius:4px;
+  background:#081015;
+}
+.macro-eq-grid path{stroke:#263842;stroke-width:.55;fill:none}
+.macro-eq-line{stroke:#69d2f7;stroke-width:2;fill:none;vector-effect:non-scaling-stroke}
+.macro-eq-svg circle{fill:#6fdcff;stroke:#d9f7ff;stroke-width:.7;vector-effect:non-scaling-stroke}
+.macro-eq-svg circle:nth-of-type(2){fill:#6ed68e}
+.macro-eq-svg circle:nth-of-type(3){fill:#f0c85d}
+.macro-eq-svg circle:nth-of-type(4){fill:#f47a64}
+.macro-eq-foot{
+  display:flex;
+  justify-content:space-between;
+  gap:7px;
+  margin-top:7px;
+  color:#8799a2;
+  font-size:7px;
+}
+
+/* UI_01 exact density */
+body.ui-01 .presetbar select{font-size:10px}
+body.ui-01 .scene-panel{border-radius:7px}
+body.ui-01 .analysis-panel{border-radius:7px}
+body.ui-01 .scene-head-controls .segmented.small button{
+  min-width:76px;
+  font-size:8px;
+  font-weight:500;
+}
+body.ui-01 #sceneSvg text{font-family:Inter,"Segoe UI",Arial,sans-serif}
+body.ui-01 #distanceText{font-size:15px}
+body.ui-01 .toggle-chip{font-size:7px}
+body.ui-01 .tabs button{font-size:8px;letter-spacing:.02em}
+body.ui-01 .meter-label{font-size:9px}
+body.ui-01 .meter-slot{width:22px}
+body.ui-01 .meter-values span{font-size:7px}
+body.ui-01 .meter-values strong{font-size:11px}
+body.ui-01 .macro{
+  padding:10px 9px 8px;
+  border-radius:7px;
+}
+body.ui-01 .macro h3{font-size:9px;margin:0 0 10px}
+body.ui-01 .macro-motion .macro-knob{--knob-size:55px}
+body.ui-01 .macro-motion .macro-knob.compact{--knob-size:51px}
+body.ui-01 .macro-badsignal .macro-knob,
+body.ui-01 .macro-condition .macro-knob,
+body.ui-01 .macro-intelligibility .macro-knob,
+body.ui-01 .macro-ambience .macro-knob{--knob-size:68px}
+body.ui-01 .macro-mix .macro-knob{--knob-size:82px}
+body.ui-01 .macro-intelligibility .macro-mode-row{display:grid;grid-template-columns:1fr;margin-top:5px}
+body.ui-01 .macro-intelligibility .macro-mode-row button{height:23px}
+body.ui-01 .macro-ambience .macro-select{margin-bottom:5px}
+body.ui-01 .macro-eq-svg{height:96px}
+body.ui-01 .macro-eq-foot{font-size:7px}
+
+/* UI_02 larger controls and right-side ambience. */
+body.ui-02 .presetbar select{font-size:12px}
+body.ui-02 .module-actions button{height:31px;min-width:44px;font-size:8px}
+body.ui-02 .scene-head-controls .segmented.small button{
+  min-width:94px;height:34px;font-size:10px
+}
+body.ui-02 .motion-readouts:before{
+  content:"MOTION";
+  position:absolute;
+  left:44%;
+  top:20px;
+  color:#dce8ed;
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.04em;
+}
+body.ui-02 .motion-readouts:after{
+  content:"DISTANCE";
+  position:absolute;
+  left:88px;
+  top:177px;
+  width:175px;
+  text-align:center;
+  color:#91a3ab;
+  font-size:11px;
+  letter-spacing:.05em;
+}
+body.ui-02 .motion-readouts>div:nth-child(5){top:100px}
+body.ui-02 .motion-readouts>div:nth-child(5) strong{font-size:38px;font-weight:500}
+body.ui-02 .motion-readouts>div:nth-child(2),
+body.ui-02 .motion-readouts>div:nth-child(3),
+body.ui-02 .motion-readouts>div:nth-child(4){top:110px}
+body.ui-02 .motion-readouts>div:nth-child(6),
+body.ui-02 .motion-readouts>div:nth-child(7),
+body.ui-02 .motion-readouts>div:nth-child(8){top:205px}
+body.ui-02 .macro-strip .macro{padding:13px 14px}
+body.ui-02 .macro-strip .macro h3{font-size:10px;margin:0 0 12px}
+body.ui-02 .macro-strip .macro-knob{--knob-size:76px}
+body.ui-02 .macro-strip .macro-knob.large{--knob-size:88px}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row{
+  display:grid;grid-template-columns:1fr;gap:3px;margin-top:4px
+}
+body.ui-02 .macro-strip .macro-intelligibility .macro-mode-row button{height:24px}
+body.ui-02 .macro-strip .macro-eq-svg{height:78px;margin-top:8px}
+body.ui-02 .macro-strip .macro-eq-foot{font-size:7px}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-select{
+  height:34px;font-size:10px!important;margin-bottom:12px
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob{
+  --knob-size:96px;margin:4px auto 0
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-wave{
+  height:62px;margin-top:16px
+}
+
+/* Keep interactive controls above decorative card frames. */
+.macro input,.macro button,.macro select{position:relative;z-index:5}
+
+
+/* Semantic card cycling uses real P1 runtime arrow PNGs. */
+.module-cycle{
+  position:absolute;
+  z-index:6;
+  width:28px;height:42px;
+  top:50%;
+  transform:translateY(-15%);
+  padding:0;border:0!important;
+  background-color:transparent!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:20px 30px!important;
+  opacity:.78;
+}
+.module-cycle:hover{opacity:1}
+.module-cycle-prev{
+  left:10px;
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_L_IDLE.png")!important;
+}
+.module-cycle-prev:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_L_HOVER.png")!important;
+}
+.module-cycle-next{
+  right:10px;
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_IDLE.png")!important;
+}
+.module-cycle-next:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_HOVER.png")!important;
+}
+
+/* UI_01 reference uses a single right-side card affordance. */
+body.ui-01 .module-cycle-prev{display:none}
+body.ui-01 .module-cycle-next{
+  top:72px;right:5px;transform:none;
+  width:38px;height:42px;
+  background-size:18px 28px!important;
+}
+body.ui-01 .module-art{right:47px}
+
+/* UI_02 uses both arrows inside the image frame. */
+body.ui-02 .module-cycle{
+  top:auto;bottom:42px;transform:none;
+  width:38px;height:62px;
+  background-size:20px 32px!important;
+}
+body.ui-02 .module-cycle-prev{left:17px}
+body.ui-02 .module-cycle-next{right:17px}
+
+/* Ambience semantic preview: hidden in UI_01, photographic in UI_02. */
+.ambience-preview{
+  display:none;
+  overflow:hidden;
+  border:1px solid #30424c;
+  border-radius:6px;
+  background:#081014;
+}
+.ambience-preview img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.88) contrast(1.03);
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .ambience-preview{
+  display:block;
+  height:154px;
+  margin:0 0 18px;
+  order:3;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob{
+  order:4;
+  width:100%;
+  min-width:0;
+  margin:0;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob-face,
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob-label{
+  display:none;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob-range{
+  touch-action:auto;
+  position:relative;
+  inset:auto;
+  display:block;
+  width:100%;
+  height:22px;
+  opacity:1!important;
+  cursor:ew-resize;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-wave{display:none}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] h3{order:1}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-select{order:2}
+
+
+/* UI_01 approved reference uses stable section-color outlines. */
+body.ui-01 .macro-motion{border-color:#00bff3!important;box-shadow:inset 0 0 0 1px rgba(0,191,243,.14)}
+body.ui-01 .macro-badsignal{border-color:#ff3f3f!important;box-shadow:inset 0 0 0 1px rgba(255,63,63,.10)}
+body.ui-01 .macro-condition{border-color:#d7a72b!important;box-shadow:inset 0 0 0 1px rgba(215,167,43,.10)}
+body.ui-01 .macro-intelligibility{border-color:#42e5ae!important;box-shadow:inset 0 0 0 1px rgba(66,229,174,.10)}
+body.ui-01 .macro-ambience{border-color:#ba64d6!important;box-shadow:inset 0 0 0 1px rgba(186,100,214,.10)}
+body.ui-01 .macro-mix{border-color:#d9e2e5!important}
+body.ui-01 .macro-eq{border-color:#8ea3ad!important}
+
+/* UI_02 lower distance/motion deck: real runtime controls and graph. */
+body.ui-02 .motion-readouts:before,
+body.ui-02 .motion-readouts:after{content:none!important}
+body.ui-02 .motion-deck-ui{
+  position:absolute!important;
+  left:42%!important;
+  right:22px!important;
+  top:20px!important;
+  height:160px!important;
+  padding:0!important;
+  background:none!important;
+  border:0!important;
+  z-index:4;
+}
+body.ui-02 .motion-deck-head{
+  height:40px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+body.ui-02 .motion-deck-head>span{
+  color:#e0eaee;
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.035em;
+}
+body.ui-02 #motionDeckMode{
+  margin-left:auto;
+  width:250px;
+  height:38px;
+  padding-left:14px!important;
+  font-size:11px!important;
+}
+body.ui-02 .motion-deck-graph{
+  display:block;
+  width:100%;
+  height:108px;
+  overflow:visible;
+}
+body.ui-02 .motion-deck-graph path{
+  stroke:#a6ecff;
+  stroke-width:2.1;
+  fill:none;
+  vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 0 2px rgba(74,196,255,.42));
+}
+body.ui-02 .motion-deck-graph line{
+  stroke:#29404b;
+  stroke-width:1;
+  vector-effect:non-scaling-stroke;
+}
+body.ui-02 .motion-deck-graph circle{
+  fill:#dbeaf0;
+  stroke:#20323b;
+  stroke-width:1.2;
+  vector-effect:non-scaling-stroke;
+}
+body.ui-02 .motion-deck-graph #motionDeckCurrent{
+  fill:#5ad4ff;
+  stroke:#e5f8ff;
+  stroke-width:1.5;
+}
+
+/* Current-distance dial is the left large instrument. */
+body.ui-02 .motion-readouts>div:nth-child(5){
+  left:58px!important;
+  top:92px!important;
+  width:240px!important;
+}
+body.ui-02 .motion-readouts>div:nth-child(5) span{
+  font-size:0!important;
+}
+body.ui-02 .motion-readouts>div:nth-child(5) span:after{
+  content:"DISTANCE";
+  display:block;
+  font-size:11px;
+  color:#9aabb4;
+  letter-spacing:.05em;
+}
+body.ui-02 .motion-readouts>div:nth-child(5) strong{
+  font-size:39px!important;
+  line-height:1.05;
+}
+
+/* Start / closest / end sit below the dynamic path. */
+body.ui-02 .motion-readouts>div:nth-child(2){
+  left:44%!important;top:158px!important;text-align:center
+}
+body.ui-02 .motion-readouts>div:nth-child(3){
+  left:63%!important;top:158px!important;text-align:center
+}
+body.ui-02 .motion-readouts>div:nth-child(4){
+  left:82%!important;top:158px!important;text-align:center
+}
+body.ui-02 .motion-readouts>div:nth-child(2) span,
+body.ui-02 .motion-readouts>div:nth-child(3) span,
+body.ui-02 .motion-readouts>div:nth-child(4) span{font-size:8px}
+body.ui-02 .motion-readouts>div:nth-child(2) strong,
+body.ui-02 .motion-readouts>div:nth-child(3) strong,
+body.ui-02 .motion-readouts>div:nth-child(4) strong{font-size:12px}
+
+/* Speed / Doppler / Width become real-looking knob readouts while values remain live. */
+body.ui-02 .motion-readouts>div:nth-child(6),
+body.ui-02 .motion-readouts>div:nth-child(7),
+body.ui-02 .motion-readouts>div:nth-child(8){
+  top:200px!important;
+  width:86px!important;
+  height:76px!important;
+  padding-top:52px!important;
+  text-align:center!important;
+  background:url("../../Assets/UI/Runtime/Common/Controls/RT_KNOB_S_BASE.png") top center/54px 54px no-repeat!important;
+}
+body.ui-02 .motion-readouts>div:nth-child(6){left:48%!important}
+body.ui-02 .motion-readouts>div:nth-child(7){left:65%!important}
+body.ui-02 .motion-readouts>div:nth-child(8){left:82%!important}
+body.ui-02 .motion-readouts>div:nth-child(6) span,
+body.ui-02 .motion-readouts>div:nth-child(7) span,
+body.ui-02 .motion-readouts>div:nth-child(8) span{
+  position:absolute;top:34px;left:0;right:0;
+  font-size:8px!important;color:#a0b1b9
+}
+body.ui-02 .motion-readouts>div:nth-child(6) strong,
+body.ui-02 .motion-readouts>div:nth-child(7) strong,
+body.ui-02 .motion-readouts>div:nth-child(8) strong{
+  font-size:11px!important;margin:0!important
+}
+
+/* UI_02 central scene markers should read cleanly over photography. */
+body.ui-02 #sourceNode image,
+body.ui-02 #listenerNode image{
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.7));
+}
+body.ui-02 #listenerNode{transform-box:fill-box}
+
+
+/* UI_02 title action is a chevron, not an EDIT text button. */
+body.ui-02 .module-actions [data-edit]{
+  width:32px;height:32px;min-width:32px;
+  padding:0!important;
+  font-size:0!important;
+  border:0!important;
+  background-color:transparent!important;
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_IDLE.png")!important;
+  background-position:center!important;
+  background-size:16px 24px!important;
+  background-repeat:no-repeat!important;
+}
+body.ui-02 .module-actions [data-edit]:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_HOVER.png")!important;
+}
+
+/* UI_02 ambience horizontal value label. */
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob{
+  position:relative;
+  padding-right:58px;
+}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob:after{
+  content:attr(data-value);
+  position:absolute;
+  right:0;
+  top:1px;
+  width:50px;
+  color:#e2edf1;
+  font:500 16px/20px ui-monospace,Consolas,monospace;
+  text-align:right;
+}

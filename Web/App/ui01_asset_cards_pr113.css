@@ -1,0 +1,109 @@
+/* SOURCERUNE UI_01 | PR #113 | four semantic asset cards.
+   Only internal REF optical layout and existing approved Runtime assets.
+   Models, product defaults, outer REF card geometry, UI_02, DSP all unchanged. */
+
+body.ui-01 .module-rail .module-card{
+  isolation:isolate;
+  background:#0b1216;
+}
+
+/* The reference header has a 45x41 icon field, then starts text at x≈82.
+   PNG artwork is independent of live text; no REF screenshot crops. */
+body.ui-01 .module-rail .module-meta{
+  box-sizing:border-box;
+  padding-left:71px!important;
+  padding-right:55px!important;
+  padding-top:7px!important;
+  padding-bottom:0!important;
+  overflow:visible;
+  background:linear-gradient(180deg,rgba(8,15,19,.94),rgba(8,15,19,.65) 76%,transparent 100%);
+}
+body.ui-01 .module-rail .module-meta span{
+  display:block;
+  position:static;
+  height:17px;
+  line-height:17px;
+  margin:0;
+  font-size:8.5px;
+  letter-spacing:.045em;
+  color:#b9cbd3;
+  white-space:nowrap;
+}
+body.ui-01 .module-rail .module-meta span::before{
+  content:"";
+  display:block;
+  position:absolute;
+  top:3px;
+  left:10px;
+  width:45px;
+  height:41px;
+  flex:none;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:.83;
+  pointer-events:none;
+}
+body.ui-01 .module-rail .module-meta strong{
+  display:block;
+  width:100%;
+  font-size:11.3px;
+  line-height:16px;
+  margin-top:0!important;
+  font-weight:500;
+  color:#e9f2f5;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Four separate photo windows: exactly preserve the REF-measured 237px
+   photograph width at the established 313px left-rail card dimension. */
+body.ui-01 .module-rail .module-art{
+  left:8px!important;
+  right:64px!important;
+  bottom:6px!important;
+  box-sizing:border-box;
+  border-radius:4px!important;
+  border:1px solid rgba(75,111,129,.25);
+  box-shadow:inset 0 0 0 1px rgba(100,153,180,.08);
+  opacity:1;
+  background:#0b151a;
+  overflow:hidden;
+}
+body.ui-01 .module-card[data-type="SOURCE"] .module-art{top:56px!important;bottom:6px!important}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-art{top:55px!important;bottom:5px!important}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-art{top:56px!important;bottom:5px!important}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-art{top:54px!important;bottom:6px!important}
+body.ui-01 .module-rail .module-art img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  filter:saturate(.84) contrast(.97) brightness(1.09);
+  opacity:.91;
+}
+body.ui-01 .module-card[data-type="SOURCE"] .module-art img{object-position:center 44%}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-art img{object-position:center 48%}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-art img{object-position:center 49%}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-art img{object-position:center 52%}
+
+/* Correct independent Runtime card chrome and action layers.
+   Keep the already geometry-locked EDIT and next-arrow rectangles intact. */
+body.ui-01 .module-card::after{
+  opacity:.90;
+  background-size:100% 100%;
+}
+body.ui-01 .module-card .module-actions button{
+  color:#bfd0d6;
+  font-size:8px;
+}
+body.ui-01 .module-card .module-cycle-next{
+  opacity:.90;
+}
+body.ui-01 .module-card .module-cycle-next:hover,
+body.ui-01 .module-card .module-cycle-next:focus-visible{
+  opacity:1;
+  outline-offset:-3px;
+}

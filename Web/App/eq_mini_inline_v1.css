@@ -1,0 +1,66 @@
+/* Mini EQ: permanent VVChain-style numeric editing, no popup, no fake DSP.
+   Uses the previously empty area below the graph, inside approved card. */
+.macro-eq .macro-eq-foot{
+  display:flex!important;flex-direction:column;gap:2px;
+  min-height:0!important;padding:1px 1px 2px;
+  box-sizing:border-box;
+}
+.macro-eq .eq-mini-inline{
+  display:grid;grid-template-columns:50px repeat(3,minmax(0,1fr));
+  gap:3px;width:100%;min-width:0;align-items:center;
+  height:29px;box-sizing:border-box;
+  padding:2px 3px 1px;border-top:1px solid rgba(103,138,151,.24);
+  background:linear-gradient(180deg,rgba(23,36,44,.08),rgba(22,37,46,.28));
+  border-radius:3px;
+}
+.macro-eq .eq-mini-selected{
+  font:600 8px/12px "Segoe UI",Arial,sans-serif;
+  color:#cddfe5;letter-spacing:.015em;
+  padding:0 0 0 2px;white-space:nowrap;
+}
+.macro-eq .eq-mini-field{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1px;min-width:0;height:100%;color:#95b3bc;
+  font:600 7px/8px "Segoe UI",Arial,sans-serif;
+}
+.macro-eq .eq-mini-field span{font-size:7px;letter-spacing:.035em}
+.macro-eq .eq-mini-field input{
+  box-sizing:border-box;display:block;
+  width:100%;min-width:0;max-width:100%;
+  height:15px!important;min-height:15px!important;
+  padding:0 2px!important;margin:0!important;
+  border:1px solid rgba(87,123,139,.38)!important;
+  border-radius:2px;background:rgba(15,27,34,.7)!important;
+  text-align:center;color:#cfe8ec!important;
+  font:9px/13px Consolas,monospace!important;
+  cursor:ns-resize;touch-action:none;user-select:text;
+  font-variant-numeric:tabular-nums;
+  outline:none!important;box-shadow:none!important;
+}
+.macro-eq .eq-mini-field input:hover{
+  border-color:#6eb8c6!important;color:#f2fcff!important;
+}
+.macro-eq .eq-mini-field input:focus{
+  border-color:#65acbd!important;background:#0f222d!important;cursor:text;
+}
+.macro-eq .eq-mini-field.inactive input{
+  cursor:default!important;opacity:.42;pointer-events:none!important;
+  border-color:transparent!important;background:transparent!important;
+}
+.macro-eq .eq-mini-field.inactive span{opacity:.38}
+.macro-eq .macro-eq-svg .sr-eq-node-ring{pointer-events:none!important}
+/* Selection is communicated only by a faint rim, no black SVG focus rect. */
+.macro-eq .macro-eq-svg [data-eq-ring]{
+  transition:none!important;
+}
+.macro-eq .macro-eq-svg:has([data-eq-node="hpf"].eq-mini-current)
+  [data-eq-ring="hpf"],
+.macro-eq .macro-eq-svg:has([data-eq-node="lpf"].eq-mini-current)
+  [data-eq-ring="lpf"],
+.macro-eq .macro-eq-svg:has([data-eq-node="b1"].eq-mini-current)
+  [data-eq-ring="b1"],
+.macro-eq .macro-eq-svg:has([data-eq-node="b2"].eq-mini-current)
+  [data-eq-ring="b2"],
+.macro-eq .macro-eq-svg:has([data-eq-node="b3"].eq-mini-current)
+  [data-eq-ring="b3"]{stroke-width:1.5;opacity:1;}
+body.ui-02 .macro-eq .eq-mini-inline{height:28px}

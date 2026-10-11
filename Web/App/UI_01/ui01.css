@@ -1,0 +1,5 @@
+/* SOURCERUNE UI_01 base identity
+   Production geometry is owned by layout_convergence_v1.css,
+   ref_geometry_lock_v4.css and viewport_fit_v1.css. */
+body.ui-01 .module-rail:before{display:none}
+body.ui-01 .adv-grid{grid-template-columns:repeat(6,minmax(125px,1fr))}

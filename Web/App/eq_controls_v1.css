@@ -1,0 +1,15 @@
+/* Five interactive controls: HPF + LPF + exactly three bell bands.
+   Independent live SVG nodes, no baked EQ graph and no extra PNG. */
+.macro-eq-svg {touch-action:none;}
+.macro-eq-svg .macro-eq-line,.macro-eq-svg .macro-eq-grid{pointer-events:none;}
+.macro-eq-svg circle[data-eq-node] {
+  cursor:grab;touch-action:none;pointer-events:all;stroke-width:1.2;
+  filter:drop-shadow(0 0 1px rgba(3,12,18,.8));
+}
+.macro-eq-svg circle[data-eq-node]:active{cursor:grabbing}
+.macro-eq-svg circle[data-eq-node="hpf"],
+.macro-eq-svg circle[data-eq-node="lpf"]{fill:#e7bf81;stroke:#f2ddbb;}
+.macro-eq-svg circle[data-eq-node="b1"]{fill:#6fd6e9;stroke:#d1f3fa;}
+.macro-eq-svg circle[data-eq-node="b2"]{fill:#78d49a;stroke:#d5f5e0;}
+.macro-eq-svg circle[data-eq-node="b3"]{fill:#b9a5e2;stroke:#e7defa;}
+.macro-eq-svg circle[data-eq-node]:focus-visible{stroke:#fff;stroke-width:2.2;outline:none;}

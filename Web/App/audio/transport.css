@@ -1,0 +1,12 @@
+/* Web-only audition controls outside the approved plugin shell. */
+.module-meta{pointer-events:none}
+#webAudioTransport{position:fixed;z-index:1000;bottom:0;left:0;right:0;height:78px;box-sizing:border-box;padding:7px 12px;background:#0c151b;border-top:1px solid #3b6576;display:flex;flex-direction:column;gap:5px;color:#d7e4eb;font:12px system-ui,sans-serif}
+#webAudioTransport .audio-controls{display:flex;align-items:center;gap:8px;min-height:30px}
+body #webAudioTransport #playBtn,body #webAudioTransport #stopBtn,body #webAudioTransport #globalBypass,body #webAudioTransport .file-btn,body #webAudioTransport .loop-toggle,body #webAudioTransport .segmented{display:inline-flex!important;position:static!important;transform:none!important;inset:auto!important;opacity:1!important;visibility:visible!important;height:30px;box-sizing:border-box;align-items:center;gap:5px}
+body #webAudioTransport #globalBypass{width:auto;padding:5px 10px}
+#webAudioTransport .segmented button{font-size:10px}
+body #webAudioTransport .build-status{display:flex!important;position:static!important;min-width:0;font-size:10px;line-height:15px;letter-spacing:0}
+#webAudioTransport #buildLabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#webAudioTransport #stateStatus{margin-left:auto;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#webAudioTransport #audioFile{display:none}
+@media(max-width:700px){#webAudioTransport{padding:5px;height:78px}#webAudioTransport .audio-controls{gap:3px}#webAudioTransport #stateStatus{display:none}#webAudioTransport button{padding:4px;font-size:10px}}

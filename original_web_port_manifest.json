@@ -1,0 +1,3397 @@
+{
+  "status": "original-html-css-ui-js-pinned",
+  "source_repository": "ureia-dev/SOURCERUNE",
+  "source_commit": "c035db4d6d5f409cdbedc4f9c874089ea1750fda",
+  "original_web_app_files": {
+    "Web/App/eq_focus_v1.css": {
+      "sha": "60db3481c9c239fc866ccd1da69be50d1e33953e",
+      "size": 5001
+    },
+    "Web/App/visual_convergence_v2.css": {
+      "sha": "b3e48ad704373f405a6dd6cde86d953152e156f9",
+      "size": 18341
+    },
+    "Web/App/ref_geometry_lock_v6.css": {
+      "sha": "fed7e34f2d05c8b60d36503bd99a1045f1202a88",
+      "size": 1167
+    },
+    "Web/App/runtime_skin_frame_fix_v1.css": {
+      "sha": "6a7c9e1ef84ac888e42cbe96c08c1082b0e46e62",
+      "size": 1704
+    },
+    "Web/App/scene_view_ref_stage1_v1.css": {
+      "sha": "dcb0420aded06be736def15f7e898f39e4e3f1ad",
+      "size": 3226
+    },
+    "Web/App/ref_geometry_lock_v7.css": {
+      "sha": "75a3ad4bd221e0c81332b1d4f20b36562612d434",
+      "size": 2014
+    },
+    "Web/App/eq_controls_v1.css": {
+      "sha": "be4c764e838b4554aedc575e76dcb8a60d7167f4",
+      "size": 884
+    },
+    "Web/App/ref_topbar_lock_v10.css": {
+      "sha": "afd657ce42d6a2a4bfa5b7638c84dafdd870fad4",
+      "size": 2989
+    },
+    "Web/App/styles.css": {
+      "sha": "b05cbdec7919d72fb331da145457aa405c2905c2",
+      "size": 8997
+    },
+    "Web/App/ref_geometry_lock_v8.css": {
+      "sha": "26d5169d6d6c748d2922103751de9a4bd3e56eca",
+      "size": 275
+    },
+    "Web/App/ui01_bottom_ref.js": {
+      "sha": "01bc932d7ad04dc8655b7162779c373f03071206",
+      "size": 3981
+    },
+    "Web/App/layout_convergence_v1.css": {
+      "sha": "9d41b1c4bfa5e0a3b566acb535790eb080337109",
+      "size": 13110
+    },
+    "Web/App/eq_interactions_v1.css": {
+      "sha": "6d256d25dcba79cf20adef73df10718a32d8c7e3",
+      "size": 1921
+    },
+    "Web/App/eq_hpf_v1.css": {
+      "sha": "7167f19d65a1b0b93c7b2cada15650a8cc6c67c6",
+      "size": 1729
+    },
+    "Web/App/eq_mini_inline_v1.css": {
+      "sha": "826691ae99f9eeeb44434bad4793c9ae429fd03f",
+      "size": 2836
+    },
+    "Web/App/knob_value_ref_alignment_v1.css": {
+      "sha": "2600b7888136056cad8f11bb55ffd70f8023f491",
+      "size": 5579
+    },
+    "Web/App/index.html": {
+      "sha": "4731defb885d7e2cc213e922ac76bc1170c6665e",
+      "size": 16402
+    },
+    "Web/App/ui01_asset_cards_pr113.css": {
+      "sha": "55d8c67c74f41280981905eb2f7e82ceccd37bdd",
+      "size": 3469
+    },
+    "Web/App/viewport_fit_v1.css": {
+      "sha": "9e0ae3b68295de2119ad5f5907b6ea8ecd29f1e8",
+      "size": 624
+    },
+    "Web/App/runtime_skin_p1.css": {
+      "sha": "06fe7e52d14edafefa20b9eb250b9b3621b43cf1",
+      "size": 7671
+    },
+    "Web/App/ui01_bottom_ref_v1.css": {
+      "sha": "446b984f81d953210e3c5d5f4ac79d89f6fa842b",
+      "size": 5026
+    },
+    "Web/App/ref_geometry_lock_v11.css": {
+      "sha": "583c4c819c8c90a296375d7c2ef1bb3633358226",
+      "size": 10641
+    },
+    "Web/App/geometry_audit.js": {
+      "sha": "c0bf0839bb9c308cd23dec9bd4d666b28ce53ac7",
+      "size": 17298
+    },
+    "Web/App/ref_geometry_lock_v4.css": {
+      "sha": "59d8a362b7dd33b0536eeda0f23470a5bb990d48",
+      "size": 6357
+    },
+    "Web/App/ref_geometry_lock_v9.css": {
+      "sha": "60f2de755a1d682274b7d3934d66034338877886",
+      "size": 2921
+    },
+    "Web/App/runtime_skin_p2.css": {
+      "sha": "9ea7bc4cdef97850bb9c20095167e4dbe5516ddf",
+      "size": 5872
+    },
+    "Web/App/scene_view_ref_stage1.js": {
+      "sha": "80c99d528694693df3386913d749c634814440be",
+      "size": 5588
+    },
+    "Web/App/runtime_skin_p0.css": {
+      "sha": "6213264f51c68f7710e56271ca45b06321ad0173",
+      "size": 5947
+    },
+    "Web/App/eq_polish_v1.css": {
+      "sha": "0fc3a43de2d483acaf0ea7395efb746fe3d1ebcd",
+      "size": 11365
+    },
+    "Web/App/eq_mini_inline.js": {
+      "sha": "6b91f9f7edef4f3a22795b0f67eb0ae0a33462a1",
+      "size": 6885
+    },
+    "Web/App/ui01_spectrum_ref_pr113.css": {
+      "sha": "50a41e547a831964b6ee059443a4f55ebe655434",
+      "size": 2510
+    },
+    "Web/App/ui01_meter_ref_pr114.css": {
+      "sha": "6f6ad0c1029d82948a2aca4da34b39b81686eca1",
+      "size": 4783
+    },
+    "Web/App/app.js": {
+      "sha": "6a7be0ed665ed52cb1163b6ade25bd7ef323ac4b",
+      "size": 59523
+    },
+    "Web/App/ui01_asset_frame_fix_pr113.css": {
+      "sha": "d40db29374a794e10b3012e67cd91732cf24edf8",
+      "size": 3638
+    },
+    "Web/App/eq_analyzer_v1.js": {
+      "sha": "b7755a200abe92c9c8289e74b80831540180b101",
+      "size": 5040
+    },
+    "Web/App/main_controls_dialog_v1.css": {
+      "sha": "f071852808cd0999ec92aadea2a1c07ece3c914a",
+      "size": 3998
+    },
+    "Web/App/visual_convergence_v3.css": {
+      "sha": "8c01f41df6511b167930cbae0adc157e185d430a",
+      "size": 10478
+    },
+    "Web/App/ref_geometry_lock_v5.css": {
+      "sha": "d30efb1e943dbd2811a4441b6c6610692d056dac",
+      "size": 8320
+    },
+    "Web/App/eq_interactions.js": {
+      "sha": "b780a0f390b15535e79311ee900eee3d2b73bea7",
+      "size": 16075
+    },
+    "Web/App/components.css": {
+      "sha": "fb0b7a21f95d4f3daf7eceb3db3708985cb07ef3",
+      "size": 3887
+    },
+    "Web/App/eq_graph.js": {
+      "sha": "58e8d5ed6bbdacfb7f20128141a7eb2726c0a923",
+      "size": 5899
+    },
+    "Web/App/runtime_skin_frame_layer_v2.css": {
+      "sha": "68c50d939f525dcfc789f6c9a60ea4060061c3a1",
+      "size": 316
+    },
+    "Web/App/eq_focus.js": {
+      "sha": "602f4e47e0622cbfb867662b374653515fefa3f1",
+      "size": 14537
+    },
+    "Web/App/data/scene_presets_v1.json": {
+      "sha": "bdb6eeed61ec31632fa1eb8ced2a9a5e13aa7709",
+      "size": 55129
+    },
+    "Web/App/data/ui_controls.json": {
+      "sha": "e6b555d23ffd67bb3e444b5754d528434f6eddeb",
+      "size": 15837
+    },
+    "Web/App/data/catalog.json": {
+      "sha": "32effe82532ea690a50dd39baafe26284155cb67",
+      "size": 100699
+    },
+    "Web/App/audio/transport.css": {
+      "sha": "7a2df2e290fafa557c5fe964cccd2e1716341a75",
+      "size": 1612
+    },
+    "Web/App/UI_02/ui02.css": {
+      "sha": "17c328c0e0cd1e11cb063791a5e52983c97b5793",
+      "size": 768
+    },
+    "Web/App/UI_01/ui01.css": {
+      "sha": "5e1d9d8e9ef19a25d82bae61802aa3a1e088af44",
+      "size": 269
+    }
+  },
+  "approved_png": {
+    "Assets/UI/ReferenceSheets/SPACE_ENVIRONMENT_56_ATLAS.png": {
+      "sha": "b02c9ee4794c9e36f64e5b13d9865295f35a4041",
+      "bytes": 2518862
+    },
+    "Assets/UI/ReferenceSheets/SCENE_PRESET_HERO_48_ATLAS.png": {
+      "sha": "f1bed1ad9d688c1bdc59ce9d132409d9714188a3",
+      "bytes": 2431970
+    },
+    "Assets/UI/ReferenceSheets/WALL_COVER_32_ATLAS.png": {
+      "sha": "6a18ed104e853ff23244bf2312d173f081e15556",
+      "bytes": 2342653
+    },
+    "Assets/UI/ReferenceSheets/STYLE_GUIDE_V1.png": {
+      "sha": "21646b23b0eb6bd690011a0b3247aab2d652618a",
+      "bytes": 2078473
+    },
+    "Assets/UI/ReferenceSheets/SOURCE_64_ATLAS.png": {
+      "sha": "0efa9e728964822a24b32b4f6e174a26ab1df9a0",
+      "bytes": 2116453
+    },
+    "Assets/UI/ReferenceSheets/TRANSMISSION_24_ATLAS.png": {
+      "sha": "5650ebb824d1ba076acdb74ffd00806a9728131f",
+      "bytes": 2003785
+    },
+    "Assets/UI/Runtime/Common/Advanced/RT_ADV_CONTROL_CARD_ACTIVE.png": {
+      "sha": "645e92cda3c8953528ac2229793d19b717f69980",
+      "bytes": 1093
+    },
+    "Assets/UI/Runtime/Common/Advanced/RT_ADV_CONTROL_CARD_BYPASSED.png": {
+      "sha": "aab7bd5d50b062926b8c60a8f5dfc43410f24600",
+      "bytes": 1042
+    },
+    "Assets/UI/Runtime/Common/Advanced/RT_ADV_DRAWER_FRAME.png": {
+      "sha": "30c928ddab07d6c81925c1b9ef0fa3df52a6c3dc",
+      "bytes": 1618
+    },
+    "Assets/UI/Runtime/Common/Advanced/RT_ADV_CONTROL_CARD_DEFAULT.png": {
+      "sha": "d5f9525e7f1da284f00802207f074e2e16cf35eb",
+      "bytes": 1048
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_MARKER_ACTIVE.png": {
+      "sha": "3450c8234ab66940400217802cb314a49d96ddb4",
+      "bytes": 18862
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_POINT_HOVER.png": {
+      "sha": "5816829972ee3ecf0061e74cb168ae404c7550c8",
+      "bytes": 3482
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_SOURCE_MARKER_ACTIVE.png": {
+      "sha": "0892ff76fd24e7ea8c3f3ce29fc79bfd0eb96cf0",
+      "bytes": 17535
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_SOURCE_MARKER_IDLE.png": {
+      "sha": "79e855b7899505f7db44757cd5facc795aa43145",
+      "bytes": 1094
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_POINT_IDLE.png": {
+      "sha": "a19d9dc3510aec9df5b2cd3861033c23d48ec1cd",
+      "bytes": 319
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_POINT_SELECTED.png": {
+      "sha": "5c056dddebd489dfd3d5de9ca821ee6fc50cba08",
+      "bytes": 3491
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_MOTION_CAR_GLYPH.png": {
+      "sha": "417efc5eefd3d4a4e4ed67c2b548d7ca31ad20c9",
+      "bytes": 2242
+    },
+    "Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_MARKER_IDLE.png": {
+      "sha": "5719d6ca229530467f041e87ec7cafb2aedbc7c4",
+      "bytes": 8798
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BYPASS_TOGGLE_OFF.png": {
+      "sha": "77742210df43e2c1c51071c62fbb60da23393daa",
+      "bytes": 511
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_HOVER.png": {
+      "sha": "63793694b32e6b884c274c83f845b69b6b76347e",
+      "bytes": 800
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_IDLE.png": {
+      "sha": "f3c31d03b5c2da56987f56ff36808d21d38dab61",
+      "bytes": 770
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png": {
+      "sha": "3ccae04a2cbe9bb89aadac6dd97340ec49575cf2",
+      "bytes": 838
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_DISABLED.png": {
+      "sha": "acac88f7d8e6cfe1bdba9d1fc5e0a8f77b2da086",
+      "bytes": 757
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_DISABLED.png": {
+      "sha": "ea1fcecaaabfd968d5d6c660a6c3afb01b8c0b81",
+      "bytes": 763
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png": {
+      "sha": "92eb7a36401eb899012a9323a56dfbd98fa00fbf",
+      "bytes": 810
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_HOVER.png": {
+      "sha": "1bfa697915f95dc5b4133af9247c5b7c8cfd0b70",
+      "bytes": 752
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_IDLE.png": {
+      "sha": "f307adf9e905f73f707f54bda021187ce40ad65b",
+      "bytes": 723
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CARET_HOVER.png": {
+      "sha": "9a9f5ddfad8b704d31cdae416b26d9edd415495c",
+      "bytes": 201
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png": {
+      "sha": "b66407b107282262a7abe0ca87fff5ecfcee851b",
+      "bytes": 918
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_DISABLED.png": {
+      "sha": "904d77e3ccbaa738986ccbf3884e61d6ac71e66e",
+      "bytes": 317
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BYPASS_TOGGLE_ON.png": {
+      "sha": "47f86c4094aba289411f7bef8a9ef78b3cb579b7",
+      "bytes": 501
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_DRAG.png": {
+      "sha": "f9dd92fdcdcfcdc3e5c796aef6196c3354e56058",
+      "bytes": 5400
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CAP_OPEN.png": {
+      "sha": "dd77cb7e93c6f9b33ed0dc1f6b4d071157df8bb6",
+      "bytes": 823
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_HOVER.png": {
+      "sha": "b3399028b8ef298815ed4d6665932f07fda095fb",
+      "bytes": 897
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_ACTIVE.png": {
+      "sha": "13ede4d8cc0b93fb0650385aa24274a27066ff4d",
+      "bytes": 787
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_PRESSED.png": {
+      "sha": "848d3c0ae712a664ef3fbe5a7691406c89250c2a",
+      "bytes": 708
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_PRESSED.png": {
+      "sha": "f980a5c2ebbf7615d3b7344f86f6c7dff93a9f23",
+      "bytes": 788
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_DISABLED.png": {
+      "sha": "97578252a0e2a653ddd12c66668885497708fb0c",
+      "bytes": 793
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png": {
+      "sha": "c478e0d13647045afd181863407dee7c1c276dfd",
+      "bytes": 773
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SLIDER_TRACK.png": {
+      "sha": "309dcb80948da261f44a20a57e30dc9cf5d24b0b",
+      "bytes": 264
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_BYPASS_TOGGLE_DISABLED.png": {
+      "sha": "8c49f63df06defb38512f9af70c907e041012238",
+      "bytes": 512
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_KNOB_L_BASE.png": {
+      "sha": "eee3cdf2b7bf2ed68e6d2033cc2e201c8386c5d3",
+      "bytes": 57933
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_KNOB_S_BASE.png": {
+      "sha": "49c1e79f7bb5b9a9efba9a539f368dc052be64cb",
+      "bytes": 2322
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_IDLE.png": {
+      "sha": "35e2964704502b48b90a07b786c4c2de0e752300",
+      "bytes": 624
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_OFF.png": {
+      "sha": "c1a53082eb5884b6c2bff13586e38db949997002",
+      "bytes": 312
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_CHECKBOX_ON.png": {
+      "sha": "97568fb2d4c41e5984a408c9c2c7d90d7a1763b6",
+      "bytes": 456
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_KNOB_M_BASE.png": {
+      "sha": "cce8f77597c8fe221501db19527949e9c8347bb2",
+      "bytes": 3012
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_DROPDOWN_CARET_IDLE.png": {
+      "sha": "bd0b3322dbf56c9cb8daea786b43d7677d61c6d8",
+      "bytes": 205
+    },
+    "Assets/UI/Runtime/Common/Controls/RT_SLIDER_THUMB_HOVER.png": {
+      "sha": "51a98370acdf4ffa123f5826cbde0fd7d0a14334",
+      "bytes": 659
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_FLOW_NODE_CAP_SELECTED.png": {
+      "sha": "c0dea239d5c94eef654b0e421dd155b3f1f28e47",
+      "bytes": 934
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_GRAPH_GRID.png": {
+      "sha": "47ded6dd78b761870d542b6fe30f1507f1787fc7",
+      "bytes": 1958
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_EQ_NODE_SELECTED.png": {
+      "sha": "6a89de2a3bb6fbc8efee5042cd499ff868c753eb",
+      "bytes": 3739
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_FLOW_NODE_CAP_BYPASSED.png": {
+      "sha": "65f7136d4683dcc1d583fc64c2dc3e3c3598a33d",
+      "bytes": 1114
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_EQ_NODE_HOVER.png": {
+      "sha": "50d29ed4ed5b99f4844f839cd07a660acabc198c",
+      "bytes": 3752
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_EQ_NODE_IDLE.png": {
+      "sha": "f97cdba12bbaefcfbf654caf92660df77445edb7",
+      "bytes": 295
+    },
+    "Assets/UI/Runtime/Common/Analysis/RT_FLOW_NODE_CAP_DEFAULT.png": {
+      "sha": "943f830f6ba9431cf501e5a565ed1318feed1a14",
+      "bytes": 835
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_PASTE_DISABLED.png": {
+      "sha": "1b6d5eef32be6073058fe5798b610880a2c0522b",
+      "bytes": 266
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_AMBIENCE_ACTIVE.png": {
+      "sha": "eb42ef3d7da25ce41a0a7d52043a742f757604a1",
+      "bytes": 2125
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_COPY_IDLE.png": {
+      "sha": "3d34a8b809fa3443bd409664ebe0027422f7a05a",
+      "bytes": 278
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_BADSIGNAL_DEFAULT.png": {
+      "sha": "d4d5e78301ef3c6d75e2d43464cd38ee2d3126d1",
+      "bytes": 1308
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_INTELLIGIBILITY_DEFAULT.png": {
+      "sha": "6770cb3f5225e104517ddb40509ff7b3c6a29026",
+      "bytes": 2806
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_WALL_ACTIVE.png": {
+      "sha": "7e5b1c570847535d8ef1f27918e7fd6fa678c504",
+      "bytes": 1172
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SPACE_DEFAULT.png": {
+      "sha": "a6cf96be5f5e3c3c4ac2669724c8865d11e2f5a2",
+      "bytes": 1569
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FOLDER_HOVER.png": {
+      "sha": "aaa4eb50cd635d654bdd5dba820c471ab8aa140a",
+      "bytes": 965
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_SHUFFLE_IDLE.png": {
+      "sha": "de102339bcd33173796458bb1bdb97e2133cd249",
+      "bytes": 373
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FULLSCREEN_IDLE.png": {
+      "sha": "d1247163dc54bd2b7b162912d62d772b9d0d5778",
+      "bytes": 239
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_UNDO_IDLE.png": {
+      "sha": "c2cf2ec9eae71a5b6ae56f39d3a8b15c1622ee60",
+      "bytes": 348
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SPACE_ACTIVE.png": {
+      "sha": "eab3a7940425ee1cd02d9cbaa80390efb6054cd8",
+      "bytes": 1469
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MIX_DEFAULT.png": {
+      "sha": "e6357c018cb93542d8312eb9f73b21ffd79ab631",
+      "bytes": 4419
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MIX_ACTIVE.png": {
+      "sha": "408a39b5aa1d4d4ebe73708684fef74ced054cfa",
+      "bytes": 4307
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_REDO_IDLE.png": {
+      "sha": "8cda3798d84c8ff8684dcde6cde7ea76d0b33a4c",
+      "bytes": 353
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FULLSCREEN_HOVER.png": {
+      "sha": "2b42bc0f0d8250f0bdbc442592d5215d9c9f27cd",
+      "bytes": 236
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SOURCE_DEFAULT.png": {
+      "sha": "0ab29340f0372cf81f0f1aed9176624d3a731d75",
+      "bytes": 2699
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MOTION_DEFAULT.png": {
+      "sha": "5a765d09b4acff712be4aeb0161131ba15bcf0b0",
+      "bytes": 2043
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_TRANSMISSION_DEFAULT.png": {
+      "sha": "c9c1b99cc4e1ccb31a308f0c9f2b685cfe4f2e4d",
+      "bytes": 1398
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_SHUFFLE_HOVER.png": {
+      "sha": "359410e64061852f210b1ce479f7aea33d90568c",
+      "bytes": 369
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_SOURCE_ACTIVE.png": {
+      "sha": "0e1afb17929fadfa968067cfdc4b305129b4d491",
+      "bytes": 2622
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_INTELLIGIBILITY_ACTIVE.png": {
+      "sha": "67ec2f5a67ad48b9b91ab37801af6ecf96360d1b",
+      "bytes": 3044
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FULLSCREEN_ACTIVE.png": {
+      "sha": "2b42bc0f0d8250f0bdbc442592d5215d9c9f27cd",
+      "bytes": 236
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_EQ_DEFAULT.png": {
+      "sha": "0e0b40df5e2e6a6df3b34d06eefa64d919f38ae6",
+      "bytes": 1812
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_GEAR_IDLE.png": {
+      "sha": "f37ccec54cbded9a9618d787464850cae9089c4a",
+      "bytes": 3249
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_GEAR_HOVER.png": {
+      "sha": "c484cc9c40511a1fdaa12ca05c0a3e3a10fab932",
+      "bytes": 3184
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_REDO_DISABLED.png": {
+      "sha": "d038ed2bf880273a406b31b0234b6bf70a3d0cdb",
+      "bytes": 356
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_UNDO_DISABLED.png": {
+      "sha": "1d7d893722b97e73d6d1508de959eb07a9e57483",
+      "bytes": 351
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_PASTE_HOVER.png": {
+      "sha": "43185443fea94f27810f9f0cd98ada481676f9d3",
+      "bytes": 257
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_CONDITION_DEFAULT.png": {
+      "sha": "1b2436f087ba902b9d09123f49fe8a36abe0c639",
+      "bytes": 1936
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_EQ_ACTIVE.png": {
+      "sha": "481b14e86e1e440fcc5593291030af8834712872",
+      "bytes": 1799
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_BADSIGNAL_ACTIVE.png": {
+      "sha": "70adc26146cad720614e053f8f2423c5025be2b1",
+      "bytes": 1230
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FOLDER_IDLE.png": {
+      "sha": "dea765eee2aee88656f6f28c57c1f4028715126d",
+      "bytes": 1004
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_MOTION_ACTIVE.png": {
+      "sha": "cb9138a8f616d08cf6d4fcdef8f982344d5ad54c",
+      "bytes": 1974
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_PASTE_IDLE.png": {
+      "sha": "2aa7881a8626604cfc52fee8492442b8445fd413",
+      "bytes": 260
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_AMBIENCE_DEFAULT.png": {
+      "sha": "f8f362641ecec036ee1a4b01028e50d865c72044",
+      "bytes": 2348
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_UNDO_HOVER.png": {
+      "sha": "105825569e56a842bb36a6b879644750829b9144",
+      "bytes": 344
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_WALL_DEFAULT.png": {
+      "sha": "f5f2437081ae6bf680360ff4e21376330b612402",
+      "bytes": 1351
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_CONDITION_ACTIVE.png": {
+      "sha": "782d8a6a4f2d8ad5f1755819990ce4d5b8242318",
+      "bytes": 1832
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_COPY_HOVER.png": {
+      "sha": "760dd103203f389ef627f31ca835b86355a9fdad",
+      "bytes": 274
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_REDO_HOVER.png": {
+      "sha": "1e2a65fd096ce765ee439759894f23310eebd191",
+      "bytes": 349
+    },
+    "Assets/UI/Runtime/Common/Icons/RT_MODULE_ICON_TRANSMISSION_ACTIVE.png": {
+      "sha": "d8a5ef9f2bf61a63f452dd48a86fd2fa14fa9a63",
+      "bytes": 1334
+    },
+    "Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_IDLE.png": {
+      "sha": "dfddff905831caa6c7c4db2bd719a3a9d3eeb406",
+      "bytes": 368
+    },
+    "Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_L_HOVER.png": {
+      "sha": "18f1c37b50797f2b78ffc0d7189747f6da6b8b25",
+      "bytes": 353
+    },
+    "Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_L_IDLE.png": {
+      "sha": "a1d00ba21713a7527bf9e3bd59ded2f032a4dc2e",
+      "bytes": 356
+    },
+    "Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_HOVER.png": {
+      "sha": "29bea455c291cc0869af42278a109dd311e0b4b4",
+      "bytes": 365
+    },
+    "Assets/UI/Runtime/Common/Brand/RT_LOGO_MARK.png": {
+      "sha": "d31e543c58604b17d05c517a71f7f27f91f4c35f",
+      "bytes": 4426
+    },
+    "Assets/UI/Runtime/Common/Browser/RT_ASSET_PREVIEW_FRAME_SELECTED.png": {
+      "sha": "d8817d136a598e4ed3fab3d2dd3a50ed7814f0bd",
+      "bytes": 1194
+    },
+    "Assets/UI/Runtime/Common/Browser/RT_ASSET_PREVIEW_FRAME_DEFAULT.png": {
+      "sha": "25f814a84ae7aa403c90ec7b7617b8c88c7ee722",
+      "bytes": 1185
+    },
+    "Assets/UI/Runtime/Common/Browser/RT_ASSET_BROWSER_FRAME.png": {
+      "sha": "8d955364aec31ea8d755e6cc4379e62fe7715d18",
+      "bytes": 1588
+    },
+    "Assets/UI/Runtime/Common/Shell/RT_CARD_FRAME.png": {
+      "sha": "9f2f26f3ed9b14fa504f71635a087250cb056fcc",
+      "bytes": 1097
+    },
+    "Assets/UI/Runtime/Common/Shell/RT_TOPBAR_BG.png": {
+      "sha": "5d455ad7916ef1a56036e9e34f9f134c2254d73e",
+      "bytes": 1116
+    },
+    "Assets/UI/Runtime/Common/Shell/RT_SHELL_BG.png": {
+      "sha": "096ea8d270187220c247fd530d47aecb8b354875",
+      "bytes": 1262
+    },
+    "Assets/UI/Runtime/Common/Shell/RT_PANEL_FRAME.png": {
+      "sha": "4acab8734a56e6c858d25b4f92506842f1bdbfe3",
+      "bytes": 1250
+    },
+    "Assets/UI/Runtime/Common/Shell/RT_SECTION_DIVIDER_V.png": {
+      "sha": "b39036bcf14e3a7b9cffdec561ab284c8497d848",
+      "bytes": 166
+    },
+    "Assets/UI/Runtime/Common/Shell/RT_SECTION_DIVIDER_H.png": {
+      "sha": "bb0ce22e68b288a642129db5450c482ab4de7b1f",
+      "bytes": 125
+    },
+    "Assets/UI/Runtime/Common/Meter/RT_METER_FRAME.png": {
+      "sha": "fa2be4141a3e996ecf32be79b76342f2caddee7e",
+      "bytes": 4352
+    },
+    "Assets/UI/Runtime/Common/Meter/RT_METER_SEGMENT.png": {
+      "sha": "63e58facd4ce1c36bf854f718266c3299f2e75a3",
+      "bytes": 166
+    },
+    "Assets/UI/Runtime/UI_01/Global/RT_RUNTIME_STRIP_BG.png": {
+      "sha": "c473981614594700f19fca07e450419ca6b03d7a",
+      "bytes": 578
+    },
+    "Assets/UI/Runtime/UI_01/Global/RT_PRESETBAR_BG.png": {
+      "sha": "47925d86efa922b0f52dee81ea59d485f3eb730b",
+      "bytes": 646
+    },
+    "Assets/UI/Runtime/UI_01/Scene/RT_SCENE_GRID.png": {
+      "sha": "8972673fca72a8f376f2f147dcea3b6a5cabcc1f",
+      "bytes": 835
+    },
+    "Assets/UI/Runtime/UI_01/Scene/RT_WAVEFORM_STRIP_BG.png": {
+      "sha": "a91f195fc1aa7c8905d50298086c938617461977",
+      "bytes": 954
+    },
+    "Assets/UI/Runtime/UI_01/Scene/RT_DISTANCE_CALLOUT.png": {
+      "sha": "393dec9c8fd52ee32106bcb48afd07712cfa5d06",
+      "bytes": 1277
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_019_Behind_Car_Seat.png": {
+      "sha": "b1278ee5d2fd3c09cb1586f331fb79a2d4ea67df",
+      "bytes": 125618
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_030_Floor_Ceiling_Above.png": {
+      "sha": "c6513c0c212285efb867939bcb5855ed38942da3",
+      "bytes": 162446
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_003_Thin_Blanket.png": {
+      "sha": "0cd9a4069ec49d4e2eaf9dba60e96a7403cd3da3",
+      "bytes": 196106
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_015_Drawer_Cabinet.png": {
+      "sha": "5c5b09f3b48086771a9899980b34195aee15d96d",
+      "bytes": 180372
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_026_Concrete_Wall.png": {
+      "sha": "2d256d919f7d3ca36674336f9b3aac4d7a211aae",
+      "bytes": 203142
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_008_Inside_Pocket.png": {
+      "sha": "b4af4605eed5044f127ba06bda03a5e42a11b04f",
+      "bytes": 155529
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_004_Thick_Blanket.png": {
+      "sha": "8a7a4b004a17e0ff135c8338af641c9912964f17",
+      "bytes": 183424
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_009_Cardboard_Box.png": {
+      "sha": "96ec7db35234a43b3a7a210ec0623acf32942a6a",
+      "bytes": 145203
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_005_Pillow.png": {
+      "sha": "39a8d334827b089673c55e88fb22a1f137377d08",
+      "bytes": 166052
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_021_Hollow_Wooden_Door.png": {
+      "sha": "59e59effd4ada6298cbcbb59362a1b9171f6af1a",
+      "bytes": 141368
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_028_Metal_Door.png": {
+      "sha": "bfae208707254795e7ba18f90f3f1fe43aa3d05b",
+      "bytes": 157872
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_010_Thick_Carton.png": {
+      "sha": "d866989d270049bd91a85740ce8a5e1209371e9e",
+      "bytes": 166192
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_013_Backpack.png": {
+      "sha": "99e8876e2a9fd43003830f0926fd38fb22d76c99",
+      "bytes": 132071
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_016_Under_Desk.png": {
+      "sha": "5a1efe1713af09e3fe4f8bb2748da1e981ef201a",
+      "bytes": 111948
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_020_Closed_Car_Window.png": {
+      "sha": "3639d6f941c04022309299702fc8e9fdd781515d",
+      "bytes": 124197
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_011_Paper_Bag.png": {
+      "sha": "ab607e3213b799f68ba1d9982067f38bd6d29f85",
+      "bytes": 148614
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_012_Plastic_Bin.png": {
+      "sha": "61ba95b1c1a854eb22d6110f61064a3f1efcfd18",
+      "bytes": 111198
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_014_Suitcase.png": {
+      "sha": "058b7768934fb89b83eb94eac3588ada2163bc89",
+      "bytes": 147769
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_025_Brick_Wall.png": {
+      "sha": "351c6c3e708224a29daf9d5f3161e5c2abefaf61",
+      "bytes": 202015
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_001_None_Open.png": {
+      "sha": "e04fafd49de0ec25bb67784d1dad4c71c3565d18",
+      "bytes": 211394
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_031_Helmet_Visor_Cover.png": {
+      "sha": "fc8f7ca35c8a4b3d702ab418d1ad7fc31d64aa54",
+      "bytes": 148848
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_023_Office_Drywall.png": {
+      "sha": "7fd5178f518363feff7604be3d13348bdd71a85f",
+      "bytes": 145022
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_002_T_Shirt_Cloth.png": {
+      "sha": "f9b39d1c85039d3a6c0dbd53f77ae485cab3e651",
+      "bytes": 177208
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_018_Car_Trunk.png": {
+      "sha": "ff5e886f88f0c4211e816891317f9224ac72f24e",
+      "bytes": 130141
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_032_Appliance_Behind_Fridge.png": {
+      "sha": "69311564ff528e1d0f6aa8b9dd230e778fd39977",
+      "bytes": 116090
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_017_Car_Glove_Box.png": {
+      "sha": "4b3cec8829fed58a0d92140359445e135eda1543",
+      "bytes": 113373
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_022_Solid_Wooden_Door.png": {
+      "sha": "de683fc2f0b84ce87bf583e5c048852853aae1f0",
+      "bytes": 136526
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_029_Bathroom_Stall_Door.png": {
+      "sha": "e1357686d4a318944122895e3d0280163dd10d75",
+      "bytes": 109267
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_007_Curtain.png": {
+      "sha": "b2d4d8622c034ed6ed1ff8722f18dfe768944850",
+      "bytes": 151737
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_027_Glass_Window.png": {
+      "sha": "1127bee0188e3366d4beb0d8f9c792343b356aef",
+      "bytes": 102219
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_024_Apartment_Thin_Wall.png": {
+      "sha": "7136866367231c4622ff4dbc7512212979a5a573",
+      "bytes": 143912
+    },
+    "Assets/UI/UI_02/WALL_COVER/CVR_006_Bedsheet.png": {
+      "sha": "3388b2f2aa0a09241d9a9ed80df848ec6e5142eb",
+      "bytes": 136756
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_002_Narrowband_Clean.png": {
+      "sha": "193e35931975df09798e489b0140a0aaeceef438",
+      "bytes": 132444
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_007_3G_Cellular.png": {
+      "sha": "6eef2ab363f3d36794cf576581edf21a426d51ac",
+      "bytes": 148414
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_021_Streaming_Codec_Audio.png": {
+      "sha": "75478970035204bff1589281b144d7916140c8a8",
+      "bytes": 118652
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_020_TV_Broadcast.png": {
+      "sha": "04353703971e743ad7fd617088b531c06c06e60d",
+      "bytes": 156712
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_011_Walkie_Narrowband.png": {
+      "sha": "d891adba8a83e7cd10a76af8082ffd2c8e2d5a51",
+      "bytes": 157576
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_013_Police_Radio.png": {
+      "sha": "4142080d1c4c4eb028636712099736619f3b3d6e",
+      "bytes": 182610
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_018_AM_Radio.png": {
+      "sha": "11aa000c61b1878b233bbe80f70fffda401d23b5",
+      "bytes": 169316
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_015_Helicopter_Intercom.png": {
+      "sha": "82c2a3080107543a740c07bad4782b108c285fc6",
+      "bytes": 163638
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_008_4G_VoLTE.png": {
+      "sha": "672511abe10f0f9bf511f9f2e0a1458c61e0564b",
+      "bytes": 154709
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_004_Noisy_Analog_Line.png": {
+      "sha": "28d099c7b351fad67237a4221a2f52d4acb9c4ab",
+      "bytes": 207581
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_005_GSM_Stable.png": {
+      "sha": "f6987a7338e4f82ea5aeb1aead345db3c84bccdd",
+      "bytes": 157235
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_006_GSM_Weak.png": {
+      "sha": "bf19273936810797771c78480513dad98058623e",
+      "bytes": 150500
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_019_FM_Radio.png": {
+      "sha": "4af0b5ef7d44230554a8fe7b70e3f67873c9538e",
+      "bytes": 157532
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_009_VoIP_Clean.png": {
+      "sha": "0319f015405a150ea606c7c68fed7d3e7928f096",
+      "bytes": 147333
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_023_Signal_Dropout.png": {
+      "sha": "40dc9b0aa2f5e840c6ac6f846bffe03855c0380e",
+      "bytes": 121720
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_016_Drive_Thru_Link.png": {
+      "sha": "a292220b0191ae5edfc8238aab1bc4ca62b1bfd6",
+      "bytes": 162367
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_003_PSTN_Landline.png": {
+      "sha": "b51a059d0efa5236763c76e0cfc2dff563cd13ed",
+      "bytes": 142234
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_022_Packet_Loss_Digital.png": {
+      "sha": "7ce0c4d2ace64a495b484cab51b20ea37e0302b4",
+      "bytes": 112948
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_024_Tuning_Out_of_Range_Search.png": {
+      "sha": "c9cc3237ec59a19b72a1a8003b5e4b11d8a52d72",
+      "bytes": 153492
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_001_Direct_Clean.png": {
+      "sha": "35110c8577e90cdae0580c80dcd0935d0b5f371c",
+      "bytes": 149125
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_014_Aviation_Comms.png": {
+      "sha": "285a3d32d4380aacd34cef5b91402c414706f8f2",
+      "bytes": 174928
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_012_Dispatch_Radio.png": {
+      "sha": "1a6dfcd097c9d21f5bafb8d2cd43997ddb760c1d",
+      "bytes": 158683
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_010_VoIP_Unstable.png": {
+      "sha": "bde9fa7d6ae1daf8eeeb720e30ede79d1bc77311",
+      "bytes": 138622
+    },
+    "Assets/UI/UI_02/TRANSMISSION/TRN_017_Security_Intercom_Link.png": {
+      "sha": "d9053834b933b959617e96f2500004ecc5512c85",
+      "bytes": 161270
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_025_Ceiling_PA_Shopping_Mall.png": {
+      "sha": "c7388316dcf214bea67ee0c50f67cee8eef3e576",
+      "bytes": 181355
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_044_Toy_Recorder_Bedroom.png": {
+      "sha": "f25f499f91b1b268e2d3d9f80e176e55acf18bbe",
+      "bytes": 152011
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_009_Phone_In_Pocket_Busy_Street.png": {
+      "sha": "d64d3960c2839db0fabd334554b72c3552c05160",
+      "bytes": 157247
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_045_CCTV_Security_Monitor_Audio.png": {
+      "sha": "42b9826baabc262dd061c3a3438cf5032832e885",
+      "bytes": 171168
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_027_Airplane_Cabin_PA.png": {
+      "sha": "d775f32fd5123fe21e9968e8f98b6a2f1e4413d7",
+      "bytes": 153404
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_046_Cassette_Recorder_Kitchen_Table.png": {
+      "sha": "27fb80719523fc7360fe80fcdc08e55650e37015",
+      "bytes": 180492
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_010_Phone_In_Backpack_Station_Concourse.png": {
+      "sha": "ab99d86036c8f83a6c293025d50c38782f068dda",
+      "bytes": 173731
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_018_Drive_Thru_Speaker_Fast_Food_Lane.png": {
+      "sha": "927ab6fdb67bd079c582fc0df9feb3f4bd684c47",
+      "bytes": 165996
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_034_Voice_Behind_Glass_Window.png": {
+      "sha": "68f10032bb6f54466d0e3aa04f1d9165dae9aae0",
+      "bytes": 120242
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_030_Party_At_The_Neighbors.png": {
+      "sha": "4c07971e90bf733e95ba6987f1c806860262d032",
+      "bytes": 124741
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_001_Mobile_Call_Busy_Sidewalk.png": {
+      "sha": "b3627efd7b70b6787a15fad1b27765171144debb",
+      "bytes": 162172
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_031_Restaurant_Kitchen_Through_Door.png": {
+      "sha": "e076d0894753896a00c41d8a94cbeaa49db715e0",
+      "bytes": 176386
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_015_Helicopter_Intercom_Half_Understandable.png": {
+      "sha": "bf2a2992374cb1b03f4310b6c04394c65df2e3d1",
+      "bytes": 145385
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_008_Cordless_Phone_Living_Room.png": {
+      "sha": "6683fa493131ec57ad2c1394da37f86c44de7322",
+      "bytes": 144842
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_041_Subway_Car_Announcement.png": {
+      "sha": "4554136d5bf4ec6e6b6860a49cc7524d291fe93c",
+      "bytes": 168866
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_014_Helicopter_Intercom_Clear.png": {
+      "sha": "36f565dcfb4f9c8e674375d10abbdf773a6554d8",
+      "bytes": 172758
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_028_Captain_Announcement.png": {
+      "sha": "571cac9680614b60a1d3b1aaca2625d720b40ca7",
+      "bytes": 145656
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_043_Cheap_Wireless_Speaker_In_Room.png": {
+      "sha": "86934747f3ca30a7fe2e3433c8e2ef5124687ec9",
+      "bytes": 161081
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_011_Walkie_Talkie_Construction_Site.png": {
+      "sha": "72e1a4eb0643529e0c31ee96de18a2fbfb42a177",
+      "bytes": 186476
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_007_Conference_Call_Glass_Office.png": {
+      "sha": "ccd3311a8494539ac326391e35d2245f436ea27f",
+      "bytes": 148538
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_016_Aviation_Headset_Cockpit_Style.png": {
+      "sha": "bca105fe8b8fab37d00ffe49f232d8864ab6d86b",
+      "bytes": 173652
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_019_Radio_In_Back_Office.png": {
+      "sha": "ce1fa42291256e939bc0fc0ca0a8cdb254eeae11",
+      "bytes": 141849
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_024_Airport_Gate_Announcement.png": {
+      "sha": "1204875de7707713c4df11bc867a9f0bf9a73454",
+      "bytes": 140768
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_020_Car_Radio_Out_of_Range.png": {
+      "sha": "925bc8597128e15ff58f633be0b2555aac33a6d2",
+      "bytes": 169699
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_012_Police_Radio_Street_Exterior.png": {
+      "sha": "3095e1dfe9b777bb02c7f5602e06e321a5cdbd9a",
+      "bytes": 172694
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_047_Vintage_Radio_Living_Room.png": {
+      "sha": "a01360a13b6cee13643a3f2f585ad1850cf80cb2",
+      "bytes": 156738
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_022_Stadium_PA.png": {
+      "sha": "e18fea1189184fc5f09ceabafa946c80ea34be22",
+      "bytes": 176772
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_006_Payphone_Street_Corner.png": {
+      "sha": "56ca664047b3502251cfab8da5b628a9e89086f9",
+      "bytes": 192845
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_002_Mobile_Call_Weak_Signal.png": {
+      "sha": "b458ea4a6f5ad693c01e61dd5023b87a1b35121b",
+      "bytes": 132174
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_004_Hotel_Phone_Corridor_Spill.png": {
+      "sha": "8acbd6cf7170132370d3621b40771c598c688f31",
+      "bytes": 144537
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_039_Car_Door_Speaker_Slow_Drive_By.png": {
+      "sha": "0998660a4156f1f02418832bf2528fdfb5b90f4c",
+      "bytes": 161266
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_040_Truck_Cab_Radio_Highway_Pull_Away.png": {
+      "sha": "a04ed2eb1579abb2aecd79837b8dccfe391fd652",
+      "bytes": 171959
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_038_Car_Pass_By_Parking_Lot.png": {
+      "sha": "e62557053dc2fbd1a5bb8d84cb67e88aa92d5cbf",
+      "bytes": 153159
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_023_Train_Station_Announcement.png": {
+      "sha": "eb32dc8453b4edf512576fd75318c9769f4cd481",
+      "bytes": 190612
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_026_Bus_Interior_Announcement.png": {
+      "sha": "71cbb46ff73463f8477b49b8f19407c4c9e6c16d",
+      "bytes": 151249
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_036_Radio_In_Car_Trunk.png": {
+      "sha": "7e5a49f21639e9272d4d240bbe19d1543f331ae5",
+      "bytes": 149107
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_003_Office_Desk_Phone_Small_Office.png": {
+      "sha": "bef0d2be26458a1ceb21a20ad75f26ac99904c45",
+      "bytes": 175231
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_042_Bus_PA_Curb_Arrival.png": {
+      "sha": "f82ccf74a34021ac2d489ebc40eba87fe924e94a",
+      "bytes": 171585
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_032_TV_In_Living_Room_From_Hallway.png": {
+      "sha": "0e4ea79ebcd0998876bea649f8e8807bf1b78daf",
+      "bytes": 135386
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_037_Car_Pass_By_City_Street.png": {
+      "sha": "08eb11a7646e9a1fc734b2c06976ba84a53f102a",
+      "bytes": 177753
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_029_Upstairs_TV_Through_Wall.png": {
+      "sha": "9f02acaf19fe5ba1f65e38b657f15f34f6bc2d4d",
+      "bytes": 140160
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_033_Voice_Behind_Closed_Wooden_Door.png": {
+      "sha": "ab277da668b1c2763c0ec4e7a42f8101b5d61858",
+      "bytes": 146645
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_013_Dispatch_Radio_Vehicle_Interior.png": {
+      "sha": "4b8f7e6d57e3297df3b7add3f045dc8674c75ac3",
+      "bytes": 169546
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_017_Security_Intercom_Building_Entrance.png": {
+      "sha": "5e9a17b32ea943bbba95bc160b3c80c654f716d4",
+      "bytes": 143183
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_035_Phone_Inside_Suitcase.png": {
+      "sha": "99cbcca40c8a8f8afa5c943f8c12e257d83ea335",
+      "bytes": 181236
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_005_Prison_Visiting_Phone.png": {
+      "sha": "00d1a989726b1d3fb0be8256ac03ed8bf2b189d4",
+      "bytes": 148942
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_021_Bullhorn_Street_Protest.png": {
+      "sha": "1bd4775d457276a1e5fe453546df3364c0f632b2",
+      "bytes": 185203
+    },
+    "Assets/UI/UI_02/SCENE_PRESET_HERO/SCN_048_Small_Guitar_Combo_Garage_Room.png": {
+      "sha": "80d57bc72956b46e5f4666d320027b0c5773ad8e",
+      "bytes": 162129
+    },
+    "Assets/UI/UI_02/UI_02_REF/UI_02_REF_2_5X_PIXEL.png": {
+      "sha": "7459620e174349ea53b0d5a38fa900b566022bc6",
+      "bytes": 2913676
+    },
+    "Assets/UI/UI_02/UI_02_REF/UI_02_REF.png": {
+      "sha": "dbb2c3cde3ee53ec3424b5d0f79b0dcd9fad1b59",
+      "bytes": 1976915
+    },
+    "Assets/UI/UI_02/UI_02_REF/UI_02_REF_SCAN_OVERLAY_1X.png": {
+      "sha": "0007a42d28a5e90b718e3d93751173ccb0e6b16d",
+      "bytes": 1938312
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_054_Practice_Amp.png": {
+      "sha": "96b8d29045c1897395b7afcbe973bba658cec2b0",
+      "bytes": 114322
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_038_Wall_Mounted_PA_Horn.png": {
+      "sha": "6c38a1ead2d107e7abf5cbe8b8aa6b302a93dd1e",
+      "bytes": 107091
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_018_Helicopter_Intercom_Pack.png": {
+      "sha": "4da7534fb95542a8d8bdf064cffe05512329e9dc",
+      "bytes": 123020
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_028_Tablet_Speaker.png": {
+      "sha": "e700b9fc9ffd3a0a1c4771a3cec3d0eaa75c838a",
+      "bytes": 87838
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png": {
+      "sha": "353fec8577e9adb684dcf1c34cc61ce7675a0800",
+      "bytes": 110480
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_027_Laptop_Speakers.png": {
+      "sha": "e81da7595c6c58b017c841dc8acef29db913a186",
+      "bytes": 96362
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_057_Portable_Karaoke_Speaker.png": {
+      "sha": "f10ca4cc8ee7dc4ae78dd5d8cc7739da46b6e2f0",
+      "bytes": 119520
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_005_Cordless_Home_Phone.png": {
+      "sha": "bc7e8987f7bf4e295c4a7f25a8290fcb5677b3e7",
+      "bytes": 100576
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_050_Small_Portable_Wireless_Speaker.png": {
+      "sha": "2c78d8643dc470d460da12e7119a7d9d406853c7",
+      "bytes": 128476
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_041_Cassette_Recorder.png": {
+      "sha": "0a53fc71f55173001b2823f604d198f44509ef2e",
+      "bytes": 133484
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_056_Phonograph_Box.png": {
+      "sha": "22ecd37edfb322685dbc1612ce6642496dd104e7",
+      "bytes": 114020
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_025_Pocket_Transistor_Radio.png": {
+      "sha": "5367979af8d2e6ab36cfe23e177cceccee7d627f",
+      "bytes": 100745
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_039_Stadium_PA_Horn.png": {
+      "sha": "ae8d959de531a82eb732cfb4d7cd546a72ee4df4",
+      "bytes": 141244
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_015_Building_Entry_Intercom.png": {
+      "sha": "8264442422b3c9f9f98487a5450aa0226066dbba",
+      "bytes": 85859
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_049_Portable_DVD_Media_Player.png": {
+      "sha": "e6e0d20666f7d7fca320720123996136c22fcd9f",
+      "bytes": 86827
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_036_Airplane_Cabin_PA.png": {
+      "sha": "8f5aa41e3e5161c9423826cee9260301e8b708ad",
+      "bytes": 141352
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_034_Bus_PA_Speaker.png": {
+      "sha": "91df26302a6436470bdd0afe81794812d7a9e0c0",
+      "bytes": 144459
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_012_Police_Handheld_Radio.png": {
+      "sha": "d8709a5cf5a5759fd4bf14a182fa78280c340627",
+      "bytes": 88343
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_004_Feature_Phone.png": {
+      "sha": "3e06b11810a8c2efbf0cb1285783ab2ce25ee803",
+      "bytes": 75458
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_029_Desktop_Monitor_Speaker.png": {
+      "sha": "d21a67a3b2a9c24f0379b9c4b9aca732c986a368",
+      "bytes": 105489
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_051_Game_Console_Speaker.png": {
+      "sha": "57bf7fe5693dc3ef8f677b1480ba6cd7def8c1a6",
+      "bytes": 99170
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_043_Dictaphone.png": {
+      "sha": "a59bc21e924d6bf02c268a3f9633f277fdfd629e",
+      "bytes": 101673
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_006_Office_Desk_Phone.png": {
+      "sha": "15dc63e21425c6c3aa6e2d2037052fd3a590f7cd",
+      "bytes": 135186
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_060_Cabinet_Speaker_Small.png": {
+      "sha": "72b233bb1cc0428768523f733121e7943968f9a8",
+      "bytes": 92217
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_026_Boombox.png": {
+      "sha": "4d93a557a844a3d8c2b6e49a9d5c29bf4444ff31",
+      "bytes": 119829
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_014_Security_Intercom.png": {
+      "sha": "0541a6f111d25bd060622f611ddc3fc0a56657c0",
+      "bytes": 90912
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_032_Car_Door_Speaker.png": {
+      "sha": "06308ef3ae0f95cdfedea7726323474f2c0d69e5",
+      "bytes": 149641
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_030_Smart_Speaker.png": {
+      "sha": "ce977221f48de00f02f8c42466b43113924320f5",
+      "bytes": 97373
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_055_Gramophone_Horn.png": {
+      "sha": "b44db583d5bb8985f2b00375cbc23324a6021378",
+      "bytes": 111347
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_023_Kitchen_Radio.png": {
+      "sha": "0529929e45c2f4dfae7bf18d9242bf97e3fa7092",
+      "bytes": 135797
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_061_Cabinet_Speaker_Mid.png": {
+      "sha": "757f33847b880356a175ab64450c85aca04113db",
+      "bytes": 95403
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_011_Walkie_Talkie.png": {
+      "sha": "16da823535cca089a55b26e854b55e58fa499dbf",
+      "bytes": 75687
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_053_Small_Guitar_Combo_Amp.png": {
+      "sha": "14d352105158edbbae57f7923b93f1a5922c8be0",
+      "bytes": 121077
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_022_Flat_TV_Speaker.png": {
+      "sha": "efb0394ce000894d301104a20ad8cc1ed95e07aa",
+      "bytes": 81347
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_063_Helmet_Intercom_Speaker.png": {
+      "sha": "220b6571e1fc59c1f82ebab62e462c378d313c1a",
+      "bytes": 135970
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_008_Hotel_Room_Phone.png": {
+      "sha": "bbf419629ec2f3cb837517b50c65ffc24eca9fd2",
+      "bytes": 150261
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_058_Portable_PA_Column.png": {
+      "sha": "43b49742e644385a10a25d5e416a67d5dd53963c",
+      "bytes": 79625
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_021_CRT_Television.png": {
+      "sha": "1c2e18b971cb88ee3b29430ae8d41ef036ccd8ef",
+      "bytes": 82143
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_001_Smartphone_Earpiece.png": {
+      "sha": "4e3de74aea317c3e61b37d08a13768e3bbe59ca4",
+      "bytes": 72077
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_045_Toy_Recorder.png": {
+      "sha": "cc37aca50f328b4adf57d9ddef2443c96e150a8d",
+      "bytes": 129294
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_035_Train_Cabin_Speaker.png": {
+      "sha": "47abfda9c9bc0058d7e75ba2decf99be4e817544",
+      "bytes": 137866
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_059_Old_Public_Announcement_Box.png": {
+      "sha": "414622caab43d3539ddc4ee75812f588a90920d5",
+      "bytes": 122129
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_064_Hidden_Pocket_Bag_Speaker.png": {
+      "sha": "1c1bf1242c6ad5f0c2425a3e435c1e2affc0e127",
+      "bytes": 136829
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_037_Ceiling_PA_Speaker.png": {
+      "sha": "509713a5c1bfc9feac2afe08a80da8fa218b773e",
+      "bytes": 136984
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_042_Microcassette_Recorder.png": {
+      "sha": "0436652c8de9fb9e53088cae14928172785c9685",
+      "bytes": 122963
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_009_Public_Payphone.png": {
+      "sha": "9a9af8e7afa29081bc05ac4631337f463c3ae32a",
+      "bytes": 114607
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_019_Military_Field_Radio.png": {
+      "sha": "e6dd9e3352c0a9bb25ad02ad92580eb4cd4342c0",
+      "bytes": 104109
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_010_Conference_Speakerphone_Unit.png": {
+      "sha": "ff9741c62f94579045a23cb5fe5faf77f7d2d4fb",
+      "bytes": 124384
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_062_Cabinet_Speaker_Large.png": {
+      "sha": "85857a05533303cdfdb76f28e4ce7d167df42e55",
+      "bytes": 110083
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_020_Portable_Comms_Unit.png": {
+      "sha": "caeb3702dc9cda260798f57e1d22b33827663d01",
+      "bytes": 96247
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_017_Aviation_Headset.png": {
+      "sha": "8df43ab38b57b5dc55214d6af7c5b660114df375",
+      "bytes": 118319
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_003_Smartphone_Speakerphone.png": {
+      "sha": "3e22b7063aee3d0a848349a517d692552e11bf99",
+      "bytes": 138230
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_044_Answering_Machine.png": {
+      "sha": "75b41a730981f176bcdd11b57868f350bfb5a7dc",
+      "bytes": 126568
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_052_Cheap_Earbuds_Leakage.png": {
+      "sha": "def62753d3bae7b913212d81213ac86982107f7c",
+      "bytes": 102791
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_024_Clock_Radio.png": {
+      "sha": "1dbf0535e16c7d59798cfa15086a31a5e5e80125",
+      "bytes": 98160
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_048_Baby_Monitor.png": {
+      "sha": "27b1ba2258db39d78ea6bedd9e4b54355cf2a97b",
+      "bytes": 102575
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_040_Bullhorn_Megaphone.png": {
+      "sha": "a35c3a6b0fa088df78959f359d7361b088e511f4",
+      "bytes": 119135
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_033_Truck_Cab_Radio.png": {
+      "sha": "320059da7bfcbef60ac2c55c96b6b312f8e9e05d",
+      "bytes": 141972
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_047_Cheap_Voice_Recorder.png": {
+      "sha": "3708c854219101d4aab2315a919fc9dd8a247066",
+      "bytes": 111339
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_007_Vintage_Rotary_Phone.png": {
+      "sha": "abcd21c6251a04e58a516e81d5ff64f55d3683e9",
+      "bytes": 148780
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_046_Toy_Megaphone.png": {
+      "sha": "269d95c707d17077224a257d0f59ebfb040ceaac",
+      "bytes": 126497
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_031_Car_Dashboard_Speaker.png": {
+      "sha": "ce04a78f018c18a521be27b9114e728dcdbefb44",
+      "bytes": 125337
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_013_Dispatch_Base_Radio.png": {
+      "sha": "9d2a803726b61d46937594959dc58472f21830a1",
+      "bytes": 121428
+    },
+    "Assets/UI/UI_02/SOURCE/SRC_016_Drive_Thru_Speaker_Box.png": {
+      "sha": "fd83eef9fea776d383cb7a0f3d4cd498b83c2fd8",
+      "bytes": 112751
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_015_Restaurant.png": {
+      "sha": "d00cf18baeae8298e224e7f8342e64496f38ff6c",
+      "bytes": 188111
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_012_Basement.png": {
+      "sha": "bbcaeca544ffde90a7c62ecb1a9d8168f26f051a",
+      "bytes": 150408
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_008_Conference_Room.png": {
+      "sha": "4e94b1841226980b38a86dfdb9631fc1ac76bda6",
+      "bytes": 165574
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_009_Hallway.png": {
+      "sha": "94013add617bc5900f44d315593da6d8ca11665d",
+      "bytes": 123271
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_047_Forest_Trail.png": {
+      "sha": "051ac6991a32563c2fefb053b72c9d780261bd71",
+      "bytes": 203761
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_036_Sedan_Interior.png": {
+      "sha": "3c3b9239340da349a565d3eab86f92afd283b00d",
+      "bytes": 158306
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_028_Train_Platform.png": {
+      "sha": "ce1383bb2c100d7669ddb722035e9883ac4f5069",
+      "bytes": 202871
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_037_Van_Interior.png": {
+      "sha": "f1e3ef7179f390b7f24023af9ced15640e5271d5",
+      "bytes": 158392
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_050_Beach.png": {
+      "sha": "54c0a4317e058cc241bb835806381c2ba61a9995",
+      "bytes": 143365
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_024_Courtyard.png": {
+      "sha": "7754eb73b2c07bd8a225274e8e55a959f7dc9170",
+      "bytes": 190027
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_048_Mountain_Slope.png": {
+      "sha": "82e7763f019fdcbfe891473ae6ace293d7be2578",
+      "bytes": 185902
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_004_Kitchen.png": {
+      "sha": "5dab684be7978fbc061b39583f2926ddc0167e95",
+      "bytes": 144201
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_033_Stadium_Bowl.png": {
+      "sha": "fff479ceb31a7ffdd733d973bfab3c5922444394",
+      "bytes": 189953
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_035_Compact_Car_Interior.png": {
+      "sha": "1d568fc281ac8fe24b644238718a82d5ef6990e0",
+      "bytes": 155693
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_013_Lobby.png": {
+      "sha": "8c914b81e36729f527ad91542a2d334333ad5b69",
+      "bytes": 175538
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_041_Subway_Car.png": {
+      "sha": "4a71bf7900ee4f11b561f327955c418df712535e",
+      "bytes": 189280
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_018_Shopping_Mall.png": {
+      "sha": "0e158709fa4f41a4c36ce6c43e37a89590d38fab",
+      "bytes": 201043
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_003_Bathroom.png": {
+      "sha": "3b50a78c257b8e3840bebba7d5acc3fd00ee7d2a",
+      "bytes": 141134
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png": {
+      "sha": "e1bee669ba5fe174b0f6c76f4295b96f25b2b39b",
+      "bytes": 199910
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_051_Seaside_Pier.png": {
+      "sha": "9a39c0edf2da565a597c474472edaf152d32ffce",
+      "bytes": 140846
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_010_Stairwell.png": {
+      "sha": "86f1f789086ab7190ee43474ea394aa850378dea",
+      "bytes": 161404
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_011_Elevator.png": {
+      "sha": "ce2b2eb1355c182356eab02a755cc29f6a08320c",
+      "bytes": 117311
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_002_Bedroom.png": {
+      "sha": "9277f81f84148d550bad7c4eb5c48df6edd6c460",
+      "bytes": 161439
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_055_Prison_Visiting_Room.png": {
+      "sha": "47c908354ce6e2f938f335170fb1d734580a68a2",
+      "bytes": 132863
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_032_Stadium_Concourse.png": {
+      "sha": "19a59138a0fa03f4589dc85a894dedea3592aa64",
+      "bytes": 181701
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_007_Large_Office.png": {
+      "sha": "dd3b96d0c3b55cac777285c798e8ed38bdfb098e",
+      "bytes": 174046
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_005_Living_Room.png": {
+      "sha": "cd2e54acbaaaa81705ce42505e70cf8b08c1e11a",
+      "bytes": 164962
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_043_Helicopter_Cabin.png": {
+      "sha": "f95560304cbca0f72e4a1b5aa6c1b84975fadb55",
+      "bytes": 152922
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_042_Airplane_Cabin.png": {
+      "sha": "832b0731acc984f9621fc7268073e7e107e3be71",
+      "bytes": 177559
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_020_Workshop.png": {
+      "sha": "bf3a5a196c1b64edd97d088e01cffcff2b5c91c7",
+      "bytes": 180153
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_056_Phone_Booth.png": {
+      "sha": "d2f0e4989ca265bd4ff6d5b7def90688bcf71028",
+      "bytes": 144731
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_038_Truck_Cab.png": {
+      "sha": "69596d88eaa4ebab6f64a1946d79ea53afafbb81",
+      "bytes": 173929
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_017_Club.png": {
+      "sha": "b63090c53f673f897114337f56ee71755b7b222b",
+      "bytes": 167660
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_046_Forest.png": {
+      "sha": "60f7189b397154e7af6c86e85963e705d20a0326",
+      "bytes": 197555
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_030_Airport_Curbside.png": {
+      "sha": "edd0960f9e2dc258a27dc32ed1f4d37f21d10004",
+      "bytes": 178931
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_014_Classroom.png": {
+      "sha": "1b4030050b31a34aef7726e544cbc54723637615",
+      "bytes": 160991
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_023_Alley.png": {
+      "sha": "b8defd20c5d538fbd3cd6f814e2d6f9669806341",
+      "bytes": 175455
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_053_Drive_Thru_Window.png": {
+      "sha": "dae651080f90317dc6e9d92c6e66337b71c14f7f",
+      "bytes": 165540
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_006_Small_Office.png": {
+      "sha": "cbe2d8d2ba00640e731a208a84f098e01b574fc3",
+      "bytes": 164563
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_039_Bus_Interior.png": {
+      "sha": "2214e1c8fc30d5a429f4b2f0e70000a28f0b6760",
+      "bytes": 193413
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_019_Warehouse.png": {
+      "sha": "4fb009dc2600c3858160553120fa659045f7516b",
+      "bytes": 190705
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_049_Canyon.png": {
+      "sha": "f4b1e99ac1a2a52f60e363a658030ba027732b66",
+      "bytes": 197294
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_021_Quiet_Street.png": {
+      "sha": "be821fdededca00fe167c6fc9e1f7454c53684c7",
+      "bytes": 200080
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_040_Train_Carriage.png": {
+      "sha": "5e3dddff1d0a9cda7c60f9b9d30bb98159163c22",
+      "bytes": 187036
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_031_Construction_Site.png": {
+      "sha": "fc017bed6a4324d9bd5b14e6b9be15e0a8caceaf",
+      "bytes": 199441
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_054_Security_Checkpoint.png": {
+      "sha": "7d8809f703ce7ebd8b0968a542d01e3e9e07246b",
+      "bytes": 162417
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_034_Tunnel_Underpass.png": {
+      "sha": "635d479701d53bf7353a096201db3af0291e35dd",
+      "bytes": 155152
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png": {
+      "sha": "584337533c645a14b62cc22294bde82622dfe864",
+      "bytes": 157339
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_052_Campsite.png": {
+      "sha": "8cca5f66d7f762c7e20492c085b76eba7c06a494",
+      "bytes": 177055
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_025_Parking_Lot.png": {
+      "sha": "ebbbd8208b10d7ca0f6f7663d4a8e36c310a107e",
+      "bytes": 149036
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_027_Bus_Stop.png": {
+      "sha": "9ce199b05d30804c833d6bb46d3da7199c2c27d3",
+      "bytes": 186011
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_044_Ferry_Ship_Interior.png": {
+      "sha": "82d397b6a967a5b93ee8aca2b9ce920c02bb62e4",
+      "bytes": 154836
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_026_Rooftop.png": {
+      "sha": "a1815a0db62f811fa03985a0ac9d8198afb1e697",
+      "bytes": 162710
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_045_Open_Field.png": {
+      "sha": "f69591b5d55876173d2e8ce69db19c68cb7a0239",
+      "bytes": 150300
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_029_Station_Concourse.png": {
+      "sha": "69900d6405bb02f86f04abb4bed81002325db191",
+      "bytes": 187466
+    },
+    "Assets/UI/UI_02/SPACE_ENVIRONMENT/SPC_016_Bar_Pub.png": {
+      "sha": "5338b3ad8a9e98368c23bf02cccf0307960ade5b",
+      "bytes": 178069
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_019_Behind_Car_Seat.png": {
+      "sha": "f61480d6b8e550d1d2f20900cc5db6caabb20656",
+      "bytes": 62585
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_030_Floor_Ceiling_Above.png": {
+      "sha": "016b2e70c4f60dd0210f9e9a4a4d538b8b3e36ee",
+      "bytes": 79227
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_003_Thin_Blanket.png": {
+      "sha": "52a14f31005990dd90509dfdcbda5b29024293b9",
+      "bytes": 93468
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_015_Drawer_Cabinet.png": {
+      "sha": "57027b56b602304e47d67d8f7de4f78f85a80bc7",
+      "bytes": 85531
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_026_Concrete_Wall.png": {
+      "sha": "ab0cb3f833ffc249ebbd0dae9429dfb908cbcda1",
+      "bytes": 96332
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_008_Inside_Pocket.png": {
+      "sha": "50874036b776c6607af8275d4a5a9d34829d9889",
+      "bytes": 74272
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_004_Thick_Blanket.png": {
+      "sha": "ee95ea399a54c612f865d8db73319a84d3057782",
+      "bytes": 89444
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_009_Cardboard_Box.png": {
+      "sha": "8927d9fb57ac764f57d3ff9bbc1854048e44ff31",
+      "bytes": 69115
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_005_Pillow.png": {
+      "sha": "679ff388032f57693045014e3315b4420e7399ca",
+      "bytes": 80456
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_021_Hollow_Wooden_Door.png": {
+      "sha": "5cbb1e6c3e5ce066d6b66f10ef95e0009613cc30",
+      "bytes": 69655
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_028_Metal_Door.png": {
+      "sha": "db34640c6cee028debff5eea8013316afe796c47",
+      "bytes": 76370
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_010_Thick_Carton.png": {
+      "sha": "e0318d78a154a4cc8eb7dabe454350464f15153c",
+      "bytes": 79317
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_013_Backpack.png": {
+      "sha": "6ed8e578113da224a193592788220c7bcb9c14d0",
+      "bytes": 62539
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_016_Under_Desk.png": {
+      "sha": "480715e8e869add085da4b5ecf8e178e13975966",
+      "bytes": 53677
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_020_Closed_Car_Window.png": {
+      "sha": "96a8fa6dca3735eecf5440ae09f2d83a36f3e5f6",
+      "bytes": 60661
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_011_Paper_Bag.png": {
+      "sha": "7d071451543e85de8eec1798f3243ee53ebf4a19",
+      "bytes": 72344
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_012_Plastic_Bin.png": {
+      "sha": "551923a1c3cbbc87358a31ea483c96f49e6fd4ed",
+      "bytes": 58935
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_014_Suitcase.png": {
+      "sha": "90416d1a58b214dc70917715bf12ec235b54c36e",
+      "bytes": 68058
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_025_Brick_Wall.png": {
+      "sha": "90ecb6668710830d4b88974fc6d6da1006faf15d",
+      "bytes": 96377
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_001_None_Open.png": {
+      "sha": "90c57d0830ca0e111309278f09861f097e3f4cb8",
+      "bytes": 102945
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_031_Helmet_Visor_Cover.png": {
+      "sha": "bbf87134d340b4562f943c302fc85d182d457a92",
+      "bytes": 72497
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_023_Office_Drywall.png": {
+      "sha": "6dcdbe1f8d9a9d9ca934de89653d92f0097c9030",
+      "bytes": 70095
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_002_T_Shirt_Cloth.png": {
+      "sha": "01e6418ca9062f15cbf8f1ff557068dc71f9c372",
+      "bytes": 84531
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_018_Car_Trunk.png": {
+      "sha": "14e16114b56975195f90eeda504ba4737a038c7b",
+      "bytes": 60991
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_032_Appliance_Behind_Fridge.png": {
+      "sha": "470af692a3ed64c04016c05778e6168da2698eb4",
+      "bytes": 57813
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_017_Car_Glove_Box.png": {
+      "sha": "ee4064f5330121d962701316e97adc3b4997a2b7",
+      "bytes": 51528
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_022_Solid_Wooden_Door.png": {
+      "sha": "db0f876c7c9ea4fd74850d17ca3709d22ca04b14",
+      "bytes": 67347
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_029_Bathroom_Stall_Door.png": {
+      "sha": "3f8dadd0a1dcf2a391fc892dd9572cd3e664e3e7",
+      "bytes": 55633
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_007_Curtain.png": {
+      "sha": "a7b293d77850a0bd09b541cee681e7d17c95347c",
+      "bytes": 73818
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_027_Glass_Window.png": {
+      "sha": "1e96bb59ee5e4b1a6fd208a5942b5b92f5bf7edd",
+      "bytes": 51480
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_024_Apartment_Thin_Wall.png": {
+      "sha": "45df62172ee31ca3eac84a5b186e2b59b723dd73",
+      "bytes": 70187
+    },
+    "Assets/UI/UI_01/WALL_COVER/CVR_006_Bedsheet.png": {
+      "sha": "f8701286b65e8e5d546b18907a411c104709e890",
+      "bytes": 66941
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_002_Narrowband_Clean.png": {
+      "sha": "b1fabb1d71a06fc7f310530e344060974d758693",
+      "bytes": 70317
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_007_3G_Cellular.png": {
+      "sha": "6eef2ab363f3d36794cf576581edf21a426d51ac",
+      "bytes": 148414
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_021_Streaming_Codec_Audio.png": {
+      "sha": "75478970035204bff1589281b144d7916140c8a8",
+      "bytes": 118652
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_020_TV_Broadcast.png": {
+      "sha": "04353703971e743ad7fd617088b531c06c06e60d",
+      "bytes": 156712
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_011_Walkie_Narrowband.png": {
+      "sha": "d891adba8a83e7cd10a76af8082ffd2c8e2d5a51",
+      "bytes": 157576
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_013_Police_Radio.png": {
+      "sha": "4142080d1c4c4eb028636712099736619f3b3d6e",
+      "bytes": 182610
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_018_AM_Radio.png": {
+      "sha": "11aa000c61b1878b233bbe80f70fffda401d23b5",
+      "bytes": 169316
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_015_Helicopter_Intercom.png": {
+      "sha": "82c2a3080107543a740c07bad4782b108c285fc6",
+      "bytes": 163638
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_008_4G_VoLTE.png": {
+      "sha": "672511abe10f0f9bf511f9f2e0a1458c61e0564b",
+      "bytes": 154709
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_004_Noisy_Analog_Line.png": {
+      "sha": "f284c2b5c21d396fe11e3b645bfd074ae9b4c102",
+      "bytes": 101574
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_005_GSM_Stable.png": {
+      "sha": "f6987a7338e4f82ea5aeb1aead345db3c84bccdd",
+      "bytes": 157235
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_006_GSM_Weak.png": {
+      "sha": "bf19273936810797771c78480513dad98058623e",
+      "bytes": 150500
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_019_FM_Radio.png": {
+      "sha": "4af0b5ef7d44230554a8fe7b70e3f67873c9538e",
+      "bytes": 157532
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_009_VoIP_Clean.png": {
+      "sha": "0319f015405a150ea606c7c68fed7d3e7928f096",
+      "bytes": 147333
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_023_Signal_Dropout.png": {
+      "sha": "40dc9b0aa2f5e840c6ac6f846bffe03855c0380e",
+      "bytes": 121720
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_016_Drive_Thru_Link.png": {
+      "sha": "a292220b0191ae5edfc8238aab1bc4ca62b1bfd6",
+      "bytes": 162367
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_003_PSTN_Landline.png": {
+      "sha": "5a091ab796bd87a93ac2bce62ac5c882b4045ced",
+      "bytes": 71152
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_022_Packet_Loss_Digital.png": {
+      "sha": "7ce0c4d2ace64a495b484cab51b20ea37e0302b4",
+      "bytes": 112948
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_024_Tuning_Out_of_Range_Search.png": {
+      "sha": "c9cc3237ec59a19b72a1a8003b5e4b11d8a52d72",
+      "bytes": 153492
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_001_Direct_Clean.png": {
+      "sha": "c949a33ef5879d8d1e73bf852233ac2ac6c5f3ea",
+      "bytes": 78104
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_014_Aviation_Comms.png": {
+      "sha": "285a3d32d4380aacd34cef5b91402c414706f8f2",
+      "bytes": 174928
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_012_Dispatch_Radio.png": {
+      "sha": "1a6dfcd097c9d21f5bafb8d2cd43997ddb760c1d",
+      "bytes": 158683
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_010_VoIP_Unstable.png": {
+      "sha": "bde9fa7d6ae1daf8eeeb720e30ede79d1bc77311",
+      "bytes": 138622
+    },
+    "Assets/UI/UI_01/TRANSMISSION/TRN_017_Security_Intercom_Link.png": {
+      "sha": "d9053834b933b959617e96f2500004ecc5512c85",
+      "bytes": 161270
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_025_Ceiling_PA_Shopping_Mall.png": {
+      "sha": "5e76ada103927904636dc7cca8f7dc244e5ed644",
+      "bytes": 93981
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_044_Toy_Recorder_Bedroom.png": {
+      "sha": "e0766b57f75bdad3eec38956b3b2be828da7d594",
+      "bytes": 78874
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_009_Phone_In_Pocket_Busy_Street.png": {
+      "sha": "040fc229173cb6932771320df6c7afc96d239b46",
+      "bytes": 84813
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_045_CCTV_Security_Monitor_Audio.png": {
+      "sha": "4c92619676cd52416fbf83e9cac7290224ff0b6e",
+      "bytes": 89627
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_027_Airplane_Cabin_PA.png": {
+      "sha": "017cb016be3d5477c107555314aa316116ed2391",
+      "bytes": 79595
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_046_Cassette_Recorder_Kitchen_Table.png": {
+      "sha": "562c082df7ced56a11c04f2acc08d4b9c0e7bcef",
+      "bytes": 93320
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_010_Phone_In_Backpack_Station_Concourse.png": {
+      "sha": "3fec6f2634cd2685a39e7094602a1485c7aa0042",
+      "bytes": 92641
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_018_Drive_Thru_Speaker_Fast_Food_Lane.png": {
+      "sha": "c516b7491516c6fa226ca0300efea7711b320042",
+      "bytes": 85575
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_034_Voice_Behind_Glass_Window.png": {
+      "sha": "47c1b5bc0057cf0a3f9940cc3fb79e70350934a1",
+      "bytes": 66978
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_030_Party_At_The_Neighbors.png": {
+      "sha": "96ffbf83eceaa43030cc63fac3f89d340a58f6af",
+      "bytes": 68605
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_001_Mobile_Call_Busy_Sidewalk.png": {
+      "sha": "127ce4ed1bdcee538335670cabf1f3441d789322",
+      "bytes": 85603
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_031_Restaurant_Kitchen_Through_Door.png": {
+      "sha": "2ed4f6fe5f935ecb57a7ddd8ff56af6b6980c45a",
+      "bytes": 90332
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_015_Helicopter_Intercom_Half_Understandable.png": {
+      "sha": "aa56fe5a5754f663def0a2dad23a218499b7e9b2",
+      "bytes": 74593
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_008_Cordless_Phone_Living_Room.png": {
+      "sha": "ec56f8c5c81d576e0145e5331984fab55e1fff83",
+      "bytes": 76098
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_041_Subway_Car_Announcement.png": {
+      "sha": "a2d2691e8fbc6fb2b573b3a8ec2913c209f36167",
+      "bytes": 89541
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_014_Helicopter_Intercom_Clear.png": {
+      "sha": "a3b16709023c4ea413550705d8f4e3453cf72ab2",
+      "bytes": 86381
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_028_Captain_Announcement.png": {
+      "sha": "8a92b7977fa1a02de937dafd11890ec5343c2ae1",
+      "bytes": 76386
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_043_Cheap_Wireless_Speaker_In_Room.png": {
+      "sha": "3b79d7d3df53d6c74e68eb41b2e05907a2beff72",
+      "bytes": 84233
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_011_Walkie_Talkie_Construction_Site.png": {
+      "sha": "9c750699ef8f393711fabc8b493e33cba242b6dd",
+      "bytes": 97374
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_007_Conference_Call_Glass_Office.png": {
+      "sha": "72ed559113fa2baf84c6a3b19e200ad7c72e4830",
+      "bytes": 81190
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_016_Aviation_Headset_Cockpit_Style.png": {
+      "sha": "a26c963cd3c0fa61016796ad616951e324c2a356",
+      "bytes": 88048
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_019_Radio_In_Back_Office.png": {
+      "sha": "d8128b9d6571402255e4222dbce5c8a6318cc215",
+      "bytes": 74058
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_024_Airport_Gate_Announcement.png": {
+      "sha": "fe176f328c66d4834900f2ce52f921a16a16d781",
+      "bytes": 78400
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_020_Car_Radio_Out_of_Range.png": {
+      "sha": "cbaee6300a98573c6eda8a50ef8a212595952d22",
+      "bytes": 86402
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_012_Police_Radio_Street_Exterior.png": {
+      "sha": "1e8a2538af8315fa5f90aff5b3a662b169b7b034",
+      "bytes": 90140
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_047_Vintage_Radio_Living_Room.png": {
+      "sha": "6f28dcc694967d5d460d813ba162d1c1005e34fc",
+      "bytes": 84661
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_022_Stadium_PA.png": {
+      "sha": "903d368fc6059f54c3b175bd7623e35846a95f09",
+      "bytes": 92316
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_006_Payphone_Street_Corner.png": {
+      "sha": "cbe18876509def61f044b56c9a1334754e3d58ef",
+      "bytes": 95741
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_002_Mobile_Call_Weak_Signal.png": {
+      "sha": "0f3e94d51a4e97a84cd8396ffd705fc9bfee7456",
+      "bytes": 71387
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_004_Hotel_Phone_Corridor_Spill.png": {
+      "sha": "b8f13bacc3901a24cd6b19f2f76b329ac809e421",
+      "bytes": 76479
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_039_Car_Door_Speaker_Slow_Drive_By.png": {
+      "sha": "6d757d868e4c34dda544be13be751df31ea87755",
+      "bytes": 85531
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_040_Truck_Cab_Radio_Highway_Pull_Away.png": {
+      "sha": "a6ea3d9d51381a8bc0482a8e7b2ded11d5ed9dfd",
+      "bytes": 88437
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_038_Car_Pass_By_Parking_Lot.png": {
+      "sha": "96ee57bbb67f28cd28523f6cfb98316e79d16a34",
+      "bytes": 82039
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_023_Train_Station_Announcement.png": {
+      "sha": "128bef448790c352aebc52f62245e9044cbc13d8",
+      "bytes": 95091
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_026_Bus_Interior_Announcement.png": {
+      "sha": "014263bb0161d1db023e1136d386b03ba1fc1a23",
+      "bytes": 80984
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_036_Radio_In_Car_Trunk.png": {
+      "sha": "3b84c089ead72016622d6663abe2cc7dfc3e02e6",
+      "bytes": 80144
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_003_Office_Desk_Phone_Small_Office.png": {
+      "sha": "8551059e4190498a0fe92949657e19566eaa1ac6",
+      "bytes": 88998
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_042_Bus_PA_Curb_Arrival.png": {
+      "sha": "6572b52f1798c3186d44ecb99a4e95091c15a131",
+      "bytes": 88753
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_032_TV_In_Living_Room_From_Hallway.png": {
+      "sha": "e96208552c3776e742fba88e5bb411c62b183729",
+      "bytes": 72978
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_037_Car_Pass_By_City_Street.png": {
+      "sha": "c25dc2c0aadda9a872cb462075e2eb28b5be0927",
+      "bytes": 94546
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_029_Upstairs_TV_Through_Wall.png": {
+      "sha": "1af93b806f9439dff7af36dcf23affbc9a626801",
+      "bytes": 74618
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_033_Voice_Behind_Closed_Wooden_Door.png": {
+      "sha": "7e5da45323e9b73e522eb27324899ab04b49d7bc",
+      "bytes": 77162
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_013_Dispatch_Radio_Vehicle_Interior.png": {
+      "sha": "e156bb63efc2c55e454f7d0270b56f11a43d3e89",
+      "bytes": 86628
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_017_Security_Intercom_Building_Entrance.png": {
+      "sha": "d53bd1e2de191af59d7180558aac50fc185cf7b2",
+      "bytes": 74901
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_035_Phone_Inside_Suitcase.png": {
+      "sha": "22974181d20633f18453d2ef11f9c7f3a75e34a7",
+      "bytes": 92311
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_005_Prison_Visiting_Phone.png": {
+      "sha": "90db66529ba2bbfc7a20864dfa520dd709eee2c2",
+      "bytes": 77605
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_021_Bullhorn_Street_Protest.png": {
+      "sha": "a391e72b424028fcc7996f60dce5449baf601a7a",
+      "bytes": 93066
+    },
+    "Assets/UI/UI_01/SCENE_PRESET_HERO/SCN_048_Small_Guitar_Combo_Garage_Room.png": {
+      "sha": "af04c6a99bc5f7408080d7e2e6a134e390d25c1b",
+      "bytes": 87570
+    },
+    "Assets/UI/UI_01/UI_01_REF/SOURCERUNE_UI_01_REF.png": {
+      "sha": "24aa8419df1e3feeca5b1827c508a40b048cadc3",
+      "bytes": 2084284
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_054_Practice_Amp.png": {
+      "sha": "7ef087daefa203184709e9b22ba767c578a043d7",
+      "bytes": 57217
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_038_Wall_Mounted_PA_Horn.png": {
+      "sha": "dd4994dbb0dc1e912e3fb5aab3f7fd6c3e7bf006",
+      "bytes": 52972
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_018_Helicopter_Intercom_Pack.png": {
+      "sha": "6d8b688c6603bd11f654e283915581f0e7c0f7e4",
+      "bytes": 62459
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_028_Tablet_Speaker.png": {
+      "sha": "5e6a1e961389c87d2de24bd214e00db1b1a2fedf",
+      "bytes": 46160
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png": {
+      "sha": "0e280e3cd877e8c7690bfbc6249703494ac59465",
+      "bytes": 57838
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_027_Laptop_Speakers.png": {
+      "sha": "2379b2759f991ac9f7da47a1aa5288a9d9b5cb0c",
+      "bytes": 49153
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_057_Portable_Karaoke_Speaker.png": {
+      "sha": "bfe41ee243c46711210722bee47592fe81b18aaa",
+      "bytes": 58741
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_005_Cordless_Home_Phone.png": {
+      "sha": "366e625cd943ad9faad7ffbe286c695950ef4e8e",
+      "bytes": 51347
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_050_Small_Portable_Wireless_Speaker.png": {
+      "sha": "ee08dcdf2c06e88c99e8af36304d5665162047a9",
+      "bytes": 59422
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_041_Cassette_Recorder.png": {
+      "sha": "fedc524f4a72014e73f9e71298fb05e987f423aa",
+      "bytes": 62516
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_056_Phonograph_Box.png": {
+      "sha": "d248aac25d8206a82cbce3c0cac496e473651d5e",
+      "bytes": 55164
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_025_Pocket_Transistor_Radio.png": {
+      "sha": "f1f5c4b9740e03e65e0312ca236b8721a473f203",
+      "bytes": 54218
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_039_Stadium_PA_Horn.png": {
+      "sha": "ba36663be0424dd11507b7663a4e2ed6b6d6c74c",
+      "bytes": 63876
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_015_Building_Entry_Intercom.png": {
+      "sha": "fc9383dc57c2588ae77663cbac04a4d11caf9671",
+      "bytes": 45156
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_049_Portable_DVD_Media_Player.png": {
+      "sha": "6cac2aaf4013086c6719f860cfcb02b0164c548a",
+      "bytes": 43034
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_036_Airplane_Cabin_PA.png": {
+      "sha": "1bd307b4d0ffed69e6dc5e1dd9e37d787e5a6e8f",
+      "bytes": 68192
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_034_Bus_PA_Speaker.png": {
+      "sha": "d926605f4c5c69c7b5b5af95c155f801070a9004",
+      "bytes": 69373
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_012_Police_Handheld_Radio.png": {
+      "sha": "2656ea1c152d30eec47940d4a13d4b2bba9d87f9",
+      "bytes": 47099
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_004_Feature_Phone.png": {
+      "sha": "d64f0b28ef472dff534313303344f6577b1041f7",
+      "bytes": 39893
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_029_Desktop_Monitor_Speaker.png": {
+      "sha": "7f202f8c3087f677fd6cf2be7ebe8ae5ac261a95",
+      "bytes": 56137
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_051_Game_Console_Speaker.png": {
+      "sha": "7f9c3a521164d0926f41b6e64dd2066861f13640",
+      "bytes": 50597
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_043_Dictaphone.png": {
+      "sha": "81f37242fb589b328a3d80d3725237ce500971a4",
+      "bytes": 47435
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_006_Office_Desk_Phone.png": {
+      "sha": "ec2517cce5f941e51c3fbdcda4a3494ce1745505",
+      "bytes": 67397
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_060_Cabinet_Speaker_Small.png": {
+      "sha": "60aea45c09283daf188ba048c33e0a4b2beb8b08",
+      "bytes": 48929
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_026_Boombox.png": {
+      "sha": "9623d5e7c7d177dca3da8978157a503f5cfb5a6b",
+      "bytes": 61420
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_014_Security_Intercom.png": {
+      "sha": "e835b20f0a7df9734d3b7a08392580b3baa39843",
+      "bytes": 48430
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_032_Car_Door_Speaker.png": {
+      "sha": "5cb345d680aec4d4602b9d751486d0e236ce2aa6",
+      "bytes": 77545
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_030_Smart_Speaker.png": {
+      "sha": "1f110857f8fcd8a28945c7e331f0c879baf8edc5",
+      "bytes": 53390
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_055_Gramophone_Horn.png": {
+      "sha": "87ffa35b01d4a53788268a9ff9a8d71f86f5d6f1",
+      "bytes": 51452
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_023_Kitchen_Radio.png": {
+      "sha": "177e4faf2e5fef121f79149551fd052413124103",
+      "bytes": 68336
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_061_Cabinet_Speaker_Mid.png": {
+      "sha": "015c7e1c93bffac43fe61d6276bb9e92726a16a7",
+      "bytes": 50238
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_011_Walkie_Talkie.png": {
+      "sha": "4eea17bed6e5ec144b82c5e5b3b08e41cfcfadde",
+      "bytes": 41622
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_053_Small_Guitar_Combo_Amp.png": {
+      "sha": "68f5da49c93bed98a0985492ae61e6b14434b78f",
+      "bytes": 59843
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_022_Flat_TV_Speaker.png": {
+      "sha": "5ff2f8d3869ee044d802913ae9fc587eb8bd68a6",
+      "bytes": 43391
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_063_Helmet_Intercom_Speaker.png": {
+      "sha": "279dfdfce6681786ff54f9c6b27866676af67676",
+      "bytes": 70485
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_008_Hotel_Room_Phone.png": {
+      "sha": "14d6ddbdf651d129d2991fce515af3986718e67d",
+      "bytes": 75714
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_058_Portable_PA_Column.png": {
+      "sha": "2149f3d3d00b4be6b5deca93d946e00071a8a9d5",
+      "bytes": 37238
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_021_CRT_Television.png": {
+      "sha": "de61d90776db804a4a581978091daf5b4ffafd9a",
+      "bytes": 44784
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_001_Smartphone_Earpiece.png": {
+      "sha": "4b6323eb84f5357e4912d3ad0f2fe470b9fa4f20",
+      "bytes": 44437
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_045_Toy_Recorder.png": {
+      "sha": "5024ca145c5d7a87dc1f0e93ee92f29122c7c92a",
+      "bytes": 58236
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_035_Train_Cabin_Speaker.png": {
+      "sha": "ded095c1546a60bef561b51db94c17b57a4a9aac",
+      "bytes": 64980
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_059_Old_Public_Announcement_Box.png": {
+      "sha": "cd270c38d919541a3b6f5a7bd1c670aeda6b73da",
+      "bytes": 62600
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_064_Hidden_Pocket_Bag_Speaker.png": {
+      "sha": "94f28efa2794ed8d916b143cbc8d4260f177a533",
+      "bytes": 69053
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_037_Ceiling_PA_Speaker.png": {
+      "sha": "b799cffc91955e771a0f3810bda3b0c9d8878e55",
+      "bytes": 62450
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_042_Microcassette_Recorder.png": {
+      "sha": "0a15a822ffc8736d08fa97010f30b54412704a6a",
+      "bytes": 58844
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_009_Public_Payphone.png": {
+      "sha": "62a4841fa8f15b6dd0021fdef8868130b221363f",
+      "bytes": 58137
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_019_Military_Field_Radio.png": {
+      "sha": "c1f1e3be65c611565525556959a98cda30ed842a",
+      "bytes": 55114
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_010_Conference_Speakerphone_Unit.png": {
+      "sha": "19b90e0e5f45e9d2cc81f38ab393a28fa48de6a8",
+      "bytes": 62612
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_062_Cabinet_Speaker_Large.png": {
+      "sha": "819a0e2b0914076c1f99bfeca62407abb2cfa5c1",
+      "bytes": 58491
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_020_Portable_Comms_Unit.png": {
+      "sha": "e58b779e35119ff7df2c930f1a84aea3370a0bb2",
+      "bytes": 51314
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_017_Aviation_Headset.png": {
+      "sha": "180ece2a7c3a58fe1e163441f8639f5e9eea72ce",
+      "bytes": 60519
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_003_Smartphone_Speakerphone.png": {
+      "sha": "4493cff24d2eaf5e6d400dfcddea9887db3e9873",
+      "bytes": 72321
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_044_Answering_Machine.png": {
+      "sha": "2359a08900fd0c7c343cd9d62db401cb3be5657e",
+      "bytes": 59197
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_052_Cheap_Earbuds_Leakage.png": {
+      "sha": "7a4db08a22f90b5e4f8c73101f100dbdefb82701",
+      "bytes": 48413
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_024_Clock_Radio.png": {
+      "sha": "06802d1b6f1306fbf245fc5cb18d97063930c1a4",
+      "bytes": 50667
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_048_Baby_Monitor.png": {
+      "sha": "d395893396d4c7e0e9c4e8469d3aab6b0fb37ddc",
+      "bytes": 47768
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_040_Bullhorn_Megaphone.png": {
+      "sha": "86b219fb57b5640dfe7c487f498c1e9d5e991bc7",
+      "bytes": 55593
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_033_Truck_Cab_Radio.png": {
+      "sha": "836d3edc24a0e50350d60104a17d37b1d102c86c",
+      "bytes": 64389
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_047_Cheap_Voice_Recorder.png": {
+      "sha": "ded6ba72df314dfcc987fcaa69b608563f313d54",
+      "bytes": 53650
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_007_Vintage_Rotary_Phone.png": {
+      "sha": "85517ef36417ae9fe07e3b23e547bb7f5ef72594",
+      "bytes": 77606
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_046_Toy_Megaphone.png": {
+      "sha": "23906569ab207109e2f55275194c0b64e84ace80",
+      "bytes": 57284
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_031_Car_Dashboard_Speaker.png": {
+      "sha": "2252a3dd149ab4232f56b4843c2e0f1562c859c7",
+      "bytes": 64151
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_013_Dispatch_Base_Radio.png": {
+      "sha": "20e6a3a5c2d3fa2731f566ab619845954e7c19b3",
+      "bytes": 61213
+    },
+    "Assets/UI/UI_01/SOURCE/SRC_016_Drive_Thru_Speaker_Box.png": {
+      "sha": "24cbbbbd05fa6f6ede7661ce68aa32c8200af9a6",
+      "bytes": 58595
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_015_Restaurant.png": {
+      "sha": "a5ac7ebd12cada0b8f9a763e2bd929726cbec8c5",
+      "bytes": 90800
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_012_Basement.png": {
+      "sha": "9e85066c3e61c335a4bf320587f9c73fc03fbcad",
+      "bytes": 72701
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_008_Conference_Room.png": {
+      "sha": "b51e36b0c9bfe04035ec9ae50a3f473207c8956a",
+      "bytes": 82835
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_009_Hallway.png": {
+      "sha": "69fff78a6348c4a982f7d128679ce45aa60cd271",
+      "bytes": 59103
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_047_Forest_Trail.png": {
+      "sha": "f31f23ca09fc96e9790e422b46b699cf00921d2e",
+      "bytes": 98366
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_036_Sedan_Interior.png": {
+      "sha": "ac3d214a73fa8714767eeb40e98ad8b9306e9654",
+      "bytes": 80259
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_028_Train_Platform.png": {
+      "sha": "ee6a51cf31be0aaa29eb23ddf1ee3825aed1a85b",
+      "bytes": 97286
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_037_Van_Interior.png": {
+      "sha": "adb7925c60df259fe4aca200c851e9698e12a091",
+      "bytes": 76750
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_050_Beach.png": {
+      "sha": "094c6a1ca333d836c239755554ffe0ab23996c5d",
+      "bytes": 69786
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_024_Courtyard.png": {
+      "sha": "fa7144910b51353589a49941f95234dfcdc13257",
+      "bytes": 90983
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_048_Mountain_Slope.png": {
+      "sha": "c8b236d040eeea258a59f740f708c6f1afb5d1f2",
+      "bytes": 91372
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_004_Kitchen.png": {
+      "sha": "cc10cda3302e835fc52f3446652107e84e28590e",
+      "bytes": 73416
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_033_Stadium_Bowl.png": {
+      "sha": "c14b510ed00f338f6448344bf3884221468af7c4",
+      "bytes": 92093
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_035_Compact_Car_Interior.png": {
+      "sha": "5fec020b8dbd7cbb7e1c35484c8b9508e516f3ba",
+      "bytes": 77705
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_013_Lobby.png": {
+      "sha": "dc4bf62cd1edb2ff41d55ffb912c60588cd8723c",
+      "bytes": 87123
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_041_Subway_Car.png": {
+      "sha": "9226fb4ccccf696e1a7427569f7fe97808ac0754",
+      "bytes": 94050
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_018_Shopping_Mall.png": {
+      "sha": "144068afb9cefbeec46dd9cf81cea723764cba02",
+      "bytes": 94950
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_003_Bathroom.png": {
+      "sha": "a7ef45250faf9c98d0284c327c4910a27d246c9a",
+      "bytes": 69256
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png": {
+      "sha": "2227163ce0fa0456e0bf3ae75c69d522cd8d7b10",
+      "bytes": 96460
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_051_Seaside_Pier.png": {
+      "sha": "734844ae7a74c831de257e1ce14b71d410859a5e",
+      "bytes": 70207
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_010_Stairwell.png": {
+      "sha": "a7e27605f204c1f3ae669625214e7aedccd31b7a",
+      "bytes": 78742
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_011_Elevator.png": {
+      "sha": "36753dafe6253dbe8ed38559b2d97d5020bafc63",
+      "bytes": 54254
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_002_Bedroom.png": {
+      "sha": "842009006f64d50069f2b3fb00f31e09f6b53d92",
+      "bytes": 80250
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_055_Prison_Visiting_Room.png": {
+      "sha": "47c908354ce6e2f938f335170fb1d734580a68a2",
+      "bytes": 132863
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_032_Stadium_Concourse.png": {
+      "sha": "1c68a7174228ce106e1e0fd86d40a9fc90f4c21b",
+      "bytes": 87035
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_007_Large_Office.png": {
+      "sha": "08d696b7054f42b81d02d4ffc1e24205d6755068",
+      "bytes": 86474
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_005_Living_Room.png": {
+      "sha": "5bbc71c5e8ef4481164a958cdf8dc141659a55a1",
+      "bytes": 83680
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_043_Helicopter_Cabin.png": {
+      "sha": "a55a30570e5899f8b3d97c185c80438dd1a8ba3c",
+      "bytes": 76484
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_042_Airplane_Cabin.png": {
+      "sha": "8d34d77985f3a57b9cd3965448462a8800a7476b",
+      "bytes": 90579
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_020_Workshop.png": {
+      "sha": "9049c98ffa637ad6f6baeae7c78b003781766cc5",
+      "bytes": 87057
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_056_Phone_Booth.png": {
+      "sha": "d2f0e4989ca265bd4ff6d5b7def90688bcf71028",
+      "bytes": 144731
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_038_Truck_Cab.png": {
+      "sha": "bf5aea34d8397fa8a405f45322af4a6f1fc84f78",
+      "bytes": 86191
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_017_Club.png": {
+      "sha": "f1513cc87288df1cd0add4208cda9186f87c5f47",
+      "bytes": 79360
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_046_Forest.png": {
+      "sha": "406bd14624d7f0ac37fc215d111f1956469b88f8",
+      "bytes": 96097
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_030_Airport_Curbside.png": {
+      "sha": "43520ead14c5ab4a680020e2dfde4bf48defcd08",
+      "bytes": 88090
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_014_Classroom.png": {
+      "sha": "44ce25fbbc923e2b10b34d403c38707ac1c0cc6d",
+      "bytes": 81635
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_023_Alley.png": {
+      "sha": "5f131a89b96e88e2487f841e7b8cc9b0e4de47e4",
+      "bytes": 83523
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_053_Drive_Thru_Window.png": {
+      "sha": "dae651080f90317dc6e9d92c6e66337b71c14f7f",
+      "bytes": 165540
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_006_Small_Office.png": {
+      "sha": "f0c352e760ea192f624f255836c357ba8ca7cc8c",
+      "bytes": 82105
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_039_Bus_Interior.png": {
+      "sha": "ac74404d720a7e51a220863dbf76a58dc00bb2b8",
+      "bytes": 93654
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_019_Warehouse.png": {
+      "sha": "6daf65bbf847f756d8a6bcd44ae475024ab13639",
+      "bytes": 92470
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_049_Canyon.png": {
+      "sha": "da9721f13ac59ded1aea2796c9d61a957a2fc905",
+      "bytes": 98284
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_021_Quiet_Street.png": {
+      "sha": "5d554b82c12e6b3a81c4171babc0a3cfa704b8a7",
+      "bytes": 98164
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_040_Train_Carriage.png": {
+      "sha": "77be4f34df2784774bf89021e28437a43225b32f",
+      "bytes": 90977
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_031_Construction_Site.png": {
+      "sha": "ad8a391af0e461e6adae14491b4fa698cc989bad",
+      "bytes": 96962
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_054_Security_Checkpoint.png": {
+      "sha": "7d8809f703ce7ebd8b0968a542d01e3e9e07246b",
+      "bytes": 162417
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_034_Tunnel_Underpass.png": {
+      "sha": "26be794f50b5a8a147bdf5180f15e77c7ae6e276",
+      "bytes": 76422
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png": {
+      "sha": "b83e88cac6b8bb655393948de5147410a5a800cb",
+      "bytes": 79143
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_052_Campsite.png": {
+      "sha": "0ff59298a40da38cdb0d4c381d8ca097dfe7851b",
+      "bytes": 87579
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_025_Parking_Lot.png": {
+      "sha": "58943a6baaf340fb5828e5e7fe5d2c9d61743c6e",
+      "bytes": 74835
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_027_Bus_Stop.png": {
+      "sha": "6792f865f5c580f75dba7cf98b6bd6b9421c74d1",
+      "bytes": 89285
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_044_Ferry_Ship_Interior.png": {
+      "sha": "f23e0ec0a6830e101edb59f598e6840ddfa4475f",
+      "bytes": 76598
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_026_Rooftop.png": {
+      "sha": "fe339093dc4e05747e6dd6549d7770acf0d50934",
+      "bytes": 82842
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_045_Open_Field.png": {
+      "sha": "3014a753928e103961f19c6239a57129db4d326e",
+      "bytes": 73441
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_029_Station_Concourse.png": {
+      "sha": "ed0c9929bb846ac08fdb25289d845d05aed3f7e6",
+      "bytes": 92136
+    },
+    "Assets/UI/UI_01/SPACE_ENVIRONMENT/SPC_016_Bar_Pub.png": {
+      "sha": "32f8c4e220763b5ab52b48a348044f8eced14c6d",
+      "bytes": 86668
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_019_Behind_Car_Seat.png": {
+      "sha": "d1574f54458d3a855137d60418ca383c0d4ff412",
+      "bytes": 52983
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_030_Floor_Ceiling_Above.png": {
+      "sha": "367388ba977bf014f2a462609465cabeb244323d",
+      "bytes": 63352
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_003_Thin_Blanket.png": {
+      "sha": "289f966b0033680ab7620b3a9d1aab6a6707a0bb",
+      "bytes": 73045
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_015_Drawer_Cabinet.png": {
+      "sha": "d8c280eefd25a0448f2843e4af9e274ab4b0c7b2",
+      "bytes": 66901
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_026_Concrete_Wall.png": {
+      "sha": "ad0a7c48cfc16e3fde3b18a482f16e379982da35",
+      "bytes": 73675
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_008_Inside_Pocket.png": {
+      "sha": "f39f681f43b1010f5739992edd124d2242771d80",
+      "bytes": 67187
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_004_Thick_Blanket.png": {
+      "sha": "aaa94fafd465051f6378d2376cbb173040c81811",
+      "bytes": 68895
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_009_Cardboard_Box.png": {
+      "sha": "d5c22c1b4d43b93eb9a6ed6e6874f2a50a29af19",
+      "bytes": 62156
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_005_Pillow.png": {
+      "sha": "87d0c1103ad68f9672eb4c2e3af21c043e0764a1",
+      "bytes": 62275
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_021_Hollow_Wooden_Door.png": {
+      "sha": "1657ef3dbe0f768a57300450487347e246ba1fed",
+      "bytes": 59461
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_028_Metal_Door.png": {
+      "sha": "ccc3b50e12128737dd27a78610f678c732e1e2ff",
+      "bytes": 62689
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_010_Thick_Carton.png": {
+      "sha": "826155e8ffbdb311abae742e855dd6f200e3c5ab",
+      "bytes": 62119
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_013_Backpack.png": {
+      "sha": "2e45625adde2e2b99cea515e924c107a8d0552ca",
+      "bytes": 60037
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_016_Under_Desk.png": {
+      "sha": "5572019989598f879d7c0d318868f918ebb7f471",
+      "bytes": 57742
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_020_Closed_Car_Window.png": {
+      "sha": "f79b797f49eba3935132d297390acce1a42c312e",
+      "bytes": 54957
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_011_Paper_Bag.png": {
+      "sha": "bf23f08751e576739397d08f101c80b77c9b2582",
+      "bytes": 61632
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_012_Plastic_Bin.png": {
+      "sha": "1740a2eec5e21c1268e3d38c294c499959e2d3aa",
+      "bytes": 50385
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_014_Suitcase.png": {
+      "sha": "e6b9f87e8f659f86c375e194565236f6b8a121ae",
+      "bytes": 60624
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_025_Brick_Wall.png": {
+      "sha": "fc6c65b1578688fa9ab5e5f2e264472cdd1ff445",
+      "bytes": 72465
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_001_None_Open.png": {
+      "sha": "e20ebb948026836312be1b08bcb6c981135a532c",
+      "bytes": 67531
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_031_Helmet_Visor_Cover.png": {
+      "sha": "05ae3f8b362a743e09eb6126d0dbbb527b1e9817",
+      "bytes": 62595
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_023_Office_Drywall.png": {
+      "sha": "45069a7e8e66480ff33c0c4c9d5e4d4e2a658264",
+      "bytes": 59485
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_002_T_Shirt_Cloth.png": {
+      "sha": "934c7b6643a89647721f1b3f1629be7c44f96cb6",
+      "bytes": 68432
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_018_Car_Trunk.png": {
+      "sha": "8c739bd8384f26b0901db15db7a87a0dfc0afebc",
+      "bytes": 58472
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_032_Appliance_Behind_Fridge.png": {
+      "sha": "ceb4d50b560f623e623d61c5670cc679d4a32587",
+      "bytes": 54363
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_017_Car_Glove_Box.png": {
+      "sha": "4f93ff90f0a0293b0ef4faded558afd6fe60e499",
+      "bytes": 55063
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_022_Solid_Wooden_Door.png": {
+      "sha": "3dfe40ee7850f462f01f90da8eb603ed33f83035",
+      "bytes": 57727
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_029_Bathroom_Stall_Door.png": {
+      "sha": "f6f05efb6774211d7a158650e5573ea92f521f0e",
+      "bytes": 49929
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_007_Curtain.png": {
+      "sha": "eb9e8149854ed06f1fb9b86d2bf569d3a5a06fec",
+      "bytes": 61869
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_027_Glass_Window.png": {
+      "sha": "91f4896db62ef104c0bffdcc75dd50bc87693891",
+      "bytes": 51268
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_024_Apartment_Thin_Wall.png": {
+      "sha": "773744282e47e714a505fd6ea0ccf059d00bfaeb",
+      "bytes": 58983
+    },
+    "Assets/UI/Shared/WALL_COVER/CVR_006_Bedsheet.png": {
+      "sha": "e693e1d709636c6cf35dc90bd811954ec193d21e",
+      "bytes": 55650
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_002_Narrowband_Clean.png": {
+      "sha": "de7379ecfd9e6d8043f0d049bc45c83c2a8cdc82",
+      "bytes": 69447
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_007_3G_Cellular.png": {
+      "sha": "bc3bbdb236e1cb75dcf5df9238392d2ce84a3d6a",
+      "bytes": 72111
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_021_Streaming_Codec_Audio.png": {
+      "sha": "e642c665c6980ad40d3d3843cdb3fcb1c5805d16",
+      "bytes": 69165
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_020_TV_Broadcast.png": {
+      "sha": "9ea4cf3bd79318024a2d301922bd3f12a2aaf1b3",
+      "bytes": 80492
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_011_Walkie_Narrowband.png": {
+      "sha": "e6c6dc2a61c84135ea110dace3494a2205734cd4",
+      "bytes": 77171
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_013_Police_Radio.png": {
+      "sha": "d5917c69243a13f1e8d053a5901a633d6d3bc553",
+      "bytes": 84426
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_018_AM_Radio.png": {
+      "sha": "03784c20e5a3ef82972f4cfa4a9e6bd35562f6ba",
+      "bytes": 79715
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_015_Helicopter_Intercom.png": {
+      "sha": "11b50ec8ecc7e2491c161cf2b7c9e7fde5404a82",
+      "bytes": 79526
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_008_4G_VoLTE.png": {
+      "sha": "b9ec9049bde21b62beead76da175f51c771a0f46",
+      "bytes": 74611
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_004_Noisy_Analog_Line.png": {
+      "sha": "44fed162a4cfa8279110cf816408de4ebf2a8a5a",
+      "bytes": 90480
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_005_GSM_Stable.png": {
+      "sha": "d61a9d8c831ca84457b45fb8d8061a8a9d9121f0",
+      "bytes": 76001
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_006_GSM_Weak.png": {
+      "sha": "c61dd43a81a6c7cd96c82195f1313dab99b66c42",
+      "bytes": 72752
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_019_FM_Radio.png": {
+      "sha": "57795b84c938fee00070833d580f7bb154877792",
+      "bytes": 77691
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_009_VoIP_Clean.png": {
+      "sha": "18e5f545f4c7e36f3fa32d5257788885afcd6628",
+      "bytes": 71260
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_023_Signal_Dropout.png": {
+      "sha": "ab332b5c3dc51173123c312999d76b1b7d054be2",
+      "bytes": 66619
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_016_Drive_Thru_Link.png": {
+      "sha": "5b011c1ad03b09f3cee51e86160a7ada64998106",
+      "bytes": 78955
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_003_PSTN_Landline.png": {
+      "sha": "6c9e861781d96c027b6493a90bdd20d5db58ab2a",
+      "bytes": 72054
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_022_Packet_Loss_Digital.png": {
+      "sha": "966b8ec679edab9f51acb5a94bd1c35b4e8d49de",
+      "bytes": 64354
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_024_Tuning_Out_of_Range_Search.png": {
+      "sha": "7eee39a53fddbdfff0558947e4a70bac4d495272",
+      "bytes": 75717
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_001_Direct_Clean.png": {
+      "sha": "b51133fcbed7b5c9d1ec3d3f9f3086872b6ef3fc",
+      "bytes": 70977
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_014_Aviation_Comms.png": {
+      "sha": "9ec211e0582daf20b143edf32820751bf24136fc",
+      "bytes": 79370
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_012_Dispatch_Radio.png": {
+      "sha": "fc81bae1198f3725578656c5302f6ddd1ad3173c",
+      "bytes": 75336
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_010_VoIP_Unstable.png": {
+      "sha": "7c8af486ea84057c827ad55318930634e4e5790b",
+      "bytes": 68898
+    },
+    "Assets/UI/Shared/TRANSMISSION/TRN_017_Security_Intercom_Link.png": {
+      "sha": "cc0dda3977e3f5d55581c88410dd58bb9088cb6c",
+      "bytes": 78675
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_025_Ceiling_PA_Shopping_Mall.png": {
+      "sha": "854b5d9b01c6b89cbaa05cc9857104bc7c39030a",
+      "bytes": 49514
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_044_Toy_Recorder_Bedroom.png": {
+      "sha": "c6697d6d7d806f17de87ce903f244c5938bb994a",
+      "bytes": 43156
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_009_Phone_In_Pocket_Busy_Street.png": {
+      "sha": "adb4aa7b20c18ca7bb4b6c36f26c8118fc030170",
+      "bytes": 48335
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_045_CCTV_Security_Monitor_Audio.png": {
+      "sha": "090a957a2db3fb6aeb6c37bddfe2e04774c56717",
+      "bytes": 47432
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_027_Airplane_Cabin_PA.png": {
+      "sha": "961aebabdb0b9ef5585820d6b6b9fd00fac0a906",
+      "bytes": 43302
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_046_Cassette_Recorder_Kitchen_Table.png": {
+      "sha": "d4f4df67f2bf26a6e9e65a9b4c861fa9f5f89ecc",
+      "bytes": 49596
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_010_Phone_In_Backpack_Station_Concourse.png": {
+      "sha": "20e3f1a0f767a2df7b56c3134ea3366291aa2d65",
+      "bytes": 51196
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_018_Drive_Thru_Speaker_Fast_Food_Lane.png": {
+      "sha": "ca710e496656697fc70386dabbe4da10da7b5c0a",
+      "bytes": 47316
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_034_Voice_Behind_Glass_Window.png": {
+      "sha": "316dded928c16632b9ea6df05c478d8cd45521b9",
+      "bytes": 37618
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_030_Party_At_The_Neighbors.png": {
+      "sha": "80c6742ca6058cad6ad892d2bd741a3ed214bb83",
+      "bytes": 38709
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_001_Mobile_Call_Busy_Sidewalk.png": {
+      "sha": "97e9fae44ec7b1d20b9c5d2c720b975307ae1f99",
+      "bytes": 48133
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_031_Restaurant_Kitchen_Through_Door.png": {
+      "sha": "fb40425f65c4149c7ac340ecec26206bdd610687",
+      "bytes": 47604
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_015_Helicopter_Intercom_Half_Understandable.png": {
+      "sha": "c15e295b91e0102ad22ed8e3b13cdb7ebc3a9ee5",
+      "bytes": 43511
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_008_Cordless_Phone_Living_Room.png": {
+      "sha": "28958755c8ba906693805823be28d5135aaa4c55",
+      "bytes": 44101
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_041_Subway_Car_Announcement.png": {
+      "sha": "46b5b0e25530d9a62dc1ded537ee0daf765fa647",
+      "bytes": 48556
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_014_Helicopter_Intercom_Clear.png": {
+      "sha": "8b8994162ed952050908387796d491d2eb5bb27e",
+      "bytes": 47585
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_028_Captain_Announcement.png": {
+      "sha": "035338956a0c3f8f1cded1b9a2ccba96c320a0b7",
+      "bytes": 43053
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_043_Cheap_Wireless_Speaker_In_Room.png": {
+      "sha": "1c04845315596b4f608da00e1f12b7844b39d30b",
+      "bytes": 46257
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_011_Walkie_Talkie_Construction_Site.png": {
+      "sha": "bcb196ab3f8eeb3fdf8a10dc8ab8ab323b330570",
+      "bytes": 52865
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_007_Conference_Call_Glass_Office.png": {
+      "sha": "f1e4b7038c838e8e7670e460d2ce983a7d78d5dd",
+      "bytes": 46188
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_016_Aviation_Headset_Cockpit_Style.png": {
+      "sha": "9f5485f5f6aa6df4b4cd37095d43886e2e5de924",
+      "bytes": 48418
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_019_Radio_In_Back_Office.png": {
+      "sha": "9676e92d7d11e17deae8c67bbbde0807ddcf2b85",
+      "bytes": 41614
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_024_Airport_Gate_Announcement.png": {
+      "sha": "0f90ad69bc836a9fee95a10fcfcabb4f917dc3bf",
+      "bytes": 44183
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_020_Car_Radio_Out_of_Range.png": {
+      "sha": "426428259c0beb54a9d2ea6911eeb71070de5278",
+      "bytes": 46294
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_012_Police_Radio_Street_Exterior.png": {
+      "sha": "4c166dd311c0aba113d94392990af56c58e96bc0",
+      "bytes": 49827
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_047_Vintage_Radio_Living_Room.png": {
+      "sha": "4b7a7d5604e46daba341d28b15dd7584594931a7",
+      "bytes": 47387
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_022_Stadium_PA.png": {
+      "sha": "849556246b3f3fb7dbf7a0af12e237cfaa1994e1",
+      "bytes": 49799
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_006_Payphone_Street_Corner.png": {
+      "sha": "087ae27b125884d4502396739c3d317691d5a7e5",
+      "bytes": 51897
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_002_Mobile_Call_Weak_Signal.png": {
+      "sha": "2a3ff8acbc560ae0250d171d249bcab4ba8e0c07",
+      "bytes": 42382
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_004_Hotel_Phone_Corridor_Spill.png": {
+      "sha": "aebd72ccd652ec169ec6a314a72e3634915c2782",
+      "bytes": 44317
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_039_Car_Door_Speaker_Slow_Drive_By.png": {
+      "sha": "18121e5aa31f8eaf194a6f455fc5059109778577",
+      "bytes": 44629
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_040_Truck_Cab_Radio_Highway_Pull_Away.png": {
+      "sha": "096e49d0dc24577a478766e5014d876e8c508e95",
+      "bytes": 46271
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_038_Car_Pass_By_Parking_Lot.png": {
+      "sha": "1246a939c0d7924c9de208bc1f7b5d6021b4d8e8",
+      "bytes": 43439
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_023_Train_Station_Announcement.png": {
+      "sha": "307c65d2566a0560a14d39bd3a48451102996d20",
+      "bytes": 51400
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_026_Bus_Interior_Announcement.png": {
+      "sha": "59ecb70dcf38ee194d466580a0dfa2f509d9a27a",
+      "bytes": 43649
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_036_Radio_In_Car_Trunk.png": {
+      "sha": "cc1a4d6999c47bbc6f1d3c94e373516c56c4e6c0",
+      "bytes": 42231
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_003_Office_Desk_Phone_Small_Office.png": {
+      "sha": "792e45ffe40d5bae7e275058220e0ff7e6e69d75",
+      "bytes": 49473
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_042_Bus_PA_Curb_Arrival.png": {
+      "sha": "d5b5b16c697a193219767d01ac6c3926862d7ba6",
+      "bytes": 46390
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_032_TV_In_Living_Room_From_Hallway.png": {
+      "sha": "3e24ee431d34a30a8a011c6e6f604a0c0fc48ffa",
+      "bytes": 40640
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_037_Car_Pass_By_City_Street.png": {
+      "sha": "88459ca9ff0de0a6bbf321c5c0efab3268081328",
+      "bytes": 49133
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_029_Upstairs_TV_Through_Wall.png": {
+      "sha": "ab15c8971f6f18bbc2d55deb3072035ba1521d18",
+      "bytes": 42493
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_033_Voice_Behind_Closed_Wooden_Door.png": {
+      "sha": "2d9d911755664516c7ddc6f2766c48ce49a520e5",
+      "bytes": 41697
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_013_Dispatch_Radio_Vehicle_Interior.png": {
+      "sha": "69fe8fc7f2fdc510b1f8b62a3337fe744fdfdbc6",
+      "bytes": 47872
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_017_Security_Intercom_Building_Entrance.png": {
+      "sha": "2346a08c084f114c338198142961e78750f8e3c5",
+      "bytes": 43421
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_035_Phone_Inside_Suitcase.png": {
+      "sha": "bf8e67c0ffc9e38e3eaefb60f93b9a3cea091ffe",
+      "bytes": 49005
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_005_Prison_Visiting_Phone.png": {
+      "sha": "095e73b1031531faee571435279988fefa77ee31",
+      "bytes": 44401
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_021_Bullhorn_Street_Protest.png": {
+      "sha": "912c4cfe3c36c769f24e9a102b408e1c6d21bd30",
+      "bytes": 49923
+    },
+    "Assets/UI/Shared/SCENE_PRESET_HERO/SCN_048_Small_Guitar_Combo_Garage_Room.png": {
+      "sha": "04bd6d82886b94693a559e3e69222983d4aca45d",
+      "bytes": 47480
+    },
+    "Assets/UI/Shared/SOURCE/SRC_054_Practice_Amp.png": {
+      "sha": "f9e10c4372e93bd6a0d1f62aae91074a1addef6e",
+      "bytes": 30873
+    },
+    "Assets/UI/Shared/SOURCE/SRC_038_Wall_Mounted_PA_Horn.png": {
+      "sha": "2dacfd00eb29d7b63bcd5300e84b178248a8d77f",
+      "bytes": 30149
+    },
+    "Assets/UI/Shared/SOURCE/SRC_018_Helicopter_Intercom_Pack.png": {
+      "sha": "192aad2eff1289f385bd46761923b030e81e9db8",
+      "bytes": 34253
+    },
+    "Assets/UI/Shared/SOURCE/SRC_028_Tablet_Speaker.png": {
+      "sha": "c0c4be3cb5af4ff31bafa88a748014f3cb22e332",
+      "bytes": 30079
+    },
+    "Assets/UI/Shared/SOURCE/SRC_002_Smartphone_Bottom_Speaker.png": {
+      "sha": "3845a897c831cb953dc1a9d7fa87829a29f29936",
+      "bytes": 31186
+    },
+    "Assets/UI/Shared/SOURCE/SRC_027_Laptop_Speakers.png": {
+      "sha": "36d76ba582140a848f24497c5f83548c56e22f12",
+      "bytes": 33523
+    },
+    "Assets/UI/Shared/SOURCE/SRC_057_Portable_Karaoke_Speaker.png": {
+      "sha": "710a32152171f177447715d67d521476d28493b5",
+      "bytes": 32041
+    },
+    "Assets/UI/Shared/SOURCE/SRC_005_Cordless_Home_Phone.png": {
+      "sha": "a75bdf8850bbc051bdaf2ed069f2436746d5540a",
+      "bytes": 30912
+    },
+    "Assets/UI/Shared/SOURCE/SRC_050_Small_Portable_Wireless_Speaker.png": {
+      "sha": "4bb3c383ae3de40b3a69210b5f791ea97104eb3d",
+      "bytes": 34202
+    },
+    "Assets/UI/Shared/SOURCE/SRC_041_Cassette_Recorder.png": {
+      "sha": "56fba14be6ef9b6190ed876cf94b125c2b815e83",
+      "bytes": 33579
+    },
+    "Assets/UI/Shared/SOURCE/SRC_056_Phonograph_Box.png": {
+      "sha": "2bf0ba677ae002dcc5dc1edb571268ccde581ee0",
+      "bytes": 32157
+    },
+    "Assets/UI/Shared/SOURCE/SRC_025_Pocket_Transistor_Radio.png": {
+      "sha": "212cb276f2ebe699832e4158c808b89fc28a08ad",
+      "bytes": 31061
+    },
+    "Assets/UI/Shared/SOURCE/SRC_039_Stadium_PA_Horn.png": {
+      "sha": "ffc4283e507e9d78c5e545cdfbc041d022e98420",
+      "bytes": 35969
+    },
+    "Assets/UI/Shared/SOURCE/SRC_015_Building_Entry_Intercom.png": {
+      "sha": "66400516e558ff22ac6c21062b787757e8c177ad",
+      "bytes": 26085
+    },
+    "Assets/UI/Shared/SOURCE/SRC_049_Portable_DVD_Media_Player.png": {
+      "sha": "175818fecf845258a6ae395865bed51bea0956ad",
+      "bytes": 29148
+    },
+    "Assets/UI/Shared/SOURCE/SRC_036_Airplane_Cabin_PA.png": {
+      "sha": "1cc822e3d17ec8c4bb1744120a08d4da857051d3",
+      "bytes": 35062
+    },
+    "Assets/UI/Shared/SOURCE/SRC_034_Bus_PA_Speaker.png": {
+      "sha": "94627ee9b25fbb1e78997697af23f8555a1db4ea",
+      "bytes": 36136
+    },
+    "Assets/UI/Shared/SOURCE/SRC_012_Police_Handheld_Radio.png": {
+      "sha": "15980b66e6f5785dbdd4a8ce453ceb78763197a6",
+      "bytes": 26246
+    },
+    "Assets/UI/Shared/SOURCE/SRC_004_Feature_Phone.png": {
+      "sha": "a1a2b6c3f6d9852d85ff7d3ba75d0bbf2593ac6c",
+      "bytes": 26470
+    },
+    "Assets/UI/Shared/SOURCE/SRC_029_Desktop_Monitor_Speaker.png": {
+      "sha": "6ff2cf991a2f8751117f97c9272eaeb59ce826bd",
+      "bytes": 30454
+    },
+    "Assets/UI/Shared/SOURCE/SRC_051_Game_Console_Speaker.png": {
+      "sha": "d562d89db5a4c932524701b5ea87f2a421d10567",
+      "bytes": 28387
+    },
+    "Assets/UI/Shared/SOURCE/SRC_043_Dictaphone.png": {
+      "sha": "1471adf551045ab48624d33e5b818356b5daee6c",
+      "bytes": 28055
+    },
+    "Assets/UI/Shared/SOURCE/SRC_006_Office_Desk_Phone.png": {
+      "sha": "42c639e8bdedc9efc71a451b412b6680e3004ca8",
+      "bytes": 33690
+    },
+    "Assets/UI/Shared/SOURCE/SRC_060_Cabinet_Speaker_Small.png": {
+      "sha": "62866bf075f15f592ab135b5d41defe8ab9eea5d",
+      "bytes": 29286
+    },
+    "Assets/UI/Shared/SOURCE/SRC_026_Boombox.png": {
+      "sha": "553eee81a89fa55c122e5920c21f0b2cf4e719f2",
+      "bytes": 34234
+    },
+    "Assets/UI/Shared/SOURCE/SRC_014_Security_Intercom.png": {
+      "sha": "90a3a23954806c2d7240c93334c632a0f8edcb38",
+      "bytes": 25965
+    },
+    "Assets/UI/Shared/SOURCE/SRC_032_Car_Door_Speaker.png": {
+      "sha": "b95c58f8072d421121264b5eec54dfc1f78ca54c",
+      "bytes": 37653
+    },
+    "Assets/UI/Shared/SOURCE/SRC_030_Smart_Speaker.png": {
+      "sha": "d8b0a15a2ce02b85ccee9fde7c84e6053750845a",
+      "bytes": 30294
+    },
+    "Assets/UI/Shared/SOURCE/SRC_055_Gramophone_Horn.png": {
+      "sha": "9456cdd4cf0d8aa9e66181ec1d2fbce38224b4c0",
+      "bytes": 31175
+    },
+    "Assets/UI/Shared/SOURCE/SRC_023_Kitchen_Radio.png": {
+      "sha": "4c69107e38e6cc716c65e91288a2d7c4089778d9",
+      "bytes": 36024
+    },
+    "Assets/UI/Shared/SOURCE/SRC_061_Cabinet_Speaker_Mid.png": {
+      "sha": "e4be06722e05efbb895574a8b97424c74ba334e6",
+      "bytes": 30072
+    },
+    "Assets/UI/Shared/SOURCE/SRC_011_Walkie_Talkie.png": {
+      "sha": "6de18ca837f12ff73b590e9238ecfdf027243b09",
+      "bytes": 24586
+    },
+    "Assets/UI/Shared/SOURCE/SRC_053_Small_Guitar_Combo_Amp.png": {
+      "sha": "66b5de68ab0c9fd9720e0c8e58edff642ee93d91",
+      "bytes": 32532
+    },
+    "Assets/UI/Shared/SOURCE/SRC_022_Flat_TV_Speaker.png": {
+      "sha": "a70d84cd516b724708575cd0107bb1c14093b24d",
+      "bytes": 27614
+    },
+    "Assets/UI/Shared/SOURCE/SRC_063_Helmet_Intercom_Speaker.png": {
+      "sha": "b5b448fa9c875d2de17b275922f0891af357563d",
+      "bytes": 36393
+    },
+    "Assets/UI/Shared/SOURCE/SRC_008_Hotel_Room_Phone.png": {
+      "sha": "0eef625e00b28ae9f1eddf036c114a6fc4456daa",
+      "bytes": 35837
+    },
+    "Assets/UI/Shared/SOURCE/SRC_058_Portable_PA_Column.png": {
+      "sha": "ab909a374fbae8defb53ccea525d08f0a1f56ef3",
+      "bytes": 26749
+    },
+    "Assets/UI/Shared/SOURCE/SRC_021_CRT_Television.png": {
+      "sha": "e9bb646cecb07414460a9f5991f31c21237bc04d",
+      "bytes": 26337
+    },
+    "Assets/UI/Shared/SOURCE/SRC_001_Smartphone_Earpiece.png": {
+      "sha": "5fb088ef08c6d8336c10ea2c33f5f807563e89c6",
+      "bytes": 27219
+    },
+    "Assets/UI/Shared/SOURCE/SRC_045_Toy_Recorder.png": {
+      "sha": "2edb89c6053c3f804a80c2c0e12a99eae2bf05cc",
+      "bytes": 31750
+    },
+    "Assets/UI/Shared/SOURCE/SRC_035_Train_Cabin_Speaker.png": {
+      "sha": "17f2027df39e33f816b45d8cd3882b0fd22a88e4",
+      "bytes": 37027
+    },
+    "Assets/UI/Shared/SOURCE/SRC_059_Old_Public_Announcement_Box.png": {
+      "sha": "c51909f5c78454206f35c6d49b10f7d59fef5659",
+      "bytes": 33898
+    },
+    "Assets/UI/Shared/SOURCE/SRC_064_Hidden_Pocket_Bag_Speaker.png": {
+      "sha": "3398d0f879894c86b802ff5911bd074ea7e03891",
+      "bytes": 35702
+    },
+    "Assets/UI/Shared/SOURCE/SRC_037_Ceiling_PA_Speaker.png": {
+      "sha": "f511270992757bbb1278df955f86cdfdbca5e077",
+      "bytes": 35793
+    },
+    "Assets/UI/Shared/SOURCE/SRC_042_Microcassette_Recorder.png": {
+      "sha": "747477afbe47b5c713122f627c34fb29c1ea5d28",
+      "bytes": 32740
+    },
+    "Assets/UI/Shared/SOURCE/SRC_009_Public_Payphone.png": {
+      "sha": "decdaa3f2e9d3c5153d0757db097a2bd07d87873",
+      "bytes": 30009
+    },
+    "Assets/UI/Shared/SOURCE/SRC_019_Military_Field_Radio.png": {
+      "sha": "c1cd58d112903429054c16cc4d5fb6919b2c4568",
+      "bytes": 29204
+    },
+    "Assets/UI/Shared/SOURCE/SRC_010_Conference_Speakerphone_Unit.png": {
+      "sha": "618c0c43805d80f629465c755583e209a746439b",
+      "bytes": 31782
+    },
+    "Assets/UI/Shared/SOURCE/SRC_062_Cabinet_Speaker_Large.png": {
+      "sha": "078ea39680937bfe8d7d3dab67d929c6b8aa577d",
+      "bytes": 30707
+    },
+    "Assets/UI/Shared/SOURCE/SRC_020_Portable_Comms_Unit.png": {
+      "sha": "6f98760c5acb176c8263d1339b23133744162bec",
+      "bytes": 27926
+    },
+    "Assets/UI/Shared/SOURCE/SRC_017_Aviation_Headset.png": {
+      "sha": "a7ad394efb2492e9200b74f4570c9361fdf09b5d",
+      "bytes": 32057
+    },
+    "Assets/UI/Shared/SOURCE/SRC_003_Smartphone_Speakerphone.png": {
+      "sha": "94296907c855cdc730f4ae1120a6f04fa7d53191",
+      "bytes": 33881
+    },
+    "Assets/UI/Shared/SOURCE/SRC_044_Answering_Machine.png": {
+      "sha": "faa676c2a3e77dca4185626d80178ee8987f4722",
+      "bytes": 33414
+    },
+    "Assets/UI/Shared/SOURCE/SRC_052_Cheap_Earbuds_Leakage.png": {
+      "sha": "07effe004846e18fc666a0401823849fae3c06a1",
+      "bytes": 30575
+    },
+    "Assets/UI/Shared/SOURCE/SRC_024_Clock_Radio.png": {
+      "sha": "9df98320d689d1b82f65a1d65596f6881fb1708a",
+      "bytes": 30024
+    },
+    "Assets/UI/Shared/SOURCE/SRC_048_Baby_Monitor.png": {
+      "sha": "c8b50af967d33057b12fc78a8e0c41ebe4e856a8",
+      "bytes": 28489
+    },
+    "Assets/UI/Shared/SOURCE/SRC_040_Bullhorn_Megaphone.png": {
+      "sha": "3cee860cda36dd9961420c4eacfe3c4b8d232e41",
+      "bytes": 30949
+    },
+    "Assets/UI/Shared/SOURCE/SRC_033_Truck_Cab_Radio.png": {
+      "sha": "aaf64f560b4183c336f3ee149e357bca3550fa06",
+      "bytes": 35342
+    },
+    "Assets/UI/Shared/SOURCE/SRC_047_Cheap_Voice_Recorder.png": {
+      "sha": "70f8b6eea8cacdbfe37e632cb34f85806131b264",
+      "bytes": 29695
+    },
+    "Assets/UI/Shared/SOURCE/SRC_007_Vintage_Rotary_Phone.png": {
+      "sha": "4b11a2ba9b65cfa7796e7434247e760aefd46646",
+      "bytes": 35452
+    },
+    "Assets/UI/Shared/SOURCE/SRC_046_Toy_Megaphone.png": {
+      "sha": "d436e73b691cdfc3ac8841ca4f5a1c24e094b6bc",
+      "bytes": 30773
+    },
+    "Assets/UI/Shared/SOURCE/SRC_031_Car_Dashboard_Speaker.png": {
+      "sha": "7fddb3cfcbd0fea0bfd20b3cb78f2731982cc7a3",
+      "bytes": 35095
+    },
+    "Assets/UI/Shared/SOURCE/SRC_013_Dispatch_Base_Radio.png": {
+      "sha": "0b5890c0e369a1b67cb000341e94e02a1c6caa41",
+      "bytes": 31628
+    },
+    "Assets/UI/Shared/SOURCE/SRC_016_Drive_Thru_Speaker_Box.png": {
+      "sha": "ad5b4a6b222aff459fbc04de788899222206c2cc",
+      "bytes": 29958
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_015_Restaurant.png": {
+      "sha": "bf2a056744256dc3d3ad28b2837c19989df59771",
+      "bytes": 43104
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_012_Basement.png": {
+      "sha": "e898fb01a444889d7b698e12b02988762b7c3deb",
+      "bytes": 38105
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_008_Conference_Room.png": {
+      "sha": "6f5e8349018bc493eb324626249798b30f2ec8eb",
+      "bytes": 41046
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_009_Hallway.png": {
+      "sha": "481279785d6400d8307d0927932c809b3be28a1f",
+      "bytes": 34070
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_047_Forest_Trail.png": {
+      "sha": "445c1d9cc118ef97dc668d35267888c529235f48",
+      "bytes": 46277
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_036_Sedan_Interior.png": {
+      "sha": "7b4c4b99a5d4cba89200be5d519d9ccd0c523439",
+      "bytes": 38889
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_028_Train_Platform.png": {
+      "sha": "76465b8f1bd0082fe79868197dd4df504360dc5a",
+      "bytes": 47466
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_037_Van_Interior.png": {
+      "sha": "0aa65e34f7d50111096129a9d58f0b26dcf1e891",
+      "bytes": 39139
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_050_Beach.png": {
+      "sha": "28e9e844bd36678a88d36ffc3110c739b3dda894",
+      "bytes": 37976
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_024_Courtyard.png": {
+      "sha": "cae4ce248a08cca16b9ff2a9c255f8b69c1818a5",
+      "bytes": 44063
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_048_Mountain_Slope.png": {
+      "sha": "f6decb78dad4f8f579a6a47ab6d08028a12db5e7",
+      "bytes": 44982
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_004_Kitchen.png": {
+      "sha": "7013b907387fd2e7ae7c178102f04ddead9de73c",
+      "bytes": 35846
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_033_Stadium_Bowl.png": {
+      "sha": "2bd43eecec842a928fd5f991226e5cebf96d83c2",
+      "bytes": 44321
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_035_Compact_Car_Interior.png": {
+      "sha": "3064b68703d02c72c6744a0d21530f1cac3314b0",
+      "bytes": 39300
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_013_Lobby.png": {
+      "sha": "bb0b25ef32f57ac4b2645d0e22fffb2b01aae128",
+      "bytes": 41204
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_041_Subway_Car.png": {
+      "sha": "b951cf5de80a1dfb20372e35cf7c71d83d7f7145",
+      "bytes": 43339
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_018_Shopping_Mall.png": {
+      "sha": "7f24486ddc974c9b89dc7420210bfec724fe6161",
+      "bytes": 46562
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_003_Bathroom.png": {
+      "sha": "3644fe63eed16a25f66a8238b8362e41a21324cc",
+      "bytes": 37023
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_022_Busy_City_Street.png": {
+      "sha": "3d226df8b34ceeab4f4d3a26e09c633540f88005",
+      "bytes": 46236
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_051_Seaside_Pier.png": {
+      "sha": "7ca405eb2f2851fcd55ce16dc54c628e7a68675e",
+      "bytes": 38023
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_010_Stairwell.png": {
+      "sha": "a2c595ba62e2927d96e78058021af40f2041e854",
+      "bytes": 39645
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_011_Elevator.png": {
+      "sha": "8a15d2ad7f6e0b14e0f6757f6b9bb79345b13164",
+      "bytes": 32990
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_002_Bedroom.png": {
+      "sha": "cbb0491edf40cf4cdbe279920ffcff641d216cc4",
+      "bytes": 38949
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_055_Prison_Visiting_Room.png": {
+      "sha": "8a7c802f9055de42caf5c31b8814d8b8cad03e1e",
+      "bytes": 35891
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_032_Stadium_Concourse.png": {
+      "sha": "f9eaf24a04dc11f7a57895fa44fb763febec8935",
+      "bytes": 43573
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_007_Large_Office.png": {
+      "sha": "e21c2e1be9929f0ddb604fced1cffa95878c5e31",
+      "bytes": 41859
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_005_Living_Room.png": {
+      "sha": "3e6817b8e8ff613678882a8a6c86f09e5540682e",
+      "bytes": 39764
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_043_Helicopter_Cabin.png": {
+      "sha": "e271bb76714beeb9b3c46297509af4fd56498a79",
+      "bytes": 37739
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_042_Airplane_Cabin.png": {
+      "sha": "bca07385734ed023262e60067b005e61e6cab6ee",
+      "bytes": 41238
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_020_Workshop.png": {
+      "sha": "82e06b9284d7c482131eb79ec69c46b3a75b06ca",
+      "bytes": 42602
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_056_Phone_Booth.png": {
+      "sha": "8359f3c620650151ce139f5e1eb8482a2c47828a",
+      "bytes": 37496
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_038_Truck_Cab.png": {
+      "sha": "619f3be8fbb3c2ab565c144d72bcb4c615088f41",
+      "bytes": 40991
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_017_Club.png": {
+      "sha": "957e7446a093e9ac59fbdbafe41805cbf0a8a014",
+      "bytes": 39636
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_046_Forest.png": {
+      "sha": "38031c255992055c251b0aeb670647c302d12a06",
+      "bytes": 45590
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_030_Airport_Curbside.png": {
+      "sha": "01f1b18d3d492fe1d6389910c320fc784bfcd7a3",
+      "bytes": 43359
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_014_Classroom.png": {
+      "sha": "e5a3391e8053f3f21ea99461709f26a492a1a888",
+      "bytes": 39641
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_023_Alley.png": {
+      "sha": "430d3217c84d1d645c7c19f86c67a6ce36ef0b61",
+      "bytes": 41702
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_053_Drive_Thru_Window.png": {
+      "sha": "cf7a19c8bd3f6fba642a2837cf5619c91c15c74a",
+      "bytes": 40725
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_006_Small_Office.png": {
+      "sha": "447cfc7de6bce711775ea1f4d999f2a7dbec0a65",
+      "bytes": 39647
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_039_Bus_Interior.png": {
+      "sha": "0b06cafdf85179c96dd961d9238e64b5764d13d7",
+      "bytes": 43305
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_019_Warehouse.png": {
+      "sha": "2b5908731c265ab1e617708c715df96f9efa9965",
+      "bytes": 43806
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_049_Canyon.png": {
+      "sha": "d26cecb1267818f3563c8dc7495c61a37b5cecd2",
+      "bytes": 47195
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_021_Quiet_Street.png": {
+      "sha": "a267fa8e98e76de00fd596fe2532bc1069d7a1cd",
+      "bytes": 45882
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_040_Train_Carriage.png": {
+      "sha": "92b441c6ecdee7299af8f9f73a56b12f90e7869b",
+      "bytes": 43747
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_031_Construction_Site.png": {
+      "sha": "12b93288c2e20121649c85cbf176d0ccd6b54212",
+      "bytes": 46107
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_054_Security_Checkpoint.png": {
+      "sha": "efdb6a40825b2b4b244a55a9e1e41f434f4eec55",
+      "bytes": 40125
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_034_Tunnel_Underpass.png": {
+      "sha": "340cf710eb652cfb3ca3de71d04ec3cb24ff2815",
+      "bytes": 38967
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_001_Vocal_Booth.png": {
+      "sha": "a03dece03fe9c0dd49fccd1578de2bb02666ac2b",
+      "bytes": 38883
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_052_Campsite.png": {
+      "sha": "157ad1d62e9535dce0c664107ca4f67892be6482",
+      "bytes": 44429
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_025_Parking_Lot.png": {
+      "sha": "f386a5193c8c8e50a39791b9d0b7de720331ebe2",
+      "bytes": 37583
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_027_Bus_Stop.png": {
+      "sha": "d216eb06145170b10561a7df3d489507c7cfefbb",
+      "bytes": 43437
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_044_Ferry_Ship_Interior.png": {
+      "sha": "cdcf3725c513b05514b5b2a46453f04401b68e9e",
+      "bytes": 38736
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_026_Rooftop.png": {
+      "sha": "0b0d0f77ea731d201f59737d32a9d8447d56b4c4",
+      "bytes": 39010
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_045_Open_Field.png": {
+      "sha": "46976faa172fad71b36923cf9cc996553bb9bf2f",
+      "bytes": 39614
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_029_Station_Concourse.png": {
+      "sha": "a6a88834a19eb38af9696d867caa66be767ab8bb",
+      "bytes": 44963
+    },
+    "Assets/UI/Shared/SPACE_ENVIRONMENT/SPC_016_Bar_Pub.png": {
+      "sha": "f205313f1c5e7f26e5a8ec3c4629566142d9eb62",
+      "bytes": 41533
+    }
+  },
+  "image_count": 795,
+  "exclusions": [
+    "DSP C++",
+    "AudioWorklet",
+    "WASM",
+    "factory preset parameter recipes"
+  ],
+  "nonparity": [
+    "no playback",
+    "no post-DSP meters/spectrum",
+    "no private audio processor"
+  ]
+}

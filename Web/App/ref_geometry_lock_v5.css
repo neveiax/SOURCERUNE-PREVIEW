@@ -1,0 +1,193 @@
+/* SOURCERUNE Reference Geometry Lock V5
+   Canonical production geometry for UI_01 / UI_02.
+   Appearance remains owned by runtime_skin + visual_convergence.
+   No DSP/state/preset semantics. */
+
+:root{
+  --r01-w:1499px; --r01-h:807px; --r01-top:58px;
+  --r01-pad-x:10px; --r01-work-bottom:8px; --r01-col-gap:10px;
+  --r01-left:313px; --r01-center:967px; --r01-meter:179px;
+  --r01-card:124px; --r01-card-gap:8px; --r01-work-h:528px;
+  --r01-scene:262px; --r01-analysis:247px; --r01-center-gap:8px;
+  --r01-macro-strip:221px; --r01-macro:216px; --r01-shell-bottom:5px;
+
+  --r02-w:1672px; --r02-h:941px; --r02-top:78px;
+  --r02-pad-x:13px; --r02-pad-top:8px; --r02-gap:9px;
+  --r02-left:334px; --r02-center:972px; --r02-right:322px;
+  --r02-row1:196px; --r02-row2:74px; --r02-row3:100px; --r02-row4:244px;
+  --r02-work-h:653px; --r02-scene-panel:641px;
+  --r02-scene:358px; --r02-motion:283px;
+  --r02-macro-strip:210px; --r02-macro-top:20px; --r02-macro:172px; --r02-bottom:18px;
+  --r02-ambience-top:374px; --r02-ambience-h:356px;
+  --r02-meter-top:8px; --r02-meter-right:72px; --r02-meter-w:440px;
+}
+
+/* Web-only transport controls stay in DOM but not in production composition. */
+body.ui-01 .top-actions>.file-btn,
+body.ui-01 #playBtn,
+body.ui-01 #stopBtn,
+body.ui-01 .loop-toggle,
+body.ui-02 .top-actions>.file-btn,
+body.ui-02 #playBtn,
+body.ui-02 #stopBtn,
+body.ui-02 .loop-toggle{display:none}
+
+/* ---------------- UI_01 ---------------- */
+body.ui-01 .app{width:var(--r01-w);height:var(--r01-h);min-height:var(--r01-h);overflow:hidden}
+body.ui-01 .topbar{height:var(--r01-top);padding:0 14px;gap:12px;position:relative}
+body.ui-01 .brand{min-width:300px}
+body.ui-01 .build-status{display:none}
+body.ui-01 .top-actions{margin-left:auto;gap:6px}
+body.ui-01 .runtime-strip{display:none}
+
+body.ui-01 .presetbar{
+  position:absolute;z-index:12;top:8px;left:34%;right:190px;height:42px;
+  padding:0;gap:7px;border:0;background:transparent!important;pointer-events:auto;
+}
+body.ui-01 .preset-label,
+body.ui-01 #savePresetBtn,
+body.ui-01 #presetVisualsBtn,
+body.ui-01 #importStateBtn,
+body.ui-01 #exportStateBtn,
+body.ui-01 #globalBypass,
+body.ui-01 .transport-time,
+body.ui-01 .snapshots button:nth-child(n+3){display:none}
+body.ui-01 .presetbar select{width:min(340px,32vw);height:34px}
+body.ui-01 .presetbar #copyStateBtn,
+body.ui-01 .presetbar #pasteStateBtn{height:34px;padding:5px 9px}
+body.ui-01 .snapshots{margin-left:0}
+body.ui-01 .snapshots button{height:34px;min-width:42px}
+
+body.ui-01 .workspace{
+  height:var(--r01-work-h);
+  grid-template-columns:var(--r01-left) var(--r01-center) var(--r01-meter);
+  grid-template-areas:"modules center meter";
+  gap:var(--r01-col-gap);
+  padding:0 var(--r01-pad-x) var(--r01-work-bottom);
+}
+body.ui-01 .module-rail{height:520px;gap:var(--r01-card-gap)}
+body.ui-01 .module-rail:before{display:none}
+body.ui-01 .module-card{height:var(--r01-card);min-height:var(--r01-card)}
+body.ui-01 .module-art{top:48px;right:47px;bottom:8px;left:8px}
+body.ui-01 .module-meta{inset:0 0 auto 0;height:48px}
+body.ui-01 .module-actions{top:10px;right:8px}
+body.ui-01 .module-actions [data-byp]{display:none}
+
+body.ui-01 .center{
+  min-width:0;
+  grid-template-rows:var(--r01-scene) var(--r01-analysis);
+  gap:var(--r01-center-gap);
+}
+body.ui-01 .scene-panel{height:var(--r01-scene);min-height:var(--r01-scene);position:relative}
+body.ui-01 .panel-head{height:34px;min-height:34px}
+body.ui-01 .panel-head .eyebrow{display:none}
+body.ui-01 .panel-head h1{text-transform:uppercase;margin:0}
+body.ui-01 .scene-head-controls>[data-view],
+body.ui-01 #sceneFullscreenBtn{display:none}
+body.ui-01 #sceneSvg{height:186px!important;min-height:0!important}
+body.ui-01 .motion-readouts{display:none!important}
+body.ui-01 .analysis-panel{height:var(--r01-analysis)}
+body.ui-01 .tabs{height:37px}
+body.ui-01 .tab-content{height:210px}
+
+body.ui-01 .meter-rail{height:520px;min-height:520px}
+body.ui-01 .meters{min-height:250px}
+body.ui-01 .meter-slot{width:24px;min-height:250px}
+
+body.ui-01 .macro-strip{
+  height:var(--r01-macro-strip);
+  grid-template-columns:1.80fr 1.18fr 1.31fr 1.31fr 1.03fr .76fr 2.05fr;
+  gap:8px;
+  padding:0 var(--r01-pad-x) var(--r01-shell-bottom);
+}
+body.ui-01 .macro{height:var(--r01-macro);min-width:0;overflow:hidden}
+body.ui-01 .advanced-drawer{display:none}
+
+/* ---------------- UI_02 ---------------- */
+body.ui-02 .app{width:var(--r02-w);height:var(--r02-h);min-height:var(--r02-h);overflow:hidden;position:relative}
+body.ui-02 .topbar{height:var(--r02-top);padding:0 14px 0 24px;gap:10px;position:relative}
+body.ui-02 .brand{min-width:330px}
+body.ui-02 .build-status{display:none}
+body.ui-02 .top-actions{margin-left:auto;gap:5px}
+body.ui-02 .runtime-strip{display:none}
+
+body.ui-02 .presetbar{
+  position:absolute;z-index:12;top:10px;left:430px;right:560px;height:56px;
+  padding:0;gap:7px;border:0;background:transparent!important;
+}
+body.ui-02 .preset-label,
+body.ui-02 #savePresetBtn,
+body.ui-02 #presetVisualsBtn,
+body.ui-02 #importStateBtn,
+body.ui-02 #exportStateBtn,
+body.ui-02 #globalBypass,
+body.ui-02 .transport-time,
+body.ui-02 .snapshots button:nth-child(n+3){display:none}
+body.ui-02 .presetbar select{width:min(330px,27vw);height:42px}
+body.ui-02 .presetbar #copyStateBtn,
+body.ui-02 .presetbar #pasteStateBtn{display:none}
+body.ui-02 .snapshots{margin-left:0}
+body.ui-02 .snapshots button{height:42px;min-width:44px}
+
+body.ui-02 .workspace{
+  position:static;
+  height:var(--r02-work-h);
+  display:grid;
+  grid-template-columns:var(--r02-left) var(--r02-center) var(--r02-right);
+  grid-template-rows:var(--r02-row1) var(--r02-row2) var(--r02-row3) var(--r02-row4);
+  grid-template-areas:none;
+  gap:var(--r02-gap);
+  padding:var(--r02-pad-top) var(--r02-pad-x) 0;
+  align-items:stretch;
+}
+body.ui-02 .module-rail{display:contents}
+body.ui-02 .module-rail:before{display:none}
+body.ui-02 .module-card{height:auto;min-height:0}
+body.ui-02 .module-card[data-type="SOURCE"]{grid-column:1;grid-row:1}
+body.ui-02 .module-card[data-type="TRANSMISSION"]{grid-column:1;grid-row:2 / 4}
+body.ui-02 .module-card[data-type="WALL_COVER"]{grid-column:1;grid-row:4}
+body.ui-02 .module-card[data-type="SPACE_ENVIRONMENT"]{grid-column:3;grid-row:1 / 3}
+body.ui-02 .module-actions [data-byp]{display:none}
+
+body.ui-02 .center{grid-column:2;grid-row:1 / 5;display:block;min-width:0}
+body.ui-02 .scene-panel{position:relative;height:var(--r02-scene-panel);min-height:var(--r02-scene-panel);overflow:hidden}
+body.ui-02 .analysis-panel{display:none}
+body.ui-02 .panel-head{
+  position:absolute;z-index:8;top:10px;right:12px;left:auto;width:auto;height:42px;
+  padding:0;border:0;background:transparent;
+}
+body.ui-02 .panel-head>div:first-child{display:none}
+body.ui-02 .panel-head .motion-mode-group{display:none}
+body.ui-02 .scene-commandbar{display:none}
+body.ui-02 #sceneSvg{display:block;width:100%;height:var(--r02-scene);min-height:var(--r02-scene)}
+body.ui-02 .motion-readouts{position:relative;display:block;height:var(--r02-motion);min-height:var(--r02-motion)}
+
+body.ui-02 .meter-rail{
+  position:absolute;z-index:15;top:var(--r02-meter-top);right:var(--r02-meter-right);
+  width:var(--r02-meter-w);height:62px;min-height:0;padding:0;
+  display:flex;flex-direction:row;align-items:center;border:0;box-shadow:none;background:transparent!important;
+}
+body.ui-02 .meter-head,
+body.ui-02 .meter-values{display:none}
+
+body.ui-02 .macro-strip{
+  position:static;
+  height:var(--r02-macro-strip);
+  display:grid;
+  grid-template-columns:1.08fr 1.08fr 1fr .98fr 1.35fr;
+  gap:9px;
+  padding:var(--r02-macro-top) var(--r02-pad-x) var(--r02-bottom);
+}
+body.ui-02 .macro-strip .macro{height:var(--r02-macro)}
+body.ui-02 .macro-strip .macro[data-open="MOTION"]{display:none}
+body.ui-02 .macro-strip .macro[data-open="TRANSMISSION"]{grid-column:1}
+body.ui-02 .macro-strip .macro[data-open="CONDITION"]{grid-column:2}
+body.ui-02 .macro-strip .macro[data-open="INTELLIGIBILITY"]{grid-column:3}
+body.ui-02 .macro-strip .macro[data-open="MIX"]{grid-column:4}
+body.ui-02 .macro-strip .macro[data-open="EQ_TONE"]{grid-column:5}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{
+  display:block;position:absolute;z-index:9;
+  top:var(--r02-ambience-top);right:var(--r02-pad-x);
+  width:var(--r02-right);height:var(--r02-ambience-h);
+}
+body.ui-02 .advanced-drawer{display:none}

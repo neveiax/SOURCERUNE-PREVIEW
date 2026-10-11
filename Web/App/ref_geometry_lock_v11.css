@@ -1,0 +1,214 @@
+/* SOURCERUNE Reference Geometry Lock V11
+   Canonical geometry composed from approved REF scans V6-V10.
+   Geometry only: no DSP/state/preset semantics, no frame-material redesign. */
+
+:root{
+  --sr01-w:1499px;--sr01-h:807px;--sr01-top:58px;
+  --sr01-pad:10px;--sr01-col-gap:10px;--sr01-left:313px;--sr01-center:967px;--sr01-meter:179px;
+  --sr01-work-h:528px;--sr01-scene:262px;--sr01-analysis:247px;--sr01-center-gap:8px;
+  --sr01-source-h:136px;--sr01-trans-h:132px;--sr01-wall-h:132px;--sr01-space-h:97px;
+  --sr01-gap-st:7px;--sr01-gap-tw:7px;--sr01-gap-ws:6px;
+  --sr01-macro-strip:221px;--sr01-macro-h:216px;--sr01-bottom:5px;
+  --sr01-meter-content-h:376px;--sr01-meter-slot-w:20px;--sr01-meter-slot-h:178px;
+  --sr01-meter-mode-top:273px;--sr01-meter-mode-h:30px;
+
+  --sr02-w:1672px;--sr02-h:941px;--sr02-top:78px;
+  --sr02-pad:13px;--sr02-gap:9px;--sr02-left:334px;--sr02-center:972px;--sr02-right:322px;
+  --sr02-work-h:653px;--sr02-r1:213px;--sr02-r2:63px;--sr02-r3:94px;--sr02-r4:247px;
+  --sr02-scene-panel:641px;--sr02-scene:358px;--sr02-motion:283px;
+  --sr02-amb-top:380px;--sr02-amb-h:350px;
+  --sr02-macro-strip:210px;--sr02-macro-top:20px;--sr02-macro-h:172px;--sr02-bottom:18px;
+  --sr02-meter-top:8px;--sr02-meter-right:72px;--sr02-meter-w:440px;
+  --sr02-meter-label:48px;--sr02-meter-slot-w:150px;--sr02-meter-slot-h:15px;
+}
+
+/* UI_01 shell */
+body.ui-01 .app{width:var(--sr01-w);height:var(--sr01-h);min-height:var(--sr01-h);overflow:hidden}
+body.ui-01 .topbar{height:var(--sr01-top)}
+body.ui-01 .workspace{
+  height:var(--sr01-work-h);
+  grid-template-columns:var(--sr01-left) var(--sr01-center) var(--sr01-meter);
+  grid-template-areas:"modules center meter";
+  gap:var(--sr01-col-gap);
+  padding:0 var(--sr01-pad) 8px;
+}
+body.ui-01 .module-rail{height:520px;gap:0}
+body.ui-01 .module-card[data-type="SOURCE"]{height:var(--sr01-source-h);min-height:var(--sr01-source-h);margin-bottom:var(--sr01-gap-st)}
+body.ui-01 .module-card[data-type="TRANSMISSION"]{height:var(--sr01-trans-h);min-height:var(--sr01-trans-h);margin-bottom:var(--sr01-gap-tw)}
+body.ui-01 .module-card[data-type="WALL_COVER"]{height:var(--sr01-wall-h);min-height:var(--sr01-wall-h);margin-bottom:var(--sr01-gap-ws)}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"]{height:var(--sr01-space-h);min-height:var(--sr01-space-h);margin-bottom:0}
+body.ui-01 .center{grid-template-rows:var(--sr01-scene) var(--sr01-analysis);gap:var(--sr01-center-gap)}
+body.ui-01 .scene-panel{height:var(--sr01-scene);min-height:var(--sr01-scene)}
+body.ui-01 .panel-head{height:34px;min-height:34px}
+body.ui-01 #sceneSvg{height:186px!important;min-height:0!important}
+body.ui-01 .analysis-panel{height:var(--sr01-analysis)}
+body.ui-01 .tabs{height:37px}
+body.ui-01 .tab-content{height:210px}
+
+/* UI_01 exact bottom columns */
+body.ui-01 .macro-strip{
+  height:var(--sr01-macro-strip);
+  grid-template-columns:269px 178px 201px 201px 155px 115px 312px;
+  column-gap:8px;row-gap:0;
+  padding:0 var(--sr01-pad) var(--sr01-bottom);
+}
+body.ui-01 .macro{height:var(--sr01-macro-h)}
+
+/* UI_01 reference meter */
+body.ui-01 .meter-rail{
+  position:relative;height:var(--sr01-meter-content-h);min-height:var(--sr01-meter-content-h);
+  padding:0;align-self:start;overflow:hidden;
+}
+body.ui-01 .meter-head{display:none}
+body.ui-01 .meters{position:absolute;left:0;top:0;width:179px;height:266px;min-height:0;display:block}
+body.ui-01 .meter-block{position:absolute;top:27px;width:40px;height:213px;display:block}
+body.ui-01 .meter-block:first-child{left:14px}
+body.ui-01 .meter-block:nth-child(2){left:114px}
+body.ui-01 .meter-slot{
+  position:absolute;top:27px;left:10px;
+  width:var(--sr01-meter-slot-w);height:var(--sr01-meter-slot-h);min-height:var(--sr01-meter-slot-h)
+}
+body.ui-01 .meter-mode-toggle{
+  position:absolute;left:10px;top:var(--sr01-meter-mode-top);
+  width:159px;height:var(--sr01-meter-mode-h);
+  display:grid;grid-template-columns:1fr 1fr;gap:5px;z-index:4;
+}
+
+/* UI_02 shell and scanned rows */
+body.ui-02 .app{width:var(--sr02-w);height:var(--sr02-h);min-height:var(--sr02-h);overflow:hidden;position:relative}
+body.ui-02 .topbar{height:var(--sr02-top)}
+body.ui-02 .workspace{
+  position:static;height:var(--sr02-work-h);
+  display:grid;
+  grid-template-columns:var(--sr02-left) var(--sr02-center) var(--sr02-right);
+  grid-template-rows:var(--sr02-r1) var(--sr02-r2) var(--sr02-r3) var(--sr02-r4);
+  grid-template-areas:none;gap:var(--sr02-gap);padding:8px var(--sr02-pad) 0;
+}
+body.ui-02 .module-rail{display:contents}
+body.ui-02 .module-card[data-type="SOURCE"]{grid-column:1;grid-row:1;height:var(--sr02-r1);min-height:var(--sr02-r1)}
+body.ui-02 .module-card[data-type="TRANSMISSION"]{
+  grid-column:1;grid-row:2 / 4;
+  height:calc(var(--sr02-r2) + var(--sr02-gap) + var(--sr02-r3));
+  min-height:calc(var(--sr02-r2) + var(--sr02-gap) + var(--sr02-r3))
+}
+body.ui-02 .module-card[data-type="WALL_COVER"]{grid-column:1;grid-row:4;height:var(--sr02-r4);min-height:var(--sr02-r4)}
+body.ui-02 .module-card[data-type="SPACE_ENVIRONMENT"]{
+  grid-column:3;grid-row:1 / 3;
+  height:calc(var(--sr02-r1) + var(--sr02-gap) + var(--sr02-r2));
+  min-height:calc(var(--sr02-r1) + var(--sr02-gap) + var(--sr02-r2))
+}
+body.ui-02 .center{grid-column:2;grid-row:1 / 5;display:block;min-width:0}
+body.ui-02 .scene-panel{height:var(--sr02-scene-panel);min-height:var(--sr02-scene-panel)}
+body.ui-02 #sceneSvg{height:var(--sr02-scene);min-height:var(--sr02-scene)}
+body.ui-02 .motion-readouts{height:var(--sr02-motion);min-height:var(--sr02-motion)}
+
+/* UI_02 exact bottom columns */
+body.ui-02 .macro-strip{
+  position:static;height:var(--sr02-macro-strip);
+  display:grid;grid-template-columns:337px 315px 297px 316px 337px;
+  column-gap:11px;row-gap:0;
+  padding:var(--sr02-macro-top) var(--sr02-pad) var(--sr02-bottom);
+}
+body.ui-02 .macro-strip .macro{height:var(--sr02-macro-h)}
+body.ui-02 .macro-strip .macro-knob{--knob-size:76px}
+body.ui-02 .macro-strip .macro-mix .macro-knob{--knob-size:76px}
+body.ui-02 .macro-strip .macro[data-open="MOTION"]{display:none}
+body.ui-02 .macro-strip .macro[data-open="TRANSMISSION"]{grid-column:1}
+body.ui-02 .macro-strip .macro[data-open="CONDITION"]{grid-column:2}
+body.ui-02 .macro-strip .macro[data-open="INTELLIGIBILITY"]{grid-column:3}
+body.ui-02 .macro-strip .macro[data-open="MIX"]{grid-column:4}
+body.ui-02 .macro-strip .macro[data-open="EQ_TONE"]{grid-column:5}
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"]{
+  display:block;position:absolute;z-index:9;
+  top:var(--sr02-amb-top);right:var(--sr02-pad);
+  width:var(--sr02-right);height:var(--sr02-amb-h);
+}
+
+/* UI_02 top meter */
+body.ui-02 .meter-rail{
+  position:absolute;z-index:15;top:var(--sr02-meter-top);right:var(--sr02-meter-right);
+  width:var(--sr02-meter-w);height:62px;min-height:0;padding:0;
+  display:flex;flex-direction:row;align-items:center;border:0;box-shadow:none;background:transparent!important;
+}
+body.ui-02 .meter-head,body.ui-02 .meter-values,body.ui-02 .meter-mode-toggle{display:none!important}
+body.ui-02 .meter-block{grid-template-columns:var(--sr02-meter-label) var(--sr02-meter-slot-w)}
+body.ui-02 .meter-slot{width:var(--sr02-meter-slot-w);height:var(--sr02-meter-slot-h);min-height:var(--sr02-meter-slot-h)}
+
+
+/* UI_01 live waveform strip: real Runtime bed + live canvas overlay. */
+body.ui-01 .scene-waveform-strip{
+  height:38px;
+  margin:0 9px 4px;
+  overflow:hidden;
+  background:
+    url("../../Assets/UI/Runtime/UI_01/Scene/RT_WAVEFORM_STRIP_BG.png") center/100% 100% no-repeat,
+    #081015;
+}
+body.ui-01 .scene-waveform-strip canvas{
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  opacity:.94;
+}
+
+
+/* UI_02 horizontal meter optical bed; fill width remains live from analyzer. */
+body.ui-02 .meters{
+  min-height:0;height:54px;flex:1;
+  display:flex;align-items:center;justify-content:flex-end;gap:22px;
+}
+body.ui-02 .meter-block{
+  display:grid;
+  grid-template-columns:var(--sr02-meter-label) var(--sr02-meter-slot-w);
+  gap:8px;align-items:center;
+}
+body.ui-02 .meter-label{
+  color:#9eb0b8;font-size:9px;letter-spacing:.05em;text-align:right;
+}
+body.ui-02 .meter-slot{
+  position:relative;overflow:hidden;
+  width:var(--sr02-meter-slot-w);height:var(--sr02-meter-slot-h);min-height:var(--sr02-meter-slot-h);
+  border:1px solid #263840;border-radius:2px;
+  background:
+    repeating-linear-gradient(90deg,rgba(95,124,136,.14) 0 1px,transparent 1px 8px),
+    #061014;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.75);
+}
+body.ui-02 .meter-fill{
+  position:absolute;left:2px;top:2px;bottom:2px;right:auto;
+  height:auto!important;width:0;
+  background:linear-gradient(90deg,#3f98ab 0 72%,#c29b58 72% 90%,#c65d55 90%);
+  box-shadow:0 0 5px rgba(82,193,219,.28);
+}
+
+
+/* UI_01 semantic card interior proportions.
+   Outer heights are REF-locked; only header/image split adapts to each measured card. */
+body.ui-01 .module-card[data-type="SOURCE"] .module-meta{height:46px}
+body.ui-01 .module-card[data-type="SOURCE"] .module-art{top:56px}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-meta{height:44px}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-art{top:55px}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-meta{height:44px}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-art{top:56px}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-meta{height:40px}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-art{top:54px}
+body.ui-01 .module-meta{padding-top:7px}
+body.ui-01 .module-actions{top:8px}
+
+
+/* Checkpoint 87 — UI_01 card action pixel closure after the independent
+   raster frame was retained. The 1px CSS card border contributes to the
+   positioning containing block: the post-merge render audit measured Edit
+   x=269/y=REF+1 and next-arrow x=268/y=REF+1. These plugin-local offsets
+   restore the already CONFIRMED action rectangles without touching art,
+   typography, frame assets, UI_02, or live bindings. */
+body.ui-01 .module-card .module-actions,
+body.ui-01 .module-card .module-cycle-next{right:4px}
+body.ui-01 .module-card[data-type="SOURCE"] .module-actions{top:13px}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-actions{top:11px}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-actions{top:12px}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-actions{top:10px}
+body.ui-01 .module-card[data-type="SOURCE"] .module-cycle-next{top:56px}
+body.ui-01 .module-card[data-type="TRANSMISSION"] .module-cycle-next{top:55px}
+body.ui-01 .module-card[data-type="WALL_COVER"] .module-cycle-next{top:56px}
+body.ui-01 .module-card[data-type="SPACE_ENVIRONMENT"] .module-cycle-next{top:53px}

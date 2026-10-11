@@ -1,0 +1,143 @@
+/* SOURCERUNE UI_01 Meter visual assembly — REF U01-11.
+   Uses official frame and segment PNGs; zero change to audio meters, DSP,
+   public parameters, presets, UI_02 or locked rail/slot geometry. */
+body.ui-01 .meter-rail{background:linear-gradient(180deg,#0a1419,#080e13)}
+body.ui-01 .meter-block .meter-label{
+  font:9px ui-monospace,Consolas,monospace;
+  letter-spacing:.06em;
+  color:#c1d5df;
+}
+body.ui-01 .meter-slot{
+  isolation:isolate;
+  background:#081018 url("../../Assets/UI/Runtime/Common/Meter/RT_METER_FRAME.png") center/100% 100% no-repeat!important;
+  border:0!important;
+  overflow:hidden;
+}
+/* Unlit guide LEDs do not imply an audio reading. */
+body.ui-01 .meter-slot::before{
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  top:5px;bottom:5px;left:5px;right:5px;
+  opacity:.2;
+  background:
+    repeating-linear-gradient(to top,transparent 0 4px,#061017 4px 7px),
+    linear-gradient(to top,#31796c 0 68%,#8b6d35 68% 86%,#8b463b 86%);
+}
+body.ui-01 .meter-slot .meter-fill{
+  z-index:1;
+  left:5px!important;right:5px!important;bottom:5px!important;
+  transition:height .055s linear;
+  background:linear-gradient(to top,#40d2ad 0 68%,#e0b85d 68% 86%,#e67069 86% 100%)!important;
+  background-blend-mode:normal!important;
+  -webkit-mask-image:url("../../Assets/UI/Runtime/Common/Meter/RT_METER_SEGMENT.png");
+  mask-image:url("../../Assets/UI/Runtime/Common/Meter/RT_METER_SEGMENT.png");
+  -webkit-mask-repeat:repeat-y;
+  mask-repeat:repeat-y;
+  -webkit-mask-position:center bottom;
+  mask-position:center bottom;
+  -webkit-mask-size:100% 7px;
+  mask-size:100% 7px;
+}
+/* Middle scale is live DOM typography aligned to the REF central column.
+   Display calibration only: no artificial meter value or fake LUFS. */
+body.ui-01 .meter-db-scale{
+  position:absolute;
+  z-index:2;
+  top:49px;
+  left:76px;
+  height:214px;
+  width:28px;
+  pointer-events:none;
+}
+body.ui-01 .meter-db-scale span{
+  position:absolute;
+  left:0;right:0;
+  display:block;
+  text-align:center;
+  font:9px ui-monospace,Consolas,monospace;
+  color:#a7bfca;
+  transform:translateY(-50%);
+  text-shadow:0 1px 2px #050e13;
+}
+body.ui-01 .meter-db-scale span:nth-child(1){top:0}
+body.ui-01 .meter-db-scale span:nth-child(2){top:16.67%}
+body.ui-01 .meter-db-scale span:nth-child(3){top:33.33%}
+body.ui-01 .meter-db-scale span:nth-child(4){top:50%}
+body.ui-01 .meter-db-scale span:nth-child(5){top:66.67%}
+body.ui-01 .meter-db-scale span:nth-child(6){top:83.33%}
+body.ui-01 .meter-mode-toggle button{
+  min-width:0;
+  border:0!important;border-radius:2px;
+  padding:0!important;
+  background:transparent url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png") center/100% 100% no-repeat!important;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.02em;
+  color:#b6cbd4;
+}
+body.ui-01 .meter-mode-toggle button:hover,
+body.ui-01 .meter-mode-toggle button:focus-visible{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_HOVER.png")!important;
+  color:#eaf6fa;
+}
+body.ui-01 .meter-mode-toggle button.active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png")!important;
+  color:#ecfaff;
+}
+body.ui-01 .meter-values{
+  position:absolute;
+  left:10px;top:307px;
+  box-sizing:border-box;
+  width:159px;height:69px;
+  margin:0!important;
+  padding:5px 8px 4px;
+  border:1px solid rgba(61,91,107,.7);
+  border-radius:3px;
+  background:linear-gradient(180deg,#0b171e,#071117);
+}
+body.ui-01 .meter-values>div{display:none!important}
+body.ui-01 .meter-values>div:last-child{
+  display:flex!important;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  height:100%;
+  padding:0!important;
+  border:0;
+}
+body.ui-01 .meter-values>div:last-child span{
+  font-size:8px;
+  letter-spacing:.1em;
+  color:#8faebc;
+}
+body.ui-01 .meter-values>div:last-child strong{
+  min-width:0;
+  font:19px ui-monospace,Consolas,monospace;
+  line-height:23px;
+  color:#e5f3f8;
+}
+body.ui-01 .meter-values>div:last-child em{
+  font:8px ui-monospace,Consolas,monospace;
+  letter-spacing:.02em;
+  color:#7c9aa7;
+  margin:0;
+}
+body.ui-02 .meter-db-scale{display:none}
+
+/* V9 reserved a three-row grid and a CSS-generated six-line scale.
+   Explicitly retire that legacy presentation: the approved six DOM ticks
+   and single independent LUFS bed now own the right rail visual. */
+body.ui-01 .meters::after{content:none!important}
+body.ui-01 .meter-values{display:block!important}
+body.ui-01 .meter-values>div:last-child{
+  position:relative;
+  box-sizing:border-box;
+  width:100%;
+  margin:0!important;
+  grid-column:auto!important;
+  grid-row:auto!important;
+  transform:none!important;
+}
+body.ui-01 .meter-values>div:last-child span,
+body.ui-01 .meter-values>div:last-child em{display:block!important}

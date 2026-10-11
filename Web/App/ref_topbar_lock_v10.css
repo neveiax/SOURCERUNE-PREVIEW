@@ -1,0 +1,104 @@
+/* SOURCERUNE Reference Topbar Lock V10
+   Keeps formal REF controls visible; moves non-REF global tools behind Gear. */
+
+body.ui-01 .top-actions .segmented,
+body.ui-02 .top-actions .segmented,
+body.ui-01 #undoBtn, body.ui-01 #redoBtn,
+body.ui-02 #undoBtn, body.ui-02 #redoBtn{display:none!important}
+
+#settingsBtn{
+  position:absolute;
+  z-index:30;
+  right:10px;
+  top:10px;
+  width:38px;
+  height:38px;
+  padding:0;
+  border:0;
+  background:transparent url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_GEAR_IDLE.png") center/28px 28px no-repeat;
+  font-size:0;
+}
+#settingsBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_GEAR_HOVER.png");
+}
+body.ui-01 #settingsBtn{top:9px}
+body.ui-02 #settingsBtn{top:18px}
+
+/* UI_02 reference-only primary tools */
+#presetPrevBtn,#presetNextBtn{display:none}
+body.ui-02 #presetPrevBtn,
+body.ui-02 #presetNextBtn{
+  display:block;
+  width:42px;
+  height:42px;
+  min-width:42px;
+  padding:0;
+  font-size:0;
+  background-color:transparent;
+  background-position:center;
+  background-size:26px 38px;
+  background-repeat:no-repeat;
+}
+body.ui-02 #presetPrevBtn{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_L_IDLE.png");
+}
+body.ui-02 #presetPrevBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_L_HOVER.png");
+}
+body.ui-02 #presetNextBtn{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_IDLE.png");
+}
+body.ui-02 #presetNextBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/AssetCard/RT_IMAGE_ARROW_R_HOVER.png");
+}
+
+body.ui-02 #presetVisualsBtn{
+  display:block!important;
+  width:44px;
+  height:42px;
+  min-width:44px;
+  padding:0;
+  font-size:0;
+  background-color:transparent;
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FOLDER_IDLE.png");
+  background-position:center;
+  background-size:28px 28px;
+  background-repeat:no-repeat;
+}
+body.ui-02 #presetVisualsBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FOLDER_HOVER.png");
+}
+
+/* Default REF composition: auxiliary global tools are not permanently visible. */
+.global-tools-popover{
+  display:none;
+  position:absolute;
+  z-index:200;
+  right:10px;
+  top:54px;
+  width:300px;
+  padding:10px;
+  border:1px solid #34454e;
+  border-radius:6px;
+  background:linear-gradient(180deg,#10191e,#080e12);
+  box-shadow:0 12px 30px rgba(0,0,0,.55);
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+}
+body.global-tools-open .global-tools-popover{display:grid}
+.global-tools-popover button{
+  min-height:30px;
+  font-size:8px;
+}
+.global-tools-popover .wide{grid-column:1 / 3}
+.global-tools-popover .mini-pair{
+  grid-column:1 / 3;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+}
+body.ui-02 .global-tools-popover{top:66px}
+
+
+/* UI_02 REF keeps only the compact horizontal meters in the top bar. */
+body.ui-02 .meter-mode-toggle{display:none!important}

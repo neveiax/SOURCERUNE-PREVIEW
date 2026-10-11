@@ -1,0 +1,136 @@
+/* SOURCERUNE Reference Geometry Lock V9
+   UI_01 meter rail reconstructed from approved REF.
+   Peak/RMS mode is live runtime behavior; LUFS is not faked. */
+
+body.ui-01 .meter-rail{
+  position:relative;
+  height:376px;
+  min-height:376px;
+  padding:0;
+  align-self:start;
+  overflow:hidden;
+}
+body.ui-01 .meter-head{display:none}
+body.ui-01 .meters{
+  position:absolute;
+  left:0;top:0;
+  width:179px;height:266px;
+  min-height:0;
+  display:block;
+}
+body.ui-01 .meters::after{
+  content:"0\A -6\A -12\A -24\A -36\A -60";
+  white-space:pre;
+  position:absolute;
+  left:76px;
+  top:49px;
+  width:28px;
+  color:#c9d2d6;
+  font:9px/35.6px ui-monospace,SFMono-Regular,Consolas,monospace;
+  text-align:center;
+  pointer-events:none;
+}
+body.ui-01 .meter-block{
+  position:absolute;
+  top:27px;
+  width:40px;
+  height:213px;
+  display:block;
+}
+body.ui-01 .meter-block:first-child{left:14px}
+body.ui-01 .meter-block:nth-child(2){left:114px}
+body.ui-01 .meter-label{
+  position:absolute;
+  top:0;left:0;
+  width:40px;
+  text-align:center;
+  font-size:10px;
+  line-height:16px;
+  letter-spacing:.03em;
+  color:#eef4f6;
+}
+body.ui-01 .meter-slot{
+  position:absolute;
+  top:27px;
+  left:10px;
+  width:20px;
+  height:178px;
+  min-height:178px;
+}
+body.ui-01 .meter-values{
+  position:absolute;
+  left:0;
+  top:239px;
+  width:179px;
+  height:137px;
+  margin:0;
+  border:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:31px 37px 69px;
+  column-gap:0;
+}
+body.ui-01 .meter-values>div{
+  padding:0;
+  border:0;
+}
+body.ui-01 .meter-values>div:nth-child(1),
+body.ui-01 .meter-values>div:nth-child(2){
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+body.ui-01 .meter-values>div:nth-child(1){grid-column:1;grid-row:1}
+body.ui-01 .meter-values>div:nth-child(2){grid-column:2;grid-row:1}
+body.ui-01 .meter-values>div:nth-child(3),
+body.ui-01 .meter-values>div:nth-child(4){display:none}
+body.ui-01 .meter-values>div:nth-child(5){
+  display:block;
+  grid-column:1 / 3;
+  grid-row:3;
+  margin:0 10px;
+  padding:8px 12px 0;
+  border-top:1px solid #223039;
+}
+body.ui-01 .meter-values span,
+body.ui-01 .meter-values em{display:none}
+body.ui-01 .meter-values strong{
+  min-width:0;
+  color:#f2f7f9;
+  font-size:11px;
+  font-weight:500;
+  font-variant-numeric:tabular-nums;
+}
+body.ui-01 .meter-values>div:nth-child(5) span{
+  display:block;
+  color:#82949d;
+  font-size:8px;
+  letter-spacing:.06em;
+  margin-bottom:7px;
+}
+body.ui-01 .meter-values>div:nth-child(5) strong{
+  display:block;
+  font-size:16px;
+}
+body.ui-01 .meter-mode-toggle{
+  position:absolute;
+  left:10px;
+  top:273px;
+  width:159px;
+  height:30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  z-index:4;
+}
+body.ui-01 .meter-mode-toggle button{
+  height:30px;
+  padding:0;
+  border-radius:3px;
+  font-size:9px;
+}
+body.ui-01 .meter-mode-toggle button.active{
+  border-color:#3da7dd;
+  background:#0b2b3b;
+  color:#f2fbff;
+}

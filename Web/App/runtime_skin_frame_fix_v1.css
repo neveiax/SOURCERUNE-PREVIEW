@@ -1,0 +1,72 @@
+/* SOURCERUNE 9-slice frame correction V1
+   Insets are taken from Assets/UI/Runtime/p0_skin_manifest_v1.json.
+   Visual-only: no layout/DSP/state changes. */
+
+.app{
+  position:relative;
+  background-color:#050a0d;
+  background-image:none!important;
+}
+.app::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:100;
+  pointer-events:none;
+  border:24px solid transparent;
+  border-image-source:url("../../Assets/UI/Runtime/Common/Shell/RT_SHELL_BG.png");
+  border-image-slice:24;
+  border-image-width:24px;
+  border-image-repeat:stretch;
+}
+
+.topbar{
+  position:relative;
+  background-color:#090f13;
+  background-image:none!important;
+}
+.topbar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:20;
+  pointer-events:none;
+  border:20px solid transparent;
+  border-image-source:url("../../Assets/UI/Runtime/Common/Shell/RT_TOPBAR_BG.png");
+  border-image-slice:20;
+  border-image-width:20px;
+  border-image-repeat:stretch;
+}
+
+.panel{
+  position:relative;
+  border:0!important;
+  background-color:#0d1419;
+  background-image:none!important;
+}
+.panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:12;
+  pointer-events:none;
+  border:22px solid transparent;
+  border-image-source:url("../../Assets/UI/Runtime/Common/Shell/RT_PANEL_FRAME.png");
+  border-image-slice:22;
+  border-image-width:22px;
+  border-image-repeat:stretch;
+}
+
+.module-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  background:none!important;
+  border:20px solid transparent;
+  border-image-source:url("../../Assets/UI/Runtime/Common/Shell/RT_CARD_FRAME.png");
+  border-image-slice:20;
+  border-image-width:20px;
+  border-image-repeat:stretch;
+}

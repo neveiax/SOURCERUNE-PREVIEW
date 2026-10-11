@@ -1,0 +1,116 @@
+/* Main UI knobs and compact Advanced dialog, using existing approved artwork.
+   Loaded after all REF geometry sheets so it fixes hit boxes without moving the
+   visible knob faces or altering the UI_01/UI_02 reference coordinates. */
+
+/* Specificity must exceed the older ".macro input {position:relative}"
+   and ".macro input[type=range] {margin-top:10px}" rules. */
+body.ui-01 .macro .macro-knob:not(.macro-knob-readonly) > input.macro-knob-range,
+body.ui-02 .macro .macro-knob:not(.macro-knob-readonly) > input.macro-knob-range {
+  position:absolute;
+  inset:0 auto auto 0;
+  width:var(--knob-size);
+  height:var(--knob-size);
+  min-width:0;
+  margin:0;
+  padding:0;
+  border:0;
+  opacity:0!important;
+  z-index:10;
+  cursor:ns-resize;
+  touch-action:none;
+}
+body.ui-01 .macro .macro-knob .macro-knob-face,
+body.ui-02 .macro .macro-knob .macro-knob-face {
+  pointer-events:none; /* The hit area belongs to the actual numeric input. */
+}
+/* UI_02's explicitly approved Ambience control is a horizontal slider. */
+body.ui-02 .macro-strip .macro[data-open="AMBIENCE"] .macro-knob > input.macro-knob-range {
+  position:relative;
+  inset:auto;
+  display:block;
+  width:100%;
+  height:22px;
+  margin:0;
+  opacity:1!important;
+  cursor:ew-resize;
+  touch-action:auto;
+}
+body.ui-01 .macro-knob.adjusting .macro-knob-face,
+body.ui-02 .macro-knob.adjusting .macro-knob-face {
+  filter:drop-shadow(0 0 4px rgba(102,188,213,.4));
+}
+body.ui-01 .macro-knob:not(.macro-knob-readonly) .macro-knob-range:focus-visible,
+body.ui-02 .macro-knob:not(.macro-knob-readonly) .macro-knob-range:focus-visible {
+  outline:2px solid #77bcd1;
+  outline-offset:2px;
+  border-radius:50%;
+}
+
+/* Dialog lives under body, outside the scaled .app. Its backdrop is a real
+   hit target, independent of :after and the plugin shell's overflow clipping. */
+#advancedBackdrop {display:none;position:fixed;inset:0;z-index:140;background:rgba(3,6,9,.68);}
+body.advanced-open #advancedBackdrop {display:block;}
+body.ui-01.advanced-open .app::after,
+body.ui-02.advanced-open .app::after {display:none;}
+body.ui-01.advanced-open > .advanced-drawer,
+body.ui-02.advanced-open > .advanced-drawer {
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  top:50%;
+  left:50%;
+  right:auto;
+  bottom:auto;
+  transform:translate(-50%,-50%);
+  width:min(var(--advanced-width,680px),calc(100vw - 32px));
+  height:auto;
+  max-height:min(82vh,760px);
+  min-width:0;
+  min-height:0;
+  margin:0;
+  z-index:141;
+  overflow:hidden;
+  border:1px solid #4e6671;
+  border-radius:8px;
+  background:#0d151a;
+  box-shadow:0 18px 65px rgba(0,0,0,.72);
+}
+body.advanced-open > .advanced-drawer .advanced-head {
+  flex:0 0 auto;
+  min-height:56px;
+  padding:10px 12px;
+  gap:10px;
+}
+body.advanced-open > .advanced-drawer .advanced-head>div:first-child {flex:0 0 auto;min-width:110px;}
+body.advanced-open > .advanced-drawer .advanced-nav {
+  display:flex;
+  flex:1 1 auto;
+  min-width:0;
+  flex-wrap:nowrap;
+  justify-content:flex-start;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  gap:4px;
+}
+body.advanced-open > .advanced-drawer .advanced-nav button {white-space:nowrap;flex:0 0 auto;}
+body.advanced-open > .advanced-drawer .advanced-body {
+  flex:0 1 auto;
+  overflow-y:auto;
+  overflow-x:hidden;
+  min-height:0;
+  padding:12px;
+}
+body.advanced-open > .advanced-drawer .adv-grid {
+  display:grid;
+  grid-template-columns:repeat(var(--advanced-cols,3),minmax(0,1fr));
+  gap:8px;
+}
+body.advanced-open > .advanced-drawer .adv-control {min-width:0;}
+body.advanced-open > .advanced-drawer .adv-control.wide {grid-column:span 2;}
+body.advanced-open > .advanced-drawer .state-note {line-height:1.4;}
+@media(max-width:680px){
+  body.advanced-open > .advanced-drawer .advanced-head {flex-wrap:wrap;}
+  body.advanced-open > .advanced-drawer .advanced-nav {order:3;flex-basis:100%;}
+  body.advanced-open > .advanced-drawer .adv-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+  body.advanced-open > .advanced-drawer .adv-control.wide {grid-column:span 2;}
+}

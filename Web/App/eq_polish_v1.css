@@ -1,0 +1,258 @@
+/* SOURCERUNE restrained studio-grade 3-band EQ styling.
+   All geometry is calculated in CSS pixels for correct circular nodes.
+   No textures, animation loop, GPU blur filters or false spectrum. */
+.macro-eq .macro-eq-svg{
+  touch-action:none;
+  user-select:none;
+  isolation:isolate;
+}
+.macro-eq-svg .macro-eq-grid,
+.macro-eq-svg .macro-eq-halo,
+.macro-eq-svg .macro-eq-line,
+.macro-eq-svg .macro-eq-fill,
+.macro-eq-svg [data-eq-ring],
+.macro-eq-svg [data-eq-center]{
+  pointer-events:none!important;
+}
+.macro-eq-svg .macro-eq-grid path{fill:none;vector-effect:non-scaling-stroke;}
+.macro-eq-svg .macro-eq-grid-minor{stroke:#9cb6bd;stroke-width:.5;opacity:.14;}
+.macro-eq-svg .macro-eq-grid-major{stroke:#94aab2;stroke-width:.6;opacity:.19;}
+.macro-eq-svg .macro-eq-zero{stroke:#b8c6c7;stroke-width:.85;opacity:.38;}
+.macro-eq-svg .macro-eq-fill{stroke:none;opacity:.72;}
+.macro-eq-svg .macro-eq-halo{
+  fill:none;stroke-width:3;opacity:.13;vector-effect:non-scaling-stroke;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.macro-eq-svg .macro-eq-line{
+  fill:none;stroke-width:1.15;opacity:.93;vector-effect:non-scaling-stroke;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.macro-eq .macro-eq-svg .sr-eq-node-hit,
+.sr-eq-focus .macro-eq-svg .sr-eq-node-hit{
+  fill:rgba(0,0,0,.001)!important;stroke:none!important;
+  opacity:1!important;cursor:grab;pointer-events:all!important;
+  filter:none!important;touch-action:none;
+}
+.macro-eq-svg .sr-eq-node-hit:active{cursor:grabbing}
+.macro-eq-svg .sr-eq-node-ring{
+  fill:#101e25;stroke-width:.95;vector-effect:non-scaling-stroke;
+  opacity:.98;filter:none;
+}
+.macro-eq-svg .sr-eq-node-center{stroke:none;opacity:1;filter:none;}
+.macro-eq-svg [data-eq-ring="hpf"],.macro-eq-svg [data-eq-ring="lpf"]{
+  stroke:#6ac7dc;fill:#102933;}
+.macro-eq-svg [data-eq-center="hpf"],.macro-eq-svg [data-eq-center="lpf"]{fill:#b2f0fc;}
+.macro-eq-svg [data-eq-ring="b1"]{stroke:#70dcba;fill:#123028;}
+.macro-eq-svg [data-eq-center="b1"]{fill:#d3fce6;}
+.macro-eq-svg [data-eq-ring="b2"]{stroke:#e4ce72;fill:#332d17;}
+.macro-eq-svg [data-eq-center="b2"]{fill:#fff1b5;}
+.macro-eq-svg [data-eq-ring="b3"]{stroke:#e77c8b;fill:#311c26;}
+.macro-eq-svg [data-eq-center="b3"]{fill:#ffccd4;}
+.macro-eq-svg:focus-within .sr-eq-node-hit:focus-visible{
+  stroke:#d6eaf0!important;stroke-width:1!important;
+  vector-effect:non-scaling-stroke;outline:0;
+}
+.sr-eq-focus .sr-eq-focus-graph-host{
+  border:1px solid #30454f;
+  background:linear-gradient(180deg,#0b171e 0%,#0b151b 55%,#0d171c 100%);
+}
+.sr-eq-focus .sr-eq-focus-main{padding-top:13px;}
+.sr-eq-focus .sr-eq-focus-y{color:#9aadb4;font:10px/1 Consolas,monospace}
+.sr-eq-focus .sr-eq-focus-y span{font-variant-numeric:tabular-nums;}
+.sr-eq-focus .sr-eq-focus-x{color:#879ca6;}
+.sr-eq-focus .macro-eq-svg .macro-eq-line{stroke-width:1.35;}
+.sr-eq-focus .macro-eq-svg .macro-eq-halo{stroke-width:3.8;opacity:.105}
+.sr-eq-focus .sr-eq-focus-readouts{gap:5px;padding-top:7px;}
+.sr-eq-focus .sr-eq-focus-readouts button{
+  background:linear-gradient(180deg,#19272d,#101c22);
+  border-color:#354b55;color:#d0e3e7;box-shadow:inset 0 1px 0 #29414b66;
+}
+.sr-eq-focus .sr-eq-focus-readouts button:hover{
+  background:#1a2e37;border-color:#6d99a7;
+}
+.sr-eq-focus .sr-eq-focus-readouts strong{color:#9cbeca;}
+.sr-eq-focus .sr-eq-focus-readouts button[data-eq-focus-select="b1"] strong{color:#8bd6b6;}
+.sr-eq-focus .sr-eq-focus-readouts button[data-eq-focus-select="b2"] strong{color:#e0c976;}
+.sr-eq-focus .sr-eq-focus-readouts button[data-eq-focus-select="b3"] strong{color:#e79099;}
+
+/* Real controls below Focus graph: bound FREQ/GAIN/Q knobs, not fake filter
+   type, slope or bypass menus. Fixed 12dB/oct remains labelled truthfully. */
+.sr-eq-focus .sr-eq-focus-readouts{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:5px;padding:6px 11px 7px;flex:0 0 142px;min-height:142px;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;
+}
+.sr-eq-focus .sr-eq-focus-band{
+  display:flex;flex-direction:column;min-width:116px;overflow:hidden;
+  background:linear-gradient(175deg,#16252d,#0e1a20);
+  border:1px solid #3b515a;border-radius:4px;
+  padding:4px 4px 6px;box-sizing:border-box;
+  --sr-band:#76c8df;
+}
+.sr-eq-focus .sr-eq-focus-band[data-eq-focus-band="b1"]{--sr-band:#76d7b6}
+.sr-eq-focus .sr-eq-focus-band[data-eq-focus-band="b2"]{--sr-band:#e6ca75}
+.sr-eq-focus .sr-eq-focus-band[data-eq-focus-band="b3"]{--sr-band:#e7808a}
+.sr-eq-focus .sr-eq-focus-band[data-eq-focus-band="lpf"]{--sr-band:#e990b4}
+.sr-eq-focus .sr-eq-band-head{
+  display:flex;align-items:center;gap:6px;flex:0 0 19px;min-height:19px;
+  padding:1px 2px;margin:0;width:100%;border:0;background:none;
+  color:#dbe8eb;cursor:pointer;text-align:left;border-radius:2px;
+}
+.sr-eq-focus .sr-eq-band-head strong{
+  font:600 10px/15px "Segoe UI",Arial,sans-serif;letter-spacing:.03em;color:#c5dbe1;
+}
+.sr-eq-focus .sr-eq-band-head i{
+  width:6px;height:6px;flex:0 0 6px;border-radius:50%;
+  background:var(--sr-band);box-shadow:0 0 2px var(--sr-band);
+}
+.sr-eq-focus .sr-eq-band-head:hover,.sr-eq-focus .sr-eq-band-head:focus-visible{
+  background:#283f49;outline:none;
+}
+.sr-eq-focus .sr-eq-band-type{
+  display:block;margin:1px 2px 5px;color:#829ba6;
+  font:9px/12px "Segoe UI",Arial,sans-serif;
+}
+.sr-eq-focus .sr-eq-band-knobs{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:start;justify-content:space-around;gap:2px;flex:1 1 auto;min-height:0;
+}
+.sr-eq-focus [data-eq-focus-band="hpf"] .sr-eq-band-knobs,
+.sr-eq-focus [data-eq-focus-band="lpf"] .sr-eq-band-knobs{
+  grid-template-columns:minmax(0,1fr);justify-items:center;
+}
+.sr-eq-focus .sr-eq-focus-knob{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:2px;min-width:0;width:100%;padding:1px 1px 2px;margin:0;
+  background:none;border:0;border-radius:3px;cursor:ns-resize;
+  color:#e0edef;touch-action:none;user-select:none;
+}
+.sr-eq-focus .sr-eq-focus-knob:hover,
+.sr-eq-focus .sr-eq-focus-knob:focus-visible{
+  background:#1f3741;outline:1px solid #59818d;outline-offset:0;
+}
+.sr-eq-focus .sr-eq-knob-dial{
+  position:relative;display:block;flex:0 0 27px;
+  width:27px;height:27px;border-radius:50%;
+  background:conic-gradient(from 225deg,
+    var(--sr-band) 0deg var(--dial-angle,0deg),
+    #34505b var(--dial-angle,0deg) 270deg,
+    transparent 270deg 360deg);
+  box-shadow:0 0 0 1px #182b33,0 2px 2px #040809;
+}
+.sr-eq-focus .sr-eq-knob-dial:before{
+  content:"";position:absolute;inset:4px;border-radius:50%;
+  background:linear-gradient(145deg,#334752,#0a151a 62%);
+  border:1px solid #6a7a82;box-shadow:inset 0 1px 1px #56717d66;
+}
+.sr-eq-focus .sr-eq-knob-dial i{
+  position:absolute;z-index:1;top:4px;left:calc(50% - .5px);
+  width:1px;height:6px;transform-origin:center 9px;
+  transform:rotate(calc(var(--dial-angle,0deg) - 135deg));
+  background:#dbedf0;border-radius:1px;box-shadow:0 0 1px #eff;
+}
+.sr-eq-focus .sr-eq-knob-caption{
+  color:#95aeba;font:600 9px/12px "Segoe UI",Arial,sans-serif;
+}
+.sr-eq-focus .sr-eq-knob-value{
+  max-width:100%;color:#dce9ec;text-align:center;
+  font:10px/13px Consolas,monospace;white-space:nowrap;
+  font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:clip;
+}
+.sr-eq-focus .sr-eq-focus-readouts button.sr-eq-focus-knob{
+  border:0;box-shadow:none;background:transparent;
+}
+.sr-eq-focus .sr-eq-focus-readouts button.sr-eq-focus-knob:hover{
+  border:0;background:#203640;
+}
+.sr-eq-focus .sr-eq-focus-readouts button.sr-eq-band-head{
+  border:0;box-shadow:none;background:transparent;
+}
+.sr-eq-focus .sr-eq-focus-readouts button.sr-eq-band-head:hover{
+  background:#203640;
+}
+@media(max-height:560px){
+  .sr-eq-focus .sr-eq-focus-readouts{
+    flex-basis:114px;min-height:114px;padding-block:3px;
+  }
+  .sr-eq-focus .sr-eq-knob-dial{width:22px;height:22px;flex-basis:22px;}
+  .sr-eq-focus .sr-eq-knob-dial:before{inset:3px;}
+  .sr-eq-focus .sr-eq-band-type{margin-bottom:1px;}
+}
+
+/* LPF stays visually distinct (muted warm magenta) as in approved preview. */
+.macro-eq-svg [data-eq-ring="lpf"]{stroke:#e58eac;fill:#2e1c2a;}
+.macro-eq-svg [data-eq-center="lpf"]{fill:#ffd1e1;}
+
+
+/* 2026-10-10 approval: five clearly colored handles, truly invisible hitbox.
+   Native SVG keyboard focus is represented by the colorful ring, never a
+   browser default black focus rectangle around an interactive SVG ellipse. */
+.macro-eq-svg, .macro-eq-svg:focus, .macro-eq-svg:focus-within,
+.macro-eq-svg [data-eq-node],.macro-eq-svg [data-eq-node]:focus,
+.macro-eq-svg [data-eq-node]:focus-visible,.macro-eq-svg [data-eq-node]:active{
+  outline:none!important;background:transparent!important;
+  box-shadow:none!important;
+}
+.macro-eq-svg .sr-eq-node-hit,
+.macro-eq .macro-eq-svg .sr-eq-node-hit,
+.sr-eq-focus .macro-eq-svg .sr-eq-node-hit{
+  fill:transparent!important;stroke:transparent!important;
+  filter:none!important;outline:none!important;box-shadow:none!important;
+  vector-effect:non-scaling-stroke;
+}
+.macro-eq-svg:focus-within .sr-eq-node-hit:focus-visible{
+  fill:transparent!important;stroke:transparent!important;
+  stroke-width:0!important;
+}
+.macro-eq-svg .sr-eq-node-ring{
+  fill:rgba(10,19,25,.5);stroke-width:1.2;opacity:1;
+}
+.macro-eq-svg [data-eq-ring="hpf"]{stroke:#22c55e;fill:#143322}
+.macro-eq-svg [data-eq-center="hpf"]{fill:#86efac}
+.macro-eq-svg [data-eq-ring="b1"]{stroke:#ef4444;fill:#3f191b}
+.macro-eq-svg [data-eq-center="b1"]{fill:#fecaca}
+.macro-eq-svg [data-eq-ring="b2"]{stroke:#facc15;fill:#423619}
+.macro-eq-svg [data-eq-center="b2"]{fill:#fef08a}
+.macro-eq-svg [data-eq-ring="b3"]{stroke:#3b82f6;fill:#172c55}
+.macro-eq-svg [data-eq-center="b3"]{fill:#bfdbfe}
+.macro-eq-svg [data-eq-ring="lpf"]{stroke:#f472b6;fill:#431a35}
+.macro-eq-svg [data-eq-center="lpf"]{fill:#fbcfe8}
+.macro-eq-svg:has([data-eq-node]:focus-visible) .sr-eq-node-ring{
+  stroke-width:1.4;
+}
+.macro-eq-svg .macro-eq-analyzer-line,
+.macro-eq-svg .macro-eq-analyzer-fill{pointer-events:none!important}
+.macro-eq-svg .macro-eq-analyzer-fill{
+  fill:rgba(144,187,194,.16);stroke:none;
+}
+.macro-eq-svg .macro-eq-analyzer-line{
+  fill:none;stroke:#acc9d0;stroke-width:.95;opacity:.64;
+  stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;
+}
+.sr-eq-focus .macro-eq-svg .macro-eq-analyzer-line{
+  stroke:#b7d2d7;stroke-width:1.1;opacity:.70;
+}
+.sr-eq-focus .macro-eq-svg .macro-eq-analyzer-fill{
+  fill:rgba(154,198,204,.19);
+}
+.macro-eq-svg .macro-eq-line{opacity:1;stroke-width:1.35;}
+.sr-eq-focus .macro-eq-svg .macro-eq-line{stroke-width:1.7;}
+.macro-eq-svg .macro-eq-halo{opacity:.13;stroke-width:2.8;}
+.macro-eq .macro-eq-foot .eq-cut-indicators{
+  display:flex;justify-content:space-between;align-items:center;gap:5px;
+  min-width:0;width:100%;box-sizing:border-box;
+  margin:0;padding:1px 4px 0;line-height:12px;
+  font:600 9px/12px "Segoe UI",Arial,sans-serif;
+  letter-spacing:.015em;color:#92a7b1;
+  user-select:none;pointer-events:none;
+}
+.macro-eq .eq-cut-indicators span{white-space:nowrap}
+.macro-eq .eq-cut-indicators span:first-child{color:#52c98c}
+.macro-eq .eq-cut-indicators span:last-child{color:#ef89b9}
+.macro-eq .eq-cut-indicators strong{
+  color:#d6e6e9;font-weight:500;font-variant-numeric:tabular-nums;
+}
+.macro-eq .eq-cut-indicators .eq-cut-caption{
+  color:#778f99;font-weight:400;font-size:8px;letter-spacing:.055em;
+}
+.macro-eq .macro-eq-foot{min-height:15px!important;}

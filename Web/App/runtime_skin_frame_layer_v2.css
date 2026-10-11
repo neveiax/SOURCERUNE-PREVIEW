@@ -1,0 +1,10 @@
+/* SOURCERUNE runtime frame layering V2
+   Keep approved 9-slice materials, but render chrome behind live controls/content.
+   Geometry and asset slices are unchanged. */
+.app,.topbar,.panel,.module-card{isolation:isolate}
+.app::before,
+.topbar::before,
+.panel::after,
+.module-card::after{
+  z-index:-1!important;
+}

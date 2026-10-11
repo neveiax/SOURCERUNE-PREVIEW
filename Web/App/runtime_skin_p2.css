@@ -1,0 +1,156 @@
+/* SOURCERUNE Runtime Skin P2 V1
+   P2 modular chrome. Dynamic values/curves/waveforms remain code-driven. */
+
+/* Signal Flow */
+.flow-node{
+  border:0!important;
+  background:url("../../Assets/UI/Runtime/Common/Analysis/RT_FLOW_NODE_CAP_DEFAULT.png") center/100% 100% no-repeat;
+  min-width:80px;
+  text-align:center;
+}
+.flow-node.bypassed{
+  opacity:.58;
+  background-image:url("../../Assets/UI/Runtime/Common/Analysis/RT_FLOW_NODE_CAP_BYPASSED.png");
+}
+.flow-node.selected{
+  background-image:url("../../Assets/UI/Runtime/Common/Analysis/RT_FLOW_NODE_CAP_SELECTED.png");
+  color:#dff8ff;
+}
+
+/* Undo/Redo */
+#undoBtn,#redoBtn,#copyStateBtn,#pasteStateBtn,#sceneFullscreenBtn{
+  background-repeat:no-repeat,no-repeat;
+  background-position:8px center,center;
+  background-size:16px 16px,100% 100%;
+  padding-left:29px;
+}
+#undoBtn{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_UNDO_IDLE.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png");
+}
+#undoBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_UNDO_HOVER.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png");
+}
+#undoBtn:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_UNDO_DISABLED.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_DISABLED.png");
+}
+#redoBtn{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_REDO_IDLE.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png");
+}
+#redoBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_REDO_HOVER.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png");
+}
+#redoBtn:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_REDO_DISABLED.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_DISABLED.png");
+}
+#copyStateBtn{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_COPY_IDLE.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png");
+}
+#copyStateBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_COPY_HOVER.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png");
+}
+#pasteStateBtn{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_PASTE_IDLE.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png");
+}
+#pasteStateBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_PASTE_HOVER.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png");
+}
+#pasteStateBtn:disabled{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_PASTE_DISABLED.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_DISABLED.png");
+}
+
+/* Fullscreen scene button */
+#sceneFullscreenBtn{
+  width:34px;
+  min-width:34px;
+  padding:5px;
+  text-indent:-9999px;
+  overflow:hidden;
+  background-position:center,center;
+  background-size:18px 18px,100% 100%;
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FULLSCREEN_IDLE.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_IDLE.png");
+}
+#sceneFullscreenBtn:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FULLSCREEN_HOVER.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_HOVER.png");
+}
+#sceneFullscreenBtn.active{
+  background-image:url("../../Assets/UI/Runtime/Common/Icons/RT_TOOL_ICON_FULLSCREEN_ACTIVE.png"),
+                   url("../../Assets/UI/Runtime/Common/Controls/RT_ICON_BUTTON_CAP_ACTIVE.png");
+}
+
+/* UI_01 live distance callout */
+body.ui-01 #distanceCallout{display:block}
+body.ui-02 #distanceCallout{display:none}
+
+/* UI_01 waveform strip */
+.scene-waveform-strip{
+  display:none;
+}
+body.ui-01 .scene-waveform-strip{
+  height:40px;
+  display:block;
+  margin:0 10px;
+  position:relative;
+  background:url("../../Assets/UI/Runtime/UI_01/Scene/RT_WAVEFORM_STRIP_BG.png") center/100% 100% no-repeat;
+  overflow:hidden;
+}
+.scene-waveform-strip canvas{
+  width:100%;
+  height:100%;
+  display:block;
+}
+body.ui-01 #sceneSvg{height:calc(100% - 190px)}
+
+/* Asset browser chrome */
+.browser-card{
+  border:0!important;
+  background-color:#0e1418;
+  background-image:url("../../Assets/UI/Runtime/Common/Browser/RT_ASSET_BROWSER_FRAME.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.preview-art{
+  border:0!important;
+  background-color:#0b1013;
+  background-image:url("../../Assets/UI/Runtime/Common/Browser/RT_ASSET_PREVIEW_FRAME_DEFAULT.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  padding:6px;
+}
+.asset-preview.selected .preview-art{
+  background-image:url("../../Assets/UI/Runtime/Common/Browser/RT_ASSET_PREVIEW_FRAME_SELECTED.png");
+}
+
+/* Advanced drawer */
+.advanced-drawer{
+  background-color:#0d1419;
+  background-image:url("../../Assets/UI/Runtime/Common/Advanced/RT_ADV_DRAWER_FRAME.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.adv-control{
+  border:0!important;
+  background-color:#0c1215;
+  background-image:url("../../Assets/UI/Runtime/Common/Advanced/RT_ADV_CONTROL_CARD_DEFAULT.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.adv-control:focus-within,.adv-control:hover{
+  background-image:url("../../Assets/UI/Runtime/Common/Advanced/RT_ADV_CONTROL_CARD_ACTIVE.png");
+}
+.advanced-drawer.bypassed .adv-control,.adv-control.bypassed{
+  background-image:url("../../Assets/UI/Runtime/Common/Advanced/RT_ADV_CONTROL_CARD_BYPASSED.png");
+  opacity:.62;
+}

@@ -1,0 +1,9 @@
+/* SOURCERUNE Reference Geometry Lock V8
+   UI_01 bottom seven-module exact pixel columns from approved REF scan.
+   No DSP/state/preset changes. */
+
+body.ui-01 .macro-strip{
+  grid-template-columns:269px 178px 201px 201px 155px 115px 312px;
+  column-gap:8px;
+  row-gap:0;
+}
