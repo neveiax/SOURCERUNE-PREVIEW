@@ -3,7 +3,7 @@ export const OPTIONS = Object.freeze({
   SOURCE: ["Smartphone Earpiece","Smartphone Bottom Speaker","Smartphone Speakerphone","Feature Phone","Cordless Home Phone","Office Desk Phone"],
   TRANSMISSION: ["Direct Clean","Narrowband Clean","PSTN Landline","Noisy Analog Line","GSM Stable","GSM Weak"],
   WALL_COVER: ["None / Open","T-Shirt Cloth","Thin Blanket","Thick Blanket","Pillow","Bedsheet"],
-  SPACE_ENVIRONMENT: ["Vocal Booth","Bedroom","Bathroom","Kitchen","Living Room","Small Office"]
+  SPACE_ENVIRONMENT: ["Vocal Booth","Bedroom","Bathroom","Kitchen","Living Room","Small Office","Busy City Street"]
 });
 export const GROUP_LABELS = Object.freeze({
   SOURCE: "SOURCE",
@@ -25,7 +25,7 @@ const clone = o => JSON.parse(JSON.stringify(o));
 export function createState(ui="UI_01") {
   return {
     version:1,ui:ui==="UI_02"?"UI_02":"UI_01",
-    selected:{SOURCE:2,TRANSMISSION:4,WALL_COVER:0,SPACE_ENVIRONMENT:1},
+    selected:{SOURCE:2,TRANSMISSION:4,WALL_COVER:0,SPACE_ENVIRONMENT:6},
     bypass:Object.fromEntries(GROUPS.map(k=>[k,false])),
     params:Object.fromEntries(CONTROLS.map(c=>[c.id,c.default])),
     activeGroup:"SOURCE"
