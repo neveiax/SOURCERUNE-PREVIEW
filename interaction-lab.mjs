@@ -1,4 +1,4 @@
-import {OPTIONS,GROUPS,GROUP_LABELS,CONTROLS,createState,validateState,makeHistory,dispatch,undo,redo} from "./interaction-state.mjs";
+import {OPTIONS,GROUPS,GROUP_LABELS,CONTROLS,createState,validateState,upgradeState,makeHistory,dispatch,undo,redo} from "./interaction-state.mjs";
 
 const STORAGE_KEY="sourcerune.public.ui.preview.v1";
 const escapeHTML=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
@@ -6,7 +6,7 @@ const byId=id=>document.getElementById(id);
 function fromStorage(ui) {
   try {
     const item=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
-    if(validateState(item))return {...item,ui};
+    if(item?.version===1)return upgradeState(item,ui);
   } catch {}
   return createState(ui);
 }

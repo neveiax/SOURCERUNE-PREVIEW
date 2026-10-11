@@ -12,6 +12,7 @@ on:
       - "stage-controls.mjs"
       - "macro-layout.mjs"
       - "macro-controls.mjs"
+      - "ui02-extended*.mjs"
       - "assets/approved_ui_manifest.json"
       - "scripts/**"
       - ".github/workflows/snapshot-ui.yml"
@@ -40,10 +41,13 @@ jobs:
           node --check stage-controls.mjs
           node --check macro-layout.mjs
           node --check macro-controls.mjs
+          node --check ui02-extended-layout.mjs
+          node --check ui02-extended.mjs
           node scripts/interaction-smoke.mjs
           node scripts/card-layout-smoke.mjs
           node scripts/native-card-smoke.mjs
           node scripts/macro-smoke.mjs
+          node scripts/ui02-extended-smoke.mjs
       - name: Persist approved PNGs within clean-history public repo
         run: |
           git config user.name "github-actions[bot]"

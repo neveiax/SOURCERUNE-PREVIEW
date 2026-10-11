@@ -1,6 +1,7 @@
 import {mountInteractionLab} from "./interaction-lab.mjs";
 import {mountOnImageCards} from "./stage-controls.mjs";
 import {mountMacroPanels} from "./macro-controls.mjs";
+import {mountUI02Extended} from "./ui02-extended.mjs";
 const variants = {
   UI_01: {image:"./assets/UI_01.png",label:"UI_01",alt:"SOURCERUNE UI_01 visual reference"},
   UI_02: {image:"./assets/UI_02.png",label:"UI_02",alt:"SOURCERUNE UI_02 visual reference"}
@@ -40,3 +41,4 @@ render();
 interactionLab=mountInteractionLab({getUi:()=>active,onUi:select});
 stageControls=mountOnImageCards({frame,image,lab:interactionLab});
 mountMacroPanels({frame,image,lab:interactionLab});
+mountUI02Extended({frame,image,lab:interactionLab});
