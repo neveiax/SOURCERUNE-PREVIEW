@@ -212,3 +212,232 @@
   .asset-browser .asset-preview{padding:10px 8px}
   .asset-browser .preview-art,.asset-browser .asset-preview.selected .preview-art{height:140px}
 }
+
+
+/* SR-20261011-UI-FRAME-SYSTEM | Batch 1A: scalable metal frame and controls.
+   All optical borders are CSS vector edges: do not stretch low-resolution frame PNGs. */
+.asset-browser .browser-card{
+  border-color:#516773!important;
+  border-radius:7px;
+  background-color:#0b161c!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.44),
+             0 0 0 1px rgba(3,9,13,.75),
+             inset 0 1px 0 rgba(157,183,193,.09);
+}
+.asset-browser .browser-card::before{
+  inset:2px;
+  border-color:rgba(115,141,151,.14);
+  border-radius:5px;
+}
+.asset-browser .browser-head{
+  align-items:center;
+  padding-inline:14px;
+  background:linear-gradient(180deg,#16252d 0%,#101e26 100%);
+  border-bottom-color:#445b65;
+}
+.asset-browser .browser-head h2{
+  margin:2px 0 0;
+  line-height:1.2;
+}
+.asset-browser .browser-head .eyebrow{
+  display:block;
+  line-height:1.25;
+}
+.asset-browser #browserClose{
+  box-sizing:border-box;
+  min-height:26px;
+  line-height:18px;
+  flex-shrink:0;
+  border-color:#526b77;
+  box-shadow:inset 0 1px 0 rgba(165,190,201,.075);
+  transition:background-color .12s,border-color .12s;
+}
+.asset-browser #browserClose:hover{background-color:#1a2b34}
+.asset-browser #browserClose:focus-visible{
+  outline:2px solid #8daab6;
+  outline-offset:2px;
+}
+.asset-browser .browser-tools{
+  align-items:center;
+  padding:8px 12px;
+  border-bottom-color:#3f5660;
+}
+.asset-browser .browser-tools input,
+.asset-browser .browser-tools select{
+  display:block;
+  margin:0;
+  padding:0 10px;
+  line-height:28px;
+  border-color:#455c68;
+  border-radius:4px;
+  color:#cbdce2;
+  background-color:#0b1920;
+  box-shadow:inset 0 1px 1px rgba(0,0,0,.25);
+}
+.asset-browser .browser-tools input{min-width:0;flex:1 1 auto}
+.asset-browser .browser-tools select{
+  flex:0 0 142px;
+  max-width:42%;
+  padding-right:27px;
+  appearance:none;
+  -webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,#819ba7 50%),
+                   linear-gradient(135deg,#819ba7 50%,transparent 50%);
+  background-position:calc(100% - 17px) 13px,calc(100% - 12px) 13px;
+  background-size:5px 5px;
+  background-repeat:no-repeat;
+  text-overflow:ellipsis;
+}
+.asset-browser .browser-tools input::placeholder{color:#8ba1ac;opacity:1}
+.asset-browser .browser-tools input:focus-visible,
+.asset-browser .browser-tools select:focus-visible{
+  outline:1px solid #819ba8;
+  outline-offset:1px;
+  border-color:#819ba8;
+}
+
+
+/* SR-20261011-UI-FRAME-SYSTEM | Batch 1B: crisp inset/list/preview geometry.
+   The photo stays native-sized or smaller; SVG-quality borders are resolution independent. */
+.asset-browser .asset-list{
+  padding:10px 9px 11px 10px;
+  gap:7px;
+  scrollbar-gutter:stable;
+  scrollbar-color:#556d79 #101c23;
+  background:#0c171e;
+}
+.asset-browser .asset-list::-webkit-scrollbar{width:9px}
+.asset-browser .asset-list::-webkit-scrollbar-track{
+  background:#101b22;
+  border-left:1px solid #2c404a;
+}
+.asset-browser .asset-list::-webkit-scrollbar-thumb{
+  background:#4e6570;
+  border:2px solid #101b22;
+  border-radius:5px;
+}
+.asset-browser .asset-item{
+  min-width:0;
+  overflow:hidden;
+  border-color:#354a55;
+  border-radius:4px;
+  background:linear-gradient(180deg,#121f27,#101c23);
+  box-shadow:inset 0 1px 0 rgba(141,171,184,.035);
+  transition:border-color .12s,background-color .12s;
+}
+.asset-browser .asset-item span,
+.asset-browser .asset-item strong{
+  display:block;
+  min-width:0;
+  max-width:100%;
+  text-align:left;
+}
+.asset-browser .asset-item span{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.asset-browser .asset-item strong{
+  overflow-wrap:anywhere;
+  line-height:1.25;
+}
+.asset-browser .asset-item:hover{
+  border-color:#637f8d;
+  background:#192a32;
+}
+.asset-browser .asset-item:focus-visible{
+  outline:1px solid #89a5b1;
+  outline-offset:-3px;
+  border-color:#728e9b;
+  background:#1a2a33;
+}
+.asset-browser .asset-item.active{
+  border-color:#728e9b;
+  background:#172832;
+  box-shadow:inset 2px 0 #88a7b4,inset 0 1px 0 rgba(166,197,209,.05);
+}
+.asset-browser .asset-preview{
+  overflow:hidden;
+  padding:13px 13px 16px;
+  border-left-color:#455c67;
+  background:linear-gradient(180deg,#0f1c24,#0b171e 70%);
+}
+.asset-browser .asset-preview::before{
+  inset:6px;
+  border-color:rgba(105,134,145,.14);
+  border-radius:4px;
+}
+.asset-browser .preview-art,
+.asset-browser .asset-preview.selected .preview-art{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px;
+  border-color:#5a727e!important;
+  border-radius:5px;
+  background-color:#09151c!important;
+  box-shadow:inset 0 0 0 1px rgba(8,17,24,.9),0 1px 2px rgba(0,0,0,.24);
+}
+.asset-browser .asset-preview.selected .preview-art{
+  border-color:#7e98a3!important;
+  box-shadow:inset 0 0 0 1px #0b1920,0 0 0 1px rgba(96,127,139,.12);
+}
+.asset-browser .preview-art img{
+  flex:0 1 auto;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  border-radius:2px;
+  filter:none;
+}
+.asset-browser .preview-title{
+  margin:12px 2px 0;
+  line-height:1.3;
+  overflow-wrap:anywhere;
+}
+.asset-browser .preview-id{
+  margin:5px 2px 0;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+  user-select:text;
+}
+@media(max-width:880px){
+  .asset-browser .browser-body{grid-template-columns:minmax(0,1fr) minmax(190px,32%)}
+  .asset-browser .asset-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:630px){
+  .asset-browser .browser-card{
+    width:calc(100vw - 20px);
+    height:calc(100dvh - 24px);
+  }
+  .asset-browser .browser-body{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:minmax(130px,1fr) auto;
+    overflow:hidden;
+  }
+  .asset-browser .asset-list{grid-template-columns:minmax(0,1fr)}
+  .asset-browser .asset-preview{
+    min-width:0;
+    padding:8px 11px 9px;
+    border-left:0;
+    border-top:1px solid #455c67;
+  }
+  .asset-browser .asset-preview::before{inset:3px}
+  .asset-browser .preview-art,
+  .asset-browser .asset-preview.selected .preview-art{height:102px}
+  .asset-browser .preview-title{margin-top:7px;font-size:12px}
+  .asset-browser .preview-id{font-size:9px;margin-top:3px}
+}
+@media(max-height:570px){
+  .asset-browser .browser-card{
+    height:calc(100dvh - 16px);
+    grid-template-rows:48px 42px minmax(0,1fr);
+  }
+  .asset-browser .browser-tools{height:42px;padding-block:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .asset-browser .asset-item,.asset-browser #browserClose{transition:none}
+}
