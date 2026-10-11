@@ -1,0 +1,71 @@
+/* UI_01 REF finishing pass, checkpoint B: EQ/Tone optics.
+   Existing five EQ points, numeric inline editor, Zoom and real bypass
+   remain wired to the same state, no EQ/DSP/curve/filter changes. */
+body.ui-01 .macro-eq .macro-eq-head{
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  height:28px;
+}
+body.ui-01 .macro-eq .macro-eq-head h3{
+  min-width:0;
+  flex:1 1 auto;
+  font-size:10px;
+  line-height:16px;
+  letter-spacing:.012em;
+  white-space:nowrap;
+}
+body.ui-01 .macro-eq [data-eq-zoom-in]{
+  box-sizing:border-box;
+  flex:0 0 25px;
+  width:25px;height:24px;min-height:24px;
+  margin:0 2px 0 0;
+  border:0!important;
+  border-radius:0!important;
+  color:#aacddc;
+  background:transparent url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_IDLE.png")
+    center/100% 100% no-repeat!important;
+  box-shadow:none!important;
+  font-size:13px;line-height:24px;
+}
+body.ui-01 .macro-eq [data-eq-zoom-in]:hover,
+body.ui-01 .macro-eq [data-eq-zoom-in]:focus-visible{
+  color:#e2f3f8;
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_BUTTON_CAP_HOVER.png")!important;
+}
+body.ui-01 .macro-eq [data-eq-power]{
+  box-sizing:border-box;
+  flex:0 0 36px;
+  min-width:36px;width:36px;
+  height:24px;min-height:24px;
+  margin:0;
+  padding:0 2px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_IDLE.png")
+    center/100% 100% no-repeat!important;
+  color:#b2c6cf;
+  font:500 9px/24px ui-monospace,Consolas,monospace;
+  box-shadow:none!important;
+}
+body.ui-01 .macro-eq [data-eq-power].active{
+  background-image:url("../../Assets/UI/Runtime/Common/Controls/RT_SEGMENT_CAP_ACTIVE.png")!important;
+  color:#dbeef5;
+}
+body.ui-01 .macro-eq [data-eq-power]:hover,
+body.ui-01 .macro-eq [data-eq-power]:focus-visible{
+  outline:1px solid rgba(124,200,224,.75);
+  outline-offset:1px;
+}
+body.ui-01 .macro-eq .macro-eq-svg{
+  box-sizing:border-box;
+  border:1px solid rgba(83,124,139,.40);
+  border-radius:3px;
+  background:#08141a;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.26);
+}
+body.ui-01 .macro-eq .eq-mini-inline{
+  border-top-color:rgba(105,145,158,.27);
+  background:linear-gradient(180deg,rgba(24,36,43,.13),rgba(19,29,36,.22));
+}

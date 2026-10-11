@@ -17,12 +17,43 @@ ALLOWED = {
     "scripts/ui02-extended-smoke.mjs",
     "assets/UI_01.png", "assets/UI_02.png", "assets/approved_ui_manifest.json",
 }
+
+# Reviewed original cosmetic CSS additions, byte-exact to SOURCE; never JS, WASM, DSP.
+REVIEWED_CSS_SHA={
+    "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
+    "Web/App/ui01_eq_frame_ref_finish_v1.css": "2accfcb63632c701f213903f452246b9f1458707",
+    "Web/App/ui01_knob_optics_ref_finish_v1.css": "e5d44bade9410cc92fa369301ca58b90224b66cb",
+    "Web/App/ui01_ref_batch_a_v1.css": "de50b1405467dbbd98342b88866340f11581c8c4",
+    "Web/App/ui01_ref_batch_b_v1.css": "3daec9e856db121a8080fb4400d79baf730ea634",
+    "Web/App/ui01_ref_batch_c_v1.css": "5137187d84a5a818bba688a3833d7cf5dac23989",
+    "Web/App/ui02_ref_batch_a_v1.css": "aecc3b4ff455389fb08d832c1920441d1085d726",
+    "Web/App/ui02_ref_batch_b_v1.css": "2c9c9ca980abddcc9518a260fea913eae365ab5e",
+    "Web/App/ui02_ref_batch_c_v1.css": "ff0135b6bb7509010f31c2e07b044f3a3c6a7718",
+    "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
+    "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
+    "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303"
+}
+ALLOWED.update(REVIEWED_CSS_SHA)
+ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
+ALLOWED.add('public_ui_style_sync_manifest.json')
+# Existing public repository collaboration policy files, not Source-private material.
+ALLOWED.update({'.github/PULL_REQUEST_TEMPLATE.md','.github/copilot-instructions.md','AGENTS.md'})
 PINNED={"UI_01":"d2fc997e788361954726e712097373da75a4cec6",
         "UI_02":"df0623a87b3c2405ee5adfcba2b44f387d50887b"}
 def blobsha(content):
     return sha1(b"blob "+str(len(content)).encode()+b"\0"+content).hexdigest()
 def main():
     root=Path(__file__).resolve().parent.parent
+    manifest_style=json.loads((root/"public_ui_style_sync_manifest.json").read_text(encoding="utf-8"))
+    if manifest_style.get("styles")!=REVIEWED_CSS_SHA or manifest_style.get("audio_enabled") is not False:
+        raise SystemExit("BLOCKED: approved CSS provenance differs")
+    for rel,expected in REVIEWED_CSS_SHA.items():
+        path=root/rel
+        if not path.is_file() or blobsha(path.read_bytes())!=expected:
+            raise SystemExit("BLOCKED: unapproved source SHA for "+rel)
+        content=path.read_text(encoding="utf-8")
+        if re.search(r'@import|https?://|data:text|(?:password|secret|private[_-]?key)',content,re.I):
+            raise SystemExit("BLOCKED: unapproved external CSS content "+rel)
     manifest=json.loads((root/"assets/approved_ui_manifest.json").read_text(encoding="utf-8"))
     if manifest.get("source_commit")!="c035db4d6d5f409cdbedc4f9c874089ea1750fda" or len(manifest.get("entries",[]))!=50:
         raise SystemExit("BLOCKED: unexpected image manifest")

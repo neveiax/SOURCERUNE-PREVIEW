@@ -1,0 +1,24 @@
+/* UI_02 REF candidate: live numeric/readout containment in existing bounds.
+   Values are always the real state; no fake meter or fixed readout values. */
+body.ui-02 .motion-readouts>div[data-motion-adjust] span{
+  box-sizing:border-box;max-width:95px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+body.ui-02 .motion-readouts>div[data-motion-adjust] strong{
+  box-sizing:border-box;max-width:100px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums;
+}
+body.ui-02 .meter-label{font-variant-numeric:tabular-nums}
+body.ui-02 .macro-badsignal .macro-device-name{
+  display:block;max-width:100%;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+body.ui-02 .macro-condition .macro-select{
+  max-width:100%;min-width:0;text-overflow:ellipsis;
+}
+body.ui-02 .macro-mix .macro-knob-value{
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+body.ui-02 .macro-eq .eq-mini-field input{
+  font-variant-numeric:tabular-nums;
+}

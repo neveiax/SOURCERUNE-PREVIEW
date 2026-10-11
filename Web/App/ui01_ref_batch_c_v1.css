@@ -1,0 +1,28 @@
+/* SOURCERUNE UI_01 Batch polish C: Ambience, Mix, EQ and common dials.
+   Provisional S/M, Presence, Dynamic and Ø remain DISABLED. */
+/* C01: Ambience S/M deliberately unavailable; Duck retains real state. */
+body.ui-01 .sr-amb-ref-modes button:disabled{color:#748d9b;opacity:.8}
+body.ui-01 .sr-amb-ref-duck{color:#a2bac5;font-size:8px;letter-spacing:.01em}
+body.ui-01 .sr-amb-ref-duck output{color:#87acba;font-variant-numeric:tabular-nums}
+body.ui-01 .sr-amb-live-out{border-color:rgba(71,103,120,.53);background:linear-gradient(180deg,#081820,#08151d)}
+body.ui-01 .sr-amb-live-out>span{color:#93b1be}
+/* C02: Narrow MIX card: live WET/DRY, phase still off. */
+body.ui-01 .sr-mix-live-ratio{color:#c1dce5;letter-spacing:.015em;text-align:center}
+body.ui-01 .sr-mix-live-ratio small{color:#93acb6}
+body.ui-01 .sr-mix-phase-pending:disabled{color:#8399a4;opacity:.77}
+/* C03: Already-live mini EQ readouts, no curve/point/algorithm alterations. */
+body.ui-01 .macro-eq .eq-mini-selected{color:#c6dce4;letter-spacing:.012em}
+body.ui-01 .macro-eq .eq-mini-field span{color:#9cbac6;font-size:7px}
+body.ui-01 .macro-eq .eq-mini-field input{
+  color:#d8ebf2!important;border-color:rgba(84,129,149,.44)!important;
+  background:rgba(12,28,36,.72)!important;
+}
+body.ui-01 .macro-eq .eq-mini-field input:focus-visible{
+  outline:1px solid #80bfd4!important;outline-offset:0!important;
+}
+/* C04: Group label/focus aesthetics across exactly the existing seven modules. */
+body.ui-01 #macroStrip .macro h3{color:#a9bdc7;letter-spacing:.024em;font-weight:500}
+body.ui-01 #macroStrip .macro-knob .macro-knob-label{color:#bacbd3}
+body.ui-01 #macroStrip .macro-knob.adjusting .macro-knob-face{filter:drop-shadow(0 2px 3px rgba(72,147,172,.25))}
+body.ui-01 #macroStrip button:focus-visible,
+body.ui-01 #macroStrip select:focus-visible{outline:1px solid rgba(133,193,211,.78);outline-offset:1px}
