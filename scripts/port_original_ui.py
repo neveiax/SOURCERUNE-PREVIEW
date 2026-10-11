@@ -3,10 +3,10 @@ Runs only in an authorized GitHub Actions checkout. The pinned upstream is
 currently public. Never copy source DSP/Worklet/WASM into the public site.
 """
 from pathlib import Path
-import hashlib, json, shutil, subprocess
+import hashlib, json, os, shutil, subprocess
 
 ROOT=Path(__file__).resolve().parent.parent
-UPSTREAM=ROOT/"_upstream_source"
+UPSTREAM=Path(os.environ["ORIGINAL_UI_UPSTREAM"]).resolve()
 PIN="c035db4d6d5f409cdbedc4f9c874089ea1750fda"
 OUT=ROOT/"Web/App"
 ASSETS=ROOT/"Assets/UI"
