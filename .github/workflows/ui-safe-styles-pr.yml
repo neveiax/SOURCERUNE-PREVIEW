@@ -1,0 +1,71 @@
+name: Public Original UI CSS Safety Review
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "Web/App/index.html"
+      - "Web/App/ui01_*"
+      - "Web/App/ui02_*"
+      - "Web/App/ui_ref_text_guard_*"
+      - "scripts/check_allowlist.py"
+      - "public_ui_style_sync_manifest.json"
+      - ".github/workflows/ui-safe-styles-pr.yml"
+permissions:
+  contents: read
+jobs:
+  public_ui:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify existing public asset allowlist and DSP exclusion
+        run: |
+          set -euo pipefail
+          python3 scripts/check_allowlist.py
+          python3 scripts/check_original_port.py
+          ! find Web/App -type f \( -name '*.wasm' -o -name 'processor.js' \) | grep .
+          node --check Web/App/app.js
+      - name: One real no-audio Chromium UI screenshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/ui-safe-http.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          for n in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/Web/App/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          chrome="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          test -n "$chrome"
+          npm install --silent --no-save --prefix /tmp/sr-public-ui puppeteer-core@24
+          NODE_PATH=/tmp/sr-public-ui/node_modules CHROME_PATH="$chrome" node <<'NODE'
+          const p=require("puppeteer-core");
+          (async()=>{
+            const browser=await p.launch({executablePath:process.env.CHROME_PATH,headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
+            try{
+              for(const [ui,w,h] of [["UI_01",1499,807],["UI_02",1672,941]]){
+                const page=await browser.newPage();
+                await page.setViewport({width:w,height:h,deviceScaleFactor:1});
+                await page.goto("http://127.0.0.1:4173/Web/App/?ui="+ui,{waitUntil:"networkidle0",timeout:30000});
+                const ok=await page.evaluate(()=>{
+                  const styles=[...document.querySelectorAll('link[rel="stylesheet"]')].filter(x=>/ui01_ref_batch_|ui02_ref_batch_|ui_ref_text_guard_/.test(x.href));
+                  const live=!!document.querySelector(".macro-rail, #macroStrip, .macro-motion");
+                  return {css:styles.length,live,missing:styles.filter(x=>!x.sheet).map(x=>x.href)};
+                });
+                if(ok.css!==9||!ok.live||ok.missing.length)throw Error("Original public UI cosmetic styles not loaded "+JSON.stringify({ui,ok}));
+                await page.screenshot({path:"public_"+ui+".png",fullPage:false});
+                await page.close();
+              }
+              console.log("PUBLIC_UI_PREVIEW_PASS two views, 12 exact-source cosmetic CSS, no audio");
+            }finally{await browser.close()}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1});
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-ui-pr116-safe-cosmetics
+          path: |
+            public_UI_01.png
+            public_UI_02.png
+          retention-days: 7
