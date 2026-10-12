@@ -31,3 +31,9 @@
 Work ID、SOURCE 的私人開發 checkpoint（只記必要短 SHA／不公開機密）、本 PREVIEW branch／PR／commit／CI／Pages、KNOWLEDGE 的同步狀態（僅標 DONE/PENDING/NO CHANGE）、來源 allowlist／SHA、安全 gate、純 UI 可操作狀態、尚未驗收事項及下一步。
 
 **本倉只要 Public PR，協作者就必須假設 PR 內容、commit、log 與產物全世界都可能閱讀。**
+
+## 2026-10-12 新規則：同步 PRIVATE 工作總表（PUBLIC 安全摘要）
+
+使用者要求全專案以 Private KNOWLEDGE 的 `SR-DSP-250-MASTER` 為唯一持續更新工作總表，包含 DSP 250 項、11 個共用引擎及 UI／美術／Web／Native／Factory／CI 的真實進度。**本 Public PREVIEW 有新增、修正、刪除、重新部署 UI／圖資／互動時，除原有 SOURCE＋PREVIEW 同批作業外，也必須由有授權的協作者在 PRIVATE KNOWLEDGE 同輪更新對應工作進度／缺口／PR／SHA／驗收。**沒有權限則標 `TRACKER UPDATE PENDING` 並通知來源工作者，不得謊稱已同步。
+
+**公開防洩漏不變**：這裡僅保留穩定工作表 ID、DONE/PENDING/NO CHANGE，絕不貼進私有 DSP 機制、250 項研究內文、音訊程式、內部測試數據或私人總表原文。未部署任何自動 webhook，這是每次交付的必要流程。
