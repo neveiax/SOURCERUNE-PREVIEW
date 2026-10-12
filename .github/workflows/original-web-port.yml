@@ -1,12 +1,9 @@
 name: One-time pinned original Web UI port
 
+# Historical one-time copy only. Do NOT trigger on main pushes:
+# upstream SOURCE is now Private and this stale unauthenticated clone must not
+# run during ordinary public PREVIEW edits or override new audio/UI updates.
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/original-web-port.yml"
-      - "scripts/port_original_ui.py"
-      - "scripts/check_original_port.py"
   workflow_dispatch:
 
 permissions:
