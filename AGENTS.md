@@ -47,3 +47,9 @@ Work ID、SOURCE 的私人開發 checkpoint（只記必要短 SHA／不公開機
 使用者再次明確指定 **SOURCERUNE-PREVIEW 的既有 GitHub Pages** 為唯一日常線上音訊測試入口；不得以 Codespaces、ZIP、本地測試包或另一個網站替代。當前安全第一階段允許以瀏覽器 Web Audio API 播放使用者選取的本機 WAV 原音、提供真實 IN/OUT meter 和 spectrum，並清楚標示 **DRY ONLY / DSP NOT CONNECTED**。不准把這種原音試播、GainNode passthrough、顯示圖形或 UI 旋鈕視為 1:1 DSP、或冒稱所有場景能處理聲音。
 
 **私有 DSP 發布審核仍適用**：要讓此同一 Pages 網址真正跑 SOURCE 的 C++ DSP，須另外審核欲公開的**確切** WASM 與 processor/parameter mapping、模型進度、可下載／逆向風險、授權及逐檔 allowlist；在未取得對該確切可公開產物的明確核准、真實驗證前不得傳入 PUBLIC 倉庫或 PR。不能以本段的「網頁測試入口」選址決議，替代對完整聲音實作公開的授權。獨立 Work ID `SR-20261012-PREVIEW-AUDIO-ENTRY`；未合併 PR 只算候選，不得冒稱 Pages 已部署。三倉 SOURCE 的音效／UI 不因這份文件改變，KNOWLEDGE 記錄各 gate。
+
+## 2026-10-12 公開 Web Audio EQ 實際運算（SR-20261012-PREVIEW-AUDIO-ENTRY）
+
+同一個現有 PREVIEW 網頁可使用瀏覽器標準 `BiquadFilterNode` 做公開可驗證的 **HPF、LPF、三段 Bell EQ**，並讓 Input/Output Gain、Mix、EQ/Global Bypass 與音檔播放真正影響聲音；必須清楚標示這只是 PUBLIC WEB EQ，**不是**從 Private SOURCE 複製的 C++／WASM DSP，與 VST3 並非 bit-exact parity。SOURCE、TRANSMISSION、COVER、MOTION、SPACE、AMBIENCE 等物理／場景模型尚未接入，不可把改動聲音的通用 EQ 當作具名 250 種效果已完成。
+
+發布門檻不變：仍禁止上傳私人 C++、WASM、AudioWorklet、機密 Preset／參數配方；不新增安全壓力測試回合。先以 PR 最小 CI 與真瀏覽器檢查，再經正式合併與 Pages 部署，並於 KNOWLEDGE 紀錄 SHA、支持／不支持範圍與真聽感驗收。
