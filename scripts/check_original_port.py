@@ -61,9 +61,12 @@ def main():
     assert 'sceneNode.gain.value=1;' in js
     assert 'sceneNode=await createSceneNode(' not in js
     assert 'new AudioWorkletNode(' not in js and 'WebAssembly.' not in js
-    assert 'DRY MONITOR · DSP NOT CONNECTED' in js
+    assert 'PUBLIC WEB EQ LIVE' in js
+    assert 'audioCtx.createBiquadFilter()' in js
+    assert 'updatePublicTone()' in js
+    assert 'set(eq.dry.gain,1-wet);set(eq.wet.gain,wet)' in js
     engine=(APP/"audio/engine.js").read_text()
-    assert 'PRIVATE DSP NOT CONNECTED' in engine
+    assert 'PRIVATE SOURCE/SPACE DSP NOT CONNECTED' in engine
     assert 'export async function createSceneNode(){throw Error(' in engine
     assert not list(ROOT.glob("Source/**/*.cpp"))
     factory=json.loads((APP/"data/scene_presets_v1.json").read_text())
