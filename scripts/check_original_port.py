@@ -1,6 +1,9 @@
 """One narrow smoke/gate for faithful original UI file copy, no audio tests."""
 from pathlib import Path
 from hashlib import sha1
+import sys
+sys.dont_write_bytecode=True  # Prevent untracked __pycache__ from failing the strict public allowlist.
+from check_public_dsp_release import check_public_dsp_release
 import json,re
 
 ROOT=Path(__file__).resolve().parent.parent
@@ -51,23 +54,23 @@ def main():
         assert (APP/script).is_file(),script
     assert (APP/"audio/transport.css").exists()
     assert (APP/"audio/engine.js").exists()
-    assert not (APP/"audio/processor.js").exists()
-    assert not list(APP.rglob("*.wasm"))
+    assert (APP/"audio/processor.js").exists()
+    check_public_dsp_release()
     js=(APP/"app.js").read_text()
     # True dry browser playback is allowed. The real proprietary DSP remains excluded.
     assert 'async function play(){' in js and 'await audio.play()' in js
     assert 'async function setupAudio(){' in js
     assert 'sceneNode=audioCtx.createGain();' in js
     assert 'sceneNode.gain.value=1;' in js
-    assert 'sceneNode=await createSceneNode(' not in js
+    assert 'sceneNode=await createSceneNode(audioCtx,state);' in js
     assert 'new AudioWorkletNode(' not in js and 'WebAssembly.' not in js
     assert 'PUBLIC WEB EQ LIVE' in js
     assert 'audioCtx.createBiquadFilter()' in js
     assert 'updatePublicTone()' in js
     assert 'set(eq.dry.gain,1-wet);set(eq.wet.gain,wet)' in js
     engine=(APP/"audio/engine.js").read_text()
-    assert 'PRIVATE SOURCE/SPACE DSP NOT CONNECTED' in engine
-    assert 'export async function createSceneNode(){throw Error(' in engine
+    assert 'PUBLIC C++／WASM 測試' in engine
+    assert 'export async function createSceneNode(context, state)' in engine
     assert not list(ROOT.glob("Source/**/*.cpp"))
     factory=json.loads((APP/"data/scene_presets_v1.json").read_text())
     for collection in ("presets","reservePresets"):
@@ -75,5 +78,5 @@ def main():
             assert all("params" not in x and "bypass" not in x
                        for x in factory[collection].values() if isinstance(x,dict))
     assert 'url=./Web/App/index.html' in (ROOT/"index.html").read_text()
-    print(f"PASS: original UI files {len(originals)}, {len(imgs)} SHA-matched PNGs, catalog {len(catalog)} entries, {len(referenced)} referenced art ({len(absent)} documented not-yet-made); audio DSP excluded")
+    print(f"PASS: original UI files {len(originals)}, {len(imgs)} approved PNGs, catalog {len(catalog)}; only reviewed public binary candidate may activate compiled DSP")
 if __name__=="__main__":main()
