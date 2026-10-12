@@ -2,6 +2,8 @@
 from pathlib import Path
 import subprocess, json, re, struct
 from hashlib import sha1
+import sys
+sys.dont_write_bytecode=True  # Prevent untracked __pycache__ from failing the strict public allowlist.
 from check_public_dsp_release import check_public_dsp_release, MANIFEST, FILES
 
 ALLOWED = {
