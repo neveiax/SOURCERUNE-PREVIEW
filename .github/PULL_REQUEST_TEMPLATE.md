@@ -1,3 +1,8 @@
+## PRIVATE 主表同步（公開安全狀態）
+
+- [ ] 本次 UI／圖資／互動／部署工作已由授權 SOURCE/KNOWLEDGE 協作者同步至 PRIVATE `SR-DSP-250-MASTER`，或標 `TRACKER UPDATE PENDING`／`NO CHANGE`。
+- [ ] 公開 PR 沒有貼入私人 DSP／產品規格／總表原文，只記公開安全的 Work ID、PR/SHA、UI 驗證與進度。
+
 ## PUBLIC SOURCERUNE UI Preview — 同步與安全檢查
 
 - **Work ID**: `SR-YYYYMMDD-...`
