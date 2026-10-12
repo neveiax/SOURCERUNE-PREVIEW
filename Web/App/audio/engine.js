@@ -3,4 +3,4 @@ export async function createSceneNode(){throw Error("Audio DSP is private in thi
 export function parametersFromState(){return []}
 export function hpfFromState(){return []}
 export function eq3FromState(){return []}
-export function audioSupportNote(){return "UI ONLY · AUDIO DISABLED"}
+export function audioSupportNote(){return "REAL DRY WAV PLAYBACK / METER ONLY · PRIVATE DSP NOT CONNECTED"}
