@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "published": true,
+  "sourceCandidateSha": "3a1c0517aee4b51fc076e65809aa110d1ce70cad",
+  "models": [
+    "SRC_002"
+  ],
+  "factoryModelsAccepted": 0,
+  "experimental": true,
+  "compiledClientBinaryPublic": true,
+  "sha256": {
+    "sourcerune.wasm": "4f579a1b5394efd24a3627fb41336128a41d2b36ca1b4536807ae3b5400ace5e",
+    "hpf.wasm": "73533cf34e5f021a5781aaa0a0b2454f4b143920e69c64adecbc07449b9d4d02",
+    "eq3.wasm": "9d68c10f41843652cfb1c950b3ef53e6ad1ac5f5e970a53e706d96a06ac71d36"
+  }
+}
