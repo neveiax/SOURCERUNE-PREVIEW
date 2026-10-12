@@ -108,7 +108,10 @@ def main():
                 relative.as_posix()=="audio/transport.css")
             if not valid:raise SystemExit("BLOCKED: unapproved Web UI source "+name)
             data=(root/name).read_bytes()
-            if name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
+            if name=="Web/App/geometry_audit.js":
+                if blobsha(data)!="c97655194f0249edf05d84416f33daedbd0006ff":
+                    raise SystemExit("BLOCKED: unapproved original geometry audit SHA")
+            elif name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
                 if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
             ALLOWED.add(name)
         engine=root/"Web/App/audio/engine.js"
