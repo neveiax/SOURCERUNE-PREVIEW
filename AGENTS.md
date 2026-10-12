@@ -41,3 +41,9 @@ Work ID、SOURCE 的私人開發 checkpoint（只記必要短 SHA／不公開機
 ## 2026-10-12 Web 真音訊與 Private DSP 同源同步（公開安全摘要）
 
 正式音訊產品以 **Private SOURCE 的 C++ Native VST3 與同源 WASM＋AudioWorklet Web TEST** 為雙主線。每個聲音功能必須逐項驗證一致性，只有真實測試通過才能稱 1:1；**Public PREVIEW 仍僅提供核准 UI 子集，沒有私人 DSP 播放能力**，不可以用假音效／假 Meter 取代。已授權協作者需要聽真正 Web 音訊時，從 Private SOURCE 的既有 GitHub Actions `private-dsp-web-audition.yml` 下載私人試聽成品，以 localhost／安全私有預覽開啟；絕不可為了「同批同步」將 C++、WASM 或 AudioWorklet 放進本公開倉庫。公開版的音訊功能除非經逐檔安全審查及使用者**另行明確批准發布該音訊實作**，否則狀態保持 `AUDIO PRIVATE / UI ONLY`。所有音訊修改同輪更新 Private KNOWLEDGE 工作總表；本倉只記安全 UI 同步或 `NO CHANGE — PRIVATE AUDIO`。工作單：`SR-20261012-WEB-AUDIO-PARITY`。
+
+## 2026-10-12 Public Web 音訊測試入口（限無機密第一階段）
+
+使用者再次明確指定 **SOURCERUNE-PREVIEW 的既有 GitHub Pages** 為唯一日常線上音訊測試入口；不得以 Codespaces、ZIP、本地測試包或另一個網站替代。當前安全第一階段允許以瀏覽器 Web Audio API 播放使用者選取的本機 WAV 原音、提供真實 IN/OUT meter 和 spectrum，並清楚標示 **DRY ONLY / DSP NOT CONNECTED**。不准把這種原音試播、GainNode passthrough、顯示圖形或 UI 旋鈕視為 1:1 DSP、或冒稱所有場景能處理聲音。
+
+**私有 DSP 發布審核仍適用**：要讓此同一 Pages 網址真正跑 SOURCE 的 C++ DSP，須另外審核欲公開的**確切** WASM 與 processor/parameter mapping、模型進度、可下載／逆向風險、授權及逐檔 allowlist；在未取得對該確切可公開產物的明確核准、真實驗證前不得傳入 PUBLIC 倉庫或 PR。不能以本段的「網頁測試入口」選址決議，替代對完整聲音實作公開的授權。獨立 Work ID `SR-20261012-PREVIEW-AUDIO-ENTRY`；未合併 PR 只算候選，不得冒稱 Pages 已部署。三倉 SOURCE 的音效／UI 不因這份文件改變，KNOWLEDGE 記錄各 gate。
