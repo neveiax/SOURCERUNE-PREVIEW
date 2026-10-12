@@ -2,6 +2,7 @@
 from pathlib import Path
 import subprocess, json, re, struct
 from hashlib import sha1
+from check_public_dsp_release import check_public_dsp_release, MANIFEST, FILES
 
 ALLOWED = {
     "README.md", "index.html", "viewer.css", "viewer.js",
@@ -12,6 +13,9 @@ ALLOWED = {
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
     "scripts/port_original_ui.py", "scripts/check_original_port.py",
     ".github/workflows/original-web-port.yml", "original_web_port_manifest.json",
+    ".github/workflows/publish-public-dsp-wasm.yml",
+    "scripts/check_public_dsp_release.py",
+    "Web/App/audio/processor.js",
     "scripts/interaction-smoke.mjs", "scripts/card-layout-smoke.mjs",
     "scripts/native-card-smoke.mjs", "scripts/macro-smoke.mjs",
     "scripts/ui02-extended-smoke.mjs",
@@ -111,11 +115,13 @@ def main():
                 if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
             ALLOWED.add(name)
         engine=root/"Web/App/audio/engine.js"
-        if not engine.is_file() or "export async function createSceneNode()" not in engine.read_text():
-            raise SystemExit("BLOCKED: missing public no-audio engine stub")
+        if not engine.is_file() or "export async function createSceneNode(context, state)" not in engine.read_text():
+            raise SystemExit("BLOCKED: missing explicitly gated real-Web audio adapter")
         ALLOWED.add("Web/App/audio/engine.js")
-        if list((root/"Web/App").rglob("*.wasm")) or (root/"Web/App/audio/processor.js").exists():
-            raise SystemExit("BLOCKED: audio DSP/Worklet unexpectedly included")
+        released=check_public_dsp_release()
+        if released:
+            ALLOWED.add(str(MANIFEST.relative_to(root)))
+            ALLOWED.update("Web/App/audio/"+name for name in FILES)
     tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
     untracked=set(subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True,cwd=root).splitlines())
     unexpected=sorted((tracked|untracked)-ALLOWED)
