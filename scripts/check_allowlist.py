@@ -15,6 +15,7 @@ ALLOWED = {
     ".github/workflows/original-web-port.yml", "original_web_port_manifest.json",
     ".github/workflows/publish-public-dsp-wasm.yml",
     "scripts/check_public_dsp_release.py",
+    "scripts/public-audio-browser-smoke.cjs",
     "Web/App/audio/processor.js",
     "scripts/interaction-smoke.mjs", "scripts/card-layout-smoke.mjs",
     "scripts/native-card-smoke.mjs", "scripts/macro-smoke.mjs",
