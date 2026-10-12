@@ -2,6 +2,23 @@ name: Publish reviewed public SOURCE DSP WASM
 # Compiled binaries distributed to ALL anonymous browsers. They are reversible.
 # Never include private C++/research or any secrets in public repository.
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Web/App/app.js'
+      - 'Web/App/audio/engine.js'
+      - 'Web/App/audio/processor.js'
+      - 'scripts/check_public_dsp_release.py'
+      - 'scripts/check_allowlist.py'
+      - 'scripts/check_original_port.py'
+      - '.github/workflows/publish-public-dsp-wasm.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Web/App/app.js'
+      - 'Web/App/audio/engine.js'
+      - 'Web/App/audio/processor.js'
+      - '.github/workflows/publish-public-dsp-wasm.yml'
   workflow_dispatch:
     inputs:
       publish_confirmation:
@@ -14,8 +31,24 @@ concurrency:
   group: sr-reviewed-public-dsp-binaries
   cancel-in-progress: false
 jobs:
+  review:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original UI and reviewed public-only staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check Web/App/app.js
+          node --check Web/App/audio/engine.js
+          node --check Web/App/audio/processor.js
+          python3 scripts/check_original_port.py
+          python3 scripts/check_allowlist.py
+          test ! -e Web/App/audio/public-dsp-manifest.json
   publish:
-    if: ${{ inputs.publish_confirmation == 'PUBLISH_WASM_PUBLICLY' }}
+    if: ${{ github.event_name == 'push' || inputs.publish_confirmation == 'PUBLISH_WASM_PUBLICLY' }}
     runs-on: ubuntu-latest
     timeout-minutes: 22
     steps:
