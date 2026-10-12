@@ -54,8 +54,20 @@ def main():
     assert not (APP/"audio/processor.js").exists()
     assert not list(APP.rglob("*.wasm"))
     js=(APP/"app.js").read_text()
-    assert 'async function play(){mark("PUBLIC UI PREVIEW' in js
-    assert 'async function setupAudio(){throw new Error(' in js
+    # True dry browser playback is allowed. The real proprietary DSP remains excluded.
+    assert 'async function play(){' in js and 'await audio.play()' in js
+    assert 'async function setupAudio(){' in js
+    assert 'sceneNode=audioCtx.createGain();' in js
+    assert 'sceneNode.gain.value=1;' in js
+    assert 'sceneNode=await createSceneNode(' not in js
+    assert 'new AudioWorkletNode(' not in js and 'WebAssembly.' not in js
+    assert 'PUBLIC WEB EQ LIVE' in js
+    assert 'audioCtx.createBiquadFilter()' in js
+    assert 'updatePublicTone()' in js
+    assert 'set(eq.dry.gain,1-wet);set(eq.wet.gain,wet)' in js
+    engine=(APP/"audio/engine.js").read_text()
+    assert 'PRIVATE SOURCE/SPACE DSP NOT CONNECTED' in engine
+    assert 'export async function createSceneNode(){throw Error(' in engine
     assert not list(ROOT.glob("Source/**/*.cpp"))
     factory=json.loads((APP/"data/scene_presets_v1.json").read_text())
     for collection in ("presets","reservePresets"):

@@ -11,7 +11,7 @@ const TYPES=["SOURCE","TRANSMISSION","WALL_COVER","SPACE_ENVIRONMENT"],LABEL={SO
 const DEFSEL={SOURCE:"SRC_003_Smartphone_Speakerphone",TRANSMISSION:"TRN_005_GSM_Stable",WALL_COVER:"CVR_001_None_Open",SPACE_ENVIRONMENT:"SPC_022_Busy_City_Street"};
 let schema,catalog,scenePresets={},byId,state,userPresets={},undo=[],redo=[],browserType="SOURCE",stateClipboard=null,browserReturnFocus=null,browserReturnType=null;
 let sceneNode,audioSetup,audioUrl,audioName="",audioLoadGeneration=0;
-let audioCtx,media,inAn,outAn,inGain,outGain,peakIn=-Infinity,peakOut=-Infinity,meterMode="PEAK";
+let audioCtx,media,inAn,outAn,inGain,outGain,publicTone,peakIn=-Infinity,peakOut=-Infinity,meterMode="PEAK";
 const audio=$("#audioElement");
 const copy=v=>JSON.parse(JSON.stringify(v)),db=v=>v<=1e-7?-Infinity:20*Math.log10(v),fmt=v=>isFinite(v)?v.toFixed(1):"−∞",gain=v=>Math.pow(10,v/20),pretty=v=>String(v).replaceAll("_"," ");
 
@@ -432,7 +432,7 @@ function renderAdvanced(){const k=state.advanced,g=schema.groups[k];
     drawer.style.setProperty("--advanced-cols",String(total<=2?2:total<=6?3:4));
     drawer.dataset.section=k;
     drawer.dataset.controlCount=String(total);
-  }$(".advanced-drawer")?.classList.toggle("bypassed",!!state.bypass[k]);$$("[data-adv]").forEach(b=>b.classList.toggle("active",b.dataset.adv===k));$("#advancedTitle").textContent=g.label;let extra="";if(g.assetType)extra=`<div class="adv-control wide"><label>MODEL / TYPE</label><div class="value">${selected(g.assetType).name}</div><button data-library="${g.assetType}">SELECT FROM LIBRARY</button></div>`;if(g.special==="motion")extra+=`<div class="adv-control wide"><label>TIMELINE</label><div class="adv-buttons"><button data-set-marker="start">SET START</button><button data-set-marker="closest">SET CLOSEST</button><button data-set-marker="end">SET END</button><button id="advSync">${state.sync?"SYNC ON":"SYNC OFF"}</button></div></div>`;if(g.special==="seed")extra+=`<div class="adv-control wide"><label>DETERMINISTIC SEED</label><div class="adv-buttons"><input id="seedInput" type="number" value="${state.seed}"><button id="applySeed">APPLY</button><button id="newSeed">NEW SEED</button></div></div>`;if(g.special==="generator")extra+=`<div class="adv-control"><label>GENERATOR STATE</label><button id="generatorToggle" class="${state.generatorOn?"active":""}">${state.generatorOn?"ON":"OFF"}</button></div>`;const bp=g.bypass?`<button id="advBypass" class="${state.bypass[k]?"active":""}">${state.bypass[k]?"BYPASSED":"ACTIVE"}</button>`:"";$("#advancedBody").innerHTML=`<div class="adv-top"><div class="adv-summary">${g.assetType?selected(g.assetType).name:g.label}</div><div>${bp}</div></div><div class="adv-grid">${g.controls.map(control).join("")}${extra}</div><div class="state-note">${audioSupportNote(state)}。已支援：SOURCE Character、Bad Signal／Bandwidth Loss、Mix／Gain／Bypass；HPF、LPF、三段 EQ 已有真 DSP；Final Tone 與其餘部分仍僅保存狀態。</div>`;bindAdvanced()}
+  }$(".advanced-drawer")?.classList.toggle("bypassed",!!state.bypass[k]);$$("[data-adv]").forEach(b=>b.classList.toggle("active",b.dataset.adv===k));$("#advancedTitle").textContent=g.label;let extra="";if(g.assetType)extra=`<div class="adv-control wide"><label>MODEL / TYPE</label><div class="value">${selected(g.assetType).name}</div><button data-library="${g.assetType}">SELECT FROM LIBRARY</button></div>`;if(g.special==="motion")extra+=`<div class="adv-control wide"><label>TIMELINE</label><div class="adv-buttons"><button data-set-marker="start">SET START</button><button data-set-marker="closest">SET CLOSEST</button><button data-set-marker="end">SET END</button><button id="advSync">${state.sync?"SYNC ON":"SYNC OFF"}</button></div></div>`;if(g.special==="seed")extra+=`<div class="adv-control wide"><label>DETERMINISTIC SEED</label><div class="adv-buttons"><input id="seedInput" type="number" value="${state.seed}"><button id="applySeed">APPLY</button><button id="newSeed">NEW SEED</button></div></div>`;if(g.special==="generator")extra+=`<div class="adv-control"><label>GENERATOR STATE</label><button id="generatorToggle" class="${state.generatorOn?"active":""}">${state.generatorOn?"ON":"OFF"}</button></div>`;const bp=g.bypass?`<button id="advBypass" class="${state.bypass[k]?"active":""}">${state.bypass[k]?"BYPASSED":"ACTIVE"}</button>`:"";$("#advancedBody").innerHTML=`<div class="adv-top"><div class="adv-summary">${g.assetType?selected(g.assetType).name:g.label}</div><div>${bp}</div></div><div class="adv-grid">${g.controls.map(control).join("")}${extra}</div><div class="state-note">${audioSupportNote(state)}。PUBLIC PREVIEW 真實音訊：HPF／LPF／三段 Bell EQ、INPUT／OUTPUT GAIN、MIX／BYPASS 已可聽；聲源、距離、場景、傳輸等模型尚未接線，本公開 EQ 並非 VST3 逐樣本相同實作。</div>`;bindAdvanced()}
 function bindAdvanced(){$$("[data-library]").forEach(b=>b.onclick=()=>openBrowser(b.dataset.library,b));$$("[data-param]").forEach(c=>{c.onpointerdown=()=>c.dataset.before=JSON.stringify(core());const apply=e=>{const id=e.target.dataset.param,def=findControl(id);state.params[id]=def.type==="select"?e.target.value:+e.target.value;updateScene();updateGains();updateCurves();refreshMiniEq();const v=e.target.closest(".adv-control")?.querySelector(".value");if(v&&def.type==="range")v.textContent=state.params[id]+" "+(def.unit||"")};c.oninput=apply;c.onchange=e=>{apply(e);if(e.target.dataset.before){undo.push(JSON.parse(e.target.dataset.before));redo=[];hist()}mark("MODIFIED");renderMacros()}});const bp=$("#advBypass");if(bp)bp.onclick=()=>mut(()=>state.bypass[state.advanced]=!state.bypass[state.advanced]);$$("[data-set-marker]").forEach(b=>b.onclick=()=>setMarker(b.dataset.setMarker));const sy=$("#advSync");if(sy)sy.onclick=()=>mut(()=>state.sync=!state.sync);const ap=$("#applySeed");if(ap)ap.onclick=()=>mut(()=>state.seed=Math.max(0,Math.floor(+$("#seedInput").value||0)));const ns=$("#newSeed");if(ns)ns.onclick=()=>mut(()=>state.seed=(Math.imul(state.seed||1,1664525)+1013904223)>>>0);const gt=$("#generatorToggle");if(gt)gt.onclick=()=>mut(()=>state.generatorOn=!state.generatorOn)}
 // UI_02 Motion deck reuses the already-defined shared parameters; no new DSP state.
 // Drag commits one history entry on release. Wheel/keyboard commit single value steps.
@@ -618,7 +618,7 @@ function setMarker(k){mut(()=>state.markers[k]=audio.currentTime||0)}function re
 function distance(){const p=state.params.motion/100,a=state.params.startDistance,c=state.params.closestDistance,e=state.params.endDistance,m=state.params.motionMode;if(m==="STATIC")return a;if(m==="APPROACH")return a+(c-a)*p;if(m==="LEAVE")return c+(e-c)*p;if(m==="PASS_BY")return p<=.5?a+(c-a)*p*2:c+(e-c)*(p-.5)*2;return a+(e-a)*p}
 function updateScene(){const p=state.params.motion/100,ui1=state?.ui==="UI_01",x=110+790*p,y=(ui1?300:325)-55*Math.sin(Math.PI*p),listenerY=ui1?250:270,d=distance();$("#sourceNode").setAttribute("transform",`translate(${x} ${y})`);const mg=$("#motionCarGlyph");if(mg){mg.setAttribute("x",x-28);mg.setAttribute("y",y-62)}$("#distanceLine").setAttribute("x1",x);$("#distanceLine").setAttribute("y1",y);$("#distanceLine").setAttribute("y2",listenerY);const cx=(x+500)/2,cy=(y+listenerY)/2-10;const dc=$("#distanceCallout");if(dc){dc.setAttribute("x",cx-40);dc.setAttribute("y",cy-31)}$("#distanceText").setAttribute("x",cx);$("#distanceText").setAttribute("y",cy);$("#distanceText").textContent=d.toFixed(1)+" m";$("#sourceLabel").setAttribute("y",ui1?Math.min(y+27,326):346);$("#motionMode").textContent=pretty(state.params.motionMode);const mdm=$("#motionDeckMode");if(mdm)mdm.value=state.params.motionMode;const mp=$("#motionDeckPath");if(mp){const mode=state.params.motionMode,pct=state.params.motion/100;const path=mode==="APPROACH"?"M12 18 C70 20 165 45 288 82":mode==="LEAVE"?"M12 82 C135 45 230 20 288 18":mode==="STATIC"?"M12 52 L288 52":"M12 82 C85 80 105 18 150 18 C195 18 215 80 288 82";mp.setAttribute("d",path);const dot=$("#motionDeckCurrent");if(dot){const dx=12+276*pct,dy=mode==="APPROACH"?18+64*Math.pow(pct,1.35):mode==="LEAVE"?82-64*Math.pow(pct,.72):mode==="STATIC"?52:82-64*Math.sin(Math.PI*pct);dot.setAttribute("cx",dx);dot.setAttribute("cy",dy)}}$("#startDistance").textContent=state.params.startDistance.toFixed(1)+" m";$("#closestDistance").textContent=state.params.closestDistance.toFixed(1)+" m";$("#endDistance").textContent=state.params.endDistance.toFixed(1)+" m";$("#currentDistance").textContent=d.toFixed(1)+" m";$("#speedReadout").textContent=state.params.speed+" km/h";$("#dopplerReadout").textContent=state.params.doppler+"%";$("#widthReadout").textContent=state.params.width+"%";for(const id of ["speed","doppler","width"]){const el=document.querySelector('[data-motion-adjust="'+id+'"]'),v=String(state.params[id]);if(el&&el.getAttribute("aria-valuenow")!==v){el.setAttribute("aria-valuenow",v);el.setAttribute("aria-valuetext",v+(id==="speed"?" km/h":"%"))}}$("#perspectiveReadout").textContent=state.params.perspective+"%";const mr=$(".motion-readouts>div"),angleFor=id=>-135+macroPct(id)*2.7;if(mr[4]){const dp=Math.max(0,Math.min(100,d/100));mr[4].style.setProperty("--distance-angle",(-135+dp*270)+"deg")}for(const [idx,id] of [[5,"speed"],[6,"doppler"],[7,"width"]])if(mr[idx])mr[idx].style.setProperty("--angle",angleFor(id)+"deg");const md=$(".macro-motion .macro-knob-readonly");if(md){const pct=Math.max(0,Math.min(100,d));md.style.setProperty("--pct",pct);md.style.setProperty("--angle",(-135+pct*2.7)+"deg");const mv=md.querySelector(".macro-knob-value");if(mv)mv.textContent=d.toFixed(1)+"m"}$("#sceneBuildings").setAttribute("opacity",state.view==="TOP"?".28":".9");if(ui1){syncSceneZoom(state);syncSceneGuide(state)}}
 function updateCurves(){for(const [id,k] of [["directCurve","direct"],["earlyCurve","early"],["tailCurve","tail"]])$("#"+id).style.opacity=.2+.8*state.params[k]/100}
-async function setupAudio(){throw new Error("Public Preview has no audio processor");
+async function setupAudio(){
   if(sceneNode)return;
   if(audioSetup)return audioSetup;
   audioSetup=(async()=>{
@@ -629,17 +629,53 @@ async function setupAudio(){throw new Error("Public Preview has no audio process
       inAn.fftSize=outAn.fftSize=2048;
       media.connect(inAn);
     }
-    sceneNode=await createSceneNode(audioCtx,state);
-    sceneNode.onprocessorerror=()=>{audio.pause();sceneNode.disconnect();mark("DSP ERROR — 請重新整理");};
-    inAn.connect(sceneNode);sceneNode.connect(outAn);outAn.connect(audioCtx.destination);
+    // Public browser-native EQ only; NO private C++ DSP, WASM or AudioWorklet.
+    sceneNode=audioCtx.createGain();sceneNode.gain.value=1;inGain=sceneNode;
+    outGain=audioCtx.createGain();
+    const createFilter=type=>{const node=audioCtx.createBiquadFilter();node.type=type;return node;};
+    const hpf=createFilter("highpass"),lpf=createFilter("lowpass");
+    hpf.Q.value=Math.SQRT1_2;lpf.Q.value=Math.SQRT1_2;
+    const bells=[createFilter("peaking"),createFilter("peaking"),createFilter("peaking")];
+    const dry=audioCtx.createGain(),wet=audioCtx.createGain();
+    publicTone={hpf,lpf,bells,dry,wet};
+    inAn.connect(sceneNode);
+    sceneNode.connect(dry);dry.connect(outGain);
+    let tail=sceneNode;
+    for(const node of [hpf,...bells,lpf]){tail.connect(node);tail=node;}
+    tail.connect(wet);wet.connect(outGain);
+    outGain.connect(outAn);outAn.connect(audioCtx.destination);
     $("#sampleRateReadout").textContent=audioCtx.sampleRate+" Hz";
-    $("#blockReadout").textContent="WASM / AudioWorklet";
+    $("#blockReadout").textContent="WEB AUDIO EQ / READY";
     updateGains();
   })();
   try{await audioSetup;}finally{audioSetup=null;}
 }
+// Public Web Audio API biquad DSP only: not the private SOURCE C++ DSP.
+function updatePublicTone(){
+  if(!publicTone||!audioCtx)return;
+  const now=audioCtx.currentTime,p=state.params||{},eq=publicTone,nyquist=audioCtx.sampleRate/2;
+  const limit=(v,lo,hi)=>Math.min(hi,Math.max(lo,Number.isFinite(Number(v))?Number(v):lo));
+  const set=(param,value)=>param.setTargetAtTime(value,now,.012);
+  const bypassAll=!!state.globalBypass;
+  set(sceneNode.gain,Math.pow(10,(bypassAll?0:limit(p.inputGain,-24,24))/20));
+  set(outGain.gain,Math.pow(10,(bypassAll?0:limit(p.outputGain,-24,24))/20));
+  set(eq.hpf.frequency,limit(p.hpf,20,Math.min(1000,nyquist*.95)));
+  set(eq.lpf.frequency,limit(p.lpf,1000,Math.min(20000,nyquist*.95)));
+  for(let i=1;i<=3;i++){
+    const node=eq.bells[i-1];
+    set(node.frequency,limit(p['b'+i+'Freq'],20,nyquist*.95));
+    set(node.Q,limit(p['b'+i+'Q'],.1,12));
+    set(node.gain,limit(p['b'+i+'Gain'],-18,18));
+  }
+  const active=Number(p.hpf)>20||Number(p.lpf)<20000||[1,2,3].some(i=>Math.abs(Number(p['b'+i+'Gain'])||0)>0.0001);
+  const bypass=bypassAll||!!state.bypass?.EQ_TONE;
+  const wet=active&&!bypass?limit(p.mix,0,100)/100:0;
+  set(eq.dry.gain,1-wet);set(eq.wet.gain,wet);
+  const el=document.querySelector('#blockReadout');
+  if(el)el.textContent=bypass?'BYPASS / INPUT':active&&wet>0?'WEB AUDIO EQ / LIVE':'DRY / EQ IDLE';
+}
 function updateGains(){
-  if(sceneNode)sceneNode.port.postMessage({type:"parameters",values:parametersFromState(state),hpf:hpfFromState(state),eq3:eq3FromState(state)});
+  updatePublicTone();
   const label=$("#buildLabel");
   if(label){label.textContent="WEB TEST · "+(audioName?audioName+" · ":"")+audioSupportNote(state);label.title=label.textContent;}
 }
@@ -652,20 +688,21 @@ async function loadAudio(e){
     if(generation!==audioLoadGeneration)return;
     if(audioUrl)URL.revokeObjectURL(audioUrl);
     audioUrl=URL.createObjectURL(f);audioName=f.name;audio.src=audioUrl;audio.load();
-    sceneNode.port.postMessage({type:"reset"});updateGains();mark("AUDIO LOADED · PLAY 開始試聽");
+    updateGains();mark("AUDIO LOADED · PUBLIC EQ READY · PLAY");
   }catch(error){mark(String(error.message||error));}
 }
-async function play(){mark("PUBLIC UI PREVIEW — AUDIO DISABLED");return;
+async function play(){
   try{
     if(!audio.src){mark("請先 LOAD AUDIO");return;}
     if(!audio.paused){audio.pause();return;}
     await setupAudio();await audioCtx.resume();await audio.play();
+    mark("PUBLIC WEB EQ LIVE · SOURCE / SPACE MODELS PENDING");
   }catch(error){mark(String(error.message||error));}
 }
-function stop(){audio.pause();if(audio.readyState)audio.currentTime=0;sceneNode?.port.postMessage({type:"reset"});}
+function stop(){audio.pause();if(audio.readyState)audio.currentTime=0;sceneNode?.port?.postMessage({type:"reset"});}
 for(const event of ["play","pause","ended"])audio.addEventListener(event,()=>$("#playBtn").textContent=audio.paused?"PLAY":"PAUSE");
 audio.addEventListener("error",()=>mark("音檔無法播放，請使用 WAV／瀏覽器支援的格式"));
-audio.addEventListener("seeked",()=>sceneNode?.port.postMessage({type:"reset"}));
+audio.addEventListener("seeked",()=>sceneNode?.port?.postMessage({type:"reset"}));
 function stats(a){if(!a)return{peak:-Infinity,rms:-Infinity,pct:0};const d=new Uint8Array(a.fftSize);a.getByteTimeDomainData(d);let p=0,s=0;for(const x of d){const v=(x-128)/128;p=Math.max(p,Math.abs(v));s+=v*v}p=db(p);const r=db(Math.sqrt(s/d.length));return{peak:p,rms:r,pct:Math.max(0,Math.min(100,(p+60)/60*100))}}
 function meters(){const i=stats(inAn),o=stats(outAn);peakIn=Math.max(peakIn,i.peak);peakOut=Math.max(peakOut,o.peak);const im=$("#inMeter"),om=$("#outMeter"),ui2=state?.ui==="UI_02",pct=v=>Math.max(0,Math.min(100,(v+60)/60*100)),iv=meterMode==="RMS"?i.rms:i.peak,ov=meterMode==="RMS"?o.rms:o.peak,ip=meterMode==="RMS"?pct(i.rms):i.pct,op=meterMode==="RMS"?pct(o.rms):o.pct;if(ui2){im.style.width=ip+"%";om.style.width=op+"%";im.style.height="100%";om.style.height="100%"}else{im.style.height=ip+"%";om.style.height=op+"%";im.style.width="";om.style.width=""}$("#peakInValue").textContent=fmt(iv);$("#peakOutValue").textContent=fmt(ov);$("#rmsInValue").textContent=fmt(i.rms);$("#rmsOutValue").textContent=fmt(o.rms)}
 let spectrumBins=null;
