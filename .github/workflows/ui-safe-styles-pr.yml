@@ -98,6 +98,45 @@ jobs:
                 if(!(await page.$eval("#assetBrowser",x=>x.classList.contains("hidden"))))
                   throw Error("Original modal close lost");
 
+                // A single short functional browser check, within the existing UI smoke:
+                // public WebAudio EQ changes real WAV audio; no private DSP artifact.
+                if(ui==="UI_01"){
+                  const testData=await page.evaluate(()=>{
+                    const sr=48000,n=sr*2,buf=new ArrayBuffer(44+n*2),d=new DataView(buf);
+                    const ascii=(at,t)=>{for(let i=0;i<t.length;i++)d.setUint8(at+i,t.charCodeAt(i))};
+                    ascii(0,"RIFF");d.setUint32(4,36+n*2,true);ascii(8,"WAVE");ascii(12,"fmt ");
+                    d.setUint32(16,16,true);d.setUint16(20,1,true);d.setUint16(22,1,true);
+                    d.setUint32(24,sr,true);d.setUint32(28,sr*2,true);
+                    d.setUint16(32,2,true);d.setUint16(34,16,true);
+                    ascii(36,"data");d.setUint32(40,n*2,true);
+                    for(let i=0;i<n;i++)d.setInt16(44+i*2,Math.round(0.1*32767*Math.sin(2*Math.PI*600*i/sr)),true);
+                    const el=document.querySelector("#audioFile"),dt=new DataTransfer();
+                    dt.items.add(new File([buf],"browser-smoke.wav",{type:"audio/wav"}));
+                    el.files=dt.files;el.dispatchEvent(new Event("change",{bubbles:true}));
+                    return true;
+                  });
+                  if(!testData)throw Error("No browser audio input");
+                  await page.waitForFunction(()=>document.querySelector("#stateStatus")?.textContent.includes("AUDIO LOADED"),{timeout:15000});
+                  await page.$eval('[data-open="EQ_TONE"]',el=>el.click());
+                  const adjusted=await page.evaluate(()=>{
+                    const el=document.querySelector('[data-param="b2Gain"]');
+                    if(!el)return false;
+                    el.value="12";el.dispatchEvent(new Event("input",{bubbles:true}));
+                    return true;
+                  });
+                  if(!adjusted)throw Error("Three-band EQ knob has no input binding");
+                  await page.$eval("#playBtn",el=>el.click());
+                  await page.waitForFunction(()=>document.querySelector("#blockReadout")?.textContent.includes("EQ / LIVE"),{timeout:15000});
+                  await page.waitForFunction(()=>Number(document.querySelector("#audioElement")?.currentTime)>0.25,{timeout:15000});
+                  await page.waitForFunction(()=>{
+                    const a=Number(document.querySelector("#peakInValue")?.textContent);
+                    const b=Number(document.querySelector("#peakOutValue")?.textContent);
+                    return Number.isFinite(a)&&Number.isFinite(b)&&b-a>3;
+                  },{timeout:15000});
+                  await page.$eval("#globalBypass",el=>el.click());
+                  await page.waitForFunction(()=>document.querySelector("#blockReadout")?.textContent.includes("BYPASS"),{timeout:12000});
+                  console.log("PUBLIC EQ AUDIO PASS: WAV/PLAY/600Hz boost >3dB/real meter/BYPASS");
+                }
                 await page.close();
               }
               console.log("PUBLIC_UI_PREVIEW_PASS two views, 12 exact-source cosmetic CSS, no audio");
