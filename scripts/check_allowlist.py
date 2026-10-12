@@ -32,7 +32,8 @@ REVIEWED_CSS_SHA={
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
-    "Web/App/ui_asset_browser_frame_ref_v1.css": "375051baddf2d44951345984c8f56dd402c3c625"
+    "Web/App/ui_asset_browser_frame_ref_v1.css": "375051baddf2d44951345984c8f56dd402c3c625",
+    "Web/App/ui_original_render_clarity_v1.css": "c6c7655f4dc6dba942e6c89071ddc3f91c64e4a2"
 }
 ALLOWED.update(REVIEWED_CSS_SHA)
 ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
