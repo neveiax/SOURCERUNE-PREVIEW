@@ -1,0 +1,2 @@
+/* SR-20261012 original REF: do not pre-promote the whole scaled UI. */
+body.ui-01 .app,body.ui-02 .app{will-change:auto}
