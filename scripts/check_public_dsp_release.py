@@ -29,7 +29,7 @@ def check_public_dsp_release():
     for name in FILES:
         f=AUDIO/name
         b=f.read_bytes()
-        if not (8<len(b)<2000000 and b[:8]==b"\\x00asm\\x01\\x00\\x00\\x00"):
+        if not (8<len(b)<2000000 and b[:8]==bytes((0,97,115,109,1,0,0,0))):
             raise SystemExit("BLOCKED: missing/invalid WASM: "+name)
         h=hashlib.sha256(b).hexdigest()
         if hashes[name]!=h:raise SystemExit("BLOCKED: unapproved compiled binary: "+name)
