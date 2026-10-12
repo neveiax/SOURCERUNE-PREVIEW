@@ -13,6 +13,16 @@ The live site now serves the **original SOURCERUNE Web/App index, CSS and UI con
 
 The prior exploratory HTML preview remains available in legacy root files for rollback but is **not** the primary UI. Full actual audio testing must use the private source environment. The official SOURCE repository is now **Private** (verified 2026-10-11). This repository stays **Public** and serves only a sanitized original-UI preview. Sound testing requires a separately authorized private environment; anonymous-browser visual parity remains pending.
 
+## 2026-10-12 公開實際 DSP 試聽：新版發布規則（候選版）
+
+此工作分支準備把公開原版 Web 的音訊路徑由僅有 WebAudio EQ 改為**真 C++/WebAssembly＋AudioWorklet 可切換試聽**。公開成品**必須**包含 `Web/App/audio/sourcerune.wasm`、`hpf.wasm`、`eq3.wasm` 和附 SHA256 清單的 `public-dsp-manifest.json`。**在這四個檔案經 CI 發布前，網站仍只跑舊 WebAudio EQ；不能標示 SRC_002 真聲學模型已上線**。
+
+目前能真正操作的共用聲學模組是 **SRC_002 Smartphone Bottom Speaker 研究候選**（振膜、腔體耦合、熱衰減等），其他部分 SOURCE／TRANSMISSION 只有有限 HP/LP，其他 COVER/SPACE/SCENE 尚未完成。**250/250 正式音效驗收不是完成狀態**。
+
+二進位檔對外公開後所有人都能下載、分析或逆向；**不公開 C++ 原始碼，不等於能保證公式保密**。正式版本必須由唯一核准私人 SOURCE commit `3a1c0517aee4b51fc076e65809aa110d1ce70cad` 編譯，先通過 Native/WASM 比對、真 Chrome AudioWorklet 播放，且 `scripts/check_public_dsp_release.py` 對三個編譯檔進行 SHA256 與白名單驗證。發行只允許 3 個 WASM＋一份 manifest，不得把私人 SOURCE/KNOWLEDGE、原碼或 Preset 參數直接拷貝到本倉。
+
+**授權部署所需的一次性設定**：PUBLIC `SOURCERUNE-PREVIEW` → Settings → Secrets and variables → Actions 新增 `SR_PRIVATE_SOURCE_READ_TOKEN`，使用只對私人 `SOURCERUNE` 開啟 **Contents: Read-only** 的 fine-grained PAT。公開工作流程 `Publish reviewed public SOURCE DSP WASM` 在核准並合併至主線時，才會嘗試編譯與正式發布；如果 Token 尚未設定，必須明確 FAIL，不得假裝部署成功。之後也可以 Actions 手動執行，輸入 `PUBLISH_WASM_PUBLICLY`。
+
 ## 2026-10-12 Web 測試版本狀態（公開安全說明）
 
 - **公開 PREVIEW**：仍是經安全核准的原版 UI／圖資，僅供觀看與操作介面；**不包含真正 DSP、WebAssembly、AudioWorklet 或私人音訊演算法**，本輪沒有更改 UI 元件與頁面外觀。
