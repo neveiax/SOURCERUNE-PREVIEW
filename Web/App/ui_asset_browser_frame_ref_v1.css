@@ -788,3 +788,7 @@
   outline:2px solid #90b0bd;
   outline-offset:-3px;
 }
+
+/* SR-20261012-UI-MODULE-CARDS: low-glare keyboard focus. */
+.module-rail .module-card:focus-visible{outline:2px solid #8daeba;outline-offset:-3px;box-shadow:inset 0 0 0 1px rgba(24,44,54,.85)}
+.module-rail .module-card:focus:not(:focus-visible){outline:none}
