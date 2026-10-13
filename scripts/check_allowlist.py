@@ -35,7 +35,7 @@ REVIEWED_CSS_SHA={
     "Web/App/ui01_ref_batch_c_v1.css": "5137187d84a5a818bba688a3833d7cf5dac23989",
     "Web/App/ui02_ref_batch_a_v1.css": "aecc3b4ff455389fb08d832c1920441d1085d726",
     "Web/App/ui02_ref_batch_b_v1.css": "2c9c9ca980abddcc9518a260fea913eae365ab5e",
-    "Web/App/ui02_ref_batch_c_v1.css": "7d58f5db375be9b4633e311412d7040c3433a1b2",
+    "Web/App/ui02_ref_batch_c_v1.css": "c186d671635df49c45bdd5a548d66d6e60f352c4",
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",

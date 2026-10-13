@@ -90,7 +90,7 @@ const MAC=[["MOTION","motion","%","MOTION"],["BAD SIGNAL","badSignal","%","TRANS
 function macroPct(id){const c=findControl(id),v=+state.params[id];return Math.max(0,Math.min(100,(v-c.min)/(c.max-c.min)*100))}
 function macroKnob(id,label,unit="",klass=""){const c=findControl(id),v=state.params[id],pct=macroPct(id),angle=-135+pct*2.7;return`<div class="macro-knob ${klass}" data-value="${v}${unit}" style="--pct:${pct};--angle:${angle}deg"><div class="macro-knob-face"><strong class="macro-knob-value">${v}${unit}</strong></div><span class="macro-knob-label">${label}</span><input class="macro-knob-range" data-macro="${id}" type="range" min="${c.min}" max="${c.max}" step="${c.step}" value="${v}" aria-label="${label}" aria-valuetext="${v}${c.unit||""}" title="Drag vertically, scroll, arrow keys, Shift for fine drag, double click to reset"></div>`}
 function macroSelect(id,klass=""){const c=findControl(id);return`<select class="macro-select ${klass}" data-macro-selectbox="${id}">${c.options.map(o=>`<option value="${o}" ${state.params[id]===o?"selected":""}>${pretty(o)}</option>`).join("")}</select>`}
-function modeButtons(id,vals,labels={}){return`<div class="macro-mode-row">${vals.map(v=>`<button type="button" data-macro-select="${id}" data-value="${v}" aria-pressed="${state.params[id]===v?"true":"false"}" class="${state.params[id]===v?"active":""}">${labels[v]||pretty(v)}</button>`).join("")}</div>`}
+function modeButtons(id,vals,labels={}){return`<div class="macro-mode-row" role="group" aria-label="${pretty(id)} modes">${vals.map(v=>`<button type="button" data-macro-select="${id}" data-value="${v}" aria-pressed="${state.params[id]===v?"true":"false"}" aria-label="${pretty(id)}: ${labels[v]||pretty(v)}" title="${labels[v]||pretty(v)}" class="${state.params[id]===v?"active":""}">${labels[v]||pretty(v)}</button>`).join("")}</div>`}
 function hpfEqPath(){
   const hz=Number(state.params.hpf);
   if(state.bypass.EQ_TONE||hz<=20)return "M0 50H100";
@@ -368,8 +368,28 @@ function renderMacros(){const d=distance().toFixed(1);$("#macroStrip").innerHTML
 `<div class="macro macro-eq ${state.advanced==="EQ_TONE"?"selected":""}" data-open="EQ_TONE"><div class="macro-eq-head"><h3>EQ / TONE (ADVANCED)</h3><button type="button" data-eq-zoom-in class="macro-eq-zoom-in" aria-label="Zoom in EQ editor" title="Zoom In · expand EQ">⤢</button><button type="button" class="macro-eq-power ${state.bypass.EQ_TONE?"":"active"}" data-eq-power aria-label="EQ / TONE power" aria-pressed="${!state.bypass.EQ_TONE}">${state.bypass.EQ_TONE?"OFF":"ON"}</button></div>${miniEqSvg()}<div class="macro-eq-foot"><div class="eq-cut-indicators" aria-label="HPF and LPF are draggable in graph"><span>HPF <strong data-eq-readout="hpf">${state.params.hpf<=20?"OFF":state.params.hpf+" Hz"}</strong></span><span class="eq-cut-caption">DRAG EQ POINTS</span><span>LPF <strong data-eq-readout="lpf">${state.params.lpf>=20000?"OFF":(state.params.lpf/1000).toFixed(1)+" kHz"}</strong></span></div>${eqMiniInlineMarkup()}</div></div>`;
 $$("[data-open]").forEach(e=>e.onclick=x=>{if(x.target.closest(".macro-knob,input,button,select,[role=slider]"))return;openAdvanced(e.dataset.open)});
 bindMacroKnobs();if(eqFocusIsOpen())markMiniEqInert();else bindMiniEq();bindMiniEqInline();
-$$("[data-macro-select]").forEach(b=>b.onclick=()=>mut(()=>state.params[b.dataset.macroSelect]=b.dataset.value));
-$$("[data-macro-selectbox]").forEach(s=>s.onchange=()=>mut(()=>state.params[s.dataset.macroSelectbox]=s.value));const device=$("#ui02TransmissionSelect");if(device)device.onchange=()=>{const id=device.value;if(byId.get(id)?.type==="TRANSMISSION"&&id!==state.selection.TRANSMISSION){mut(()=>{state.selection.TRANSMISSION=id});$("#ui02TransmissionSelect")?.focus({preventScroll:true})}};bindUi01SignalCheckboxes();bindUi01ConditionCheckboxes();bindAmbienceRef({getState:()=>state,findControl,mut});$$("[data-eq-power]").forEach(b=>b.onclick=()=>mut(()=>{state.bypass.EQ_TONE=!state.bypass.EQ_TONE}));
+$$("[data-macro-select]").forEach(b=>{
+  const id=b.dataset.macroSelect,value=b.dataset.value;
+  b.onclick=()=>{
+    if(state.params[id]!==value)mut(()=>state.params[id]=value);
+    const updated=$$("[data-macro-select]").find(el=>el.dataset.macroSelect===id&&el.dataset.value===value);
+    updated?.focus({preventScroll:true});
+  };
+  b.onkeydown=e=>{
+    if(!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Home","End"].includes(e.key))return;
+    e.preventDefault();e.stopPropagation();
+    const keys=$$("[data-macro-select]").filter(el=>el.dataset.macroSelect===id);
+    const current=keys.findIndex(el=>el.dataset.value===value);
+    const next=e.key==="Home"?0:e.key==="End"?keys.length-1:
+      (current+(e.key==="ArrowLeft"||e.key==="ArrowUp"?-1:1)+keys.length)%keys.length;
+    keys[next]?.click();
+  };
+});
+$$("[data-macro-selectbox]").forEach(s=>s.onchange=()=>{
+  const id=s.dataset.macroSelectbox,value=s.value;
+  if(state.params[id]!==value)mut(()=>state.params[id]=value);
+  $$("[data-macro-selectbox]").find(el=>el.dataset.macroSelectbox===id)?.focus({preventScroll:true});
+});const device=$("#ui02TransmissionSelect");if(device)device.onchange=()=>{const id=device.value;if(byId.get(id)?.type==="TRANSMISSION"&&id!==state.selection.TRANSMISSION){mut(()=>{state.selection.TRANSMISSION=id});$("#ui02TransmissionSelect")?.focus({preventScroll:true})}};bindUi01SignalCheckboxes();bindUi01ConditionCheckboxes();bindAmbienceRef({getState:()=>state,findControl,mut});$$("[data-eq-power]").forEach(b=>b.onclick=()=>mut(()=>{state.bypass.EQ_TONE=!state.bypass.EQ_TONE}));
   $$("[data-eq-zoom-in]").forEach(b=>b.onclick=e=>{
     e.preventDefault();e.stopPropagation();dismissEqFloat();
     openEqFocus({getState:()=>state,onDismiss:dismissEqFloat,
