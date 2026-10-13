@@ -87,7 +87,7 @@ const MAC=[["MOTION","motion","%","MOTION"],["BAD SIGNAL","badSignal","%","TRANS
 function macroPct(id){const c=findControl(id),v=+state.params[id];return Math.max(0,Math.min(100,(v-c.min)/(c.max-c.min)*100))}
 function macroKnob(id,label,unit="",klass=""){const c=findControl(id),v=state.params[id],pct=macroPct(id),angle=-135+pct*2.7;return`<div class="macro-knob ${klass}" data-value="${v}${unit}" style="--pct:${pct};--angle:${angle}deg"><div class="macro-knob-face"><strong class="macro-knob-value">${v}${unit}</strong></div><span class="macro-knob-label">${label}</span><input class="macro-knob-range" data-macro="${id}" type="range" min="${c.min}" max="${c.max}" step="${c.step}" value="${v}" aria-label="${label}" aria-valuetext="${v}${c.unit||""}" title="Drag vertically, scroll, arrow keys, Shift for fine drag, double click to reset"></div>`}
 function macroSelect(id,klass=""){const c=findControl(id);return`<select class="macro-select ${klass}" data-macro-selectbox="${id}">${c.options.map(o=>`<option value="${o}" ${state.params[id]===o?"selected":""}>${pretty(o)}</option>`).join("")}</select>`}
-function modeButtons(id,vals,labels={}){return`<div class="macro-mode-row">${vals.map(v=>`<button data-macro-select="${id}" data-value="${v}" class="${state.params[id]===v?"active":""}">${labels[v]||pretty(v)}</button>`).join("")}</div>`}
+function modeButtons(id,vals,labels={}){return`<div class="macro-mode-row">${vals.map(v=>`<button type="button" data-macro-select="${id}" data-value="${v}" aria-pressed="${state.params[id]===v?"true":"false"}" class="${state.params[id]===v?"active":""}">${labels[v]||pretty(v)}</button>`).join("")}</div>`}
 function hpfEqPath(){
   const hz=Number(state.params.hpf);
   if(state.bypass.EQ_TONE||hz<=20)return "M0 50H100";
