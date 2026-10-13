@@ -1,0 +1,72 @@
+name: SR push version (every branch push)
+on:
+  push:
+    branches: ['**']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sr-push-version-tags
+  cancel-in-progress: false
+
+jobs:
+  tag-push:
+    name: Record Vx.x.xxx version
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+      - name: Create immutable version tag for this push
+        env:
+          SEQUENCE: ${{ github.run_number }}
+          COMMIT_SHA: ${{ github.sha }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(python3 - <<'PY'
+          import os
+          seq = int(os.environ['SEQUENCE'])
+          if seq < 1:
+              raise SystemExit('Invalid workflow run number')
+          n = seq - 1
+          major = 1 + n // 9990
+          minor = (n % 9990) // 999
+          patch = 1 + n % 999
+          if major > 9:
+              raise SystemExit('Version range exhausted; require policy revision')
+          print(f'V{major}.{minor}.{patch:03d}')
+          PY
+          )"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # An Actions re-run for the same push must never rewrite an existing version.
+          existing="$(git ls-remote origin "refs/tags/${version}^{}" | cut -f1)"
+          if [[ -z "$existing" ]]; then
+            if git ls-remote --exit-code origin "refs/tags/$version" >/dev/null 2>&1; then
+              git fetch -q origin "refs/tags/$version:refs/tags/$version"
+              existing="$(git rev-parse "$version^{}")"
+            fi
+          fi
+          if [[ -n "$existing" ]]; then
+            if [[ "$existing" != "$COMMIT_SHA" ]]; then
+              echo "::error::Version collision: $version points to $existing, not $COMMIT_SHA"
+              exit 1
+            fi
+          else
+            git tag -a "$version" "$COMMIT_SHA" -m "SOURCERUNE push $BRANCH_NAME $COMMIT_SHA"
+            git push origin "refs/tags/$version"
+          fi
+          {
+            echo "### Push version: $version"
+            echo "- Repository: $REPOSITORY"
+            echo "- Branch: $BRANCH_NAME"
+            echo "- Commit: $COMMIT_SHA"
+            echo "- Git tag: https://github.com/$REPOSITORY/releases/tag/$version"
+            echo "- Status: tag verified or created; NOT a product release / Pages deploy"
+          } >> "$GITHUB_STEP_SUMMARY"
