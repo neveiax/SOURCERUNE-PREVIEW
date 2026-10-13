@@ -56,3 +56,8 @@ Work ID、SOURCE 的私人開發 checkpoint（只記必要短 SHA／不公開機
 同一個現有 PREVIEW 網頁可使用瀏覽器標準 `BiquadFilterNode` 做公開可驗證的 **HPF、LPF、三段 Bell EQ**，並讓 Input/Output Gain、Mix、EQ/Global Bypass 與音檔播放真正影響聲音；必須清楚標示這只是 PUBLIC WEB EQ，**不是**從 Private SOURCE 複製的 C++／WASM DSP，與 VST3 並非 bit-exact parity。SOURCE、TRANSMISSION、COVER、MOTION、SPACE、AMBIENCE 等物理／場景模型尚未接入，不可把改動聲音的通用 EQ 當作具名 250 種效果已完成。
 
 發布門檻不變：仍禁止上傳私人 C++、WASM、AudioWorklet、機密 Preset／參數配方；不新增安全壓力測試回合。先以 PR 最小 CI 與真瀏覽器檢查，再經正式合併與 Pages 部署，並於 KNOWLEDGE 紀錄 SHA、支持／不支持範圍與真聽感驗收。
+
+
+## 2026-10-14 永久版號新規則｜每次推送都上版本
+
+每次 GitHub push（不限變更類型或分支）都必須形成新且不重用的 `Vx.x.xxx` 版本，三倉各自累進。由 `.github/workflows/sr-push-version.yml` 依同倉該 workflow run_number 產生遠端 Git tag 並在 job summary 留下 commit/branch/版本；失敗標 `VERSION BLOCKED`。版本不代表 PR 合併、CI／真音訊通過或 Pages 已部署。三倉協調及 Web 已部署版本另見私人 KNOWLEDGE 的 `SR-20261014-PUSH-VERSION`，不得因此繞過公開安全、DSP 保密或 UI/Host 音訊驗收。
