@@ -58,7 +58,7 @@ def main():
     assert (APP/"audio/processor.js").exists()
     check_public_dsp_release()
     js=(APP/"app.js").read_text()
-    # True dry browser playback is allowed. The real proprietary DSP remains excluded.
+    # SR UI parity control: compare a SOURCE-approved UI function verbatim.\n    # Separate public sound engine and DSP differences remain intentionally isolated.\n    approved_mode_buttons = "function modeButtons(id,vals,labels={}){return`<div class=\"macro-mode-row\">${vals.map(v=>`<button type=\"button\" data-macro-select=\"${id}\" data-value=\"${v}\" aria-pressed=\"${state.params[id]===v?\"true\":\"false\"}\" class=\"${state.params[id]===v?\"active\":\"\"}\">${labels[v]||pretty(v)}</button>`).join(\"\")}</div>`}"\n    assert approved_mode_buttons in js, "public macro-mode UI diverges from reviewed SOURCE"\n    # True dry browser playback is allowed. The real proprietary DSP remains excluded.
     assert 'async function play(){' in js and 'await audio.play()' in js
     assert 'async function setupAudio(){' in js
     assert 'sceneNode=audioCtx.createGain();' in js
