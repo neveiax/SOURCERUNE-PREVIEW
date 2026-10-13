@@ -1,4 +1,4 @@
-export const supportedSource = new Set([1,2,3,11,40]); // Existing approved public legacy release
+export const supportedSource = new Set([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,40]); // Only release.models are reported as current experimental source DSP
 export const supportedTransmission = new Set([1,2,3,5,11]);
 const modelNumber = id => Number(String(id).split('_')[1]) || 0;
 export function parametersFromState(state) {
