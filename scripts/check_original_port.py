@@ -75,7 +75,7 @@ def main():
     assert 'set(eq.dry.gain,1-wet);set(eq.wet.gain,wet)' in js
     engine=(APP/"audio/engine.js").read_text()
     assert 'PUBLIC C++／WASM 測試' in engine
-    assert 'export async function createSceneNode(context, state)' in engine
+    assert 'export async function createSceneNode(context, state, release=null)' in engine
     assert not list(ROOT.glob("Source/**/*.cpp"))
     factory=json.loads((APP/"data/scene_presets_v1.json").read_text())
     for collection in ("presets","reservePresets"):
