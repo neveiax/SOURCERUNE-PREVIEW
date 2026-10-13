@@ -658,7 +658,7 @@ async function setupAudio(){
       publicTone=null;
       inAn.connect(sceneNode);
       sceneNode.connect(outAn);outAn.connect(audioCtx.destination);
-      $("#blockReadout").textContent=`PUBLIC C++ / WASM ${published.models.length} SOURCE MODELS READY`;
+      $("#blockReadout").textContent=`PUBLIC C++ / WASM · ${published.models.length} SOURCE EXPERIMENTS READY`;
     } else {
       // Existing safe public WebAudio EQ remains a usable fallback until
       // the reviewed compiled release is actually published.
