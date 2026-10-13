@@ -122,7 +122,7 @@ def main():
                 if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
             ALLOWED.add(name)
         engine=root/"Web/App/audio/engine.js"
-        if not engine.is_file() or "export async function createSceneNode(context, state)" not in engine.read_text():
+        if not engine.is_file() or "export async function createSceneNode(context, state, release=null)" not in engine.read_text():
             raise SystemExit("BLOCKED: missing explicitly gated real-Web audio adapter")
         ALLOWED.add("Web/App/audio/engine.js")
         released=check_public_dsp_release()
