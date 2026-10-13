@@ -58,7 +58,7 @@ jobs:
                   if(!(await page.$eval("#ui02SignalStatus",el=>el.textContent==="IDLE")))throw Error(ui+" waveform must be idle without playing");
                   if(!(await page.$eval("#ui02BadSignalWaveform",el=>el.width===160&&el.height===48&&el.getBoundingClientRect().width>30)))throw Error(ui+" waveform canvas missing");
                   await page.select("#ui02TransmissionSelect",values.next);
-                  await page.click("#undoBtn");
+                  await page.$eval("#undoBtn",button=>button.click());
                   if(!(await page.$eval("#ui02TransmissionSelect",(el,value)=>el.value===value,values.first)))throw Error(ui+" selector undo failed");
                 }else if(await page.$("#ui02TransmissionSelect"))throw Error("UI02-only control leaked into UI01");
                 const ok=await page.evaluate(()=>{
