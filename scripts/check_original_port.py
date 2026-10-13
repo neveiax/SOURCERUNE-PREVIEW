@@ -60,7 +60,7 @@ def main():
     js=(APP/"app.js").read_text()
     # SR UI parity control: compare a SOURCE-approved UI function verbatim.
     # Separate public sound engine and DSP differences remain intentionally isolated.
-    approved_mode_buttons = "function modeButtons(id,vals,labels={}){return`<div class=\"macro-mode-row\">${vals.map(v=>`<button type=\"button\" data-macro-select=\"${id}\" data-value=\"${v}\" aria-pressed=\"${state.params[id]===v?\"true\":\"false\"}\" class=\"${state.params[id]===v?\"active\":\"\"}\">${labels[v]||pretty(v)}</button>`).join(\"\")}</div>`}"
+    approved_mode_buttons = "function modeButtons(id,vals,labels={}){return`<div class=\"macro-mode-row\" role=\"group\" aria-label=\"${pretty(id)} modes\">${vals.map(v=>`<button type=\"button\" data-macro-select=\"${id}\" data-value=\"${v}\" aria-pressed=\"${state.params[id]===v?\"true\":\"false\"}\" aria-label=\"${pretty(id)}: ${labels[v]||pretty(v)}\" title=\"${labels[v]||pretty(v)}\" class=\"${state.params[id]===v?\"active\":\"\"}\">${labels[v]||pretty(v)}</button>`).join(\"\")}</div>`}"
     assert approved_mode_buttons in js, "public macro-mode UI diverges from reviewed SOURCE"
     # True dry browser playback is allowed. The real proprietary DSP remains excluded.
     assert 'async function play(){' in js and 'await audio.play()' in js
