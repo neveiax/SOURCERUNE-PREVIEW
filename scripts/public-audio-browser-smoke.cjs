@@ -65,10 +65,24 @@ const puppeteer=require('puppeteer-core');
     if(!clickTarget.visible||!clickTarget.centerHitsButton)
       throw Error('PLAY_BUTTON_HIT_TEST_FAILED '+JSON.stringify(clickTarget));
     // Also record actual document click delivery, not merely Puppeteer's click call.
-    await page.evaluate(()=>document.addEventListener('click',event=>{
-      if(event.target.closest?.('#playBtn'))window.__srAudioSmokeTrace?.push({step:'play.button.click.delivered',t:performance.now()});
-    },true));
+    await page.evaluate(()=>{
+      window.__srAudioSmokeTrace?.push({step:'diagnostic.ready',t:performance.now()});
+      document.addEventListener('click',event=>{
+        const target=event.target;
+        window.__srAudioSmokeTrace?.push({step:'document.click.capture',targetId:target?.id,
+          targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),t:performance.now()});
+      },true);
+    });
     await page.click('#playBtn');
+    const afterPointer=await page.evaluate(()=>{
+      const el=document.querySelector('#playBtn');
+      return {events:window.__srAudioSmokeTrace?.slice(-10),hasOnclick:typeof el?.onclick,
+        currentStatus:document.querySelector('#stateStatus')?.textContent};
+    });
+    console.log('PLAY_POINTER_DIAGNOSTIC '+JSON.stringify(afterPointer));
+    // Require actual pointer delivery to the play control; do not silently replace with synthetic click.
+    if(!afterPointer.events?.some(e=>e.step==='document.click.capture'&&e.matched))
+      throw Error('PLAY_POINTER_EVENT_NOT_DELIVERED '+JSON.stringify({clickTarget,afterPointer}));
     // Diagnostic checkpoint: on failure report actual media + app state, not a silent timeout.
     try {
       await page.waitForFunction(()=>!document.querySelector('#audioElement').paused,{timeout:10000});
