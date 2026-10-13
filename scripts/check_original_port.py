@@ -67,7 +67,7 @@ def main():
     assert 'async function setupAudio(){' in js
     assert 'sceneNode=audioCtx.createGain();' in js
     assert 'sceneNode.gain.value=1;' in js
-    assert 'sceneNode=await createSceneNode(audioCtx,state);' in js
+    assert 'sceneNode=await createSceneNode(audioCtx,state,published);' in js
     assert 'new AudioWorkletNode(' not in js and 'WebAssembly.' not in js
     assert 'PUBLIC WEB EQ LIVE' in js
     assert 'audioCtx.createBiquadFilter()' in js
@@ -75,7 +75,7 @@ def main():
     assert 'set(eq.dry.gain,1-wet);set(eq.wet.gain,wet)' in js
     engine=(APP/"audio/engine.js").read_text()
     assert 'PUBLIC C++／WASM 測試' in engine
-    assert 'export async function createSceneNode(context, state)' in engine
+    assert 'export async function createSceneNode(context, state, release=null)' in engine
     assert not list(ROOT.glob("Source/**/*.cpp"))
     factory=json.loads((APP/"data/scene_presets_v1.json").read_text())
     for collection in ("presets","reservePresets"):
