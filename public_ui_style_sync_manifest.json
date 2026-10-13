@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261012-UI-ORIGINAL-RENDER-CLARITY",
+  "work_id": "SR-20261013-UI-ASSET-DISCOVERY",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "e9942a38f174e00ca928cb584819828867018be7",
-  "kind": "UI_01/UI_02 macro composition: genuine TOP vs 3D live stage; no DSP/art replacements",
+  "source_commit": "d4060fb5bbc8ec403f947140ee032186ad6cce3f",
+  "kind": "Original UI discoverability only; existing public DSP unchanged",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -17,7 +17,7 @@
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
-    "Web/App/ui_asset_browser_frame_ref_v1.css": "375051baddf2d44951345984c8f56dd402c3c625",
+    "Web/App/ui_asset_browser_frame_ref_v1.css": "550e7b70c1b5799aa6c08977a42ee3d8412ddb0f",
     "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
   }
 }
