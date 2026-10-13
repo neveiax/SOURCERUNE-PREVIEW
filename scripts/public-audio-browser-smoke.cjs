@@ -25,6 +25,9 @@ const puppeteer=require('puppeteer-core');
       input.dispatchEvent(new Event('change',{bubbles:true}));
     });
     await page.waitForFunction(()=>document.querySelector('#blockReadout')?.textContent?.includes('PUBLIC C++'),{timeout:20000});
+    // The 0.5-second fixture can end before the asynchronous browser assertion.
+    // Loop this same test fixture; still require real AudioWorklet + time progression.
+    await page.$eval('#audioElement',audio=>{audio.loop=true});
     await page.click('#playBtn');
     await page.waitForFunction(()=>!document.querySelector('#audioElement').paused,{timeout:10000});
     await new Promise(r=>setTimeout(r,250));
