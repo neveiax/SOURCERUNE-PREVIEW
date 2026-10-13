@@ -12,7 +12,7 @@ MANIFEST=AUDIO/"public-dsp-manifest.json"
 FILES=("sourcerune.wasm","sourcerune.wasm.gz","hpf.wasm","eq3.wasm")
 BASE_HASHES={
     "hpf.wasm":"73533cf34e5f021a5781aaa0a0b2454f4b143920e69c64adecbc07449b9d4d02",
-    "eq3.wasm":"9d68c10f41843652cfb1c950b3ef53e6ad1ac5f5e970a53e6ad1ac5f5e970a53e706d96a06ac71d36".replace("a53e6ad1ac5f5e970a53e","a53e706d96a06ac71d36") if False else "9d68c10f41843652cfb1c950b3ef53e706d96a06ac71d36",
+    "eq3.wasm":"9d68c10f41843652cfb1c950b3ef53e6ad1ac5f5e970a53e706d96a06ac71d36",
 }
 # hpf/eq3 values above must remain exact official 2026-10-13 GitHub release hashes.
 PUBLIC_RELEASES={
