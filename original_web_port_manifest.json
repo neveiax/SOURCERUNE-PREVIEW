@@ -198,6 +198,18 @@
     "Web/App/UI_01/ui01.css": {
       "sha": "5e1d9d8e9ef19a25d82bae61802aa3a1e088af44",
       "size": 269
+    },
+    "Web/App/ui_workbench.js": {
+      "sha": "264a77a487d5a55342cdce50d95f6d229dd748e9",
+      "size": 6670,
+      "source_commit": "68644bf3d499ea59284b489f4be6e4752c088de9",
+      "scope": "UI commands and presentation only; no audio processing"
+    },
+    "Web/App/ui_workbench_v1.css": {
+      "sha": "5aea21e54f49924f6a748ef8550505e1badfde3e",
+      "size": 3741,
+      "source_commit": "68644bf3d499ea59284b489f4be6e4752c088de9",
+      "scope": "UI commands and presentation only; no audio processing"
     }
   },
   "approved_png": {

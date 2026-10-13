@@ -1,0 +1,33 @@
+/* Main Web workflows live outside the fixed reference plugin shell. */
+#workbenchDialog{box-sizing:border-box;width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 32px);padding:24px;color:#dce7ec;background:#101b22;border:1px solid #527485;border-radius:12px;box-shadow:0 24px 80px #000b;font:13px/1.5 system-ui,sans-serif;overflow:auto}
+#workbenchDialog::backdrop{background:#03090dd1}
+.workbench-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}
+.workbench-head span{font-size:10px;letter-spacing:.2em;color:#89b7c8}
+.workbench-head h2{margin:3px 0 0;font-size:23px;font-weight:500}
+#workbenchDialog .global-tools-popover{position:static!important;inset:auto!important;transform:none!important;display:grid!important;width:auto!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important;grid-template-columns:1fr!important;gap:18px!important}
+#workbenchDialog .global-tools-popover[hidden],#presetNameForm[hidden]{display:none!important}
+#workbenchDialog section{border-top:1px solid #2b414d;padding-top:16px}
+#workbenchDialog h3{font-size:11px;letter-spacing:.13em;margin:0 0 5px;color:#a6c5d1}
+#workbenchDialog p{color:#9eb0ba;margin:0 0 12px}
+#workbenchDialog .workbench-actions{display:flex;flex-wrap:wrap;gap:8px}
+#workbenchDialog button{min-height:36px;padding:7px 13px;border:1px solid #425f70;border-radius:5px;background:linear-gradient(#263b48,#162630);color:#e0ebef;font:inherit;cursor:pointer}
+#workbenchDialog button:hover{border-color:#8ebed2;background:#28495a}
+#workbenchDialog button:disabled{opacity:.4;cursor:default}
+#workbenchDialog :focus-visible,#webAudioTransport :focus-visible{outline:2px solid #8bdef5;outline-offset:3px}
+#workbenchDialog .mini-pair{display:flex!important;flex-wrap:wrap;gap:8px;width:100%;margin-top:4px}
+#workbenchDialog .workbench-help{margin:20px 0 0;font-size:11px;line-height:1.8;white-space:pre-wrap}
+#presetNameForm label{display:block;font-size:11px;letter-spacing:.1em;margin-bottom:8px}
+#presetNameInput{box-sizing:border-box;width:100%;height:44px;padding:10px 12px;background:#09131a;border:1px solid #567687;border-radius:5px;color:#eef7fb;font:16px system-ui;margin-bottom:12px}
+#webAudioTransport{gap:2px;padding-top:5px;padding-bottom:4px}
+#webAudioTransport .audio-controls{min-height:30px;overflow-x:auto;scrollbar-width:none}
+#webAudioTransport .audio-controls>*{flex-shrink:0}
+#webAudioTransport .audio-controls>button:disabled{opacity:.45;cursor:default}
+#webAudioTransport #workbenchOpen{position:static;display:inline-flex;align-items:center;min-height:28px;padding:4px 10px}
+#webAudioTransport .audition-timeline{display:flex;align-items:center;gap:10px;height:17px;min-height:17px;font-size:10px;font-variant-numeric:tabular-nums}
+#webAudioTransport #auditionFileName{width:24%;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b5c8d2}
+#webAudioTransport #transportTime{display:block!important;position:static!important;min-width:72px;font:10px system-ui;font-variant-numeric:tabular-nums;color:#d3e5ee}
+#webAudioTransport #seekSlider{display:block!important;position:static!important;flex:1;min-width:40px;width:auto;height:14px;padding:0;margin:0;accent-color:#7ccee8;cursor:pointer}
+#webAudioTransport #seekSlider:disabled{opacity:.35;cursor:default}
+#webAudioTransport #auditionDuration{min-width:35px;text-align:right}
+#webAudioTransport .build-status{font-size:9px!important;line-height:13px!important}
+@media(max-width:600px){#workbenchDialog{padding:16px}#webAudioTransport .audio-controls{gap:3px}#webAudioTransport #workbenchOpen{padding:4px}#webAudioTransport #auditionFileName{max-width:110px}.workbench-head h2{font-size:20px}}
