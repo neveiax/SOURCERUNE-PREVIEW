@@ -1,5 +1,8 @@
 # SOURCERUNE-PREVIEW — 公開 UI 倉庫協作者必讀
 
+> **2026-10-13 正式更新／優先於以下舊版「Public 沒有 DSP」敘述**：本公開倉庫已有經 SOURCE 逐項驗證、獨立 SHA 白名單批准的 **SRC_001～SRC_017 實驗性 Native 同源 C++→WASM 編譯檔**（來源 PRIVATE SOURCE `6cf8bc3c82aaea52a7affcb6d5e2d4d9be716923`），以及共用 HPF／三段 EQ。公開 Web `Web/App/audio/public-dsp-manifest.json` 必須列出精確 17 個 `SRC_...` ID、實驗狀態、編譯 binary SHA256 和零項 Factory 驗收，且與 `scripts/check_public_dsp_release.py` **事先存在於可信 main** 的固定摘要完全一致。唯一可使用的公開音訊端點是原本的 `Web/App/`（UI_01／UI_02 同步）。此種已編譯 WASM **任何訪客都可下載／逆向分析**，不是保密技術；本例外只限被核准的確切二進位檔與薄 AudioWorklet，**不授權**把任何私有 C++、研究文件、預設配方、其他 233 款未驗收模型、完整資料庫及秘密上傳，也不表示 17 款已校準或 VST3 Host 驗收。以後新增來源／換 binary，必須另行審核與固定 SHA、Native/WASM／真瀏覽器音訊 Gate，仍採 SOURCE＋PREVIEW＋KNOWLEDGE 同輪追蹤。
+
+
 > 此倉為 **Public**，只允許經核准的 Web UI 外觀、操作、可公開圖資與部署檔案。本檔為可公開的**安全摘要**；正式的三倉協作細節與研發規範僅在已授權的 Private KNOWLEDGE 倉庫提供。與使用者溝通使用繁體中文。
 
 ## UI 更新必須同輪同步安全 Web 預覽（SR-20261011-UI-WEB-SAME-BATCH；2026-10-11）
