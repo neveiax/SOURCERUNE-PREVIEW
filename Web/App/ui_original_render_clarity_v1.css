@@ -1,0 +1,53 @@
+/* SR-20261012 original REF: do not pre-promote the whole scaled UI. */
+body.ui-01 .app,body.ui-02 .app{will-change:auto}
+
+/* Scene readability: bright street photography can hide small live markers.
+   Keep original REF composition, scene asset, geometry, controls and audio. */
+body.ui-02 #sceneSvg #sourceNode,
+body.ui-02 #sceneSvg #listenerNode{
+  filter:drop-shadow(0 1px 2px rgba(2,10,15,.95)) drop-shadow(0 0 4px rgba(2,10,15,.70));
+}
+body.ui-02 #sceneSvg #sourceLabel,
+body.ui-02 #sceneSvg text{
+  paint-order:stroke fill;
+  stroke:rgba(4,14,20,.86);
+  stroke-width:2.25px;
+  stroke-linejoin:round;
+}
+
+/* SR-20261013 UI major composition: 3D photo and a genuine, live TOP stage
+   are different presentations of the SAME selected source/listener/motion.
+   Reuses canonical REF dimensions and SVG; no changes to audio or presets. */
+body.ui-02:has(button[data-view="TOP"].active) #sceneSvg{
+  background-color:#09141a;
+  background-image:linear-gradient(180deg,#111f27,#071117)!important;
+  background-size:100% 100%!important;
+}
+body.ui-02:has(button[data-view="TOP"].active) #sceneSvg>rect:first-of-type{opacity:1;fill:#0a171e}
+body.ui-02:has(button[data-view="TOP"].active) #sceneSvg>rect:nth-of-type(2){opacity:.72}
+body.ui-02:has(button[data-view="TOP"].active) #sceneBuildings{opacity:.72!important}
+body.ui-02:has(button[data-view="TOP"].active) .scene-guide{display:block;pointer-events:none}
+body.ui-02:has(button[data-view="TOP"].active) .scene-guide line{
+  stroke:#527887;stroke-opacity:.55;stroke-width:1;vector-effect:non-scaling-stroke
+}
+body.ui-02:has(button[data-view="TOP"].active) .scene-guide text{
+  fill:#b3cdd6;font:11px ui-monospace,Consolas,monospace;letter-spacing:.01em
+}
+body.ui-02:has(button[data-view="TOP"].active) #sourceLabel{
+  display:block;fill:#d5eaf0;font-size:12px;font-weight:500
+}
+body.ui-02:has(button[data-view="TOP"].active) #sceneSvg #sourceNode,
+body.ui-02:has(button[data-view="TOP"].active) #sceneSvg #listenerNode{
+  filter:drop-shadow(0 0 8px rgba(77,204,240,.35))
+}
+body.ui-02:has(button[data-view="TOP"].active) #motionPath{
+  stroke-width:3;stroke:#a6eaff;filter:drop-shadow(0 0 6px rgba(47,154,199,.4))
+}
+body.ui-01:has(button[data-view="TOP"].active) #sceneBuildings{opacity:.52!important}
+body.ui-01:has(button[data-view="TOP"].active) #sceneSvg>rect:nth-of-type(2){opacity:.9}
+body.ui-01:has(button[data-view="TOP"].active) .scene-guide line{stroke-opacity:.56}
+body.ui-01:has(button[data-view="TOP"].active) #motionPath{stroke-width:2.8}
+body.ui-01:has(button[data-view="TOP"].active) #sceneSvg #sourceNode,
+body.ui-01:has(button[data-view="TOP"].active) #sceneSvg #listenerNode{
+  filter:drop-shadow(0 0 7px rgba(77,204,240,.3))
+}

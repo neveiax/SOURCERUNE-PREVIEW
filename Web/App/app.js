@@ -36,7 +36,7 @@ function mountWebTransport(){
   for(const q of [".top-actions>.file-btn","#playBtn","#stopBtn",".loop-toggle","#globalBypass",".top-actions>.segmented","#stateStatus"]){const element=$(q);if(element)row.append(element);}
   dock.append($(".build-status"));document.body.append(dock);
 }
-function fitRuntimeShell(){const ui2=state?.ui==="UI_02",rw=ui2?1672:1499,rh=ui2?941:807,vw=Math.max(1,window.innerWidth),vh=Math.max(1,window.innerHeight-78),s=Math.min(vw/rw,vh/rh),app=$(".app");if(!app)return;app.style.width=rw+"px";app.style.height=rh+"px";app.style.transform="scale("+s+")"}
+function fitRuntimeShell(){const ui2=state?.ui==="UI_02",rw=ui2?1672:1499,rh=ui2?941:807,vw=Math.max(1,window.innerWidth),vh=Math.max(1,window.innerHeight-78),s=Math.min(vw/rw,vh/rh),app=$(".app");if(!app)return;app.style.width=rw+"px";app.style.height=rh+"px";app.style.transform="none";app.style.zoom=String(s)}
 function applySceneViewportProfile(){
   const svg=$("#sceneSvg");if(!svg)return;
   const ui1=state?.ui==="UI_01";

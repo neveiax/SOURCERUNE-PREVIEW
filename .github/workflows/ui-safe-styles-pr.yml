@@ -21,14 +21,14 @@ jobs:
     timeout-minutes: 7
     steps:
       - uses: actions/checkout@v4
-      - name: Verify existing public asset allowlist and DSP exclusion
+      - name: Verify public UI allowlist and approved binary hashes
         run: |
           set -euo pipefail
           python3 scripts/check_allowlist.py
           python3 scripts/check_original_port.py
-          ! find Web/App -type f \( -name '*.wasm' -o -name 'processor.js' \) | grep .
+          python3 scripts/check_public_dsp_release.py
           node --check Web/App/app.js
-      - name: One real no-audio Chromium UI screenshot
+      - name: One Chromium UI and existing public audio smoke
         shell: bash
         run: |
           set -euo pipefail
@@ -43,7 +43,8 @@ jobs:
           test -n "$chrome"
           npm install --silent --no-save --prefix /tmp/sr-public-ui puppeteer-core@24
           NODE_PATH=/tmp/sr-public-ui/node_modules CHROME_PATH="$chrome" node <<'NODE'
-          const p=require("puppeteer-core");
+          const p=require("puppeteer-core"),fs=require("fs");
+          const compiledAudio=fs.existsSync("Web/App/audio/public-dsp-manifest.json");
           (async()=>{
             const browser=await p.launch({executablePath:process.env.CHROME_PATH,headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
             try{
@@ -57,6 +58,12 @@ jobs:
                   return {css:styles.length,live,missing:styles.filter(x=>!x.sheet).map(x=>x.href)};
                 });
                 if(ok.css!==9||!ok.live||ok.missing.length)throw Error("Original public UI cosmetic styles not loaded "+JSON.stringify({ui,ok}));
+                const clarity=await page.evaluate(()=>{
+                  const app=document.querySelector('.app'),style=getComputedStyle(app);
+                  return {geometry:window.__geometryAudit?.ok,zoom:Number(style.zoom),transform:style.transform,willChange:style.willChange};
+                });
+                if(!clarity.geometry||!(clarity.zoom>0&&clarity.zoom<1)||clarity.transform!=="none"||clarity.willChange!=="auto")
+                  throw Error("Original UI render clarity or geometry failed "+JSON.stringify({ui,clarity}));
                 await page.screenshot({path:"public_"+ui+".png",fullPage:false});
                 const modalStyle=await page.evaluate(()=>{
                   const link=document.querySelector('link[href="./ui_asset_browser_frame_ref_v1.css"]');
@@ -108,8 +115,8 @@ jobs:
                   throw Error("Original modal close lost");
 
                 // A single short functional browser check, within the existing UI smoke:
-                // public WebAudio EQ changes real WAV audio; no private DSP artifact.
-                if(ui==="UI_01"){
+                // Keep the legacy EQ fixture only when no approved compiled release exists.
+                if(ui==="UI_01"&&!compiledAudio){
                   const testData=await page.evaluate(()=>{
                     const sr=48000,n=sr*2,buf=new ArrayBuffer(44+n*2),d=new DataView(buf);
                     const ascii=(at,t)=>{for(let i=0;i<t.length;i++)d.setUint8(at+i,t.charCodeAt(i))};
@@ -148,10 +155,13 @@ jobs:
                 }
                 await page.close();
               }
-              console.log("PUBLIC_UI_PREVIEW_PASS two views, 12 exact-source cosmetic CSS, no audio");
+              console.log("PUBLIC_UI_PREVIEW_PASS two views, original geometry, zoom clarity and asset-library interactions");
             }finally{await browser.close()}
           })().catch(e=>{console.error(e.stack||e);process.exitCode=1});
           NODE
+          if test -f Web/App/audio/public-dsp-manifest.json; then
+            NODE_PATH=/tmp/sr-public-ui/node_modules CHROME_PATH="$chrome" node scripts/public-audio-browser-smoke.cjs
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: public-ui-pr116-safe-cosmetics

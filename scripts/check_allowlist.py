@@ -39,7 +39,8 @@ REVIEWED_CSS_SHA={
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
-    "Web/App/ui_asset_browser_frame_ref_v1.css": "375051baddf2d44951345984c8f56dd402c3c625"
+    "Web/App/ui_asset_browser_frame_ref_v1.css": "375051baddf2d44951345984c8f56dd402c3c625",
+    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
 }
 ALLOWED.update(REVIEWED_CSS_SHA)
 ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
@@ -114,7 +115,10 @@ def main():
                 relative.as_posix()=="audio/transport.css")
             if not valid:raise SystemExit("BLOCKED: unapproved Web UI source "+name)
             data=(root/name).read_bytes()
-            if name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
+            if name=="Web/App/geometry_audit.js":
+                if blobsha(data)!="c97655194f0249edf05d84416f33daedbd0006ff":
+                    raise SystemExit("BLOCKED: unapproved original geometry audit SHA")
+            elif name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
                 if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
             ALLOWED.add(name)
         engine=root/"Web/App/audio/engine.js"

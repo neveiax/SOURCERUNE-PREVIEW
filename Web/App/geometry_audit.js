@@ -10,7 +10,7 @@ function auditReferenceGeometry(){
   const topbar=document.querySelector(".topbar");
   if(!app||!ws||!center||!scene||!macro||!topbar)return {ok:false,reason:"missing-root"};
 
-  const scale=parseFloat((app.style.transform.match(/scale\(([^)]+)\)/)||[])[1]||"1")||1;
+  const scale=parseFloat((app.style.transform.match(/scale\(([^)]+)\)/)||[])[1]||getComputedStyle(app).zoom||"1")||1;
   const appRect=app.getBoundingClientRect();
   const box=e=>{const r=e.getBoundingClientRect();return {
     w:r.width/scale,h:r.height/scale,
