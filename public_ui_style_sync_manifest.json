@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261013-UI02-INTELLIGIBILITY-INTERACTION",
+  "work_id": "SR-20261013-UI-ASSET-CONTROLS",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "c07fbf3304772213c7acec33c96bbeaefaa4e518",
-  "kind": "UI02 accessible original mode buttons and keyboard/focus, DSP unchanged",
+  "source_commit": "3c9bd701bd779e3c0322fe1db6a1062784c20af8",
+  "kind": "Reviewed CSS-only asset browser control focus and alignment. No audio changes.",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -17,7 +17,7 @@
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
-    "Web/App/ui_asset_browser_frame_ref_v1.css": "550e7b70c1b5799aa6c08977a42ee3d8412ddb0f",
+    "Web/App/ui_asset_browser_frame_ref_v1.css": "5d54e031ab15420d65ffa8ca4a9d98c86521cb19",
     "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
   }
 }
