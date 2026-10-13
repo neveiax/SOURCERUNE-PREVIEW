@@ -6,6 +6,34 @@ const puppeteer=require('puppeteer-core');
     args:['--no-sandbox','--disable-dev-shm-usage','--autoplay-policy=no-user-gesture-required']});
   try {
     const page=await browser.newPage();
+    // Diagnostic-only wrappers preserve both original method calls, arguments,
+    // return promises and acceptance criteria. No audio graph or DSP change.
+    await page.evaluateOnNewDocument(()=>{
+      const trace=[];
+      Object.defineProperty(window,'__srAudioSmokeTrace',{value:trace});
+      const AC=window.AudioContext||window.webkitAudioContext;
+      if(AC?.prototype?.resume){
+        const resume=AC.prototype.resume;
+        AC.prototype.resume=function(...args){
+          window.__srObservedContext=this;
+          trace.push({step:'context.resume.call',state:this.state,t:performance.now()});
+          const result=resume.apply(this,args);
+          result.then(()=>trace.push({step:'context.resume.fulfilled',state:this.state,t:performance.now()}),
+            err=>trace.push({step:'context.resume.rejected',error:String(err),state:this.state,t:performance.now()}));
+          return result;
+        };
+      }
+      const originalPlay=HTMLMediaElement.prototype.play;
+      HTMLMediaElement.prototype.play=function(...args){
+        trace.push({step:'media.play.call',paused:this.paused,t:performance.now()});
+        const result=originalPlay.apply(this,args);
+        if(result?.then)result.then(()=>trace.push({step:'media.play.fulfilled',paused:this.paused,t:performance.now()}),
+          err=>trace.push({step:'media.play.rejected',error:String(err),t:performance.now()}));
+        return result;
+      };
+      document.addEventListener('play',()=>trace.push({step:'media.play.event',t:performance.now()}),true);
+      document.addEventListener('pause',()=>trace.push({step:'media.pause.event',t:performance.now()}),true);
+    });
     const errors=[];
     page.on('pageerror',err=>errors.push(String(err)));
     await page.goto('http://127.0.0.1:4173/Web/App/?ui=UI_01',{waitUntil:'networkidle2'});
@@ -40,6 +68,9 @@ const puppeteer=require('puppeteer-core');
           errorCode:a?.error?.code,duration:a?.duration,
           muted:a?.muted,volume:a?.volume,loop:a?.loop,
           button:b?.textContent,status:document.querySelector('#stateStatus')?.textContent,
+          contextState:window.__srObservedContext?.state,
+          contextTime:window.__srObservedContext?.currentTime,
+          trace:window.__srAudioSmokeTrace?.slice(-35),
           build:document.querySelector('#buildLabel')?.textContent,
           block:document.querySelector('#blockReadout')?.textContent};
       });
