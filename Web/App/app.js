@@ -151,9 +151,31 @@ function bindEqHpf(){
 // Zero means inactive; when checked again, restore the previous positive
 // intensity (or the published schema default/minimum). No new DSP ID.
 const lastUi01SignalIntensity=Object.create(null);
+function ui02TransmissionMarkup(){
+  const devices=catalog.filter(x=>x.type==="TRANSMISSION");
+  return `<label class="ui02-transmission-device"><span>DEVICE</span><select id="ui02TransmissionSelect" aria-label="Transmission device">${devices.map(x=>`<option value="${x.id}" ${x.id===state.selection.TRANSMISSION?"selected":""}>${x.name}</option>`).join("")}</select></label><div class="ui02-transmission-wave"><span>OUTPUT WAVEFORM <em id="ui02SignalStatus">IDLE</em></span><canvas id="ui02BadSignalWaveform" width="160" height="48" role="img" aria-label="Actual output audio waveform while playing"></canvas></div>`;
+}
+let ui02WaveBuffer=null;
+function paintUi02Signal(){
+  const canvas=$("#ui02BadSignalWaveform");if(!canvas)return;
+  const ctx=canvas.getContext("2d");if(!ctx)return;
+  const w=canvas.width,h=canvas.height,live=!!outAn&&!audio.paused&&!audio.ended;
+  const status=$("#ui02SignalStatus");if(status)status.textContent=live?"LIVE":"IDLE";
+  ctx.clearRect(0,0,w,h);
+  ctx.beginPath();ctx.moveTo(0,h/2);ctx.lineTo(w,h/2);ctx.lineWidth=1;ctx.strokeStyle="#405967";ctx.stroke();
+  if(!live)return;
+  if(!ui02WaveBuffer||ui02WaveBuffer.length!==outAn.fftSize)ui02WaveBuffer=new Uint8Array(outAn.fftSize);
+  outAn.getByteTimeDomainData(ui02WaveBuffer);
+  ctx.strokeStyle="#8bcce2";ctx.lineWidth=1.5;ctx.beginPath();
+  for(let x=0;x<w;x++){
+    const v=ui02WaveBuffer[Math.floor(x/w*(ui02WaveBuffer.length-1))],y=(1-v/255)*h;
+    if(!x)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+}
 function ui01SignalDetail(){
   const rows=[["noiseStatic","Static"],["dropout","Dropout"],["interference","Interference"],["bitrateArtifacts","Low Bitrate"]];
-  if(state.ui!=="UI_01")return rows.map(([id,label])=>`<span>${label} ${state.params[id]}%</span>`).join("");
+  if(state.ui!=="UI_01")return ui02TransmissionMarkup();;
   return `<div class="macro-signal-toggles">${rows.map(([id,label])=>{
     const amount=Number(state.params[id])||0;
     return `<label class="macro-signal-toggle" title="${label}: ${amount}% (set amount in Advanced)">
@@ -347,7 +369,7 @@ function renderMacros(){const d=distance().toFixed(1);$("#macroStrip").innerHTML
 $$("[data-open]").forEach(e=>e.onclick=x=>{if(x.target.closest(".macro-knob,input,button,select,[role=slider]"))return;openAdvanced(e.dataset.open)});
 bindMacroKnobs();if(eqFocusIsOpen())markMiniEqInert();else bindMiniEq();bindMiniEqInline();
 $$("[data-macro-select]").forEach(b=>b.onclick=()=>mut(()=>state.params[b.dataset.macroSelect]=b.dataset.value));
-$$("[data-macro-selectbox]").forEach(s=>s.onchange=()=>mut(()=>state.params[s.dataset.macroSelectbox]=s.value));bindUi01SignalCheckboxes();bindUi01ConditionCheckboxes();bindAmbienceRef({getState:()=>state,findControl,mut});$$("[data-eq-power]").forEach(b=>b.onclick=()=>mut(()=>{state.bypass.EQ_TONE=!state.bypass.EQ_TONE}));
+$$("[data-macro-selectbox]").forEach(s=>s.onchange=()=>mut(()=>state.params[s.dataset.macroSelectbox]=s.value));const device=$("#ui02TransmissionSelect");if(device)device.onchange=()=>{const id=device.value;if(byId.get(id)?.type==="TRANSMISSION"&&id!==state.selection.TRANSMISSION){mut(()=>{state.selection.TRANSMISSION=id});$("#ui02TransmissionSelect")?.focus({preventScroll:true})}};bindUi01SignalCheckboxes();bindUi01ConditionCheckboxes();bindAmbienceRef({getState:()=>state,findControl,mut});$$("[data-eq-power]").forEach(b=>b.onclick=()=>mut(()=>{state.bypass.EQ_TONE=!state.bypass.EQ_TONE}));
   $$("[data-eq-zoom-in]").forEach(b=>b.onclick=e=>{
     e.preventDefault();e.stopPropagation();dismissEqFloat();
     openEqFocus({getState:()=>state,onDismiss:dismissEqFloat,
@@ -832,6 +854,6 @@ function spectrum(){
 }
 function waveform(){const c=$("#sceneWaveformCanvas");if(!c)return;const x=c.getContext("2d"),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.strokeStyle="#315564";x.lineWidth=1;x.beginPath();x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();if(!inAn)return;const d=new Uint8Array(inAn.fftSize);inAn.getByteTimeDomainData(d);x.strokeStyle="#5cc9ee";x.lineWidth=1.5;x.beginPath();for(let a=0;a<w;a++){const n=Math.floor(a/w*(d.length-1)),yy=d[n]/255*h;a?x.lineTo(a,yy):x.moveTo(a,yy)}x.stroke()}
 function time(){const t=audio.currentTime||0,m=Math.floor(t/60),s=Math.floor(t%60),ms=Math.floor(t%1*1000);$("#transportTime").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}.${String(ms).padStart(3,"0")}`;if(audio.duration)$("#seekSlider").value=Math.round(t/audio.duration*1000);syncSceneTime(state,audio)}
-function animate(){requestAnimationFrame(animate);time();spectrum();waveform();meters();paintAmbienceOutput(outAn,!audio.paused,performance.now());updateScene()}
+function animate(){requestAnimationFrame(animate);time();spectrum();waveform();paintUi02Signal();meters();paintAmbienceOutput(outAn,!audio.paused,performance.now());updateScene()}
 init().catch(e=>{console.error(e);$("#buildLabel").textContent="WEB TEST · INIT ERROR";mark("INIT ERROR")});
 window.addEventListener("resize",fitRuntimeShell,{passive:true});
