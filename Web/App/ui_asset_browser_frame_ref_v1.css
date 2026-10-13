@@ -792,3 +792,16 @@
 /* SR-20261012-UI-MODULE-CARDS: low-glare keyboard focus. */
 .module-rail .module-card:focus-visible{outline:2px solid #8daeba;outline-offset:-3px;box-shadow:inset 0 0 0 1px rgba(24,44,54,.85)}
 .module-rail .module-card:focus:not(:focus-visible){outline:none}
+
+/* SR-20261013-UI-ASSET-DISCOVERY: compact result metadata and reset state. */
+.asset-browser .asset-result-count{display:inline-block;margin-left:9px;color:#8ba4b0;font-size:10px;letter-spacing:.035em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.asset-browser #assetClearFilters{box-sizing:border-box;flex:0 0 auto;min-width:52px;height:30px;padding:0 7px;border:1px solid #49616c;border-radius:4px;background:#14242d;color:#c4d8e1;font-size:10px;letter-spacing:.035em;cursor:pointer}
+.asset-browser #assetClearFilters:hover:not(:disabled),.asset-browser #assetClearFilters:focus-visible{border-color:#8caebb;color:#eef5f7;outline:none}
+.asset-browser #assetClearFilters:disabled{opacity:.40;cursor:default}
+.asset-browser .asset-empty-reset{align-self:start;margin-top:7px;padding:7px 12px;border:1px solid #6b8896;border-radius:4px;background:#152a34;color:#dcebf1;font-size:11px;cursor:pointer}
+.asset-browser .asset-empty-reset:hover,.asset-browser .asset-empty-reset:focus-visible{border-color:#a0c2cf;outline:1px solid rgba(154,197,209,.3)}
+@media(max-width:630px){
+ .asset-browser .asset-result-count{font-size:9px;margin-left:6px}
+ .asset-browser #assetClearFilters{min-width:44px;padding:0 4px;font-size:9px}
+ .asset-browser .browser-tools select{flex-basis:106px;min-width:90px}
+}
