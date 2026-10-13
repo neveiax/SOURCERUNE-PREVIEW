@@ -1,35 +1,20 @@
-# SOURCERUNE — Public Original Web UI (no audio processor)
+# SOURCERUNE｜Public Web Preview
 
-The live site now serves the **original SOURCERUNE Web/App index, CSS and UI controls** from pinned SOURCE main `c035db4d`, instead of an independently recreated UI.
+這是正式的公開 UI_01／UI_02 網頁及經核准的實驗性 Web 音訊測試版。Private SOURCE 是唯一正式原始碼／Native VST3 來源，Private KNOWLEDGE 管理規範、250 主表與研究證據。
 
-- Live path: `Web/App/index.html` (root redirects automatically).
-- UI artwork: all pinned public PNGs copied byte-exact into `Assets/UI/`.
-- GUI JavaScript/CSS: source-exact except narrowly scoped public-audio disabling and public labels.
-- DSP C++/AudioWorklet/WASM: **not copied**.
-- Factory sound recipes: removed from public preset JSON; preset names, artwork and selection remain.
-- Play/audio meters/spectrum driven by audio are **disabled**, not secretly implemented or simulated. Display-only EQ curve and other original visual frontend source remain browser-visible.
-- Source SHA and per-file Git hashes: `original_web_port_manifest.json`.
-- Secure verification: `scripts/check_original_port.py`, `scripts/check_allowlist.py`.
+## 目前實際公開的音訊
 
-The prior exploratory HTML preview remains available in legacy root files for rollback but is **not** the primary UI. Full actual audio testing must use the private source environment. The official SOURCE repository is now **Private** (verified 2026-10-11). This repository stays **Public** and serves only a sanitized original-UI preview. Sound testing requires a separately authorized private environment; anonymous-browser visual parity remains pending.
+- `Web/App/audio/public-dsp-manifest.json` 的 `published: true` 代表已發布固定 SHA256 的 **SRC001～017 共 17 種實驗性 C++→WASM 模型**、HPF、三段 EQ、AudioWorklet；來源 SOURCE commit `6cf8bc3c82aaea52a7affcb6d5e2d4d9be716923`。
+- **不是 17 種已實機校準的正式產品、不是 250/250、不是 74 Factory Preset 或 Native DAW Host 完整驗收。** 新的 SRC018～021 和任何未核准模型、C++ 原始碼、機密配方／研究都不可自行公開。
+- 任何人都能下載／逆向公開 WASM。新增 binary 必須另行核准精確來源 SHA／授權、固定 hash 白名單、Native/WASM 測試及真 Chromium 音訊驗證。歷史的 UI-only／DRY-only 階段已被取代。
+- 資料來源：[public manifest](Web/App/audio/public-dsp-manifest.json)／[固定二進位檢查](scripts/check_public_dsp_release.py)。不能單靠 manifest 存在就宣稱所有聲音已驗收。
 
-## 2026-10-12 公開實際 DSP 試聽：新版發布規則（候選版）
+**網站：** https://ureia-dev.github.io/SOURCERUNE-PREVIEW/Web/App/
 
-此工作分支準備把公開原版 Web 的音訊路徑由僅有 WebAudio EQ 改為**真 C++/WebAssembly＋AudioWorklet 可切換試聽**。公開成品**必須**包含 `Web/App/audio/sourcerune.wasm`、`hpf.wasm`、`eq3.wasm` 和附 SHA256 清單的 `public-dsp-manifest.json`。**在這四個檔案經 CI 發布前，網站仍只跑舊 WebAudio EQ；不能標示 SRC_002 真聲學模型已上線**。
+## 最新版本與研發狀態
 
-目前能真正操作的共用聲學模組是 **SRC_002 Smartphone Bottom Speaker 研究候選**（振膜、腔體耦合、熱衰減等），其他部分 SOURCE／TRANSMISSION 只有有限 HP/LP，其他 COVER/SPACE/SCENE 尚未完成。**250/250 正式音效驗收不是完成狀態**。
+- 每次 GitHub push 都產生該倉新的 `Vx.x.xxx` tag；**只有 Pages 成功部署的 main SHA 對應線上正式版本**。研究 branch 的較新 tag 不等於 Web 已更新。
+- 更近期的 UI CSS：PREVIEW [#35](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/pull/35) 與 SOURCE [#161](https://github.com/ureia-dev/SOURCERUNE/pull/161) 尚未合併，Public Chromium PLAY pointer 事件測試失敗；不可跳過驗收直接部署。
+- [AGENTS.md](AGENTS.md) 是本倉唯一公開安全與協作入口。每次先比對 Private SOURCE 原版和明確可公開的檔案，再經 allowlist／必要 Fast／真瀏覽器測試。不得為 Web 改動建立第二套獨立畫面。
 
-二進位檔對外公開後所有人都能下載、分析或逆向；**不公開 C++ 原始碼，不等於能保證公式保密**。正式版本必須由唯一核准私人 SOURCE commit `3a1c0517aee4b51fc076e65809aa110d1ce70cad` 編譯，先通過 Native/WASM 比對、真 Chrome AudioWorklet 播放，且 `scripts/check_public_dsp_release.py` 對三個編譯檔進行 SHA256 與白名單驗證。發行只允許 3 個 WASM＋一份 manifest，不得把私人 SOURCE/KNOWLEDGE、原碼或 Preset 參數直接拷貝到本倉。
-
-**授權部署所需的一次性設定**：PUBLIC `SOURCERUNE-PREVIEW` → Settings → Secrets and variables → Actions 新增 `SR_PRIVATE_SOURCE_READ_TOKEN`，使用只對私人 `SOURCERUNE` 開啟 **Contents: Read-only** 的 fine-grained PAT。公開工作流程 `Publish reviewed public SOURCE DSP WASM` 在核准並合併至主線時，才會嘗試編譯與正式發布；如果 Token 尚未設定，必須明確 FAIL，不得假裝部署成功。之後也可以 Actions 手動執行，輸入 `PUBLISH_WASM_PUBLICLY`。
-
-## 2026-10-12 Web 測試版本狀態（公開安全說明）
-
-- **公開 PREVIEW**：仍是經安全核准的原版 UI／圖資，僅供觀看與操作介面；**不包含真正 DSP、WebAssembly、AudioWorklet 或私人音訊演算法**，本輪沒有更改 UI 元件與頁面外觀。
-- **真正 Web 音訊試聽**：在已授權的 **Private SOURCERUNE SOURCE** 提供驗證候選和私人 GitHub Actions 試聽包。使用者需登入私人倉庫並以 `localhost` 啟動，不將 DSP 發布到此公開倉庫。
-- **私人進度總表**：僅在 Private KNOWLEDGE 更新本次測試版的已驗證項目／缺口。公開頁面不得含內部演算法細節。
-- **狀態界線**：Public UI 更新與 Private DSP 試聽是兩種不同部署；此項為安全狀態紀錄，不宣稱公開 Web 已可處理音訊。
-
-## 三倉協作規則
-
-全部協作者請先閱讀 [AGENTS.md](AGENTS.md)。正式產品及完整音訊 Web／VST3 在 **SOURCERUNE（Private）**；本倉 **SOURCERUNE-PREVIEW（Public）** 只安全同步核准的原版 UI、公開圖資與 Pages；私人規格、研究和工作單在 **SOURCERUNE-KNOWLEDGE（Private）**。每輪工作統一 Work ID，檢查三倉 main／PR／CI，必要更動同輪協調，不需要改動的倉庫明列 `NO CHANGE`。**禁止把私人 SOURCE 全量推到本公開倉庫**。
+所有時間性狀態應重新查 [main、PR 與 Pages Actions](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/actions)；舊快照保留在 Git history，不應繼續複寫成新指令。
