@@ -25,7 +25,7 @@ export function audioSupportNote(state, published=false, release=null) {
   const approvedIds=new Set(Array.isArray(release?.models)?release.models.map(x=>modelNumber(x)):[]);
   const latest=release?.sourceCandidateSha==='6cf8bc3c82aaea52a7affcb6d5e2d4d9be716923';
   const sourceLabel=latest?(approvedIds.has(src)?'可聽的獨立電聲研究候選':'未接入這版 DSP'):(src===2?'SRC_002 舊版物理候選':supportedSource.has(src)?'僅有限頻響':'未實裝');
-  return `PUBLIC C++／WASM ${latest?'研究版 SRC001–017':'舊版 SRC002'} · SOURCE ${sourceLabel} · TRANSMISSION ${supportedTransmission.has(trn)?'僅有限頻寬':'未實裝'} · HPF/LPF/3-band EQ 可聽；尚非設備聲學／Factory 最終驗收`;
+  return `PUBLIC C++／WASM 測試 ${latest?'研究版 SRC001–017':'舊版 SRC002'} · SOURCE ${sourceLabel} · TRANSMISSION ${supportedTransmission.has(trn)?'僅有限頻寬':'未實裝'} · HPF/LPF/3-band EQ 可聽；尚非設備聲學／Factory 最終驗收`;
 }
 export async function createSceneNode(context, state, release=null) {
   if(!context.audioWorklet)throw new Error('需要支援 AudioWorklet 的瀏覽器與 HTTPS／localhost');
