@@ -51,6 +51,7 @@
 <link rel="stylesheet" href="./ui_ref_text_guard_c_v1.css">
 <link rel="stylesheet" href="./ui_asset_browser_frame_ref_v1.css">
 <link rel="stylesheet" href="./ui_original_render_clarity_v1.css">
+<link rel="stylesheet" href="./ui_workbench_v1.css">
 </head>
 <body class="ui-01">
 <div class="app">
@@ -95,6 +96,6 @@
 <section class="macro-strip" id="macroStrip"></section>
 <section class="advanced-drawer panel"><div class="advanced-head"><div><span class="eyebrow">DETAILED CONTROL</span><h2 id="advancedTitle">MOTION / DISTANCE</h2></div><div class="advanced-nav" id="advancedNav"></div><button type="button" id="advancedCloseBtn" aria-label="Close advanced controls">CLOSE</button></div><div id="advancedBody" class="advanced-body"></div></section>
 </div>
-<div id="assetBrowser" class="asset-browser hidden" role="dialog" aria-modal="true" aria-labelledby="browserTitle"><div class="browser-card"><div class="browser-head"><div><span class="eyebrow">ASSET LIBRARY</span><h2 id="browserTitle">SOURCE</h2></div><button type="button" id="browserClose" aria-label="Close asset library">CLOSE</button></div><div class="browser-tools"><input id="assetSearch" type="search" aria-label="Search assets" placeholder="Search"><select id="categorySelect" aria-label="Asset category"></select></div><div class="browser-body"><div id="assetList" class="asset-list"></div><div id="assetPreview" class="asset-preview"></div></div></div></div>
+<div id="assetBrowser" class="asset-browser hidden" role="dialog" aria-modal="true" aria-labelledby="browserTitle"><div class="browser-card"><div class="browser-head"><div><span class="eyebrow">ASSET LIBRARY</span><span id="assetResultCount" class="asset-result-count" role="status" aria-live="polite"></span><h2 id="browserTitle">SOURCE</h2></div><button type="button" id="browserClose" aria-label="Close asset library">CLOSE</button></div><div class="browser-tools"><input id="assetSearch" type="search" aria-label="Search assets" placeholder="Search"><select id="categorySelect" aria-label="Asset category"></select><button type="button" id="assetClearFilters" aria-label="Reset asset search and category" disabled>RESET</button></div><div class="browser-body"><div id="assetList" class="asset-list"></div><div id="assetPreview" class="asset-preview"></div></div></div></div>
 <input id="stateImportFile" type="file" accept="application/json,.json" hidden><audio id="audioElement" preload="metadata"></audio><script src="./geometry_audit.js"></script><script type="module" src="./app.js"></script>
 </body></html>

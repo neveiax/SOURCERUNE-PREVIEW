@@ -99,6 +99,16 @@ jobs:
                    frame.imageBorder!=="1px"||frame.split!=="1px"||frame.items<10||!(frame.frameZ>frame.transportZ)||!frame.lowerEdgeVisible)
                   throw Error("Public original modal still uses ugly stretched frame: "+JSON.stringify(frame));
                 await page.screenshot({path:"public_MODAL_"+ui+".png",fullPage:false});
+                if(!(await page.$eval("#assetResultCount",e=>e.textContent.includes(" ASSETS"))))throw Error(ui+" asset count missing");
+                await page.$eval("#assetSearch",e=>{e.value="__no_match__";e.dispatchEvent(new Event("input",{bubbles:true}))});
+                await page.click(".asset-empty-reset");
+                if(!(await page.$eval("#assetClearFilters",e=>e.disabled)))throw Error(ui+" reset not cleared");
+                await page.focus(".asset-item:nth-child(2)");
+                await page.keyboard.press("End");
+                if(!(await page.$eval(".asset-item:last-of-type",e=>e===document.activeElement)))throw Error(ui+" End failed");
+                await page.keyboard.press("Home");
+                if(!(await page.$eval(".asset-item:first-of-type",e=>e===document.activeElement)))throw Error(ui+" Home failed");
+                await page.focus("#assetSearch");
                 if(!(await page.$eval("#assetSearch",el=>el===document.activeElement)))throw Error(ui+" search focus absent");
                 await page.$eval("#assetSearch",el=>{el.value="__unmatched_asset_20261012__";el.dispatchEvent(new Event("input",{bubbles:true}))});
                 if(!(await page.$eval(".asset-empty",el=>el.textContent.includes("No assets found"))))throw Error(ui+" missing empty state");
@@ -153,6 +163,46 @@ jobs:
                   await page.waitForFunction(()=>document.querySelector("#blockReadout")?.textContent.includes("BYPASS"),{timeout:12000});
                   console.log("PUBLIC EQ AUDIO PASS: WAV/PLAY/600Hz boost >3dB/real meter/BYPASS");
                 }
+
+                // Main user workflows, in this same existing Chromium invocation.
+                await page.setViewport({width:w,height:h,deviceScaleFactor:1});
+                await page.click('#workbenchOpen');
+                await page.waitForSelector('#workbenchDialog[open]');
+                const toolLayout=await page.$eval('#workbenchDialog',e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight;});
+                if(!toolLayout)throw Error(ui+' tools dialog clips');
+                if(await page.$$eval('[data-workbench-module]',e=>e.length)<8)throw Error(ui+' detailed controls missing');
+                await page.screenshot({path:'workbench_'+ui+'.png',fullPage:false});
+                await page.keyboard.press('Escape');
+                if(!(await page.$eval('#workbenchOpen',e=>document.activeElement===e)))throw Error(ui+' tools focus return failed');
+                await page.click('#workbenchOpen');
+                await page.click('[data-workbench-module="MOTION"]');
+                if(!(await page.$eval('body',e=>e.classList.contains('advanced-open'))))throw Error(ui+' Motion editor missing');
+                await page.click('#advancedCloseBtn');
+                await page.click('#workbenchOpen');
+                await page.click('[data-global-action="save"]');
+                await page.type('#presetNameInput','Workflow <scene> & '+ui);
+                await page.screenshot({path:'preset_'+ui+'.png',fullPage:false});
+                await page.click('#presetNameForm button[type="submit"]');
+                await page.waitForFunction(()=>document.querySelector('#stateStatus').textContent==='PRESET SAVED');
+                const saved=await page.$eval('#presetSelect',e=>e.selectedOptions[0]?.textContent);
+                if(saved!=='Workflow <scene> & '+ui)throw Error(ui+' preset name corrupted');
+                await page.click('#workbenchOpen');
+                await page.click('[data-global-action="save"]');
+                await page.type('#presetNameInput','cancelled');
+                await page.keyboard.press('Escape');
+                if((await page.$eval('#presetSelect',e=>e.selectedOptions[0]?.textContent))!==saved)throw Error(ui+' cancel changed preset');
+                await page.click('#globalBypass');
+                await page.focus('#workbenchOpen');
+                await page.keyboard.down('Control');await page.keyboard.press('z');await page.keyboard.up('Control');
+                if(await page.$eval('#globalBypass',e=>e.classList.contains('active')))throw Error(ui+' shortcut Undo failed');
+                const timeline=await page.$eval('.audition-timeline',e=>{const r=e.getBoundingClientRect();return r.height>0&&r.bottom<=innerHeight;});
+                if(!timeline)throw Error(ui+' timeline missing');
+                await page.setViewport({width:375,height:667,deviceScaleFactor:1});
+                await page.click('#workbenchOpen');
+                const compact=await page.$eval('#workbenchDialog',e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight&&e.scrollWidth<=e.clientWidth+1;});
+                if(!compact)throw Error(ui+' compact tools overflow');
+                await page.keyboard.press('Escape');
+                console.log('MAIN_WORKFLOWS_PASS',ui);
                 await page.close();
               }
               console.log("PUBLIC_UI_PREVIEW_PASS two views, original geometry, zoom clarity and asset-library interactions");
@@ -170,4 +220,6 @@ jobs:
             public_UI_02.png
             public_MODAL_UI_01.png
             public_MODAL_UI_02.png
+            workbench_*.png
+            preset_*.png
           retention-days: 7

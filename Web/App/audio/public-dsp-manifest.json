@@ -1,16 +1,34 @@
 {
   "schema": 1,
   "published": true,
-  "sourceCandidateSha": "3a1c0517aee4b51fc076e65809aa110d1ce70cad",
+  "sourceCandidateSha": "6cf8bc3c82aaea52a7affcb6d5e2d4d9be716923",
   "models": [
-    "SRC_002"
+    "SRC_001",
+    "SRC_002",
+    "SRC_003",
+    "SRC_004",
+    "SRC_005",
+    "SRC_006",
+    "SRC_007",
+    "SRC_008",
+    "SRC_009",
+    "SRC_010",
+    "SRC_011",
+    "SRC_012",
+    "SRC_013",
+    "SRC_014",
+    "SRC_015",
+    "SRC_016",
+    "SRC_017"
   ],
   "factoryModelsAccepted": 0,
   "experimental": true,
   "compiledClientBinaryPublic": true,
+  "compression": "gzip",
+  "decodedSha256": "d074a85e5bcb73fd46a1b5e298915363c38d3997103cb646a450718f690f164c",
   "sha256": {
-    "sourcerune.wasm": "4f579a1b5394efd24a3627fb41336128a41d2b36ca1b4536807ae3b5400ace5e",
+    "sourcerune.wasm.gz": "c88d67dc5367029b6378de54dd27d35b9ba89d192258e8fa118b497855695262",
     "hpf.wasm": "73533cf34e5f021a5781aaa0a0b2454f4b143920e69c64adecbc07449b9d4d02",
-    "eq3.wasm": "9d68c10f41843652cfb1c950b3ef53e6ad1ac5f5e970a53e706d96a06ac71d36"
+    "eq3.wasm": "9d68c10f41843652cfb1c950b3ef53e706d96a06ac71d36"
   }
 }
