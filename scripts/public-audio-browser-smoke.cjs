@@ -29,7 +29,22 @@ const puppeteer=require('puppeteer-core');
     // Loop this same test fixture; still require real AudioWorklet + time progression.
     await page.$eval('#audioElement',audio=>{audio.loop=true});
     await page.click('#playBtn');
-    await page.waitForFunction(()=>!document.querySelector('#audioElement').paused,{timeout:10000});
+    // Diagnostic checkpoint: on failure report actual media + app state, not a silent timeout.
+    try {
+      await page.waitForFunction(()=>!document.querySelector('#audioElement').paused,{timeout:10000});
+    } catch (cause) {
+      const details=await page.evaluate(()=>{
+        const a=document.querySelector('#audioElement'),b=document.querySelector('#playBtn');
+        return {paused:a?.paused,ended:a?.ended,currentTime:a?.currentTime,
+          readyState:a?.readyState,networkState:a?.networkState,
+          errorCode:a?.error?.code,duration:a?.duration,
+          muted:a?.muted,volume:a?.volume,loop:a?.loop,
+          button:b?.textContent,status:document.querySelector('#stateStatus')?.textContent,
+          build:document.querySelector('#buildLabel')?.textContent,
+          block:document.querySelector('#blockReadout')?.textContent};
+      });
+      throw Error('REAL AUDIO PLAYBACK DIAGNOSTIC '+JSON.stringify({details,errors,cause:String(cause)}));
+    }
     await new Promise(r=>setTimeout(r,250));
     const state=await page.evaluate(()=>({
       label:document.querySelector('#blockReadout')?.textContent,
