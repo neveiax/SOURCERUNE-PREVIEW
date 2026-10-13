@@ -1,8 +1,8 @@
 {
   "work_id": "SR-20261012-UI-ORIGINAL-RENDER-CLARITY",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "877ec939c6cc0f469f19ce84769d1dbd19e4b913",
-  "kind": "Original UI REF render clarity: CSS zoom, unchanged layouts and approved materials; no DSP",
+  "source_commit": "62569378458e7e08fe93381777cafa7ae309e1ff",
+  "kind": "Original UI REF render clarity, plus UI_02 live marker/label contrast; no DSP, audio, geometry or asset substitution",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -18,6 +18,6 @@
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "375051baddf2d44951345984c8f56dd402c3c625",
-    "Web/App/ui_original_render_clarity_v1.css": "c6c7655f4dc6dba942e6c89071ddc3f91c64e4a2"
+    "Web/App/ui_original_render_clarity_v1.css": "c9055a623cde330f74ee7edf2c4aa01e741d6bf8"
   }
 }
