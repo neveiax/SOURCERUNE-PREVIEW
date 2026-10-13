@@ -6,6 +6,34 @@ const puppeteer=require('puppeteer-core');
     args:['--no-sandbox','--disable-dev-shm-usage','--autoplay-policy=no-user-gesture-required']});
   try {
     const page=await browser.newPage();
+    // Diagnostic-only wrappers preserve both original method calls, arguments,
+    // return promises and acceptance criteria. No audio graph or DSP change.
+    await page.evaluateOnNewDocument(()=>{
+      const trace=[];
+      Object.defineProperty(window,'__srAudioSmokeTrace',{value:trace});
+      const AC=window.AudioContext||window.webkitAudioContext;
+      if(AC?.prototype?.resume){
+        const resume=AC.prototype.resume;
+        AC.prototype.resume=function(...args){
+          window.__srObservedContext=this;
+          trace.push({step:'context.resume.call',state:this.state,t:performance.now()});
+          const result=resume.apply(this,args);
+          result.then(()=>trace.push({step:'context.resume.fulfilled',state:this.state,t:performance.now()}),
+            err=>trace.push({step:'context.resume.rejected',error:String(err),state:this.state,t:performance.now()}));
+          return result;
+        };
+      }
+      const originalPlay=HTMLMediaElement.prototype.play;
+      HTMLMediaElement.prototype.play=function(...args){
+        trace.push({step:'media.play.call',paused:this.paused,t:performance.now()});
+        const result=originalPlay.apply(this,args);
+        if(result?.then)result.then(()=>trace.push({step:'media.play.fulfilled',paused:this.paused,t:performance.now()}),
+          err=>trace.push({step:'media.play.rejected',error:String(err),t:performance.now()}));
+        return result;
+      };
+      document.addEventListener('play',()=>trace.push({step:'media.play.event',t:performance.now()}),true);
+      document.addEventListener('pause',()=>trace.push({step:'media.pause.event',t:performance.now()}),true);
+    });
     const errors=[];
     page.on('pageerror',err=>errors.push(String(err)));
     await page.goto('http://127.0.0.1:4173/Web/App/?ui=UI_01',{waitUntil:'networkidle2'});
@@ -28,7 +56,33 @@ const puppeteer=require('puppeteer-core');
     // The 0.5-second fixture can end before the asynchronous browser assertion.
     // Loop this same test fixture; still require real AudioWorklet + time progression.
     await page.$eval('#audioElement',audio=>{audio.loop=true});
+    const clickTarget=await page.$eval('#playBtn',button=>{
+      const r=button.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;
+      const hit=document.elementFromPoint(x,y);
+      return {rect:{x:r.x,y:r.y,w:r.width,h:r.height},visible:r.width>0&&r.height>0,
+        centerHitsButton:hit===button||button.contains(hit),hitTag:hit?.tagName,hitId:hit?.id};
+    });
+    if(!clickTarget.visible||!clickTarget.centerHitsButton)
+      throw Error('PLAY_BUTTON_HIT_TEST_FAILED '+JSON.stringify(clickTarget));
+    // Also record actual document click delivery, not merely Puppeteer's click call.
+    await page.evaluate(()=>{
+      window.__srAudioSmokeTrace?.push({step:'diagnostic.ready',t:performance.now()});
+      document.addEventListener('click',event=>{
+        const target=event.target;
+        window.__srAudioSmokeTrace?.push({step:'document.click.capture',targetId:target?.id,
+          targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),t:performance.now()});
+      },true);
+    });
     await page.click('#playBtn');
+    const afterPointer=await page.evaluate(()=>{
+      const el=document.querySelector('#playBtn');
+      return {events:window.__srAudioSmokeTrace?.slice(-10),hasOnclick:typeof el?.onclick,
+        currentStatus:document.querySelector('#stateStatus')?.textContent};
+    });
+    console.log('PLAY_POINTER_DIAGNOSTIC '+JSON.stringify(afterPointer));
+    // Require actual pointer delivery to the play control; do not silently replace with synthetic click.
+    if(!afterPointer.events?.some(e=>e.step==='document.click.capture'&&e.matched))
+      throw Error('PLAY_POINTER_EVENT_NOT_DELIVERED '+JSON.stringify({clickTarget,afterPointer}));
     // Diagnostic checkpoint: on failure report actual media + app state, not a silent timeout.
     try {
       await page.waitForFunction(()=>!document.querySelector('#audioElement').paused,{timeout:10000});
@@ -40,6 +94,9 @@ const puppeteer=require('puppeteer-core');
           errorCode:a?.error?.code,duration:a?.duration,
           muted:a?.muted,volume:a?.volume,loop:a?.loop,
           button:b?.textContent,status:document.querySelector('#stateStatus')?.textContent,
+          contextState:window.__srObservedContext?.state,
+          contextTime:window.__srObservedContext?.currentTime,
+          trace:window.__srAudioSmokeTrace?.slice(-35),
           build:document.querySelector('#buildLabel')?.textContent,
           block:document.querySelector('#blockReadout')?.textContent};
       });

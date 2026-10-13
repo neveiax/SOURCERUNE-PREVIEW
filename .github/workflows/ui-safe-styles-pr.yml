@@ -61,6 +61,16 @@ jobs:
                   await page.$eval("#undoBtn",button=>button.click());
                   if(!(await page.$eval("#ui02TransmissionSelect",(el,value)=>el.value===value,values.first)))throw Error(ui+" selector undo failed");
                 }else if(await page.$("#ui02TransmissionSelect"))throw Error("UI02-only control leaked into UI01");
+                if(ui==="UI_02"){
+                  const fit=await page.evaluate(()=>{const panel=document.querySelector(".macro-intelligibility"),r=panel.getBoundingClientRect(),buttons=[...panel.querySelectorAll('[data-macro-select="intelligibilityMode"]')];return{count:buttons.length,visible:buttons.every(el=>{const b=el.getBoundingClientRect();return b.left>=r.left-1&&b.right<=r.right+1&&b.top>=r.top-1&&b.bottom<=r.bottom+1;})}});
+                  if(fit.count!==3||!fit.visible)throw Error(ui+" mode buttons clipped "+JSON.stringify(fit));
+                  await page.$eval('.macro-intelligibility [data-value="DIALOGUE"]',el=>el.click());
+                  if(!(await page.$eval('.macro-intelligibility [data-value="DIALOGUE"]',el=>el===document.activeElement&&el.getAttribute("aria-pressed")==="true")))throw Error(ui+" mode focus");
+                  await page.keyboard.press("ArrowDown");
+                  if(!(await page.$eval('.macro-intelligibility [data-value="AGGRESSIVE"]',el=>el===document.activeElement&&el.getAttribute("aria-pressed")==="true")))throw Error(ui+" mode arrow");
+                  await page.$eval("#undoBtn",el=>el.click());
+                  if(!(await page.$eval('.macro-intelligibility [data-value="DIALOGUE"]',el=>el.getAttribute("aria-pressed")==="true")))throw Error(ui+" mode undo");
+                }
                 const ok=await page.evaluate(()=>{
                   const styles=[...document.querySelectorAll('link[rel="stylesheet"]')].filter(x=>/ui01_ref_batch_|ui02_ref_batch_|ui_ref_text_guard_/.test(x.href));
                   const live=!!document.querySelector(".macro-rail, #macroStrip, .macro-motion");
