@@ -67,7 +67,7 @@ def main():
     assert 'async function setupAudio(){' in js
     assert 'sceneNode=audioCtx.createGain();' in js
     assert 'sceneNode.gain.value=1;' in js
-    assert 'sceneNode=await createSceneNode(audioCtx,state);' in js
+    assert 'sceneNode=await createSceneNode(audioCtx,state,published);' in js
     assert 'new AudioWorkletNode(' not in js and 'WebAssembly.' not in js
     assert 'PUBLIC WEB EQ LIVE' in js
     assert 'audioCtx.createBiquadFilter()' in js
