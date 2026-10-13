@@ -56,6 +56,18 @@ const puppeteer=require('puppeteer-core');
     // The 0.5-second fixture can end before the asynchronous browser assertion.
     // Loop this same test fixture; still require real AudioWorklet + time progression.
     await page.$eval('#audioElement',audio=>{audio.loop=true});
+    const clickTarget=await page.$eval('#playBtn',button=>{
+      const r=button.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;
+      const hit=document.elementFromPoint(x,y);
+      return {rect:{x:r.x,y:r.y,w:r.width,h:r.height},visible:r.width>0&&r.height>0,
+        centerHitsButton:hit===button||button.contains(hit),hitTag:hit?.tagName,hitId:hit?.id};
+    });
+    if(!clickTarget.visible||!clickTarget.centerHitsButton)
+      throw Error('PLAY_BUTTON_HIT_TEST_FAILED '+JSON.stringify(clickTarget));
+    // Also record actual document click delivery, not merely Puppeteer's click call.
+    await page.evaluate(()=>document.addEventListener('click',event=>{
+      if(event.target.closest?.('#playBtn'))window.__srAudioSmokeTrace?.push({step:'play.button.click.delivered',t:performance.now()});
+    },true));
     await page.click('#playBtn');
     // Diagnostic checkpoint: on failure report actual media + app state, not a silent timeout.
     try {
