@@ -1,0 +1,154 @@
+name: Publish reviewed public SOURCE DSP WASM
+# Compiled binaries distributed to ALL anonymous browsers. They are reversible.
+# Never include private C++/research or any secrets in public repository.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Web/App/app.js'
+      - 'Web/App/audio/engine.js'
+      - 'Web/App/audio/processor.js'
+      - 'scripts/check_public_dsp_release.py'
+      - 'scripts/check_allowlist.py'
+      - 'scripts/check_original_port.py'
+      - '.github/workflows/publish-public-dsp-wasm.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Web/App/app.js'
+      - 'Web/App/audio/engine.js'
+      - 'Web/App/audio/processor.js'
+      - '.github/workflows/publish-public-dsp-wasm.yml'
+  workflow_dispatch:
+    inputs:
+      publish_confirmation:
+        description: Enter PUBLISH_WASM_PUBLICLY to permit binary publication
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: sr-reviewed-public-dsp-binaries
+  cancel-in-progress: false
+jobs:
+  review:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original UI and reviewed public-only staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check Web/App/app.js
+          node --check Web/App/audio/engine.js
+          node --check Web/App/audio/processor.js
+          python3 scripts/check_original_port.py
+          python3 scripts/check_allowlist.py
+          test ! -e Web/App/audio/public-dsp-manifest.json
+  publish:
+    if: ${{ github.event_name == 'push' || inputs.publish_confirmation == 'PUBLISH_WASM_PUBLICLY' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - name: Require private SOURCE read-only token
+        env:
+          SOURCE_READ_TOKEN: ${{ secrets.SR_PRIVATE_SOURCE_READ_TOKEN }}
+        shell: bash
+        run: |
+          if [ -z "$SOURCE_READ_TOKEN" ]; then
+            echo "::error::Add PREVIEW Actions secret SR_PRIVATE_SOURCE_READ_TOKEN: fine-grained PAT with Contents READ on private ureia-dev/SOURCERUNE"
+            exit 1
+          fi
+      - name: Checkout approved public main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Fetch exact audited private SRC_002 revision without persisted credential
+        uses: actions/checkout@v4
+        with:
+          repository: ureia-dev/SOURCERUNE
+          ref: 3a1c0517aee4b51fc076e65809aa110d1ce70cad
+          token: ${{ secrets.SR_PRIVATE_SOURCE_READ_TOKEN }}
+          path: _private_source
+          persist-credentials: false
+      - name: Compile original shared C++ and verify Native/WASM parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _private_source rev-parse HEAD)" = "3a1c0517aee4b51fc076e65809aa110d1ce70cad"
+          (
+            cd _private_source
+            bash Tools/Build/build_wasm.sh
+            bash Tools/Build/build_hpf_wasm.sh
+            bash Tools/Build/build_eq3_wasm.sh
+            g++ -std=c++20 -O2 -ffp-contract=off -Wall -Wextra -Werror \
+              Tests/Audio/physical_driver_integration_smoke.cpp \
+              Source/DSP/SceneProcessor.cpp -o "$RUNNER_TEMP/sr_native_model"
+            "$RUNNER_TEMP/sr_native_model"
+            "$RUNNER_TEMP/sr_native_model" --fixture > native_fixture.f32
+            test "$(stat -c %s native_fixture.f32)" = 20480
+            node Tests/Audio/physical_driver_wasm_parity.cjs
+          )
+      - name: Stage ONLY WASM and SHA256 publication manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in sourcerune hpf eq3; do
+            test -s "_private_source/Web/App/audio/$name.wasm"
+            cp "_private_source/Web/App/audio/$name.wasm" "Web/App/audio/$name.wasm"
+          done
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path("Web/App/audio")
+          files=["sourcerune.wasm","hpf.wasm","eq3.wasm"]
+          m={"schema":1,"published":True,
+             "sourceCandidateSha":"3a1c0517aee4b51fc076e65809aa110d1ce70cad",
+             "models":["SRC_002"],"factoryModelsAccepted":0,"experimental":True,
+             "compiledClientBinaryPublic":True,
+             "sha256":{n:hashlib.sha256((p/n).read_bytes()).hexdigest() for n in files}}
+          (p/"public-dsp-manifest.json").write_text(json.dumps(m,indent=2)+"\n",encoding="utf-8")
+          PY
+          rm -rf _private_source
+          test ! -e _private_source
+          test ! -e Source
+      - name: Run original UI integrity and revised strict public-binary gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -f Web/App/audio/sourcerune.wasm Web/App/audio/hpf.wasm Web/App/audio/eq3.wasm Web/App/audio/public-dsp-manifest.json
+          python3 scripts/check_public_dsp_release.py
+          python3 scripts/check_original_port.py
+          python3 scripts/check_allowlist.py
+          node --check Web/App/app.js
+          node --check Web/App/audio/engine.js
+          node --check Web/App/audio/processor.js
+          test "$(git diff --cached --name-only | wc -l)" = 4
+      - name: Real headless Chrome audio file -> AudioWorklet -> actual playback
+        shell: bash
+        run: |
+          set -euo pipefail
+          chrome="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          test -n "$chrome"
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/sr-pub-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in {1..30}; do curl -fsS http://127.0.0.1:4173/Web/App/ >/dev/null && break || sleep 1; done
+          npm install --silent --no-save --prefix "$RUNNER_TEMP/sr-pub-browser" puppeteer-core@24
+          NODE_PATH="$RUNNER_TEMP/sr-pub-browser/node_modules" CHROME_PATH="$chrome" node scripts/public-audio-browser-smoke.cjs
+      - name: Publish only reviewed compiled DSP to current public main (non-force)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo "Already on public main; no change"
+            exit 0
+          fi
+          git commit -m "release(web): approved SRC_002 experimental C++ DSP WASM for public browser"
+          git push origin HEAD:main
+          echo "PUBLIC binaries published; Pages may need propagation time"
