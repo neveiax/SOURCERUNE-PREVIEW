@@ -10,7 +10,7 @@ const $=(q,r=document)=>r.querySelector(q),$$=(q,r=document)=>[...r.querySelecto
 const TYPES=["SOURCE","TRANSMISSION","WALL_COVER","SPACE_ENVIRONMENT"],LABEL={SOURCE:"SOURCE",TRANSMISSION:"TRANSMISSION",WALL_COVER:"WALL / COVER",SPACE_ENVIRONMENT:"SPACE / ENVIRONMENT",SCENE_PRESET_HERO:"SCENE PRESET HERO"};
 const DEFSEL={SOURCE:"SRC_003_Smartphone_Speakerphone",TRANSMISSION:"TRN_005_GSM_Stable",WALL_COVER:"CVR_001_None_Open",SPACE_ENVIRONMENT:"SPC_022_Busy_City_Street"};
 let schema,catalog,scenePresets={},byId,state,userPresets={},undo=[],redo=[],browserType="SOURCE",stateClipboard=null,browserReturnFocus=null,browserReturnType=null;
-let sceneNode,audioSetup,audioUrl,audioName="",audioLoadGeneration=0;
+let sceneNode,audioSetup,audioUrl,audioName="",audioLoadGeneration=0,publicDspRelease=null;
 let audioCtx,media,inAn,outAn,inGain,outGain,publicTone,peakIn=-Infinity,peakOut=-Infinity,meterMode="PEAK";
 const audio=$("#audioElement");
 const copy=v=>JSON.parse(JSON.stringify(v)),db=v=>v<=1e-7?-Infinity:20*Math.log10(v),fmt=v=>isFinite(v)?v.toFixed(1):"−∞",gain=v=>Math.pow(10,v/20),pretty=v=>String(v).replaceAll("_"," ");
@@ -432,7 +432,7 @@ function renderAdvanced(){const k=state.advanced,g=schema.groups[k];
     drawer.style.setProperty("--advanced-cols",String(total<=2?2:total<=6?3:4));
     drawer.dataset.section=k;
     drawer.dataset.controlCount=String(total);
-  }$(".advanced-drawer")?.classList.toggle("bypassed",!!state.bypass[k]);$$("[data-adv]").forEach(b=>b.classList.toggle("active",b.dataset.adv===k));$("#advancedTitle").textContent=g.label;let extra="";if(g.assetType)extra=`<div class="adv-control wide"><label>MODEL / TYPE</label><div class="value">${selected(g.assetType).name}</div><button data-library="${g.assetType}">SELECT FROM LIBRARY</button></div>`;if(g.special==="motion")extra+=`<div class="adv-control wide"><label>TIMELINE</label><div class="adv-buttons"><button data-set-marker="start">SET START</button><button data-set-marker="closest">SET CLOSEST</button><button data-set-marker="end">SET END</button><button id="advSync">${state.sync?"SYNC ON":"SYNC OFF"}</button></div></div>`;if(g.special==="seed")extra+=`<div class="adv-control wide"><label>DETERMINISTIC SEED</label><div class="adv-buttons"><input id="seedInput" type="number" value="${state.seed}"><button id="applySeed">APPLY</button><button id="newSeed">NEW SEED</button></div></div>`;if(g.special==="generator")extra+=`<div class="adv-control"><label>GENERATOR STATE</label><button id="generatorToggle" class="${state.generatorOn?"active":""}">${state.generatorOn?"ON":"OFF"}</button></div>`;const bp=g.bypass?`<button id="advBypass" class="${state.bypass[k]?"active":""}">${state.bypass[k]?"BYPASSED":"ACTIVE"}</button>`:"";$("#advancedBody").innerHTML=`<div class="adv-top"><div class="adv-summary">${g.assetType?selected(g.assetType).name:g.label}</div><div>${bp}</div></div><div class="adv-grid">${g.controls.map(control).join("")}${extra}</div><div class="state-note">${audioSupportNote(state,!!sceneNode?.port)}。目前僅 SRC_002 具備物理聲學候選；其他 SOURCE／TRANSMISSION 多數僅簡化頻寬，COVER／SPACE 等尚無完整 DSP，並非 250 款全部可試聽。</div>`;bindAdvanced()}
+  }$(".advanced-drawer")?.classList.toggle("bypassed",!!state.bypass[k]);$$("[data-adv]").forEach(b=>b.classList.toggle("active",b.dataset.adv===k));$("#advancedTitle").textContent=g.label;let extra="";if(g.assetType)extra=`<div class="adv-control wide"><label>MODEL / TYPE</label><div class="value">${selected(g.assetType).name}</div><button data-library="${g.assetType}">SELECT FROM LIBRARY</button></div>`;if(g.special==="motion")extra+=`<div class="adv-control wide"><label>TIMELINE</label><div class="adv-buttons"><button data-set-marker="start">SET START</button><button data-set-marker="closest">SET CLOSEST</button><button data-set-marker="end">SET END</button><button id="advSync">${state.sync?"SYNC ON":"SYNC OFF"}</button></div></div>`;if(g.special==="seed")extra+=`<div class="adv-control wide"><label>DETERMINISTIC SEED</label><div class="adv-buttons"><input id="seedInput" type="number" value="${state.seed}"><button id="applySeed">APPLY</button><button id="newSeed">NEW SEED</button></div></div>`;if(g.special==="generator")extra+=`<div class="adv-control"><label>GENERATOR STATE</label><button id="generatorToggle" class="${state.generatorOn?"active":""}">${state.generatorOn?"ON":"OFF"}</button></div>`;const bp=g.bypass?`<button id="advBypass" class="${state.bypass[k]?"active":""}">${state.bypass[k]?"BYPASSED":"ACTIVE"}</button>`:"";$("#advancedBody").innerHTML=`<div class="adv-top"><div class="adv-summary">${g.assetType?selected(g.assetType).name:g.label}</div><div>${bp}</div></div><div class="adv-grid">${g.controls.map(control).join("")}${extra}</div><div class="state-note">${audioSupportNote(state,!!sceneNode?.port,publicDspRelease)}。目前僅 SRC_002 具備物理聲學候選；其他 SOURCE／TRANSMISSION 多數僅簡化頻寬，COVER／SPACE 等尚無完整 DSP，並非 250 款全部可試聽。</div>`;bindAdvanced()}
 function bindAdvanced(){$$("[data-library]").forEach(b=>b.onclick=()=>openBrowser(b.dataset.library,b));$$("[data-param]").forEach(c=>{c.onpointerdown=()=>c.dataset.before=JSON.stringify(core());const apply=e=>{const id=e.target.dataset.param,def=findControl(id);state.params[id]=def.type==="select"?e.target.value:+e.target.value;updateScene();updateGains();updateCurves();refreshMiniEq();const v=e.target.closest(".adv-control")?.querySelector(".value");if(v&&def.type==="range")v.textContent=state.params[id]+" "+(def.unit||"")};c.oninput=apply;c.onchange=e=>{apply(e);if(e.target.dataset.before){undo.push(JSON.parse(e.target.dataset.before));redo=[];hist()}mark("MODIFIED");renderMacros()}});const bp=$("#advBypass");if(bp)bp.onclick=()=>mut(()=>state.bypass[state.advanced]=!state.bypass[state.advanced]);$$("[data-set-marker]").forEach(b=>b.onclick=()=>setMarker(b.dataset.setMarker));const sy=$("#advSync");if(sy)sy.onclick=()=>mut(()=>state.sync=!state.sync);const ap=$("#applySeed");if(ap)ap.onclick=()=>mut(()=>state.seed=Math.max(0,Math.floor(+$("#seedInput").value||0)));const ns=$("#newSeed");if(ns)ns.onclick=()=>mut(()=>state.seed=(Math.imul(state.seed||1,1664525)+1013904223)>>>0);const gt=$("#generatorToggle");if(gt)gt.onclick=()=>mut(()=>state.generatorOn=!state.generatorOn)}
 // UI_02 Motion deck reuses the already-defined shared parameters; no new DSP state.
 // Drag commits one history entry on release. Wheel/keyboard commit single value steps.
@@ -638,12 +638,13 @@ async function setupAudio(){
     if(published?.published===true && published?.sourceCandidateSha && published?.models?.includes("SRC_002")) {
       // Fail visibly if binary is missing/corrupt: never pretend EQ is the
       // private physical DSP when the release manifest claims otherwise.
-      sceneNode=await createSceneNode(audioCtx,state);
+      sceneNode=await createSceneNode(audioCtx,state,published);
+      publicDspRelease=published;
       sceneNode.onprocessorerror=()=>{audio.pause();mark("REAL DSP ERROR — 請重新整理");};
       publicTone=null;
       inAn.connect(sceneNode);
       sceneNode.connect(outAn);outAn.connect(audioCtx.destination);
-      $("#blockReadout").textContent="PUBLIC C++ / WASM SRC_002 READY";
+      $("#blockReadout").textContent=`PUBLIC C++ / WASM ${published.models.length} SOURCE MODELS READY`;
     } else {
       // Existing safe public WebAudio EQ remains a usable fallback until
       // the reviewed compiled release is actually published.
@@ -696,7 +697,7 @@ function updateGains(){
   if(publicTone)updatePublicTone();
   else if(sceneNode?.port)sceneNode.port.postMessage({type:"parameters",values:parametersFromState(state),hpf:hpfFromState(state),eq3:eq3FromState(state)});
   const label=$("#buildLabel");
-  if(label){label.textContent="WEB TEST · "+(audioName?audioName+" · ":"")+audioSupportNote(state,!!sceneNode?.port);label.title=label.textContent;}
+  if(label){label.textContent="WEB TEST · "+(audioName?audioName+" · ":"")+audioSupportNote(state,!!sceneNode?.port,publicDspRelease);label.title=label.textContent;}
 }
 async function loadAudio(e){
   const f=e.target.files?.[0];if(!f)return;
@@ -715,7 +716,7 @@ async function play(){
     if(!audio.src){mark("請先 LOAD AUDIO");return;}
     if(!audio.paused){audio.pause();return;}
     await setupAudio();await audioCtx.resume();await audio.play();
-    mark(sceneNode?.port?"PUBLIC C++/WASM DSP LIVE · SRC_002 PHYSICAL MODEL":"PUBLIC WEB EQ LIVE · PRIVATE SOURCE / SPACE PENDING");
+    mark(sceneNode?.port?(publicDspRelease?.models?.length===17?"PUBLIC C++/WASM LIVE · 17 SOURCE RESEARCH MODELS":"PUBLIC C++/WASM DSP LIVE · SRC_002 PHYSICAL MODEL"):"PUBLIC WEB EQ LIVE · PRIVATE SOURCE / SPACE PENDING");
   }catch(error){mark(String(error.message||error));}
 }
 function stop(){audio.pause();if(audio.readyState)audio.currentTime=0;sceneNode?.port?.postMessage({type:"reset"});}
