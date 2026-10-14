@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261014-UI02-MOTION-SCRUB",
+  "work_id": "SR-20261014-UI01-UI02-SCENE-DIRECT-CONTROLS",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "5b8a7ad8fbdf2d0c0cabfc62ac588701e74db6f5",
-  "kind": "UI-only Motion path scrub; public approved audio isolated",
+  "source_commit": "143bd83f7978eda24ca8850dbe9ba7edaa02663e",
+  "kind": "Web scene motion + distance controls; public UI-only (native DSP not included)",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -18,6 +18,10 @@
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
-    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
+    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7",
+    "Web/App/scene_direct_controls_v1.css": "47a4ca377a635d8445128a555d1054d96853d0cd"
+  },
+  "safe_interaction_scripts": {
+    "Web/App/scene_direct_controls.js": "d2fc008a321c04d3034318e279220f59ca339f0e"
   }
 }
