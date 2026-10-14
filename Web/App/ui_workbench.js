@@ -14,20 +14,26 @@ export function mountWorkbench({audio,getHistory,openAdvanced,groups,savePreset,
   };
   const preset=section('PRESETS & FILES','Save a local preset or move your settings between sessions.');
   for(const action of ['save','import','export'])preset.append(tools.querySelector(`[data-global-action="${action}"]`));
-  const history=section('EDIT & COMPARE','Undo changes, switch layouts and compare saved snapshots.');
+  const history=section('EDIT & COMPARE','Undo changes and compare the unprocessed signal.');
   for(const action of ['undo','redo','bypass'])history.append(tools.querySelector(`[data-global-action="${action}"]`));
-  history.append(tools.querySelector('.mini-pair'));
+  const layouts=section('LAYOUT & SNAPSHOTS','Switch between the two live interfaces without resetting the shared audio scene.');
+  layouts.classList.add('workbench-layout-actions');
+  const layoutTools=tools.querySelector('.mini-pair');
+  layouts.append(layoutTools);
   const modules=section('DETAILED CONTROLS','Open a module to edit its existing parameters.');
   for(const [id,g] of Object.entries(groups)){
     const b=document.createElement('button');b.type='button';b.textContent=g.label;b.dataset.workbenchModule=id;
     b.onclick=()=>{dialog.close();openAdvanced(id);};modules.append(b);
   }
+  const layoutButtons=[...layoutTools.querySelectorAll('[data-global-ui]')];
+  const refreshLayout=()=>{const active=document.body.classList.contains('ui-02')?'UI_02':'UI_01';for(const b of layoutButtons){const on=b.dataset.globalUi===active;b.classList.toggle('is-current-layout',on);b.setAttribute('aria-pressed',String(on));}};
+  layoutTools.addEventListener('click',()=>queueMicrotask(refreshLayout));
   const help=document.createElement('p');help.className='workbench-help';help.textContent='Ctrl / ⌘ Z · Undo     Shift Z · Redo     Ctrl / ⌘ S · Save preset     Esc · Close';dialog.append(help);
   const form=document.createElement('form');form.id='presetNameForm';form.hidden=true;
   form.innerHTML='<label for="presetNameInput">PRESET NAME</label><input id="presetNameInput" name="presetName" maxlength="120" required autocomplete="off" placeholder="Name this scene"><p>Saved in this browser. Export State for a portable backup.</p><div class="workbench-actions"><button type="button" data-preset-cancel>CANCEL</button><button type="submit">SAVE PRESET</button></div>';
   dialog.append(form);
   let resolveName=null,returnFocus=null;
-  const show=()=>{if(!dialog.open){returnFocus=document.activeElement;dialog.showModal();} $('#settingsBtn').setAttribute('aria-expanded','true');sync();};
+  const show=()=>{if(!dialog.open){returnFocus=document.activeElement;dialog.showModal();} $('#settingsBtn').setAttribute('aria-expanded','true');sync();refreshLayout();};
   const cancelName=()=>{if(resolveName){const done=resolveName;resolveName=null;done(null);}form.hidden=true;tools.hidden=false;};
   dialog.querySelector('[data-workbench-close]').onclick=()=>dialog.close();
   dialog.addEventListener('close',()=>{cancelName();$('#settingsBtn').setAttribute('aria-expanded','false');if(returnFocus?.isConnected)returnFocus.focus();});
@@ -59,6 +65,6 @@ export function mountWorkbench({audio,getHistory,openAdvanced,groups,savePreset,
     if(key==='z'){e.preventDefault();e.shiftKey?redo():undo();sync();}
     else if(key==='s'){e.preventDefault();savePreset();}
   });
-  mediaSync();sync();
+  mediaSync();sync();refreshLayout();
   return {sync,requestPresetName(){if(resolveName)return Promise.resolve(null);show();tools.hidden=true;form.hidden=false;form.reset();form.elements.presetName.setCustomValidity('');form.elements.presetName.focus();return new Promise(resolve=>{resolveName=resolve;});}};
 }
