@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261014-UI02-MOTION-SCRUB",
+  "work_id": "SR-20261014-UI02-MOTION-PATH-EXACT",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "5b8a7ad8fbdf2d0c0cabfc62ac588701e74db6f5",
-  "kind": "UI-only Motion path scrub; public approved audio isolated",
+  "source_commit": "3ac2ddeec1f060ecec06d1987d7209d2ed57deca",
+  "kind": "UI-only Motion Deck indicator directly follows SVG geometry in five display modes; no DSP or audio changes",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
