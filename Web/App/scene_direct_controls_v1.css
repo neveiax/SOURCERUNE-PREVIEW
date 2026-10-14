@@ -27,7 +27,7 @@ body.ui-02 #currentDistanceControl.scene-adjusting{box-shadow:inset 0 0 0 1px rg
 
 /* The visible car itself is a precise SOURCE handle, not decoration.
    These are visual/pointer-only declarations; no audio processing changes. */
-#motionCarGlyph{pointer-events:visiblePainted;cursor:grab;touch-action:none;user-select:none}
+#motionCarGlyph{pointer-events:bounding-box;cursor:grab;touch-action:none;user-select:none}
 #motionCarGlyph:hover{filter:drop-shadow(0 0 5px rgba(145,222,247,.7))}
 #sceneSvg.scene-adjusting #motionCarGlyph{cursor:grabbing;filter:drop-shadow(0 0 8px rgba(147,223,254,.95))}
 #sceneSvg.scene-adjusting #sourceNode{cursor:grabbing}

@@ -42,7 +42,7 @@ REVIEWED_CSS_SHA={
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
     "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7",
-    "Web/App/scene_direct_controls_v1.css": "d9e9a2dce7252db9adf6216b7dc5e8d4cb8db5c4"
+    "Web/App/scene_direct_controls_v1.css": "bea47fbd14656cb775f778996fd40d9487785e97"
 }
 REVIEWED_INTERACTION_JS_SHA={"Web/App/scene_direct_controls.js": "0997ba7ab29f615fa31afd06c9e9e4dc4b06b344"}
 # Exact byte-verified UI geometry only; never expose private audio, C++ or WASM.

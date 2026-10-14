@@ -78,7 +78,16 @@ jobs:
                 // Verify no jump at pointerdown and Undo after a real drag.
                 const carPoint=await page.$eval("#motionCarGlyph",el=>{
                   const r=el.getBoundingClientRect();
-                  return {x:r.left+r.width*.5,y:r.top+r.height*.45};
+                  const probes=[[.5,.45],[.3,.4],[.7,.4],[.5,.25],[.3,.65],[.7,.65]];
+                  for(const [fx,fy] of probes){
+                    const x=r.left+r.width*fx,y=r.top+r.height*fy;
+                    if(document.elementFromPoint(x,y)?.id==="motionCarGlyph")return {x,y};
+                  }
+                  const x=r.left+r.width*.5,y=r.top+r.height*.45;
+                  const top=document.elementFromPoint(x,y);
+                  return {x,y,rect:{x:r.x,y:r.y,width:r.width,height:r.height},
+                    top:top?.outerHTML?.slice(0,200),
+                    pointerEvents:getComputedStyle(el).pointerEvents};
                 });
                 const carHit=await page.evaluate(({x,y})=>document.elementFromPoint(x,y)?.id,carPoint);
                 if(carHit!=="motionCarGlyph")
