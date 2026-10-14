@@ -56,6 +56,24 @@ const puppeteer=require('puppeteer-core');
     // The 0.5-second fixture can end before the asynchronous browser assertion.
     // Loop this same test fixture; still require real AudioWorklet + time progression.
     await page.$eval('#audioElement',audio=>{audio.loop=true});
+    // Workbench intentionally disables PLAY until loadedmetadata/durationchange.
+    // A disabled button receives pointerdown/up but suppresses mouse click.
+    // Engine-ready text alone is NOT evidence that the media element is ready.
+    try {
+      await page.waitForFunction(()=>{
+        const audio=document.querySelector('#audioElement');
+        const play=document.querySelector('#playBtn');
+        return !play.disabled&&Number.isFinite(audio.duration)&&audio.duration>0&&!audio.error;
+      },{timeout:15000});
+    }catch(cause){
+      const readiness=await page.evaluate(()=>{
+        const audio=document.querySelector('#audioElement'),play=document.querySelector('#playBtn');
+        return {playDisabled:play.disabled,duration:audio.duration,
+          readyState:audio.readyState,networkState:audio.networkState,
+          errorCode:audio.error?.code,engine:document.querySelector('#blockReadout')?.textContent};
+      });
+      throw Error('PLAY_BUTTON_MEDIA_NOT_READY '+JSON.stringify({readiness,cause:String(cause)}));
+    }
     const clickTarget=await page.$eval('#playBtn',button=>{
       const r=button.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;
       const hit=document.elementFromPoint(x,y);
