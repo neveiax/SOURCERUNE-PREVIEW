@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261014-UI02-MOTION-PATH-EXACT",
+  "work_id": "SR-20261014-UI01-UI02-SCENE-DIRECT-CONTROLS",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "3ac2ddeec1f060ecec06d1987d7209d2ed57deca",
-  "kind": "UI-only Motion Deck indicator directly follows SVG geometry in five display modes; no DSP or audio changes",
+  "source_commit": "ee34727e9d7ef7b12880dd71661426d8e9167d51",
+  "kind": "Live Motion indicator aligned with SVG + UI_01/UI_02 direct Motion/Distance state controls (public Web-only)",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -18,6 +18,11 @@
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
-    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
-  }
+    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7",
+    "Web/App/scene_direct_controls_v1.css": "4bec37667b815882e9c98eb86c2312bdea819d70"
+  },
+  "safe_interaction_scripts": {
+    "Web/App/scene_direct_controls.js": "d2fc008a321c04d3034318e279220f59ca339f0e"
+  },
+  "upstream_motion_fix_commit": "5fc42cea57586928e36304c49295b0af6d13424a"
 }

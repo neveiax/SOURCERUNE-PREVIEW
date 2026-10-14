@@ -52,6 +52,40 @@ jobs:
                 const page=await browser.newPage();
                 await page.setViewport({width:w,height:h,deviceScaleFactor:1});
                 await page.goto("http://127.0.0.1:4173/Web/App/?ui="+ui,{waitUntil:"networkidle0",timeout:30000});
+                // One real-pointer regression per UI, inside the existing Chromium job.
+                const originalMotion=await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")));
+                const sourceRect=await page.$eval("#sourceNode",el=>{const r=el.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}});
+                await page.mouse.move(sourceRect.x,sourceRect.y);
+                await page.mouse.down();
+                await page.mouse.move(sourceRect.x+45,sourceRect.y,{steps:3});
+                await page.mouse.up();
+                const draggedMotion=await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")));
+                if(Math.abs(draggedMotion-originalMotion)<1){
+                  const probe=await page.evaluate(({x,y})=>{
+                    const el=document.elementFromPoint(x,y),svg=document.querySelector("#sceneSvg"),node=document.querySelector("#sourceNode");
+                    const r=node.getBoundingClientRect(),b=svg.getBoundingClientRect();
+                    return {tag:el?.tagName,id:el?.id,near:el?.closest?.("#sourceNode,#motionPathHit")?.id,
+                      point:{x,y},rect:{x:r.x,y:r.y,width:r.width,height:r.height},
+                      svg:{x:b.x,y:b.y,width:b.width,height:b.height,viewBox:svg.getAttribute("viewBox")},
+                      motion:node.getAttribute("aria-valuenow"),top:document.elementFromPoint(x,y)?.outerHTML?.slice(0,160)};
+                  },sourceRect);
+                  throw Error(ui+" SOURCE drag did not update Motion "+JSON.stringify(probe));
+                }
+                await page.$eval("#undoBtn",el=>el.click());
+                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1)throw Error(ui+" SOURCE drag Undo failed");
+                if(ui==="UI_02"){
+                  const beforeDistance=await page.$eval("#currentDistanceControl",el=>Number(el.getAttribute("aria-valuenow")));
+                  const r=await page.$eval("#currentDistanceControl",el=>{const b=el.getBoundingClientRect();return {x:b.left+b.width/2,y:b.top+b.height/2}});
+                  await page.mouse.move(r.x,r.y);
+                  await page.mouse.down();
+                  await page.mouse.move(r.x,r.y-30,{steps:3});
+                  await page.mouse.up();
+                  const now=await page.$eval("#currentDistanceControl",el=>Number(el.getAttribute("aria-valuenow")));
+                  if(now<=beforeDistance+1)throw Error(ui+" distance dial drag did not update value");
+                  await page.$eval("#undoBtn",el=>el.click());
+                  const restored=await page.$eval("#currentDistanceControl",el=>Number(el.getAttribute("aria-valuenow")));
+                  if(Math.abs(restored-beforeDistance)>.11)throw Error(ui+" distance dial Undo failed");
+                }
                 if(ui==="UI_02"){
                   const firstMode=await page.$eval("#motionDeckMode",el=>el.value);
                   for(const mode of ["STATIC","APPROACH","PASS_BY","LEAVE","MANUAL"]){

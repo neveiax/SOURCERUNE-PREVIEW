@@ -41,9 +41,12 @@ REVIEWED_CSS_SHA={
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
-    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
+    "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7",
+    "Web/App/scene_direct_controls_v1.css": "4bec37667b815882e9c98eb86c2312bdea819d70"
 }
+REVIEWED_INTERACTION_JS_SHA={"Web/App/scene_direct_controls.js": "d2fc008a321c04d3034318e279220f59ca339f0e"}
 ALLOWED.update(REVIEWED_CSS_SHA)
+ALLOWED.update(REVIEWED_INTERACTION_JS_SHA)
 ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
 ALLOWED.add('public_ui_style_sync_manifest.json')
 # Existing public repository collaboration policy files, not Source-private material.
@@ -57,6 +60,13 @@ def main():
     manifest_style=json.loads((root/"public_ui_style_sync_manifest.json").read_text(encoding="utf-8"))
     if manifest_style.get("styles")!=REVIEWED_CSS_SHA or manifest_style.get("audio_enabled") is not False:
         raise SystemExit("BLOCKED: approved CSS provenance differs")
+    for rel,expected in REVIEWED_INTERACTION_JS_SHA.items():
+        path=root/rel
+        if not path.is_file() or blobsha(path.read_bytes())!=expected:
+            raise SystemExit("BLOCKED: unapproved scene UI JavaScript "+rel)
+        content=path.read_text(encoding="utf-8")
+        if any(forbidden in content for forbidden in ("AudioWorklet", "WebAssembly", "createSceneNode", "eval(", "fetch(", "XMLHttpRequest")):
+            raise SystemExit("BLOCKED: private/audio code in scene UI JavaScript "+rel)
     for rel,expected in REVIEWED_CSS_SHA.items():
         path=root/rel
         if not path.is_file() or blobsha(path.read_bytes())!=expected:
