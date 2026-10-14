@@ -71,27 +71,29 @@ jobs:
                   },sourceRect);
                   throw Error(ui+" SOURCE drag did not update Motion "+JSON.stringify(probe));
                 }
-                await page.evaluate(()=>{
-                  window.__undoErrorLog=[];
-                  window.addEventListener("error",e=>window.__undoErrorLog.push(e.error?.stack||e.message));
-                  const button=document.querySelector("#undoBtn");
-                  window.__undoClickHandler=typeof button?.onclick;
-                  button?.click();
+                await page.$eval("#undoBtn",el=>el.click());
+                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1)
+                  throw Error(ui+" SOURCE drag Undo failed");
+                // Real pointer acceptance: LISTENER can be grabbed via its
+                // dedicated label even when SOURCE and LISTENER overlap.
+                const listenerBefore=await page.$eval("#listenerNode",el=>el.getAttribute("transform"));
+                const labelPoint=await page.$eval("#listenerLabel",el=>{
+                  const r=el.getBoundingClientRect();
+                  return {x:r.left+r.width/2,y:r.top+r.height/2};
                 });
-                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1){
-                  const diag=await page.evaluate(()=>({
-                    source:document.querySelector("#sourceNode")?.getAttribute("aria-valuenow"),
-                    sourceTransform:document.querySelector("#sourceNode")?.getAttribute("transform"),
-                    status:document.querySelector("#stateStatus")?.textContent,
-                    undoDisabled:document.querySelector("#undoBtn")?.disabled,
-                    redoDisabled:document.querySelector("#redoBtn")?.disabled,
-                    clickHandler:window.__undoClickHandler,undoErrors:window.__undoErrorLog,
-                    listener:document.querySelector("#listenerNode")?.getAttribute("transform"),
-                    sourceHit:document.querySelector("#sourceNode")?.getBoundingClientRect().toJSON()
-                  }));
-                  throw Error(ui+" SOURCE drag Undo failed "+JSON.stringify({originalMotion,draggedMotion,diag}));
-                }
-                if(ui==="UI_02"){
+                await page.mouse.move(labelPoint.x,labelPoint.y);
+                await page.mouse.down();
+                await page.mouse.move(labelPoint.x+45,labelPoint.y,{steps:4});
+                await page.mouse.up();
+                const listenerMoved=await page.$eval("#listenerNode",el=>el.getAttribute("transform"));
+                if(listenerMoved===listenerBefore)
+                  throw Error(ui+" LISTENER label drag did not move receiver");
+                await page.$eval("#undoBtn",el=>el.click());
+                const listenerRestored=await page.$eval("#listenerNode",el=>el.getAttribute("transform"));
+                if(listenerRestored!==listenerBefore)
+                  throw Error(ui+" LISTENER drag Undo failed "+JSON.stringify({listenerBefore,listenerMoved,listenerRestored}));
+                console.log("LISTENER_REAL_POINTER_PASS",ui);
+                                if(ui==="UI_02"){
                   const beforeDistance=await page.$eval("#currentDistanceControl",el=>Number(el.getAttribute("aria-valuenow")));
                   const dialBefore=await page.$eval("#currentDistanceControl",el=>({
                     angle:Number.parseFloat(el.style.getPropertyValue("--distance-angle")),
