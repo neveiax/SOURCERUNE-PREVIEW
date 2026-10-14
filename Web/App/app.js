@@ -630,7 +630,67 @@ function restoreDirectSceneChange(before){
   syncMacroKnob("motion");updateScene();
 }
 
-function bind(){bindSceneDirectControls({getState:()=>state,getDistance:distance,setMotion:v=>setMacroKnob("motion",v),setDistance:setVisibleSceneDistance,snapshot:core,finish:finishDirectSceneChange,revert:restoreDirectSceneChange});bindMotionKnobs();bindMotionDeck();bindSpectrumView();bindSceneView({getState:()=>state,setZoom:zoom=>mut(()=>state.sceneZoom=zoom),audio});const advancedCloseBtn=$("#advancedCloseBtn");if(advancedCloseBtn)advancedCloseBtn.onclick=closeAdvanced;document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("advanced-open")&&$("#assetBrowser")?.classList.contains("hidden")){e.preventDefault();closeAdvanced()}});$$("[data-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.ui));$$("[data-view]").forEach(b=>b.onclick=()=>mut(()=>state.view=b.dataset.view));$$("[data-motion-mode]").forEach(b=>b.onclick=()=>mut(()=>state.params.motionMode=b.dataset.motionMode));$$("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;$$("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));$$(".tab-content").forEach(x=>x.classList.toggle("active",x.dataset.content===state.tab))});$("#syncToggle").onchange=e=>mut(()=>state.sync=e.target.checked);$$("[data-set-marker]").forEach(b=>b.onclick=()=>setMarker(b.dataset.setMarker));document.addEventListener("keydown",onBrowserKeydown);$("#browserClose").onclick=closeBrowser;$("#assetBrowser").onclick=e=>{if(e.target.id==="assetBrowser")closeBrowser()};$("#assetSearch").oninput=renderBrowserList;$("#categorySelect").onchange=renderBrowserList;$("#assetClearFilters").onclick=resetBrowserFilters;$("#presetSelect").onchange=loadPreset;$("#presetPrevBtn").onclick=()=>stepPreset(-1);$("#presetNextBtn").onclick=()=>stepPreset(1);$("#savePresetBtn").onclick=savePreset;$("#presetVisualsBtn").onclick=()=>openBrowser("SCENE_PRESET_HERO");$("#importStateBtn").onclick=()=>$("#stateImportFile").click();$("#exportStateBtn").onclick=exportState;$("#stateImportFile").onchange=importState;$("#undoBtn").onclick=doUndo;$("#redoBtn").onclick=doRedo;$("#copyStateBtn").onclick=copyState;$("#pasteStateBtn").onclick=pasteState;$("#sceneFullscreenBtn").onclick=toggleSceneFullscreen;const settings=$("#settingsBtn"),tools=$("#globalToolsPopover");if(settings)settings.onclick=e=>{e.stopPropagation();document.body.classList.toggle("global-tools-open")};if(tools)tools.onclick=e=>e.stopPropagation();document.addEventListener("click",()=>document.body.classList.remove("global-tools-open"));$$("[data-global-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.globalUi));$$("[data-global-action]").forEach(b=>b.onclick=()=>{const a=b.dataset.globalAction;if(a==="undo")doUndo();else if(a==="redo")doRedo();else if(a==="save")savePreset();else if(a==="import")$("#stateImportFile").click();else if(a==="export")exportState();else if(a==="bypass")mut(()=>state.globalBypass=!state.globalBypass)});const mdm=$("#motionDeckMode");if(mdm)mdm.onchange=e=>mut(()=>state.params.motionMode=e.target.value);document.addEventListener("fullscreenchange",syncFullscreenState);$("#globalBypass").onclick=()=>mut(()=>state.globalBypass=!state.globalBypass);$("#audioFile").onchange=loadAudio;$("#playBtn").onclick=play;$("#stopBtn").onclick=stop;$("#loopToggle").onchange=e=>audio.loop=e.target.checked;$("#seekSlider").oninput=e=>{if(audio.duration)audio.currentTime=+e.target.value/1000*audio.duration};const peakBtn=$("#meterPeakBtn"),rmsBtn=$("#meterRmsBtn");if(peakBtn)peakBtn.onclick=()=>{meterMode="PEAK";peakBtn.classList.add("active");rmsBtn?.classList.remove("active")};if(rmsBtn)rmsBtn.onclick=()=>{meterMode="RMS";rmsBtn.classList.add("active");peakBtn?.classList.remove("active")};$("#resetPeakBtn").onclick=()=>{peakIn=peakOut=-Infinity;mark("PEAK RESET")};$$("[data-snapshot]").forEach(b=>b.onclick=()=>snapshot(b.dataset.snapshot,b))}
+/* SR-20261014 UI01 timeline: extension of existing UI, preserves pinned Scene module. */
+function syncSceneMotionTimeline(){
+  const strip=$(".scene-waveform-strip");
+  if(!strip)return;
+  const active=state?.ui==="UI_01";
+  strip.tabIndex=active?0:-1;
+  strip.setAttribute("role","slider");
+  strip.setAttribute("aria-valuemin","0");
+  strip.setAttribute("aria-valuemax","100");
+  const duration=audio.duration,loaded=Number.isFinite(duration)&&duration>0&&!audio.error;
+  const value=loaded?Math.round(Math.max(0,Math.min(100,audio.currentTime/duration*100))):Math.round(state.params.motion);
+  strip.setAttribute("aria-valuenow",String(value));
+  strip.setAttribute("aria-valuetext",loaded?Math.round(audio.currentTime*100)/100+" of "+Math.round(duration*100)/100+" seconds":value+"% of motion path");
+  strip.setAttribute("aria-label",loaded?"Audio timeline position":"Motion timeline position");
+}
+function bindSceneMotionTimeline(){
+  const strip=$(".scene-waveform-strip");if(!strip)return;
+  let pointer=null,before=null;
+  const hasAudio=()=>Number.isFinite(audio.duration)&&audio.duration>0&&!audio.error;
+  const position=e=>{
+    const r=strip.getBoundingClientRect();
+    return Math.round(Math.max(0,Math.min(1,(e.clientX-r.left)/Math.max(1,r.width)))*100);
+  };
+  strip.addEventListener("pointerdown",e=>{
+    if(state?.ui!=="UI_01"||hasAudio()||e.button!==0||pointer!==null)return;
+    e.preventDefault();e.stopImmediatePropagation();
+    before=core();pointer=e.pointerId;
+    strip.focus({preventScroll:true});
+    strip.setPointerCapture(e.pointerId);
+    setMacroKnob("motion",position(e));
+  },true);
+  strip.addEventListener("pointermove",e=>{
+    if(e.pointerId===pointer)setMacroKnob("motion",position(e));
+  });
+  const finish=e=>{
+    if(e.pointerId!==pointer)return;
+    pointer=null;
+    if(strip.hasPointerCapture(e.pointerId))strip.releasePointerCapture(e.pointerId);
+    if(e.type==="pointercancel")setMacroKnob("motion",before.params.motion);
+    else finishMacroKnobChange(before,"motion");
+    before=null;syncSceneMotionTimeline();
+  };
+  strip.addEventListener("pointerup",finish);
+  strip.addEventListener("pointercancel",finish);
+  strip.addEventListener("keydown",e=>{
+    if(state?.ui!=="UI_01"||!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","PageUp","PageDown","Home","End"].includes(e.key))return;
+    e.preventDefault();e.stopPropagation();
+    const loaded=hasAudio();
+    const current=loaded?audio.currentTime/audio.duration*100:state.params.motion;
+    const next=e.key==="Home"?0:e.key==="End"?100:current+
+      (e.key==="PageUp"?10:e.key==="PageDown"?-10:e.key==="ArrowUp"||e.key==="ArrowRight"?1:-1);
+    const value=Math.round(Math.max(0,Math.min(100,next)));
+    if(loaded)audio.currentTime=audio.duration*value/100;
+    else commitMacroKnob("motion",value);
+    syncSceneMotionTimeline();
+  });
+  for(const event of ["timeupdate","loadedmetadata","durationchange","emptied","error"])
+    audio.addEventListener(event,syncSceneMotionTimeline);
+  syncSceneMotionTimeline();
+}
+function bind(){bindSceneDirectControls({getState:()=>state,getDistance:distance,setMotion:v=>setMacroKnob("motion",v),setDistance:setVisibleSceneDistance,snapshot:core,finish:finishDirectSceneChange,revert:restoreDirectSceneChange});bindMotionKnobs();bindMotionDeck();bindSpectrumView();bindSceneView({getState:()=>state,setZoom:zoom=>mut(()=>state.sceneZoom=zoom),audio});bindSceneMotionTimeline();const advancedCloseBtn=$("#advancedCloseBtn");if(advancedCloseBtn)advancedCloseBtn.onclick=closeAdvanced;document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("advanced-open")&&$("#assetBrowser")?.classList.contains("hidden")){e.preventDefault();closeAdvanced()}});$$("[data-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.ui));$$("[data-view]").forEach(b=>b.onclick=()=>mut(()=>state.view=b.dataset.view));$$("[data-motion-mode]").forEach(b=>b.onclick=()=>mut(()=>state.params.motionMode=b.dataset.motionMode));$$("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;$$("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));$$(".tab-content").forEach(x=>x.classList.toggle("active",x.dataset.content===state.tab))});$("#syncToggle").onchange=e=>mut(()=>state.sync=e.target.checked);$$("[data-set-marker]").forEach(b=>b.onclick=()=>setMarker(b.dataset.setMarker));document.addEventListener("keydown",onBrowserKeydown);$("#browserClose").onclick=closeBrowser;$("#assetBrowser").onclick=e=>{if(e.target.id==="assetBrowser")closeBrowser()};$("#assetSearch").oninput=renderBrowserList;$("#categorySelect").onchange=renderBrowserList;$("#assetClearFilters").onclick=resetBrowserFilters;$("#presetSelect").onchange=loadPreset;$("#presetPrevBtn").onclick=()=>stepPreset(-1);$("#presetNextBtn").onclick=()=>stepPreset(1);$("#savePresetBtn").onclick=savePreset;$("#presetVisualsBtn").onclick=()=>openBrowser("SCENE_PRESET_HERO");$("#importStateBtn").onclick=()=>$("#stateImportFile").click();$("#exportStateBtn").onclick=exportState;$("#stateImportFile").onchange=importState;$("#undoBtn").onclick=doUndo;$("#redoBtn").onclick=doRedo;$("#copyStateBtn").onclick=copyState;$("#pasteStateBtn").onclick=pasteState;$("#sceneFullscreenBtn").onclick=toggleSceneFullscreen;const settings=$("#settingsBtn"),tools=$("#globalToolsPopover");if(settings)settings.onclick=e=>{e.stopPropagation();document.body.classList.toggle("global-tools-open")};if(tools)tools.onclick=e=>e.stopPropagation();document.addEventListener("click",()=>document.body.classList.remove("global-tools-open"));$$("[data-global-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.globalUi));$$("[data-global-action]").forEach(b=>b.onclick=()=>{const a=b.dataset.globalAction;if(a==="undo")doUndo();else if(a==="redo")doRedo();else if(a==="save")savePreset();else if(a==="import")$("#stateImportFile").click();else if(a==="export")exportState();else if(a==="bypass")mut(()=>state.globalBypass=!state.globalBypass)});const mdm=$("#motionDeckMode");if(mdm)mdm.onchange=e=>mut(()=>state.params.motionMode=e.target.value);document.addEventListener("fullscreenchange",syncFullscreenState);$("#globalBypass").onclick=()=>mut(()=>state.globalBypass=!state.globalBypass);$("#audioFile").onchange=loadAudio;$("#playBtn").onclick=play;$("#stopBtn").onclick=stop;$("#loopToggle").onchange=e=>audio.loop=e.target.checked;$("#seekSlider").oninput=e=>{if(audio.duration)audio.currentTime=+e.target.value/1000*audio.duration};const peakBtn=$("#meterPeakBtn"),rmsBtn=$("#meterRmsBtn");if(peakBtn)peakBtn.onclick=()=>{meterMode="PEAK";peakBtn.classList.add("active");rmsBtn?.classList.remove("active")};if(rmsBtn)rmsBtn.onclick=()=>{meterMode="RMS";rmsBtn.classList.add("active");peakBtn?.classList.remove("active")};$("#resetPeakBtn").onclick=()=>{peakIn=peakOut=-Infinity;mark("PEAK RESET")};$$("[data-snapshot]").forEach(b=>b.onclick=()=>snapshot(b.dataset.snapshot,b))}
 function doUndo(){if(!undo.length)return;redo.push(core());restore(undo.pop());hist();mark("UNDO")}function doRedo(){if(!redo.length)return;undo.push(core());restore(redo.pop());hist();mark("REDO")}
 function applyFactoryPreset(heroId,pushHistory=true){const cfg=scenePresets[heroId],hero=byId.get(heroId);if(!cfg){if(hero)$("#sceneTitle").textContent=hero.name;return}if(pushHistory)push();const keep={ui:state.ui,view:state.view,snapshots:state.snapshots};const ns=newState();ns.ui=keep.ui;ns.view=keep.view;ns.snapshots=keep.snapshots;Object.assign(ns.selection,cfg.selection||{});Object.assign(ns.params,cfg.params||{});for(const k of ["b4Freq","b4Gain","b4Q"])delete ns.params[k];Object.assign(ns.bypass,cfg.bypass||{});ns.preset="factory:"+heroId;state=ns;$("#sceneTitle").textContent=cfg.name||hero?.name||"Scene View";mark("FACTORY PRESET LOADED");refresh();renderPreset()}function stepPreset(delta){const sel=$("#presetSelect"),opts=[...sel.options].filter(o=>o.value);if(!opts.length)return;let i=opts.findIndex(o=>o.value===sel.value);if(i<0)i=delta>0?-1:0;i=(i+delta+opts.length)%opts.length;sel.value=opts[i].value;loadPreset({target:sel})}
 function loadPreset(e){const v=e.target.value;if(!v)return;if(v.startsWith("factory:"))applyFactoryPreset(v.slice(8),true);else{push();const p=userPresets[v.slice(5)];if(p){const snaps=state.snapshots;state=migrateLegacyEq(p.state);state.snapshots=snaps;state.preset=v}mark("PRESET LOADED");refresh()}}
@@ -753,7 +813,7 @@ function preview(x){
 }
 function setMarker(k){mut(()=>state.markers[k]=audio.currentTime||0)}function renderMarkers(){const f=v=>v==null?"—":v.toFixed(2)+"s";$("#markerStatus").textContent="START "+f(state.markers.start)+" · CLOSEST "+f(state.markers.closest)+" · END "+f(state.markers.end)}
 function distance(){return currentSceneDistance(state.params)}
-function updateScene(){const p=state.params.motion/100,ui1=state?.ui==="UI_01",motionGraph=$(".motion-deck-graph");
+function updateScene(){syncSceneMotionTimeline();const p=state.params.motion/100,ui1=state?.ui==="UI_01",motionGraph=$(".motion-deck-graph");
 if(motionGraph){
   const value=String(state.params.motion);
   if(motionGraph.getAttribute("aria-valuenow")!==value)motionGraph.setAttribute("aria-valuenow",value);

@@ -26,3 +26,7 @@ body.ui-01 #macroStrip .macro-knob .macro-knob-label{color:#bacbd3}
 body.ui-01 #macroStrip .macro-knob.adjusting .macro-knob-face{filter:drop-shadow(0 2px 3px rgba(72,147,172,.25))}
 body.ui-01 #macroStrip button:focus-visible,
 body.ui-01 #macroStrip select:focus-visible{outline:1px solid rgba(133,193,211,.78);outline-offset:1px}
+
+/* SR-20261014-UI01-TIMELINE-SCRUB: pointer + visible keyboard focus. */
+body.ui-01 .scene-waveform-strip{cursor:ew-resize;touch-action:none;user-select:none}
+body.ui-01 .scene-waveform-strip:focus-visible{outline:2px solid rgba(144,212,232,.88);outline-offset:-2px;border-radius:3px}
