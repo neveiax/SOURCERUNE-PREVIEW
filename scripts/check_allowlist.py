@@ -171,6 +171,11 @@ def main():
     if not sportscar.is_file() or blobsha(sportscar.read_bytes())!="817126601fa277a59b9325de4fab2fd4aec14489":
         raise SystemExit("BLOCKED: unapproved sports car image")
     ALLOWED.add("Assets/UI/Runtime/Common/Scene/RT_MOTION_SPORTSCAR_V1.png")
+    # User-provided, transparent cosmetic LISTENER marker (no audio implementation).
+    bear=root/"Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_BEAR_V1.png"
+    if not bear.is_file() or blobsha(bear.read_bytes())!="7325368eca79d8a9f84a2d161c9c58387487d7d0":
+        raise SystemExit("BLOCKED: unapproved listener image")
+    ALLOWED.add("Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_BEAR_V1.png")
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
         raise SystemExit("BLOCKED: unapproved public files: "+", ".join(unexpected))
