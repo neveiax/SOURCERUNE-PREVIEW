@@ -39,30 +39,34 @@ export function setCurrentSceneDistance(p,requested){
   }
   return changed;
 }
-function svgX(svg,event){
+function svgPoint(svg,event){
   try{
     const matrix=svg.getScreenCTM();
     if(!matrix)return null;
     const point=svg.createSVGPoint();
     point.x=event.clientX;point.y=event.clientY;
-    return point.matrixTransform(matrix.inverse()).x;
+    const pt=point.matrixTransform(matrix.inverse());return {x:pt.x,y:pt.y};
   }catch{return null;}
 }
-export function bindSceneDirectControls({getState,getDistance,setMotion,setDistance,snapshot,finish,revert}){
+export function bindSceneDirectControls({getState,getDistance,setMotion,setDistance,setListener,listenerFromScreen,snapshot,finish,revert}){
   const svg=document.getElementById("sceneSvg"),
         dial=document.getElementById("currentDistanceControl"),
         value=document.getElementById("distanceText"),
         source=document.getElementById("sourceNode"),
         listener=document.getElementById("listenerNode");
   if(!svg||!source||!value||!dial)return;
-  const apply=(kind,next)=>kind==="motion"?setMotion(next):setDistance(next);
+  const apply=(kind,next)=>kind==="motion"?setMotion(next):kind==="listener"?setListener(next):setDistance(next);
   const save=(kind,next)=>{const before=snapshot();if(apply(kind,next))finish(before);};
   let drag=null;
   const pointerValue=e=>{
     if(!drag)return null;
     if(drag.kind==="motion"){
-      const x=svgX(svg,e);
-      return x===null?null:clamp(Math.round((x-110)/790*100),0,100);
+      const point=svgPoint(svg,e);
+      return point===null?null:clamp(Math.round((point.x-110)/790*100),0,100);
+    }
+    if(drag.kind==="listener"){
+      const point=svgPoint(svg,e);
+      return point===null?null:listenerFromScreen(point.x,point.y,getState().ui);
     }
     return clamp(drag.startDistance+(drag.startY-e.clientY)*(e.shiftKey?.1:.5),0,1000);
   };
@@ -74,6 +78,7 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
     element.setPointerCapture(e.pointerId);
     element.classList.add("scene-adjusting");
     if(kind==="motion")source.focus({preventScroll:true});
+    else if(kind==="listener")listener?.focus({preventScroll:true});
     else (element===dial?dial:value).focus({preventScroll:true});
     const next=pointerValue(e);
     if(next!==null)apply(kind,next);
@@ -96,7 +101,8 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
   svg.addEventListener("pointerdown",e=>{
     const target=e.target,closest=target?.closest?.bind(target);
     if(!closest)return;
-    if(closest("#sourceNode")||closest("#motionPathHit"))begin(e,svg,"motion");
+    if(closest("#listenerNode"))begin(e,svg,"listener");
+    else if(closest("#sourceNode")||closest("#motionPathHit"))begin(e,svg,"motion");
     else if(closest("#distanceCallout")||closest("#distanceText"))begin(e,svg,"distance");
   });
   svg.addEventListener("pointermove",e=>move(e,svg));
@@ -108,8 +114,17 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
   dial.addEventListener("pointermove",e=>move(e,dial));
   dial.addEventListener("pointerup",e=>end(e,dial));
   dial.addEventListener("pointercancel",e=>end(e,dial));
-  listener?.addEventListener("click",()=>{
-    (getState().ui==="UI_02"?dial:value).focus({preventScroll:true});
+  listener?.addEventListener("keydown",e=>{
+    const current=getState().listener||{x:0,z:0};
+    const step=e.shiftKey?.1:1;
+    const next={...current};
+    if(e.key==="ArrowLeft")next.x-=step;
+    else if(e.key==="ArrowRight")next.x+=step;
+    else if(e.key==="ArrowUp")next.z+=step;
+    else if(e.key==="ArrowDown")next.z-=step;
+    else if(e.key==="Home"){next.x=0;next.z=0;}
+    else return;
+    e.preventDefault();e.stopPropagation();save("listener",next);
   });
   const keyInput=(event,kind)=>{
     const current=kind==="motion"?finite(getState().params.motion):getDistance();
