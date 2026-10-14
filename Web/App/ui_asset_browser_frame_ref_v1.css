@@ -805,3 +805,34 @@
  .asset-browser #assetClearFilters{min-width:44px;padding:0 4px;font-size:9px}
  .asset-browser .browser-tools select{flex-basis:106px;min-width:90px}
 }
+
+/* SR-20261014-UI-ASSET-PREVIEW: actual image proportions, category and selection. */
+.asset-browser .preview-art img{object-fit:contain;object-position:center;background:#09151d}
+.asset-browser .preview-details{
+  position:relative;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:4px 8px;min-width:0;margin:11px 2px 0;
+}
+.asset-browser .preview-category{
+  color:#92adba;font-size:10px;line-height:1.25;letter-spacing:.035em;overflow-wrap:anywhere;
+}
+.asset-browser .preview-selection{
+  display:inline-flex;align-items:center;min-height:17px;padding:2px 6px;
+  border:1px solid #38515d;border-radius:3px;
+  color:#a2b6bf;background:#14252d;font-size:9px;letter-spacing:.07em;
+}
+.asset-browser .asset-preview.selected .preview-selection{
+  color:#deedf3;background:#19303a;border-color:#668d9f;
+}
+.asset-browser .preview-title{margin-top:8px;min-width:0;max-width:100%;line-height:1.35;overflow-wrap:anywhere}
+.asset-browser .preview-id{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+.asset-browser .preview-resolution{
+  position:relative;margin:7px 2px 0;color:#7897a5;
+  font-size:9px;line-height:1.35;letter-spacing:.05em;font-variant-numeric:tabular-nums;
+}
+@media(max-width:630px){
+  .asset-browser .preview-details{margin-top:5px;gap:3px 5px}
+  .asset-browser .preview-category{font-size:9px}
+  .asset-browser .preview-selection{font-size:8px;padding:1px 5px}
+  .asset-browser .preview-title{margin-top:5px}
+  .asset-browser .preview-resolution{font-size:8px;margin-top:4px}
+}

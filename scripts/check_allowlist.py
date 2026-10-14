@@ -12,6 +12,7 @@ ALLOWED = {
     "macro-layout.mjs", "macro-controls.mjs",
     "ui02-extended-layout.mjs", "ui02-extended.mjs", ".nojekyll",
     ".github/workflows/snapshot-ui.yml",
+    ".github/workflows/sr-push-version.yml",
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
     "scripts/port_original_ui.py", "scripts/check_original_port.py",
     ".github/workflows/original-web-port.yml", "original_web_port_manifest.json",
@@ -39,7 +40,7 @@ REVIEWED_CSS_SHA={
     "Web/App/ui_ref_text_guard_a_v1.css": "ef0ff03ffed8beb5425e0006f7c842330d70153e",
     "Web/App/ui_ref_text_guard_b_v1.css": "b6d9b75b5f341f9306389a2f5dcffe42199cf033",
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
-    "Web/App/ui_asset_browser_frame_ref_v1.css": "550e7b70c1b5799aa6c08977a42ee3d8412ddb0f",
+    "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
     "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7"
 }
 ALLOWED.update(REVIEWED_CSS_SHA)
