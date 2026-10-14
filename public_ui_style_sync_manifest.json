@@ -1,8 +1,8 @@
 {
   "work_id": "SR-20261014-UI01-TIMELINE-SCRUB",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "17140f5939cd11062eef349b57a938973300fde9",
-  "kind": "Safe original UI timeline no-audio Motion control; pinned Scene file unchanged, real audio seek preserved",
+  "source_commit": "ef321a7a24a237f2aba19c2193447456cd50455e",
+  "kind": "Reviewed UI-only Scene timeline scrub rebased onto SOURCE direct-controls main; shared helper/CSS parity, public pinned Scene intact",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
