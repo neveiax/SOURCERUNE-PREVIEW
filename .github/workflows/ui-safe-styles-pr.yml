@@ -72,7 +72,18 @@ jobs:
                   throw Error(ui+" SOURCE drag did not update Motion "+JSON.stringify(probe));
                 }
                 await page.$eval("#undoBtn",el=>el.click());
-                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1)throw Error(ui+" SOURCE drag Undo failed");
+                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1){
+                  const diag=await page.evaluate(()=>({
+                    source:document.querySelector("#sourceNode")?.getAttribute("aria-valuenow"),
+                    sourceTransform:document.querySelector("#sourceNode")?.getAttribute("transform"),
+                    status:document.querySelector("#stateStatus")?.textContent,
+                    undoDisabled:document.querySelector("#undoBtn")?.disabled,
+                    redoDisabled:document.querySelector("#redoBtn")?.disabled,
+                    listener:document.querySelector("#listenerNode")?.getAttribute("transform"),
+                    sourceHit:document.querySelector("#sourceNode")?.getBoundingClientRect().toJSON()
+                  }));
+                  throw Error(ui+" SOURCE drag Undo failed "+JSON.stringify({originalMotion,draggedMotion,diag}));
+                }
                 if(ui==="UI_02"){
                   const beforeDistance=await page.$eval("#currentDistanceControl",el=>Number(el.getAttribute("aria-valuenow")));
                   const dialBefore=await page.$eval("#currentDistanceControl",el=>({
