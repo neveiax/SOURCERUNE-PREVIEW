@@ -12,6 +12,7 @@ ALLOWED = {
     "macro-layout.mjs", "macro-controls.mjs",
     "ui02-extended-layout.mjs", "ui02-extended.mjs", ".nojekyll",
     ".github/workflows/snapshot-ui.yml",
+    ".github/workflows/sr-push-version.yml",
     "scripts/bootstrap_assets.py", "scripts/check_allowlist.py",
     "scripts/port_original_ui.py", "scripts/check_original_port.py",
     ".github/workflows/original-web-port.yml", "original_web_port_manifest.json",
