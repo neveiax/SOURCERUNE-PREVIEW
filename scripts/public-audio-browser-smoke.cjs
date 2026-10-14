@@ -11,25 +11,6 @@ const puppeteer=require('puppeteer-core');
     await page.evaluateOnNewDocument(()=>{
       const trace=[];
       Object.defineProperty(window,'__srAudioSmokeTrace',{value:trace});
-      // Diagnostic only: observe browser input and any code that cancels
-      // a native mouse event. Call the original methods unchanged.
-      const prevent=Event.prototype.preventDefault;
-      Event.prototype.preventDefault=function(...args){
-        if(['pointerdown','pointerup','mousedown','mouseup','click'].includes(this.type))
-          trace.push({step:'preventDefault.'+this.type,targetId:this.target?.id,
-            stack:new Error().stack?.split('\\n').slice(1,4).join(' | '),t:performance.now()});
-        return prevent.apply(this,args);
-      };
-      for(const type of ['pointerdown','mousedown','pointerup','mouseup','click']){
-        window.addEventListener(type,event=>{
-          trace.push({step:'window.'+type+'.capture',targetId:event.target?.id,
-            button:event.button,pointerType:event.pointerType,defaultPrevented:event.defaultPrevented,t:performance.now()});
-        },true);
-        window.addEventListener(type,event=>{
-          trace.push({step:'window.'+type+'.bubble',targetId:event.target?.id,
-            defaultPrevented:event.defaultPrevented,t:performance.now()});
-        });
-      }
       const AC=window.AudioContext||window.webkitAudioContext;
       if(AC?.prototype?.resume){
         const resume=AC.prototype.resume;
@@ -75,6 +56,24 @@ const puppeteer=require('puppeteer-core');
     // The 0.5-second fixture can end before the asynchronous browser assertion.
     // Loop this same test fixture; still require real AudioWorklet + time progression.
     await page.$eval('#audioElement',audio=>{audio.loop=true});
+    // Workbench intentionally disables PLAY until loadedmetadata/durationchange.
+    // A disabled button receives pointerdown/up but suppresses mouse click.
+    // Engine-ready text alone is NOT evidence that the media element is ready.
+    try {
+      await page.waitForFunction(()=>{
+        const audio=document.querySelector('#audioElement');
+        const play=document.querySelector('#playBtn');
+        return !play.disabled&&Number.isFinite(audio.duration)&&audio.duration>0&&!audio.error;
+      },{timeout:15000});
+    }catch(cause){
+      const readiness=await page.evaluate(()=>{
+        const audio=document.querySelector('#audioElement'),play=document.querySelector('#playBtn');
+        return {playDisabled:play.disabled,duration:audio.duration,
+          readyState:audio.readyState,networkState:audio.networkState,
+          errorCode:audio.error?.code,engine:document.querySelector('#blockReadout')?.textContent};
+      });
+      throw Error('PLAY_BUTTON_MEDIA_NOT_READY '+JSON.stringify({readiness,cause:String(cause)}));
+    }
     const clickTarget=await page.$eval('#playBtn',button=>{
       const r=button.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;
       const hit=document.elementFromPoint(x,y);
@@ -86,39 +85,16 @@ const puppeteer=require('puppeteer-core');
     // Also record actual document click delivery, not merely Puppeteer's click call.
     await page.evaluate(()=>{
       window.__srAudioSmokeTrace?.push({step:'diagnostic.ready',t:performance.now()});
-      for(const type of ['pointerdown','mousedown','pointerup','mouseup','click']){
-        document.addEventListener(type,event=>{
-          const target=event.target;
-          window.__srAudioSmokeTrace?.push({step:'document.'+type+'.capture',targetId:target?.id,
-            targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),
-            x:event.clientX,y:event.clientY,t:performance.now()});
-        },true);
-        document.addEventListener(type,event=>{
-          window.__srAudioSmokeTrace?.push({step:'document.'+type+'.bubble',targetId:event.target?.id,
-            defaultPrevented:event.defaultPrevented,t:performance.now()});
-        });
-      }
+      document.addEventListener('click',event=>{
+        const target=event.target;
+        window.__srAudioSmokeTrace?.push({step:'document.click.capture',targetId:target?.id,
+          targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),t:performance.now()});
+      },true);
     });
-    // Deliver a genuine Chromium pointer at the already verified visible hit target.
-    // Do not substitute DOM element.click() or relax the real playback assertions.
-    const x=clickTarget.rect.x+clickTarget.rect.w/2;
-    const y=clickTarget.rect.y+clickTarget.rect.h/2;
-    await page.mouse.move(x,y);
-    await page.mouse.down();
-    await page.mouse.up();
-    // CDP's mouse dispatch acknowledgement can precede the browser event task.
-    // Wait only for a genuinely captured click on PLAY; never synthesize or substitute one.
-    try {
-      await page.waitForFunction(
-        ()=>window.__srAudioSmokeTrace?.some(e=>e.step==='document.click.capture'&&e.matched),
-        {timeout:3000,polling:50}
-      );
-    } catch {
-      // Keep the original strict event assertion below, including its diagnostics.
-    }
+    await page.click('#playBtn');
     const afterPointer=await page.evaluate(()=>{
       const el=document.querySelector('#playBtn');
-      return {events:window.__srAudioSmokeTrace?.slice(-45),hasOnclick:typeof el?.onclick,
+      return {events:window.__srAudioSmokeTrace?.slice(-10),hasOnclick:typeof el?.onclick,
         currentStatus:document.querySelector('#stateStatus')?.textContent};
     });
     console.log('PLAY_POINTER_DIAGNOSTIC '+JSON.stringify(afterPointer));
