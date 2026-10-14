@@ -91,3 +91,31 @@ body.ui-02 .motion-deck-graph:hover #motionDeckCurrent,
 body.ui-02 .motion-deck-graph.adjusting #motionDeckCurrent{
   fill:#c4f4ff;stroke:#5ad4ff;stroke-width:2.5;
 }
+
+/* SR-20261015-UI02-METER: scale legibility and segmented live meter optics. */
+body.ui-02 .meter-rail .meter-slot{
+  position:relative;
+  isolation:isolate;
+  background:repeating-linear-gradient(90deg,rgba(132,175,190,.20) 0 1px,transparent 1px 10px),#071318;
+  border:1px solid #436675;
+  box-shadow:inset 0 1px 3px #02080c,0 0 0 1px rgba(60,111,130,.10);
+}
+body.ui-02 .meter-rail .meter-fill{
+  position:relative;
+  background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(4,22,30,.65) 9px 10px),
+    linear-gradient(90deg,#248eb0 0%,#4ed9f2 57%,#efb875 82%,#eb746b 100%);
+  box-shadow:0 0 5px rgba(48,176,213,.32),inset 0 1px rgba(206,248,255,.22);
+}
+body.ui-02 .meter-rail .meter-db-scale{
+  color:#a5c0ca;
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 1px 2px rgba(0,0,0,.8);
+}
+body.ui-02 .meter-rail .meter-mode-toggle [aria-pressed="true"]{
+  border-color:#6aaac1;color:#dff6ff;background:#15313d;
+  box-shadow:inset 0 0 0 1px rgba(98,188,214,.18);
+}
+body.ui-02 .meter-rail .meter-mode-toggle button:focus-visible,
+body.ui-02 .meter-rail #resetPeakBtn:focus-visible{
+  outline:2px solid #8bd1e5;outline-offset:2px;
+}
