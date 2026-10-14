@@ -48,7 +48,7 @@ function applySceneViewportProfile(){
   svg.setAttribute("viewBox",ui1?sceneViewBox(state?.sceneZoom||1):"0 0 1000 420");
   svg.setAttribute("preserveAspectRatio","xMidYMid meet");
   const listener=$("#listenerNode");
-  if(listener){const p=listenerScreenPoint(state?.listener,state?.ui);listener.setAttribute("transform",`translate(${p.x} ${p.y})`);if(listener.parentNode===svg&&svg.lastElementChild!==listener)svg.append(listener);}
+  if(listener){const p=listenerScreenPoint(state?.listener,state?.ui);listener.setAttribute("transform",`translate(${p.x} ${p.y})`);if(listener.parentNode===svg){svg.append(listener);const source=svg.querySelector("#sourceNode");if(source)svg.append(source);}}
   const path=$("#motionPath");
   if(path&&!ui1)path.setAttribute("d","M110 325 C340 250 650 250 900 325");
 }
