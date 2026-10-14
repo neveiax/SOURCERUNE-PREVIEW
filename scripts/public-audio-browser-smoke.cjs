@@ -11,6 +11,25 @@ const puppeteer=require('puppeteer-core');
     await page.evaluateOnNewDocument(()=>{
       const trace=[];
       Object.defineProperty(window,'__srAudioSmokeTrace',{value:trace});
+      // Diagnostic only: observe browser input and any code that cancels
+      // a native mouse event. Call the original methods unchanged.
+      const prevent=Event.prototype.preventDefault;
+      Event.prototype.preventDefault=function(...args){
+        if(['pointerdown','pointerup','mousedown','mouseup','click'].includes(this.type))
+          trace.push({step:'preventDefault.'+this.type,targetId:this.target?.id,
+            stack:new Error().stack?.split('\\n').slice(1,4).join(' | '),t:performance.now()});
+        return prevent.apply(this,args);
+      };
+      for(const type of ['pointerdown','mousedown','pointerup','mouseup','click']){
+        window.addEventListener(type,event=>{
+          trace.push({step:'window.'+type+'.capture',targetId:event.target?.id,
+            button:event.button,pointerType:event.pointerType,defaultPrevented:event.defaultPrevented,t:performance.now()});
+        },true);
+        window.addEventListener(type,event=>{
+          trace.push({step:'window.'+type+'.bubble',targetId:event.target?.id,
+            defaultPrevented:event.defaultPrevented,t:performance.now()});
+        });
+      }
       const AC=window.AudioContext||window.webkitAudioContext;
       if(AC?.prototype?.resume){
         const resume=AC.prototype.resume;
@@ -74,6 +93,10 @@ const puppeteer=require('puppeteer-core');
             targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),
             x:event.clientX,y:event.clientY,t:performance.now()});
         },true);
+        document.addEventListener(type,event=>{
+          window.__srAudioSmokeTrace?.push({step:'document.'+type+'.bubble',targetId:event.target?.id,
+            defaultPrevented:event.defaultPrevented,t:performance.now()});
+        });
       }
     });
     // Deliver a genuine Chromium pointer at the already verified visible hit target.
@@ -95,7 +118,7 @@ const puppeteer=require('puppeteer-core');
     }
     const afterPointer=await page.evaluate(()=>{
       const el=document.querySelector('#playBtn');
-      return {events:window.__srAudioSmokeTrace?.slice(-10),hasOnclick:typeof el?.onclick,
+      return {events:window.__srAudioSmokeTrace?.slice(-45),hasOnclick:typeof el?.onclick,
         currentStatus:document.querySelector('#stateStatus')?.textContent};
     });
     console.log('PLAY_POINTER_DIAGNOSTIC '+JSON.stringify(afterPointer));
