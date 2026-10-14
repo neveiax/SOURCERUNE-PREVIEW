@@ -9,6 +9,13 @@ import json,re
 ROOT=Path(__file__).resolve().parent.parent
 APP=ROOT/"Web/App"
 PIN="c035db4d6d5f409cdbedc4f9c874089ea1750fda"
+# Two formerly pinned original UI files were legitimately updated upstream.
+# Each blob exactly matches current reviewed SOURCE main; keep immutable
+# original_web_port_manifest.json unchanged for historical provenance.
+REVIEWED_WORKBENCH_SHA = {
+    "Web/App/ui_workbench.js": "5d80a39ce94a91eb7a534b0bae478a859d71f0da",
+    "Web/App/ui_workbench_v1.css": "c64c2dcd51b27414dcdfcb49d5585414f7066953",
+}
 def blob(data):
     return sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
 def main():
@@ -20,7 +27,9 @@ def main():
     for source,details in originals.items():
         path=ROOT/source
         assert path.is_file(),source
-        if source not in altered:
+        if source in REVIEWED_WORKBENCH_SHA:
+            assert blob(path.read_bytes())==REVIEWED_WORKBENCH_SHA[source],source
+        elif source not in altered:
             assert blob(path.read_bytes())==details["sha"],source
     assert blob((APP/"geometry_audit.js").read_bytes())=="c97655194f0249edf05d84416f33daedbd0006ff","reviewed geometry source mismatch"
     imgs=manifest["approved_png"]
