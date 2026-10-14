@@ -71,7 +71,13 @@ jobs:
                   },sourceRect);
                   throw Error(ui+" SOURCE drag did not update Motion "+JSON.stringify(probe));
                 }
-                await page.$eval("#undoBtn",el=>el.click());
+                await page.evaluate(()=>{
+                  window.__undoErrorLog=[];
+                  window.addEventListener("error",e=>window.__undoErrorLog.push(e.error?.stack||e.message));
+                  const button=document.querySelector("#undoBtn");
+                  window.__undoClickHandler=typeof button?.onclick;
+                  button?.click();
+                });
                 if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1){
                   const diag=await page.evaluate(()=>({
                     source:document.querySelector("#sourceNode")?.getAttribute("aria-valuenow"),
@@ -79,6 +85,7 @@ jobs:
                     status:document.querySelector("#stateStatus")?.textContent,
                     undoDisabled:document.querySelector("#undoBtn")?.disabled,
                     redoDisabled:document.querySelector("#redoBtn")?.disabled,
+                    clickHandler:window.__undoClickHandler,undoErrors:window.__undoErrorLog,
                     listener:document.querySelector("#listenerNode")?.getAttribute("transform"),
                     sourceHit:document.querySelector("#sourceNode")?.getBoundingClientRect().toJSON()
                   }));
