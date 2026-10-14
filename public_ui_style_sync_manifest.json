@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261014-UI01-UI02-SCENE-DIRECT-CONTROLS",
+  "work_id": "SR-20261014-UI01-TIMELINE-SCRUB",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "ee34727e9d7ef7b12880dd71661426d8e9167d51",
-  "kind": "Live Motion indicator aligned with SVG + UI_01/UI_02 direct Motion/Distance state controls (public Web-only)",
+  "source_commit": "ef321a7a24a237f2aba19c2193447456cd50455e",
+  "kind": "Reviewed UI timeline Motion gesture rebased on SOURCE and Public scene direct controls, no DSP",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -10,7 +10,7 @@
     "Web/App/ui01_knob_optics_ref_finish_v1.css": "e5d44bade9410cc92fa369301ca58b90224b66cb",
     "Web/App/ui01_ref_batch_a_v1.css": "de50b1405467dbbd98342b88866340f11581c8c4",
     "Web/App/ui01_ref_batch_b_v1.css": "3daec9e856db121a8080fb4400d79baf730ea634",
-    "Web/App/ui01_ref_batch_c_v1.css": "5137187d84a5a818bba688a3833d7cf5dac23989",
+    "Web/App/ui01_ref_batch_c_v1.css": "a7f9d02e7071243fcc6ed772dca94626abc3dd1b",
     "Web/App/ui02_ref_batch_a_v1.css": "aecc3b4ff455389fb08d832c1920441d1085d726",
     "Web/App/ui02_ref_batch_b_v1.css": "2c9c9ca980abddcc9518a260fea913eae365ab5e",
     "Web/App/ui02_ref_batch_c_v1.css": "d29066d0704cb5d5afe779fff957d8cbdcd40c86",
