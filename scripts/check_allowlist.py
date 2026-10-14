@@ -165,6 +165,12 @@ def main():
             ALLOWED.update("Web/App/audio/"+name for name in FILES)
     tracked=set(subprocess.check_output(["git","ls-files"],text=True,cwd=root).splitlines())
     untracked=set(subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True,cwd=root).splitlines())
+
+    # Approved SOURCE-only cosmetic image: user-approved red sports car, no DSP.
+    sportscar=root/"Assets/UI/Runtime/Common/Scene/RT_MOTION_SPORTSCAR_V1.png"
+    if not sportscar.is_file() or blobsha(sportscar.read_bytes())!="817126601fa277a59b9325de4fab2fd4aec14489":
+        raise SystemExit("BLOCKED: unapproved sports car image")
+    ALLOWED.add("Assets/UI/Runtime/Common/Scene/RT_MOTION_SPORTSCAR_V1.png")
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
         raise SystemExit("BLOCKED: unapproved public files: "+", ".join(unexpected))
