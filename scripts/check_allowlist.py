@@ -45,6 +45,13 @@ REVIEWED_CSS_SHA={
     "Web/App/scene_direct_controls_v1.css": "4bec37667b815882e9c98eb86c2312bdea819d70"
 }
 REVIEWED_INTERACTION_JS_SHA={"Web/App/scene_direct_controls.js": "d2fc008a321c04d3034318e279220f59ca339f0e"}
+# Two formerly pinned original UI files were legitimately updated upstream.
+# Each blob exactly matches current reviewed SOURCE main; keep immutable
+# original_web_port_manifest.json unchanged for historical provenance.
+REVIEWED_WORKBENCH_SHA = {
+    "Web/App/ui_workbench.js": "5d80a39ce94a91eb7a534b0bae478a859d71f0da",
+    "Web/App/ui_workbench_v1.css": "c64c2dcd51b27414dcdfcb49d5585414f7066953",
+}
 ALLOWED.update(REVIEWED_CSS_SHA)
 ALLOWED.update(REVIEWED_INTERACTION_JS_SHA)
 ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
@@ -129,6 +136,9 @@ def main():
             if name=="Web/App/geometry_audit.js":
                 if blobsha(data)!="c97655194f0249edf05d84416f33daedbd0006ff":
                     raise SystemExit("BLOCKED: unapproved original geometry audit SHA")
+            elif name in REVIEWED_WORKBENCH_SHA:
+                if blobsha(data)!=REVIEWED_WORKBENCH_SHA[name]:
+                    raise SystemExit("BLOCKED: unapproved workbench UI blob "+name)
             elif name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
                 if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
             ALLOWED.add(name)
