@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261014-UI02-MOTION-PATH-EXACT",
+  "work_id": "SR-20261014-UI01-TIMELINE-SCRUB",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "3ac2ddeec1f060ecec06d1987d7209d2ed57deca",
-  "kind": "UI-only Motion Deck indicator directly follows SVG geometry in five display modes; no DSP or audio changes",
+  "source_commit": "17140f5939cd11062eef349b57a938973300fde9",
+  "kind": "Safe original UI timeline no-audio Motion control; pinned Scene file unchanged, real audio seek preserved",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -10,7 +10,7 @@
     "Web/App/ui01_knob_optics_ref_finish_v1.css": "e5d44bade9410cc92fa369301ca58b90224b66cb",
     "Web/App/ui01_ref_batch_a_v1.css": "de50b1405467dbbd98342b88866340f11581c8c4",
     "Web/App/ui01_ref_batch_b_v1.css": "3daec9e856db121a8080fb4400d79baf730ea634",
-    "Web/App/ui01_ref_batch_c_v1.css": "5137187d84a5a818bba688a3833d7cf5dac23989",
+    "Web/App/ui01_ref_batch_c_v1.css": "a7f9d02e7071243fcc6ed772dca94626abc3dd1b",
     "Web/App/ui02_ref_batch_a_v1.css": "aecc3b4ff455389fb08d832c1920441d1085d726",
     "Web/App/ui02_ref_batch_b_v1.css": "2c9c9ca980abddcc9518a260fea913eae365ab5e",
     "Web/App/ui02_ref_batch_c_v1.css": "d29066d0704cb5d5afe779fff957d8cbdcd40c86",
