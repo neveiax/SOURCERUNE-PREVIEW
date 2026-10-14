@@ -830,7 +830,9 @@ function updateApproachAudio(){
  const active=p.motionMode==="APPROACH"&&!state.globalBypass&&!state.bypass?.MOTION;
  const next=active?Math.min(1,closest/dist):1;
  if(!Number.isFinite(lastApproachGain)||Math.abs(next-lastApproachGain)>0.00001){
-  approachGain.gain.setTargetAtTime(next,audioCtx.currentTime,.020);lastApproachGain=next;
+  if(!Number.isFinite(lastApproachGain))approachGain.gain.setValueAtTime(next,audioCtx.currentTime);
+  else approachGain.gain.setTargetAtTime(next,audioCtx.currentTime,.020);
+  lastApproachGain=next;
  }
 }
 function distance(){
@@ -909,6 +911,7 @@ async function setupAudio(){
       $("#blockReadout").textContent="WEB AUDIO EQ / PRIVATE MODELS NOT YET PUBLISHED";
     }
     $("#sampleRateReadout").textContent=audioCtx.sampleRate+" Hz";
+    updateApproachAudio();
     updateGains();
   })();
   try{await audioSetup;}finally{audioSetup=null;}
