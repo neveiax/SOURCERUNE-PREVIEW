@@ -1,7 +1,7 @@
 {
   "work_id": "SR-20261015-LISTENER-WEB-UI",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "c549aebc010c2675da6350504457b90a2a834abf",
+  "source_commit": "303c8dc784fe2da89c94121bd2e305b0cdbd46c2",
   "kind": "Original SOURCE Listener drag/keyboard/X-Z geometry preview; publicly approved audio binary unchanged",
   "audio_enabled": false,
   "styles": {
@@ -19,10 +19,10 @@
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
     "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7",
-    "Web/App/scene_direct_controls_v1.css": "5db7705c5a8050324c82b3095248a953f0e37701"
+    "Web/App/scene_direct_controls_v1.css": "5b913eb96daf2c6e790cc80bef8a01592e6a2d22"
   },
   "safe_interaction_scripts": {
-    "Web/App/scene_direct_controls.js": "bb1fe055c0ba88ae9731ffe3180d39265b5f0ae2"
+    "Web/App/scene_direct_controls.js": "04ff5d1ee5ab7b7e98b3581cbb5baed144404fee"
   },
   "upstream_motion_fix_commit": "5fc42cea57586928e36304c49295b0af6d13424a",
   "safe_scene_scripts": {
