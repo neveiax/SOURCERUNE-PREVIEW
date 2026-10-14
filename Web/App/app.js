@@ -574,6 +574,8 @@ function openBrowser(t,opener=null){
   $("#assetSearch").value="";
   $("#assetBrowser").classList.remove("hidden");
   renderBrowserList();
+  // Scroll only the modal list to show the currently applied asset on reopen.
+  $("#assetList .asset-item.active")?.scrollIntoView({block:"nearest",inline:"nearest"});
   $("#assetSearch").focus({preventScroll:true});
 }
 function closeBrowser(){
@@ -656,12 +658,17 @@ function preview(x){
   const activeId=browserType==="SCENE_PRESET_HERO"&&state.preset?.startsWith("factory:")?state.preset.slice(8):state.selection[browserType];
   const panel=$("#assetPreview");
   panel.classList.toggle("selected",activeId===x.id);
-  panel.innerHTML=`<div class="preview-art"><img src="${assetUrl(x)}" alt=""></div><div class="preview-title">${x.name}</div><div class="preview-id">${x.id}</div>`;
+  panel.innerHTML=`<div class="preview-art"><img src="${assetUrl(x)}" alt=""></div><div class="preview-details"><span class="preview-category">${x.category}</span><span class="preview-selection">${activeId===x.id?"SELECTED":"PREVIEW"}</span></div><div class="preview-title">${x.name}</div><div class="preview-id">${x.id}</div><div class="preview-resolution" role="status">IMAGE DIMENSIONS PENDING</div>`;
   const img=$(".preview-art img",panel);
+  // Use decoded source dimensions only, so preview never claims invented fidelity.
+  const setDimensions=()=>{const label=$(".preview-resolution",panel);if(label&&img?.naturalWidth&&img?.naturalHeight)label.textContent=img.naturalWidth+" × "+img.naturalHeight+" PX";};
+  img?.addEventListener("load",setDimensions,{once:true});
+  if(img?.complete&&img.naturalWidth)setDimensions();
   img?.addEventListener("error",()=>{
     const frame=img.closest(".preview-art");
     if(!frame)return;
     img.remove();
+    const label=$(".preview-resolution",panel);if(label)label.textContent="IMAGE NOT AVAILABLE";
     frame.classList.add("image-unavailable");
     const message=document.createElement("span");
     message.className="preview-fallback";
