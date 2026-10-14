@@ -176,6 +176,15 @@ def main():
     if not bear.is_file() or blobsha(bear.read_bytes())!="7325368eca79d8a9f84a2d161c9c58387487d7d0":
         raise SystemExit("BLOCKED: unapproved listener image")
     ALLOWED.add("Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_BEAR_V1.png")
+    # User-approved high-resolution UI-only images. The SHA pins prevent replacing them with unreviewed binaries.
+    for rel, sha in {
+        "Assets/UI/Runtime/Common/Scene/RT_MOTION_SPORTSCAR_HD_V2.png": "e6baee8ed6e2dcf3102b4af5b37f6842b95e4215",
+        "Assets/UI/Runtime/Common/Scene/RT_SCENE_LISTENER_BEAR_HD_V2.png": "36b38139833e415f3552d6fe0b0a62cddc950273",
+    }.items():
+        asset=root/rel
+        if not asset.is_file() or blobsha(asset.read_bytes())!=sha:
+            raise SystemExit("BLOCKED: unapproved high-resolution scene icon "+rel)
+        ALLOWED.add(rel)
     unexpected=sorted((tracked|untracked)-ALLOWED)
     if unexpected:
         raise SystemExit("BLOCKED: unapproved public files: "+", ".join(unexpected))
