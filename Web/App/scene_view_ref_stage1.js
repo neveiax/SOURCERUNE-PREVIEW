@@ -37,7 +37,6 @@ export function syncSceneGuide(state){
     const pts=Array.from({length:49},(_,i)=>at(i/48));
     const d=pts.map((pt,i)=>(i?"L":"M")+pt.x.toFixed(2)+" "+pt.y.toFixed(2)).join(" ");
     $("#motionPath")?.setAttribute("d",d);
-    $("#motionPathHit")?.setAttribute("d",d);
     cachedScenePath=d;
     for(const [id,t] of [["sceneStartMarker",0],["sceneClosestMarker",.5],["sceneEndMarker",1]]){
       const el=$("#"+id),point=at(t);
