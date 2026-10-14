@@ -67,13 +67,22 @@ const puppeteer=require('puppeteer-core');
     // Also record actual document click delivery, not merely Puppeteer's click call.
     await page.evaluate(()=>{
       window.__srAudioSmokeTrace?.push({step:'diagnostic.ready',t:performance.now()});
-      document.addEventListener('click',event=>{
-        const target=event.target;
-        window.__srAudioSmokeTrace?.push({step:'document.click.capture',targetId:target?.id,
-          targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),t:performance.now()});
-      },true);
+      for(const type of ['pointerdown','mousedown','pointerup','mouseup','click']){
+        document.addEventListener(type,event=>{
+          const target=event.target;
+          window.__srAudioSmokeTrace?.push({step:'document.'+type+'.capture',targetId:target?.id,
+            targetTag:target?.tagName,matched:!!target?.closest?.('#playBtn'),
+            x:event.clientX,y:event.clientY,t:performance.now()});
+        },true);
+      }
     });
-    await page.click('#playBtn');
+    // Deliver a genuine Chromium pointer at the already verified visible hit target.
+    // Do not substitute DOM element.click() or relax the real playback assertions.
+    const x=clickTarget.rect.x+clickTarget.rect.w/2;
+    const y=clickTarget.rect.y+clickTarget.rect.h/2;
+    await page.mouse.move(x,y);
+    await page.mouse.down();
+    await page.mouse.up();
     // CDP's mouse dispatch acknowledgement can precede the browser event task.
     // Wait only for a genuinely captured click on PLAY; never synthesize or substitute one.
     try {
