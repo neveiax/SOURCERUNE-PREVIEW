@@ -42,9 +42,14 @@ REVIEWED_CSS_SHA={
     "Web/App/ui_ref_text_guard_c_v1.css": "2b2f9d9f4cf9c0f708b445a565779b0d29500303",
     "Web/App/ui_asset_browser_frame_ref_v1.css": "6c0bf346c5a69b8df494a9e658c95ac97a71cb3c",
     "Web/App/ui_original_render_clarity_v1.css": "60f0ee0bd30801a31b033ad66692dce85603bae7",
-    "Web/App/scene_direct_controls_v1.css": "4bec37667b815882e9c98eb86c2312bdea819d70"
+    "Web/App/scene_direct_controls_v1.css": "5b913eb96daf2c6e790cc80bef8a01592e6a2d22"
 }
-REVIEWED_INTERACTION_JS_SHA={"Web/App/scene_direct_controls.js": "d2fc008a321c04d3034318e279220f59ca339f0e"}
+REVIEWED_INTERACTION_JS_SHA={"Web/App/scene_direct_controls.js": "04ff5d1ee5ab7b7e98b3581cbb5baed144404fee"}
+# Exact byte-verified UI geometry only; never expose private audio, C++ or WASM.
+REVIEWED_LISTENER_JS_SHA={
+    "Web/App/scene_view_ref_stage1.js": "01ea356b3947061baaecc8c4b71cbebab28bc91d",
+    "Web/App/listener_scene.js": "aa0208959baa201af275d7b019d9e35d9e156510",
+}
 # Two formerly pinned original UI files were legitimately updated upstream.
 # Each blob exactly matches current reviewed SOURCE main; keep immutable
 # original_web_port_manifest.json unchanged for historical provenance.
@@ -54,6 +59,7 @@ REVIEWED_WORKBENCH_SHA = {
 }
 ALLOWED.update(REVIEWED_CSS_SHA)
 ALLOWED.update(REVIEWED_INTERACTION_JS_SHA)
+ALLOWED.update(REVIEWED_LISTENER_JS_SHA)
 ALLOWED.add('.github/workflows/ui-safe-styles-pr.yml')
 ALLOWED.add('public_ui_style_sync_manifest.json')
 # Existing public repository collaboration policy files, not Source-private material.
@@ -74,6 +80,13 @@ def main():
         content=path.read_text(encoding="utf-8")
         if any(forbidden in content for forbidden in ("AudioWorklet", "WebAssembly", "createSceneNode", "eval(", "fetch(", "XMLHttpRequest")):
             raise SystemExit("BLOCKED: private/audio code in scene UI JavaScript "+rel)
+    for rel,expected in REVIEWED_LISTENER_JS_SHA.items():
+        path=root/rel
+        if not path.is_file() or blobsha(path.read_bytes())!=expected:
+            raise SystemExit("BLOCKED: unapproved Listener scene code "+rel)
+        body=path.read_text(encoding="utf-8")
+        if any(x in body for x in ("AudioWorklet", "WebAssembly", "createSceneNode", "XMLHttpRequest", "eval(", "fetch(")):
+            raise SystemExit("BLOCKED: private/audio code in Listener scene "+rel)
     for rel,expected in REVIEWED_CSS_SHA.items():
         path=root/rel
         if not path.is_file() or blobsha(path.read_bytes())!=expected:
@@ -139,7 +152,7 @@ def main():
             elif name in REVIEWED_WORKBENCH_SHA:
                 if blobsha(data)!=REVIEWED_WORKBENCH_SHA[name]:
                     raise SystemExit("BLOCKED: unapproved workbench UI blob "+name)
-            elif name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json"}:
+            elif name not in {"Web/App/index.html","Web/App/app.js","Web/App/data/scene_presets_v1.json",*REVIEWED_LISTENER_JS_SHA}:
                 if blobsha(data)!=meta["sha"]:raise SystemExit("BLOCKED: original Web UI blob changed "+name)
             ALLOWED.add(name)
         engine=root/"Web/App/audio/engine.js"

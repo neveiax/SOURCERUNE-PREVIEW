@@ -72,8 +72,28 @@ jobs:
                   throw Error(ui+" SOURCE drag did not update Motion "+JSON.stringify(probe));
                 }
                 await page.$eval("#undoBtn",el=>el.click());
-                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1)throw Error(ui+" SOURCE drag Undo failed");
-                if(ui==="UI_02"){
+                if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1)
+                  throw Error(ui+" SOURCE drag Undo failed");
+                // Real pointer acceptance: LISTENER can be grabbed via its
+                // dedicated label even when SOURCE and LISTENER overlap.
+                const listenerBefore=await page.$eval("#listenerNode",el=>el.getAttribute("transform"));
+                const labelPoint=await page.$eval("#listenerLabel",el=>{
+                  const r=el.getBoundingClientRect();
+                  return {x:r.left+r.width/2,y:r.top+r.height/2};
+                });
+                await page.mouse.move(labelPoint.x,labelPoint.y);
+                await page.mouse.down();
+                await page.mouse.move(labelPoint.x+45,labelPoint.y,{steps:4});
+                await page.mouse.up();
+                const listenerMoved=await page.$eval("#listenerNode",el=>el.getAttribute("transform"));
+                if(listenerMoved===listenerBefore)
+                  throw Error(ui+" LISTENER label drag did not move receiver");
+                await page.$eval("#undoBtn",el=>el.click());
+                const listenerRestored=await page.$eval("#listenerNode",el=>el.getAttribute("transform"));
+                if(listenerRestored!==listenerBefore)
+                  throw Error(ui+" LISTENER drag Undo failed "+JSON.stringify({listenerBefore,listenerMoved,listenerRestored}));
+                console.log("LISTENER_REAL_POINTER_PASS",ui);
+                                if(ui==="UI_02"){
                   const beforeDistance=await page.$eval("#currentDistanceControl",el=>Number(el.getAttribute("aria-valuenow")));
                   const dialBefore=await page.$eval("#currentDistanceControl",el=>({
                     angle:Number.parseFloat(el.style.getPropertyValue("--distance-angle")),
@@ -171,6 +191,10 @@ jobs:
                 await page.keyboard.press("Escape");
                 await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el.click());
                 await page.waitForSelector('#assetBrowser:not(.hidden) .preview-art img',{timeout:12000});
+                // Hover is allowed to preview an unselected asset; explicitly
+                // focus the selected row before checking its selected-frame art.
+                await page.hover('#assetList .asset-item.active');
+                await page.waitForSelector('.asset-preview.selected .preview-art',{timeout:5000});
                 const frame=await page.evaluate(()=>{
                   const s=q=>getComputedStyle(document.querySelector(q));
                   return {title:document.querySelector("#browserTitle")?.textContent,
