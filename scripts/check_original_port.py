@@ -23,7 +23,7 @@ def main():
     assert manifest["source_commit"]==PIN
     originals=manifest["original_web_app_files"]
     assert len(originals)>=35
-    altered={"Web/App/app.js","Web/App/index.html","Web/App/data/scene_presets_v1.json","Web/App/geometry_audit.js"}
+    altered={"Web/App/app.js","Web/App/index.html","Web/App/data/scene_presets_v1.json","Web/App/geometry_audit.js","Web/App/scene_view_ref_stage1.js"}
     for source,details in originals.items():
         path=ROOT/source
         assert path.is_file(),source
@@ -32,6 +32,7 @@ def main():
         elif source not in altered:
             assert blob(path.read_bytes())==details["sha"],source
     assert blob((APP/"geometry_audit.js").read_bytes())=="c97655194f0249edf05d84416f33daedbd0006ff","reviewed geometry source mismatch"
+    assert blob((APP/"scene_view_ref_stage1.js").read_bytes())=="01ea356b3947061baaecc8c4b71cbebab28bc91d","unapproved Listener scene graph source"
     imgs=manifest["approved_png"]
     assert len(imgs)>=780
     for source,details in imgs.items():
