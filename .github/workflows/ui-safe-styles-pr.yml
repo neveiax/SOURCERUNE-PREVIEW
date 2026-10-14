@@ -60,7 +60,17 @@ jobs:
                 await page.mouse.move(sourceRect.x+45,sourceRect.y,{steps:3});
                 await page.mouse.up();
                 const draggedMotion=await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")));
-                if(Math.abs(draggedMotion-originalMotion)<1)throw Error(ui+" SOURCE drag did not update Motion");
+                if(Math.abs(draggedMotion-originalMotion)<1){
+                  const probe=await page.evaluate(({x,y})=>{
+                    const el=document.elementFromPoint(x,y),svg=document.querySelector("#sceneSvg"),node=document.querySelector("#sourceNode");
+                    const r=node.getBoundingClientRect(),b=svg.getBoundingClientRect();
+                    return {tag:el?.tagName,id:el?.id,near:el?.closest?.("#sourceNode,#motionPathHit")?.id,
+                      point:{x,y},rect:{x:r.x,y:r.y,width:r.width,height:r.height},
+                      svg:{x:b.x,y:b.y,width:b.width,height:b.height,viewBox:svg.getAttribute("viewBox")},
+                      motion:node.getAttribute("aria-valuenow"),top:document.elementFromPoint(x,y)?.outerHTML?.slice(0,160)};
+                  },sourceRect);
+                  throw Error(ui+" SOURCE drag did not update Motion "+JSON.stringify(probe));
+                }
                 await page.$eval("#undoBtn",el=>el.click());
                 if(Math.abs(await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")))-originalMotion)>.1)throw Error(ui+" SOURCE drag Undo failed");
                 if(ui==="UI_02"){
