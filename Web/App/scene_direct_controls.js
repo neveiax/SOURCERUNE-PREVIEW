@@ -66,7 +66,12 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
     }
     if(drag.kind==="listener"){
       const point=svgPoint(svg,e);
-      return point===null?null:listenerFromScreen(point.x,point.y,getState().ui);
+      if(!point||!drag.startPoint)return null;
+      // Relative movement keeps the marker still at pointerdown, including
+      // a grab on the separate LISTENER text handle in UI_02.
+      const start=listenerFromScreen(drag.startPoint.x,drag.startPoint.y,getState().ui);
+      const end=listenerFromScreen(point.x,point.y,getState().ui);
+      return {x:drag.startListener.x+end.x-start.x,z:drag.startListener.z+end.z-start.z};
     }
     return clamp(drag.startDistance+(drag.startY-e.clientY)*(e.shiftKey?.1:.5),0,1000);
   };
@@ -74,7 +79,9 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
     if(e.button!==0||drag)return;
     e.preventDefault();e.stopPropagation();
     drag={element,kind,pointerId:e.pointerId,before:snapshot(),
-          startDistance:getDistance(),startY:e.clientY};
+          startDistance:getDistance(),startY:e.clientY,
+          startPoint:kind==="listener"?svgPoint(svg,e):null,
+          startListener:kind==="listener"?{...(getState().listener||{x:0,z:0})}:null};
     element.setPointerCapture(e.pointerId);
     element.classList.add("scene-adjusting");
     if(kind==="motion")source.focus({preventScroll:true});
@@ -101,7 +108,7 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
   svg.addEventListener("pointerdown",e=>{
     const target=e.target,closest=target?.closest?.bind(target);
     if(!closest)return;
-    if(closest("#listenerNode"))begin(e,svg,"listener");
+    if(closest("#listenerNode")||closest("#listenerLabel"))begin(e,svg,"listener");
     else if(closest("#sourceNode")||closest("#motionPathHit"))begin(e,svg,"motion");
     else if(closest("#distanceCallout")||closest("#distanceText"))begin(e,svg,"distance");
   });
