@@ -31,3 +31,27 @@
 #webAudioTransport #auditionDuration{min-width:35px;text-align:right}
 #webAudioTransport .build-status{font-size:9px!important;line-height:13px!important}
 @media(max-width:600px){#workbenchDialog{padding:16px}#webAudioTransport .audio-controls{gap:3px}#webAudioTransport #workbenchOpen{padding:4px}#webAudioTransport #auditionFileName{max-width:110px}.workbench-head h2{font-size:20px}}
+
+/* Layout switch clarity in the Web-only tools dialog (no plugin shell changes). */
+#workbenchDialog .workbench-layout-actions{display:block}
+#workbenchDialog .workbench-layout-actions .mini-pair{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px!important;margin:0}
+#workbenchDialog .workbench-layout-actions [data-global-ui]{grid-column:span 2;min-height:46px;font-size:13px;font-weight:600;letter-spacing:.06em}
+#workbenchDialog .workbench-layout-actions [data-global-ui].is-current-layout{
+ border-color:#7bd4ee;background:linear-gradient(180deg,#255369,#173848);
+ box-shadow:inset 0 0 0 1px rgba(142,221,243,.25),0 0 0 1px rgba(56,131,155,.12);
+ color:#f1fbff
+}
+#workbenchDialog .workbench-layout-actions [data-global-ui].is-current-layout:after{
+ content:"ACTIVE";margin-left:9px;font-size:9px;letter-spacing:.07em;color:#9ae2f4
+}
+#workbenchDialog .workbench-layout-actions [data-snapshot]{min-height:40px;font-variant-numeric:tabular-nums}
+#workbenchDialog .workbench-layout-actions [data-snapshot].active{
+ background:linear-gradient(180deg,#315468,#1a3543);border-color:#7badc4;color:#fff
+}
+#workbenchDialog .workbench-actions button{transition:background .15s ease,border-color .15s ease}
+#workbenchDialog .workbench-actions button:active{background:#31566a}
+@media(max-width:440px){
+ #workbenchDialog .workbench-layout-actions .mini-pair{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px!important}
+ #workbenchDialog .workbench-layout-actions [data-global-ui]{font-size:11px;min-height:42px}
+ #workbenchDialog .workbench-layout-actions [data-global-ui].is-current-layout:after{font-size:8px;margin-left:4px}
+}
