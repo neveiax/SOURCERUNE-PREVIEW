@@ -74,6 +74,16 @@ const puppeteer=require('puppeteer-core');
       },true);
     });
     await page.click('#playBtn');
+    // CDP's mouse dispatch acknowledgement can precede the browser event task.
+    // Wait only for a genuinely captured click on PLAY; never synthesize or substitute one.
+    try {
+      await page.waitForFunction(
+        ()=>window.__srAudioSmokeTrace?.some(e=>e.step==='document.click.capture'&&e.matched),
+        {timeout:3000,polling:50}
+      );
+    } catch {
+      // Keep the original strict event assertion below, including its diagnostics.
+    }
     const afterPointer=await page.evaluate(()=>{
       const el=document.querySelector('#playBtn');
       return {events:window.__srAudioSmokeTrace?.slice(-10),hasOnclick:typeof el?.onclick,
