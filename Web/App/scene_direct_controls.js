@@ -62,7 +62,13 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
     if(!drag)return null;
     if(drag.kind==="motion"){
       const point=svgPoint(svg,e);
-      return point===null?null:clamp(Math.round((point.x-110)/790*100),0,100);
+      if(point===null)return null;
+      // Grabbing the visible car or SOURCE marker must not teleport its
+      // position to the initial pointer contact. The path itself remains
+      // an absolute seek control.
+      if(drag.relativeMotion&&drag.startPoint)
+        return clamp(Math.round(drag.startMotion+(point.x-drag.startPoint.x)/790*100),0,100);
+      return clamp(Math.round((point.x-110)/790*100),0,100);
     }
     if(drag.kind==="listener"){
       const point=svgPoint(svg,e);
@@ -78,9 +84,12 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
   function begin(e,element,kind){
     if(e.button!==0||drag)return;
     e.preventDefault();e.stopPropagation();
+    const relativeMotion=kind==="motion"&&!!e.target?.closest?.("#motionCarGlyph,#sourceNode");
     drag={element,kind,pointerId:e.pointerId,before:snapshot(),
           startDistance:getDistance(),startY:e.clientY,
-          startPoint:kind==="listener"?svgPoint(svg,e):null,
+          startMotion:kind==="motion"?finite(getState().params.motion,50):null,
+          relativeMotion,
+          startPoint:kind==="listener"||relativeMotion?svgPoint(svg,e):null,
           startListener:kind==="listener"?{...(getState().listener||{x:0,z:0})}:null};
     element.setPointerCapture(e.pointerId);
     element.classList.add("scene-adjusting");
@@ -109,7 +118,7 @@ export function bindSceneDirectControls({getState,getDistance,setMotion,setDista
     const target=e.target,closest=target?.closest?.bind(target);
     if(!closest)return;
     if(closest("#listenerNode")||closest("#listenerLabel"))begin(e,svg,"listener");
-    else if(closest("#sourceNode")||closest("#motionPathHit"))begin(e,svg,"motion");
+    else if(closest("#sourceNode")||closest("#motionCarGlyph")||closest("#motionPathHit"))begin(e,svg,"motion");
     else if(closest("#distanceCallout")||closest("#distanceText"))begin(e,svg,"distance");
   });
   svg.addEventListener("pointermove",e=>move(e,svg));
