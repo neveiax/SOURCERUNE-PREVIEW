@@ -1,8 +1,8 @@
 {
   "work_id": "SR-20261014-UI01-UI02-SCENE-DIRECT-CONTROLS",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "143bd83f7978eda24ca8850dbe9ba7edaa02663e",
-  "kind": "Web scene motion + distance controls; public UI-only (native DSP not included)",
+  "source_commit": "000526dea3d18c56588397be7b573651d892c6f6",
+  "kind": "Live Motion indicator aligned with SVG + UI_01/UI_02 direct Motion/Distance state controls (public Web-only)",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
@@ -23,5 +23,6 @@
   },
   "safe_interaction_scripts": {
     "Web/App/scene_direct_controls.js": "d2fc008a321c04d3034318e279220f59ca339f0e"
-  }
+  },
+  "upstream_motion_fix_commit": "5fc42cea57586928e36304c49295b0af6d13424a"
 }

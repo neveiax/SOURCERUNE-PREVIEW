@@ -77,6 +77,23 @@ jobs:
                   if(Math.abs(restored-beforeDistance)>.11)throw Error(ui+" distance dial Undo failed");
                 }
                 if(ui==="UI_02"){
+                  const firstMode=await page.$eval("#motionDeckMode",el=>el.value);
+                  for(const mode of ["STATIC","APPROACH","PASS_BY","LEAVE","MANUAL"]){
+                    await page.select("#motionDeckMode",mode);
+                    const deviation=await page.$eval(".motion-deck-graph",svg=>{
+                      const path=svg.querySelector("#motionDeckPath"),dot=svg.querySelector("#motionDeckCurrent");
+                      const x=Number(dot.getAttribute("cx")),y=Number(dot.getAttribute("cy"));
+                      let low=0,high=path.getTotalLength();
+                      for(let i=0;i<16;i++){
+                        const m=(low+high)/2;
+                        if(path.getPointAtLength(m).x<x)low=m;else high=m;
+                      }
+                      const point=path.getPointAtLength((low+high)/2);
+                      return Math.hypot(point.x-x,point.y-y);
+                    });
+                    if(deviation>.35)throw Error(ui+" off-path Motion indicator "+mode+" "+deviation);
+                  }
+                  await page.select("#motionDeckMode",firstMode);
                   const values=await page.$eval("#ui02TransmissionSelect",el=>({count:el.options.length,first:el.value,next:el.options[(el.selectedIndex+1)%el.options.length].value}));
                   if(values.count!==24)throw Error(ui+" catalog selector count mismatch");
                   if(!(await page.$eval("#ui02SignalStatus",el=>el.textContent==="IDLE")))throw Error(ui+" waveform must be idle without playing");
