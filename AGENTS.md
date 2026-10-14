@@ -27,6 +27,6 @@
 
 `.github/workflows/sr-push-version.yml` 每次分支 push 形成新且不可重用的 `Vx.x.xxx` Git tag。這只證明 push，不是 Release、Pages 部署或音訊驗收。線上版本需 Pages 成功部署的 main SHA；Private 研究分支新版本不得宣稱已公開。
 
-SOURCE [#161](https://github.com/ureia-dev/SOURCERUNE/pull/161)／PREVIEW [#35](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/pull/35) 目前因 `PLAY_POINTER_EVENT_NOT_DELIVERED` 尚未完成，不可合併上線。舊 `.github/workflows/original-web-port.yml` 是一次性歷史搬運工具，不是私人 SOURCE 自動鏡像。
+SOURCE [#161](https://github.com/ureia-dev/SOURCERUNE/pull/161)／PREVIEW [#35](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/pull/35) **2026-10-14 已關閉且未合併**；CSS 是非必要微調，`PLAY_POINTER_EVENT_NOT_DELIVERED` 失敗原因未證實，不能把關閉解讀成修好了播放音訊，若有實際用戶問題仍由 SOURCE Issue #126 追蹤。同日 SOURCE #68 舊 Mac／Windows Release PR 因未驗收與 merge 衝突關閉，Native 建置需求仍由 Private SOURCE CROSS-08 追蹤。舊 `.github/workflows/original-web-port.yml` 是一次性歷史搬運工具，不是私人 SOURCE 自動鏡像。
 
 整理舊分支／PR 前需查 merge 狀態及是否有唯一未合併差異；不可為了整潔刪除 Approved REF、保密邊界、核准 manifest、rollback／source checkpoint 或未完成研究。

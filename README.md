@@ -14,7 +14,7 @@
 ## 最新版本與研發狀態
 
 - 每次 GitHub push 都產生該倉新的 `Vx.x.xxx` tag；**只有 Pages 成功部署的 main SHA 對應線上正式版本**。研究 branch 的較新 tag 不等於 Web 已更新。
-- 更近期的 UI CSS：PREVIEW [#35](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/pull/35) 與 SOURCE [#161](https://github.com/ureia-dev/SOURCERUNE/pull/161) 尚未合併，Public Chromium PLAY pointer 事件測試失敗；不可跳過驗收直接部署。
+- 2026-10-14：PREVIEW [#35](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/pull/35) 與 SOURCE [#161](https://github.com/ureia-dev/SOURCERUNE/pull/161) **已成對關閉、未合併**；只包含非必要 Asset Library focus CSS，Public Chromium PLAY pointer 事件測試失敗，故不冒險上線。必要的後續視覺驗收已返回 [SOURCE UI Issue #126](https://github.com/ureia-dev/SOURCERUNE/issues/126)。
 - [AGENTS.md](AGENTS.md) 是本倉唯一公開安全與協作入口。每次先比對 Private SOURCE 原版和明確可公開的檔案，再經 allowlist／必要 Fast／真瀏覽器測試。不得為 Web 改動建立第二套獨立畫面。
 
 所有時間性狀態應重新查 [main、PR 與 Pages Actions](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/actions)；舊快照保留在 Git history，不應繼續複寫成新指令。
