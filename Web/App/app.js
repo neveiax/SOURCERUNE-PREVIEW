@@ -15,7 +15,7 @@ const TYPES=["SOURCE","TRANSMISSION","WALL_COVER","SPACE_ENVIRONMENT"],LABEL={SO
 const DEFSEL={SOURCE:"SRC_003_Smartphone_Speakerphone",TRANSMISSION:"TRN_005_GSM_Stable",WALL_COVER:"CVR_001_None_Open",SPACE_ENVIRONMENT:"SPC_022_Busy_City_Street"};
 let schema,catalog,scenePresets={},byId,state,userPresets={},undo=[],redo=[],browserType="SOURCE",stateClipboard=null,browserReturnFocus=null,browserReturnType=null;
 let sceneNode,audioSetup,audioUrl,audioName="",audioLoadGeneration=0,publicDspRelease=null;
-let audioCtx,media,inAn,outAn,inGain,outGain,publicTone,peakIn=-Infinity,peakOut=-Infinity,meterMode="PEAK";
+let audioCtx,media,inAn,outAn,inGain,outGain,approachGain,lastApproachGain=NaN,publicTone,peakIn=-Infinity,peakOut=-Infinity,meterMode="PEAK";
 const audio=$("#audioElement");
 const copy=v=>JSON.parse(JSON.stringify(v)),db=v=>v<=1e-7?-Infinity:20*Math.log10(v),fmt=v=>isFinite(v)?v.toFixed(1):"−∞",gain=v=>Math.pow(10,v/20),pretty=v=>String(v).replaceAll("_"," ");
 
@@ -611,7 +611,9 @@ function finishDirectSceneChange(before){
   redo=[];hist();mark("MODIFIED");
 }
 function setVisibleSceneDistance(next){
-  if(!setCurrentSceneDistance(state.params,next))return false;
+  const editing={...state.params,motion:sceneMotionProgress()*100};
+  if(!setCurrentSceneDistance(editing,next))return false;
+  for(const id of ["startDistance","closestDistance","endDistance"])state.params[id]=editing[id];
   for(const id of ["startDistance","closestDistance","endDistance"]){
     const input=$('[data-param="'+id+'"]');
     if(input){
@@ -690,7 +692,9 @@ function bindSceneMotionTimeline(){
     audio.addEventListener(event,syncSceneMotionTimeline);
   syncSceneMotionTimeline();
 }
-function bind(){bindSceneDirectControls({getState:()=>state,getDistance:distance,setMotion:v=>setMacroKnob("motion",v),setDistance:setVisibleSceneDistance,snapshot:core,finish:finishDirectSceneChange,revert:restoreDirectSceneChange});bindMotionKnobs();bindMotionDeck();bindSpectrumView();bindSceneView({getState:()=>state,setZoom:zoom=>mut(()=>state.sceneZoom=zoom),audio});bindSceneMotionTimeline();const advancedCloseBtn=$("#advancedCloseBtn");if(advancedCloseBtn)advancedCloseBtn.onclick=closeAdvanced;document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("advanced-open")&&$("#assetBrowser")?.classList.contains("hidden")){e.preventDefault();closeAdvanced()}});$$("[data-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.ui));$$("[data-view]").forEach(b=>b.onclick=()=>mut(()=>state.view=b.dataset.view));$$("[data-motion-mode]").forEach(b=>b.onclick=()=>mut(()=>state.params.motionMode=b.dataset.motionMode));$$("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;$$("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));$$(".tab-content").forEach(x=>x.classList.toggle("active",x.dataset.content===state.tab))});$("#syncToggle").onchange=e=>mut(()=>state.sync=e.target.checked);$$("[data-set-marker]").forEach(b=>b.onclick=()=>setMarker(b.dataset.setMarker));document.addEventListener("keydown",onBrowserKeydown);$("#browserClose").onclick=closeBrowser;$("#assetBrowser").onclick=e=>{if(e.target.id==="assetBrowser")closeBrowser()};$("#assetSearch").oninput=renderBrowserList;$("#categorySelect").onchange=renderBrowserList;$("#assetClearFilters").onclick=resetBrowserFilters;$("#presetSelect").onchange=loadPreset;$("#presetPrevBtn").onclick=()=>stepPreset(-1);$("#presetNextBtn").onclick=()=>stepPreset(1);$("#savePresetBtn").onclick=savePreset;$("#presetVisualsBtn").onclick=()=>openBrowser("SCENE_PRESET_HERO");$("#importStateBtn").onclick=()=>$("#stateImportFile").click();$("#exportStateBtn").onclick=exportState;$("#stateImportFile").onchange=importState;$("#undoBtn").onclick=doUndo;$("#redoBtn").onclick=doRedo;$("#copyStateBtn").onclick=copyState;$("#pasteStateBtn").onclick=pasteState;$("#sceneFullscreenBtn").onclick=toggleSceneFullscreen;const settings=$("#settingsBtn"),tools=$("#globalToolsPopover");if(settings)settings.onclick=e=>{e.stopPropagation();document.body.classList.toggle("global-tools-open")};if(tools)tools.onclick=e=>e.stopPropagation();document.addEventListener("click",()=>document.body.classList.remove("global-tools-open"));$$("[data-global-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.globalUi));$$("[data-global-action]").forEach(b=>b.onclick=()=>{const a=b.dataset.globalAction;if(a==="undo")doUndo();else if(a==="redo")doRedo();else if(a==="save")savePreset();else if(a==="import")$("#stateImportFile").click();else if(a==="export")exportState();else if(a==="bypass")mut(()=>state.globalBypass=!state.globalBypass)});const mdm=$("#motionDeckMode");if(mdm)mdm.onchange=e=>mut(()=>state.params.motionMode=e.target.value);document.addEventListener("fullscreenchange",syncFullscreenState);$("#globalBypass").onclick=()=>mut(()=>state.globalBypass=!state.globalBypass);$("#audioFile").onchange=loadAudio;$("#playBtn").onclick=play;$("#stopBtn").onclick=stop;$("#loopToggle").onchange=e=>audio.loop=e.target.checked;$("#seekSlider").oninput=e=>{if(audio.duration)audio.currentTime=+e.target.value/1000*audio.duration};const peakBtn=$("#meterPeakBtn"),rmsBtn=$("#meterRmsBtn");if(peakBtn)peakBtn.onclick=()=>{meterMode="PEAK";peakBtn.classList.add("active");peakBtn.setAttribute("aria-pressed","true");rmsBtn?.classList.remove("active");rmsBtn?.setAttribute("aria-pressed","false")};if(rmsBtn)rmsBtn.onclick=()=>{meterMode="RMS";rmsBtn.classList.add("active");rmsBtn.setAttribute("aria-pressed","true");peakBtn?.classList.remove("active");peakBtn?.setAttribute("aria-pressed","false")};$("#resetPeakBtn").onclick=()=>{peakIn=peakOut=-Infinity;mark("PEAK RESET")};$$("[data-snapshot]").forEach(b=>b.onclick=()=>snapshot(b.dataset.snapshot,b))}
+function bind(){bindSceneDirectControls({getState:()=>state,getDistance:distance,setMotion:v=>{if(state.params.motionMode==="APPROACH"&&state.sync&&Number.isFinite(audio.duration)&&audio.duration>0)
+  audio.currentTime=Math.max(0,Math.min(1,Number(v)/100))*audio.duration;
+  return setMacroKnob("motion",v);},setDistance:setVisibleSceneDistance,snapshot:core,finish:finishDirectSceneChange,revert:restoreDirectSceneChange});bindMotionKnobs();bindMotionDeck();bindSpectrumView();bindSceneView({getState:()=>state,setZoom:zoom=>mut(()=>state.sceneZoom=zoom),audio});bindSceneMotionTimeline();const advancedCloseBtn=$("#advancedCloseBtn");if(advancedCloseBtn)advancedCloseBtn.onclick=closeAdvanced;document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("advanced-open")&&$("#assetBrowser")?.classList.contains("hidden")){e.preventDefault();closeAdvanced()}});$$("[data-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.ui));$$("[data-view]").forEach(b=>b.onclick=()=>mut(()=>state.view=b.dataset.view));$$("[data-motion-mode]").forEach(b=>b.onclick=()=>mut(()=>state.params.motionMode=b.dataset.motionMode));$$("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;$$("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));$$(".tab-content").forEach(x=>x.classList.toggle("active",x.dataset.content===state.tab))});$("#syncToggle").onchange=e=>mut(()=>state.sync=e.target.checked);$$("[data-set-marker]").forEach(b=>b.onclick=()=>setMarker(b.dataset.setMarker));document.addEventListener("keydown",onBrowserKeydown);$("#browserClose").onclick=closeBrowser;$("#assetBrowser").onclick=e=>{if(e.target.id==="assetBrowser")closeBrowser()};$("#assetSearch").oninput=renderBrowserList;$("#categorySelect").onchange=renderBrowserList;$("#assetClearFilters").onclick=resetBrowserFilters;$("#presetSelect").onchange=loadPreset;$("#presetPrevBtn").onclick=()=>stepPreset(-1);$("#presetNextBtn").onclick=()=>stepPreset(1);$("#savePresetBtn").onclick=savePreset;$("#presetVisualsBtn").onclick=()=>openBrowser("SCENE_PRESET_HERO");$("#importStateBtn").onclick=()=>$("#stateImportFile").click();$("#exportStateBtn").onclick=exportState;$("#stateImportFile").onchange=importState;$("#undoBtn").onclick=doUndo;$("#redoBtn").onclick=doRedo;$("#copyStateBtn").onclick=copyState;$("#pasteStateBtn").onclick=pasteState;$("#sceneFullscreenBtn").onclick=toggleSceneFullscreen;const settings=$("#settingsBtn"),tools=$("#globalToolsPopover");if(settings)settings.onclick=e=>{e.stopPropagation();document.body.classList.toggle("global-tools-open")};if(tools)tools.onclick=e=>e.stopPropagation();document.addEventListener("click",()=>document.body.classList.remove("global-tools-open"));$$("[data-global-ui]").forEach(b=>b.onclick=()=>mut(()=>state.ui=b.dataset.globalUi));$$("[data-global-action]").forEach(b=>b.onclick=()=>{const a=b.dataset.globalAction;if(a==="undo")doUndo();else if(a==="redo")doRedo();else if(a==="save")savePreset();else if(a==="import")$("#stateImportFile").click();else if(a==="export")exportState();else if(a==="bypass")mut(()=>state.globalBypass=!state.globalBypass)});const mdm=$("#motionDeckMode");if(mdm)mdm.onchange=e=>mut(()=>state.params.motionMode=e.target.value);document.addEventListener("fullscreenchange",syncFullscreenState);$("#globalBypass").onclick=()=>mut(()=>state.globalBypass=!state.globalBypass);$("#audioFile").onchange=loadAudio;$("#playBtn").onclick=play;$("#stopBtn").onclick=stop;$("#loopToggle").onchange=e=>audio.loop=e.target.checked;$("#seekSlider").oninput=e=>{if(audio.duration)audio.currentTime=+e.target.value/1000*audio.duration};const peakBtn=$("#meterPeakBtn"),rmsBtn=$("#meterRmsBtn");if(peakBtn)peakBtn.onclick=()=>{meterMode="PEAK";peakBtn.classList.add("active");peakBtn.setAttribute("aria-pressed","true");rmsBtn?.classList.remove("active");rmsBtn?.setAttribute("aria-pressed","false")};if(rmsBtn)rmsBtn.onclick=()=>{meterMode="RMS";rmsBtn.classList.add("active");rmsBtn.setAttribute("aria-pressed","true");peakBtn?.classList.remove("active");peakBtn?.setAttribute("aria-pressed","false")};$("#resetPeakBtn").onclick=()=>{peakIn=peakOut=-Infinity;mark("PEAK RESET")};$$("[data-snapshot]").forEach(b=>b.onclick=()=>snapshot(b.dataset.snapshot,b))}
 function doUndo(){if(!undo.length)return;redo.push(core());restore(undo.pop());hist();mark("UNDO")}function doRedo(){if(!redo.length)return;undo.push(core());restore(redo.pop());hist();mark("REDO")}
 function applyFactoryPreset(heroId,pushHistory=true){const cfg=scenePresets[heroId],hero=byId.get(heroId);if(!cfg){if(hero)$("#sceneTitle").textContent=hero.name;return}if(pushHistory)push();const keep={ui:state.ui,view:state.view,snapshots:state.snapshots};const ns=newState();ns.ui=keep.ui;ns.view=keep.view;ns.snapshots=keep.snapshots;Object.assign(ns.selection,cfg.selection||{});Object.assign(ns.params,cfg.params||{});for(const k of ["b4Freq","b4Gain","b4Q"])delete ns.params[k];Object.assign(ns.bypass,cfg.bypass||{});ns.preset="factory:"+heroId;state=ns;$("#sceneTitle").textContent=cfg.name||hero?.name||"Scene View";mark("FACTORY PRESET LOADED");refresh();renderPreset()}function stepPreset(delta){const sel=$("#presetSelect"),opts=[...sel.options].filter(o=>o.value);if(!opts.length)return;let i=opts.findIndex(o=>o.value===sel.value);if(i<0)i=delta>0?-1:0;i=(i+delta+opts.length)%opts.length;sel.value=opts[i].value;loadPreset({target:sel})}
 function loadPreset(e){const v=e.target.value;if(!v)return;if(v.startsWith("factory:"))applyFactoryPreset(v.slice(8),true);else{push();const p=userPresets[v.slice(5)];if(p){const snaps=state.snapshots;state=migrateLegacyEq(p.state);state.snapshots=snaps;state.preset=v}mark("PRESET LOADED");refresh()}}
@@ -812,8 +816,31 @@ function preview(x){
   },{once:true});
 }
 function setMarker(k){mut(()=>state.markers[k]=audio.currentTime||0)}function renderMarkers(){const f=v=>v==null?"—":v.toFixed(2)+"s";$("#markerStatus").textContent="START "+f(state.markers.start)+" · CLOSEST "+f(state.markers.closest)+" · END "+f(state.markers.end)}
-function distance(){return currentSceneDistance(state.params)}
-function updateScene(){syncSceneMotionTimeline();const p=state.params.motion/100,ui1=state?.ui==="UI_01",motionGraph=$(".motion-deck-graph");
+// SR-20261015 Web-only APPROACH: free-field 1/r relative gain. No Doppler, reflection or host automation.
+function sceneMotionProgress(){
+ const manual=Math.max(0,Math.min(1,(Number(state?.params?.motion)||0)/100));
+ if(state?.params?.motionMode!=="APPROACH"||!state.sync||!(Number.isFinite(audio.duration)&&audio.duration>0)||audio.readyState<1)return manual;
+ return Math.max(0,Math.min(1,(Number(audio.currentTime)||0)/audio.duration));
+}
+function updateApproachAudio(){
+ if(!approachGain||!audioCtx||!state)return;
+ const p=state.params,closest=Math.max(1,Math.min(1000,Number(p.closestDistance)||1));
+ const start=Math.max(closest,Math.min(1000,Number(p.startDistance)||closest));
+ const dist=Math.max(1,start+(closest-start)*sceneMotionProgress());
+ const active=p.motionMode==="APPROACH"&&!state.globalBypass&&!state.bypass?.MOTION;
+ const next=active?Math.min(1,closest/dist):1;
+ if(!Number.isFinite(lastApproachGain)||Math.abs(next-lastApproachGain)>0.00001){
+  if(!Number.isFinite(lastApproachGain))approachGain.gain.setValueAtTime(next,audioCtx.currentTime);
+  else approachGain.gain.setTargetAtTime(next,audioCtx.currentTime,.020);
+  lastApproachGain=next;
+ }
+}
+function distance(){
+ return state?.params?.motionMode==="APPROACH"
+  ?currentSceneDistance({...state.params,motion:sceneMotionProgress()*100})
+  :currentSceneDistance(state.params);
+}
+function updateScene(){syncSceneMotionTimeline();updateApproachAudio();const p=sceneMotionProgress(),ui1=state?.ui==="UI_01",motionGraph=$(".motion-deck-graph");
 if(motionGraph){
   const value=String(state.params.motion);
   if(motionGraph.getAttribute("aria-valuenow")!==value)motionGraph.setAttribute("aria-valuenow",value);
@@ -822,7 +849,7 @@ if(motionGraph){
   if(motionGraph.getAttribute("tabindex")!==tab)motionGraph.setAttribute("tabindex",tab);
   motionGraph.setAttribute("aria-disabled",ui1?"true":"false");
 }
-const x=110+790*p,y=(ui1?300:325)-55*Math.sin(Math.PI*p),listenerY=ui1?250:270,d=distance();$("#sourceNode").setAttribute("transform",`translate(${x} ${y})`);$("#sourceNode").setAttribute("aria-valuenow",String(state.params.motion));$("#sourceNode").setAttribute("aria-valuetext",state.params.motion+"% of motion path");const mg=$("#motionCarGlyph");if(mg){mg.setAttribute("x",x-28);mg.setAttribute("y",y-62)}$("#distanceLine").setAttribute("x1",x);$("#distanceLine").setAttribute("y1",y);$("#distanceLine").setAttribute("y2",listenerY);const cx=(x+500)/2,cy=(y+listenerY)/2-10;const dc=$("#distanceCallout");if(dc){dc.setAttribute("x",cx-40);dc.setAttribute("y",cy-31)}$("#distanceText").setAttribute("x",cx);$("#distanceText").setAttribute("y",cy);$("#distanceText").textContent=d.toFixed(1)+" m";for(const el of [$("#distanceText"),$("#currentDistanceControl")])if(el){el.setAttribute("aria-valuenow",d.toFixed(1));el.setAttribute("aria-valuetext",d.toFixed(1)+" m")}$("#sourceLabel").setAttribute("y",ui1?Math.min(y+27,326):346);$("#motionMode").textContent=pretty(state.params.motionMode);const mdm=$("#motionDeckMode");if(mdm)mdm.value=state.params.motionMode;const mp=$("#motionDeckPath");if(mp){const mode=state.params.motionMode,pct=state.params.motion/100;const path=mode==="APPROACH"?"M12 18 C70 20 165 45 288 82":mode==="LEAVE"?"M12 82 C135 45 230 20 288 18":mode==="STATIC"?"M12 52 L288 52":"M12 82 C85 80 105 18 150 18 C195 18 215 80 288 82";mp.setAttribute("d",path);const dot=$("#motionDeckCurrent");if(dot){// The indicator must sit on the rendered SVG geometry; approximated sine/power
+const x=110+790*p,y=(ui1?300:325)-55*Math.sin(Math.PI*p),listenerY=ui1?250:270,d=distance();$("#sourceNode").setAttribute("transform",`translate(${x} ${y})`);$("#sourceNode").setAttribute("aria-valuenow",String(state.params.motion));$("#sourceNode").setAttribute("aria-valuetext",state.params.motion+"% of motion path");const mg=$("#motionCarGlyph");if(mg){mg.setAttribute("x",x-28);mg.setAttribute("y",y-62)}$("#distanceLine").setAttribute("x1",x);$("#distanceLine").setAttribute("y1",y);$("#distanceLine").setAttribute("y2",listenerY);const cx=(x+500)/2,cy=(y+listenerY)/2-10;const dc=$("#distanceCallout");if(dc){dc.setAttribute("x",cx-40);dc.setAttribute("y",cy-31)}$("#distanceText").setAttribute("x",cx);$("#distanceText").setAttribute("y",cy);$("#distanceText").textContent=d.toFixed(1)+" m";for(const el of [$("#distanceText"),$("#currentDistanceControl")])if(el){el.setAttribute("aria-valuenow",d.toFixed(1));el.setAttribute("aria-valuetext",d.toFixed(1)+" m")}$("#sourceLabel").setAttribute("y",ui1?Math.min(y+27,326):346);$("#motionMode").textContent=state.params.motionMode==="APPROACH"?"APPROACH 1/r":pretty(state.params.motionMode);const mdm=$("#motionDeckMode");if(mdm)mdm.value=state.params.motionMode;const mp=$("#motionDeckPath");if(mp){const mode=state.params.motionMode,pct=p;const path=mode==="APPROACH"?"M12 18 C70 20 165 45 288 82":mode==="LEAVE"?"M12 82 C135 45 230 20 288 18":mode==="STATIC"?"M12 52 L288 52":"M12 82 C85 80 105 18 150 18 C195 18 215 80 288 82";mp.setAttribute("d",path);const dot=$("#motionDeckCurrent");if(dot){// The indicator must sit on the rendered SVG geometry; approximated sine/power
 // formulas drift away from the actual cubic paths, particularly at pass-by edges.
 const targetX=12+276*pct;
 const total=mp.getTotalLength();
@@ -834,7 +861,7 @@ for(let step=0;step<16;step++){
 }
 const point=mp.getPointAtLength((low+high)/2);
 dot.setAttribute("cx",point.x);
-dot.setAttribute("cy",point.y)}}$("#startDistance").textContent=state.params.startDistance.toFixed(1)+" m";$("#closestDistance").textContent=state.params.closestDistance.toFixed(1)+" m";$("#endDistance").textContent=state.params.endDistance.toFixed(1)+" m";$("#currentDistance").textContent=d.toFixed(1)+" m";$("#speedReadout").textContent=state.params.speed+" km/h";$("#dopplerReadout").textContent=state.params.doppler+"%";$("#widthReadout").textContent=state.params.width+"%";for(const id of ["speed","doppler","width"]){const el=document.querySelector('[data-motion-adjust="'+id+'"]'),v=String(state.params[id]);if(el&&el.getAttribute("aria-valuenow")!==v){el.setAttribute("aria-valuenow",v);el.setAttribute("aria-valuetext",v+(id==="speed"?" km/h":"%"))}}$("#perspectiveReadout").textContent=state.params.perspective+"%";const mr=$$(".motion-readouts>div"),angleFor=id=>-135+macroPct(id)*2.7;if(mr[4]){const scale=Math.max(120,state.params.startDistance,state.params.closestDistance,state.params.endDistance);const dp=Math.max(0,Math.min(1,d/scale));mr[4].style.setProperty("--distance-angle",(-135+dp*270)+"deg")}for(const [idx,id] of [[5,"speed"],[6,"doppler"],[7,"width"]])if(mr[idx])mr[idx].style.setProperty("--angle",angleFor(id)+"deg");const md=$(".macro-motion .macro-knob-readonly");if(md){const pct=Math.max(0,Math.min(100,d));md.style.setProperty("--pct",pct);md.style.setProperty("--angle",(-135+pct*2.7)+"deg");const mv=md.querySelector(".macro-knob-value");if(mv)mv.textContent=d.toFixed(1)+"m"}$("#sceneBuildings").setAttribute("opacity",state.view==="TOP"?".28":".9");if(ui1){syncSceneZoom(state);syncSceneGuide(state);const curve=$("#motionPath")?.getAttribute("d");if(curve)$("#motionPathHit")?.setAttribute("d",curve)}}
+dot.setAttribute("cy",point.y)}}$("#startDistance").textContent=state.params.startDistance.toFixed(1)+" m";$("#closestDistance").textContent=state.params.closestDistance.toFixed(1)+" m";$("#endDistance").textContent=state.params.endDistance.toFixed(1)+" m";$("#currentDistance").textContent=d.toFixed(1)+" m";$("#speedReadout").textContent=state.params.speed+" km/h";$("#dopplerReadout").textContent=state.params.doppler+"%";$("#widthReadout").textContent=state.params.width+"%";for(const id of ["speed","doppler","width"]){const el=document.querySelector('[data-motion-adjust="'+id+'"]'),v=String(state.params[id]);if(el&&el.getAttribute("aria-valuenow")!==v){el.setAttribute("aria-valuenow",v);el.setAttribute("aria-valuetext",v+(id==="speed"?" km/h":"%"))}}$("#perspectiveReadout").textContent=state.params.perspective+"%";const mr=$$(".motion-readouts>div"),angleFor=id=>-135+macroPct(id)*2.7;if(mr[4]){const scale=Math.max(120,state.params.startDistance,state.params.closestDistance,state.params.endDistance);const dp=Math.max(0,Math.min(1,d/scale));mr[4].style.setProperty("--distance-angle",(-135+dp*270)+"deg")}for(const [idx,id] of [[5,"speed"],[6,"doppler"],[7,"width"]])if(mr[idx])mr[idx].style.setProperty("--angle",angleFor(id)+"deg");const md=$(".macro-motion .macro-knob-readonly");if(md){const pct=Math.max(0,Math.min(100,d));md.style.setProperty("--pct",pct);md.style.setProperty("--angle",(-135+pct*2.7)+"deg");const mv=md.querySelector(".macro-knob-value");if(mv)mv.textContent=d.toFixed(1)+"m"}$("#sceneBuildings").setAttribute("opacity",state.view==="TOP"?".28":".9");if(ui1){syncSceneZoom(state);syncSceneGuide(state.params.motionMode==="APPROACH"?{...state,params:{...state.params,motion:p*100}}:state);const curve=$("#motionPath")?.getAttribute("d");if(curve)$("#motionPathHit")?.setAttribute("d",curve)}}
 function updateCurves(){for(const [id,k] of [["directCurve","direct"],["earlyCurve","early"],["tailCurve","tail"]])$("#"+id).style.opacity=.2+.8*state.params[k]/100}
 async function setupAudio(){
   if(sceneNode)return;
@@ -843,7 +870,8 @@ async function setupAudio(){
     if(!audioCtx){
       audioCtx=new(window.AudioContext||window.webkitAudioContext)();
       media=audioCtx.createMediaElementSource(audio);
-      inAn=audioCtx.createAnalyser();outAn=audioCtx.createAnalyser();
+      inAn=audioCtx.createAnalyser();outAn=audioCtx.createAnalyser();approachGain=audioCtx.createGain();
+      approachGain.gain.value=1;approachGain.connect(outAn);outAn.connect(audioCtx.destination);
       inAn.fftSize=outAn.fftSize=2048;
       media.connect(inAn);
     }
@@ -861,7 +889,7 @@ async function setupAudio(){
       sceneNode.onprocessorerror=()=>{audio.pause();mark("REAL DSP ERROR — 請重新整理");};
       publicTone=null;
       inAn.connect(sceneNode);
-      sceneNode.connect(outAn);outAn.connect(audioCtx.destination);
+      sceneNode.connect(approachGain);
       $("#blockReadout").textContent=`PUBLIC C++ / WASM · ${published.models.length} SOURCE EXPERIMENTS READY`;
     } else {
       // Existing safe public WebAudio EQ remains a usable fallback until
@@ -879,10 +907,11 @@ async function setupAudio(){
       let tail=sceneNode;
       for(const node of [hpf,...bells,lpf]){tail.connect(node);tail=node;}
       tail.connect(wet);wet.connect(outGain);
-      outGain.connect(outAn);outAn.connect(audioCtx.destination);
+      outGain.connect(approachGain);
       $("#blockReadout").textContent="WEB AUDIO EQ / PRIVATE MODELS NOT YET PUBLISHED";
     }
     $("#sampleRateReadout").textContent=audioCtx.sampleRate+" Hz";
+    updateApproachAudio();
     updateGains();
   })();
   try{await audioSetup;}finally{audioSetup=null;}
