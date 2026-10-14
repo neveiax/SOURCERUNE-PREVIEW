@@ -37,6 +37,7 @@ export function syncSceneGuide(state){
     const pts=Array.from({length:49},(_,i)=>at(i/48));
     const d=pts.map((pt,i)=>(i?"L":"M")+pt.x.toFixed(2)+" "+pt.y.toFixed(2)).join(" ");
     $("#motionPath")?.setAttribute("d",d);
+    $("#motionPathHit")?.setAttribute("d",d);
     cachedScenePath=d;
     for(const [id,t] of [["sceneStartMarker",0],["sceneClosestMarker",.5],["sceneEndMarker",1]]){
       const el=$("#"+id),point=at(t);
@@ -45,15 +46,15 @@ export function syncSceneGuide(state){
     const axis=$("#sceneFarScale");if(axis)axis.textContent=maximum.toFixed(0)+" m";
     cachedCurve=sig;
   }
-  const point=at(position),listenerY=250;
+  const point=at(position),listenerX=500+(Number(state.listener?.x)||0)*3,listenerY=250-(Number(state.listener?.z)||0)*2;
   $("#sourceNode")?.setAttribute("transform","translate("+point.x.toFixed(2)+" "+point.y.toFixed(2)+")");
   const car=$("#motionCarGlyph");
   if(car){car.setAttribute("x",(point.x-28).toFixed(2));car.setAttribute("y",(point.y-60).toFixed(2));}
   const label=$("#sourceLabel");
   if(label){label.textContent="SOURCE";label.setAttribute("x",clamp(point.x-111,145,820).toFixed(2));label.setAttribute("y",clamp(point.y-28,164,270).toFixed(2));}
   const line=$("#distanceLine");
-  if(line){line.setAttribute("x1",point.x.toFixed(2));line.setAttribute("y1",point.y.toFixed(2));line.setAttribute("y2",String(listenerY));}
-  const cx=(point.x+500)/2+(Math.abs(point.x-500)<140?105:0),cy=(point.y+listenerY)/2-9;
+  if(line){line.setAttribute("x1",point.x.toFixed(2));line.setAttribute("y1",point.y.toFixed(2));line.setAttribute("y2",String(listenerY));line.setAttribute("x2",String(listenerX));}
+  const cx=(point.x+listenerX)/2+(Math.abs(point.x-listenerX)<140?105:0),cy=(point.y+listenerY)/2-9;
   const bed=$("#distanceCallout");
   if(bed){bed.setAttribute("x",(cx-40).toFixed(2));bed.setAttribute("y",(cy-31).toFixed(2));}
   const value=$("#distanceText");
