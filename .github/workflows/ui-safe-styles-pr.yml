@@ -191,6 +191,10 @@ jobs:
                 await page.keyboard.press("Escape");
                 await page.$eval('.module-card[data-type="WALL_COVER"]',el=>el.click());
                 await page.waitForSelector('#assetBrowser:not(.hidden) .preview-art img',{timeout:12000});
+                // Hover is allowed to preview an unselected asset; explicitly
+                // focus the selected row before checking its selected-frame art.
+                await page.hover('#assetList .asset-item.active');
+                await page.waitForSelector('.asset-preview.selected .preview-art',{timeout:5000});
                 const frame=await page.evaluate(()=>{
                   const s=q=>getComputedStyle(document.querySelector(q));
                   return {title:document.querySelector("#browserTitle")?.textContent,
