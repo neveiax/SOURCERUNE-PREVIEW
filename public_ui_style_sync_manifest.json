@@ -1,8 +1,8 @@
 {
-  "work_id": "SR-20261014-UI01-TIMELINE-SCRUB",
+  "work_id": "SR-20261014-UI02-DISTANCE-DIAL-ANGLE-FIX",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "ef321a7a24a237f2aba19c2193447456cd50455e",
-  "kind": "Reviewed UI timeline Motion gesture rebased on SOURCE and Public scene direct controls, no DSP",
+  "source_commit": "6022d38ce78ec1d245da0e3d45e3505ec9818aa9",
+  "kind": "UI_02 large distance dial and small needles now rotate with actual shared Motion state; Web-only; no geometry, DSP or audio release changes",
   "audio_enabled": false,
   "styles": {
     "Web/App/ui01_condition_ref_finish_v1.css": "ff67250259919eefb9c8dcaa68f7573ff874937b",
