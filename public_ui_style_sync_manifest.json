@@ -1,7 +1,7 @@
 {
   "work_id": "SR-20261014-UI01-UI02-SCENE-DIRECT-CONTROLS",
   "source_repository": "ureia-dev/SOURCERUNE",
-  "source_commit": "000526dea3d18c56588397be7b573651d892c6f6",
+  "source_commit": "ee34727e9d7ef7b12880dd71661426d8e9167d51",
   "kind": "Live Motion indicator aligned with SVG + UI_01/UI_02 direct Motion/Distance state controls (public Web-only)",
   "audio_enabled": false,
   "styles": {
