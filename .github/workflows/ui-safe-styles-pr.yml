@@ -334,6 +334,12 @@ jobs:
                 });
                 if(!fixture)throw Error(ui+" playback performance fixture missing");
                 await page.waitForFunction(()=>document.querySelector("#stateStatus")?.textContent.includes("AUDIO LOADED"),{timeout:20000});
+                // The workbench enables PLAY only after media metadata/duration
+                // is available. AUDIO LOADED alone is not playback readiness.
+                await page.waitForFunction(()=>{
+                  const audio=document.querySelector("#audioElement"),play=document.querySelector("#playBtn");
+                  return !play?.disabled&&Number.isFinite(audio?.duration)&&audio.duration>0&&!audio.error;
+                },{timeout:15000});
                 // Perf check measures the playback renderer. The separate
                 // public-audio smoke checks trusted pointer click behavior.
                 const buttonProbe=await page.$eval("#playBtn",el=>{
