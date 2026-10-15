@@ -1,9 +1,13 @@
+# V2.0.010: Public audio review only on review-ready PR; keep main
+# post-merge safety verification and explicit manual verification unchanged.
 name: Verify approved public audio for UI deployment
 # Compiled binaries distributed to ALL anonymous browsers. They are reversible.
 # Never include private C++/research or any secrets in public repository.
 on:
   pull_request:
     branches: [main]
+    # Auditing publishable audio before merge remains mandatory; Draft is not deployable.
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - 'Web/App/app.js'
       - 'Web/App/audio/engine.js'
@@ -33,7 +37,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   review:
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' && !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
