@@ -1,21 +1,8 @@
+# V2.0.010: Snapshots are optional evidence: manual on explicit demand only.
+# The public deploy/release allowlist and Chromium safety checks are separate.
 name: Verify and save public visual snapshots
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "index.html"
-      - "viewer.css"
-      - "viewer.js"
-      - "interaction-*.mjs"
-      - "card-layout.mjs"
-      - "stage-controls.mjs"
-      - "macro-layout.mjs"
-      - "macro-controls.mjs"
-      - "ui02-extended*.mjs"
-      - "assets/approved_ui_manifest.json"
-      - "scripts/**"
-      - ".github/workflows/snapshot-ui.yml"
   workflow_dispatch:
 
 permissions:
