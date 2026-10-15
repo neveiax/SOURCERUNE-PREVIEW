@@ -68,8 +68,8 @@ function syncFullscreenState(){const b=$("#sceneFullscreenBtn");if(b)b.classList
 function restore(s){const snaps=state.snapshots;state=migrateLegacyEq(s);state.snapshots=snaps;refresh()}
 function assetUrl(x){return "../../Assets/UI/"+(state.ui==="UI_01"?x.ui01:x.ui02)}
 function selected(t){return byId.get(state.selection[t])}
-async function init(){[schema,{items:catalog},{presets:scenePresets}]=await Promise.all([fetch("./data/ui_controls.json").then(r=>r.json()),fetch("./data/catalog.json").then(r=>r.json()),fetch("./data/scene_presets_v1.json").then(r=>r.json())]);byId=new Map(catalog.map(x=>[x.id,x]));state=newState();const requestedUi=new URLSearchParams(location.search).get("ui");if(requestedUi==="UI_01"||requestedUi==="UI_02")state.ui=requestedUi;try{userPresets=JSON.parse(localStorage.getItem("sourcerune.userPresets.v1")||"{}")}catch{}mountWebTransport();mountAdvancedDialog();renderPreset();renderNav();bind();workbench=mountWorkbench({audio,getHistory:()=>({undo:undo.length,redo:redo.length}),openAdvanced,groups:schema.groups,savePreset,undo:doUndo,redo:doRedo});refresh();hist();animate();if(new URLSearchParams(location.search).has("test"))$("#diagnosticBar").classList.remove("hidden")}
-function refresh(){document.body.classList.toggle("ui-01",state.ui==="UI_01");document.body.classList.toggle("ui-02",state.ui==="UI_02");applySceneViewportProfile();$$("[data-ui]").forEach(b=>b.classList.toggle("active",b.dataset.ui===state.ui));$$("[data-global-ui]").forEach(b=>b.classList.toggle("active",b.dataset.globalUi===state.ui));$$("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===state.view));$$("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===state.tab));$$(".tab-content").forEach(el=>el.classList.toggle("active",el.dataset.content===state.tab));$$("[data-motion-mode]").forEach(b=>b.classList.toggle("active",b.dataset.motionMode===state.params.motionMode));const presetSelector=$("#presetSelect");if(presetSelector)presetSelector.value=state.preset||"";const presetHero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null;const savedPreset=state.preset?.startsWith("user:")?userPresets[state.preset.slice(5)]:null;$("#sceneTitle").textContent=(presetHero&&scenePresets[presetHero.id]?.name)||presetHero?.name||savedPreset?.name||"Scene View";$("#syncToggle").checked=state.sync;$("#globalBypass").classList.toggle("active",state.globalBypass);$("#seedReadout").textContent=state.seed;$("#syncReadout").textContent=state.sync?"WEB TIMELINE":"MANUAL";const sp=selected("SPACE_ENVIRONMENT"),hero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null,sceneArt=hero&&!String(hero.status||"").includes("art-required")?hero:sp;if(sceneArt){$(".scene-panel")?.style.setProperty("--ui02-scene-bg",`url("${assetUrl(sceneArt)}")`)}renderModules();renderMacros();refreshMiniEq();renderFlow();renderAdvanced();renderMarkers();updateScene();updateGains();updateCurves();fitRuntimeShell();repositionEqFocus();requestAnimationFrame(()=>{if(window.auditReferenceGeometry){const a=window.auditReferenceGeometry();window.__geometryAudit=a;document.body.dataset.geometryOk=a.ok?"1":"0";document.body.dataset.geometryUi=a.ui||"";document.body.dataset.geometryFailures=(a.failures||[]).join(",")}})}
+async function init(){[schema,{items:catalog},{presets:scenePresets}]=await Promise.all([fetch("./data/ui_controls.json").then(r=>r.json()),fetch("./data/catalog.json").then(r=>r.json()),fetch("./data/scene_presets_v1.json").then(r=>r.json())]);byId=new Map(catalog.map(x=>[x.id,x]));state=newState();const requestedUi=new URLSearchParams(location.search).get("ui");if(requestedUi==="UI_01"||requestedUi==="UI_02")state.ui=requestedUi;try{userPresets=JSON.parse(localStorage.getItem("sourcerune.userPresets.v1")||"{}")}catch{}mountWebTransport();mountAdvancedDialog();renderPreset();renderNav();bind();workbench=mountWorkbench({audio,getHistory:()=>({undo:undo.length,redo:redo.length}),openAdvanced,groups:schema.groups,savePreset,undo:doUndo,redo:doRedo});refresh();hist();if(!audio.paused)startVisuals();if(new URLSearchParams(location.search).has("test"))$("#diagnosticBar").classList.remove("hidden")}
+function refresh(){document.body.classList.toggle("ui-01",state.ui==="UI_01");document.body.classList.toggle("ui-02",state.ui==="UI_02");applySceneViewportProfile();$$("[data-ui]").forEach(b=>b.classList.toggle("active",b.dataset.ui===state.ui));$$("[data-global-ui]").forEach(b=>b.classList.toggle("active",b.dataset.globalUi===state.ui));$$("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===state.view));$$("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===state.tab));$$(".tab-content").forEach(el=>el.classList.toggle("active",el.dataset.content===state.tab));$$("[data-motion-mode]").forEach(b=>b.classList.toggle("active",b.dataset.motionMode===state.params.motionMode));const presetSelector=$("#presetSelect");if(presetSelector)presetSelector.value=state.preset||"";const presetHero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null;const savedPreset=state.preset?.startsWith("user:")?userPresets[state.preset.slice(5)]:null;$("#sceneTitle").textContent=(presetHero&&scenePresets[presetHero.id]?.name)||presetHero?.name||savedPreset?.name||"Scene View";$("#syncToggle").checked=state.sync;$("#globalBypass").classList.toggle("active",state.globalBypass);$("#seedReadout").textContent=state.seed;$("#syncReadout").textContent=state.sync?"WEB TIMELINE":"MANUAL";const sp=selected("SPACE_ENVIRONMENT"),hero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null,sceneArt=hero&&!String(hero.status||"").includes("art-required")?hero:sp;if(sceneArt){$(".scene-panel")?.style.setProperty("--ui02-scene-bg",`url("${assetUrl(sceneArt)}")`)}renderModules();renderMacros();refreshMiniEq();renderFlow();renderAdvanced();renderMarkers();updateScene();updateGains();updateCurves();fitRuntimeShell();repositionEqFocus();paintIdleVisuals();requestAnimationFrame(()=>{if(window.auditReferenceGeometry){const a=window.auditReferenceGeometry();window.__geometryAudit=a;document.body.dataset.geometryOk=a.ok?"1":"0";document.body.dataset.geometryUi=a.ui||"";document.body.dataset.geometryFailures=(a.failures||[]).join(",")}})}
 function renderPreset(){const fac=catalog?.filter(x=>x.type==="SCENE_PRESET_HERO")||[],usr=Object.entries(userPresets);$("#presetSelect").innerHTML='<option value="">— Select scene preset —</option><optgroup label="Factory scene visuals">'+fac.map(x=>`<option value="factory:${x.id}">${x.name}</option>`).join("")+'</optgroup>'+(usr.length?'<optgroup label="User presets">'+usr.map(([k,v])=>`<option value="user:${escapeUiText(k)}">${escapeUiText(v.name)}</option>`).join("")+'</optgroup>':"");if(state?.preset)$("#presetSelect").value=state.preset}
 function cycleAsset(t,dir){const list=catalog.filter(x=>x.type===t),cur=state.selection[t],i=Math.max(0,list.findIndex(x=>x.id===cur)),n=(i+dir+list.length)%list.length;mut(()=>state.selection[t]=list[n].id)}
 let advancedReturnFocus=null;
@@ -1076,6 +1076,65 @@ function spectrum(){
 }
 function waveform(){const c=$("#sceneWaveformCanvas");if(!c)return;const x=c.getContext("2d"),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.strokeStyle="#315564";x.lineWidth=1;x.beginPath();x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();if(!inAn)return;const d=new Uint8Array(inAn.fftSize);inAn.getByteTimeDomainData(d);x.strokeStyle="#5cc9ee";x.lineWidth=1.5;x.beginPath();for(let a=0;a<w;a++){const n=Math.floor(a/w*(d.length-1)),yy=d[n]/255*h;a?x.lineTo(a,yy):x.moveTo(a,yy)}x.stroke()}
 function time(){const t=audio.currentTime||0,m=Math.floor(t/60),s=Math.floor(t%60),ms=Math.floor(t%1*1000);$("#transportTime").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}.${String(ms).padStart(3,"0")}`;if(audio.duration)$("#seekSlider").value=Math.round(t/audio.duration*1000);syncSceneTime(state,audio)}
-function animate(){requestAnimationFrame(animate);time();spectrum();waveform();paintUi02Signal();meters();paintAmbienceOutput(outAn,!audio.paused,performance.now());updateScene()}
+/* Presentation budget only. AudioContext/DSP processing stays unthrottled. */
+const VISUAL_FRAME_MS=1000/30;
+let visualFrameId=0,lastVisualAt=0,lastAnimatedProgress=NaN;
+const visualRenderStats={activeFrames:0,animatedSceneUpdates:0,idlePasses:0};
+window.__sourceruneRenderStats=visualRenderStats;
+function paintAudioVisuals(now,live){
+  time();spectrum();waveform();paintUi02Signal();meters();
+  paintAmbienceOutput(outAn,live,now);
+}
+function paintIdleVisuals(){
+  if(!state||document.hidden||!audio.paused)return;
+  visualRenderStats.idlePasses++;
+  paintAudioVisuals(performance.now(),false);
+}
+function animate(now){
+  visualFrameId=0;
+  if(document.hidden||audio.paused||audio.ended)return;
+  if(!lastVisualAt||now-lastVisualAt>=VISUAL_FRAME_MS-1){
+    lastVisualAt=now;
+    visualRenderStats.activeFrames++;
+    paintAudioVisuals(now,true);
+    // The scene geometry changes with playback only for synced APPROACH.
+    // Other modes keep the scene still while the audio meters stay live.
+    if(state.params.motionMode==="APPROACH"&&state.sync&&Number.isFinite(audio.duration)&&audio.duration>0){
+      const progress=sceneMotionProgress();
+      if(!Number.isFinite(lastAnimatedProgress)||Math.abs(progress-lastAnimatedProgress)>.0001){
+        updateScene();
+        visualRenderStats.animatedSceneUpdates++;
+        lastAnimatedProgress=progress;
+      }else syncSceneMotionTimeline();
+    }else{
+      syncSceneMotionTimeline();
+      lastAnimatedProgress=NaN;
+    }
+  }
+  visualFrameId=requestAnimationFrame(animate);
+}
+function startVisuals(){
+  if(document.hidden||audio.paused||audio.ended||visualFrameId)return;
+  lastVisualAt=0;
+  lastAnimatedProgress=NaN;
+  visualFrameId=requestAnimationFrame(animate);
+}
+function stopVisuals(){
+  if(visualFrameId){cancelAnimationFrame(visualFrameId);visualFrameId=0;}
+  lastVisualAt=0;
+  lastAnimatedProgress=NaN;
+  if(!document.hidden&&state){updateScene();paintIdleVisuals();}
+}
+for(const event of ["play","playing"])audio.addEventListener(event,startVisuals);
+for(const event of ["pause","ended"])audio.addEventListener(event,stopVisuals);
+for(const event of ["seeked","loadedmetadata","emptied"])audio.addEventListener(event,()=>{
+  if(document.hidden||!state)return;
+  time();updateScene();paintIdleVisuals();
+});
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden)stopVisuals();
+  else if(audio.paused)stopVisuals();
+  else startVisuals();
+});
 init().catch(e=>{console.error(e);$("#buildLabel").textContent="WEB TEST · INIT ERROR";mark("INIT ERROR")});
 window.addEventListener("resize",fitRuntimeShell,{passive:true});

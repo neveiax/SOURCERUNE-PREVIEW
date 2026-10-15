@@ -52,6 +52,16 @@ jobs:
                 const page=await browser.newPage();
                 await page.setViewport({width:w,height:h,deviceScaleFactor:1});
                 await page.goto("http://127.0.0.1:4173/Web/App/?ui="+ui,{waitUntil:"networkidle0",timeout:30000});
+                // A paused app must not continuously paint canvases or the
+                // whole SVG scene. These counters track the actual render path.
+                const idleBefore=await page.evaluate(()=>({...window.__sourceruneRenderStats}));
+                await new Promise(resolve=>setTimeout(resolve,260));
+                const idleAfter=await page.evaluate(()=>({...window.__sourceruneRenderStats}));
+                if(!idleBefore||idleAfter.activeFrames!==idleBefore.activeFrames||
+                   idleAfter.animatedSceneUpdates!==idleBefore.animatedSceneUpdates||
+                   idleAfter.idlePasses!==idleBefore.idlePasses)
+                  throw Error(ui+" idle render still running "+JSON.stringify({idleBefore,idleAfter}));
+                console.log("IDLE_RENDER_PASS",ui);
                 // One real-pointer regression per UI, inside the existing Chromium job.
                 const originalMotion=await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")));
                 const sourceRect=await page.$eval("#sourceNode",el=>{const r=el.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}});
