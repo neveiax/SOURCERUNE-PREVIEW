@@ -1,3 +1,5 @@
+> **TOP PRIORITY V2.0.010｜公開 PREVIEW 最少 GitHub Actions**：一般 Draft UI/音訊研究 Push **不啟動 Hosted Chromium/公開 DSP 完整審核/可選視覺快照**，真要審查時轉 Ready for review，在真正最新 HEAD 完成原有公開安全與白名單驗收；正式 main 公開音訊變動的原後置驗證依然自動執行，不能省略。視覺快照及版本 Tag 只按實際需求手動啟動；純文件、無新差異、已驗證的相同 SHA 不要跑重複驗收；任何 skipped 不等於安全 PASS。此規則高於以下歷史「每 Push 自動 Tag」敘述，詳見 Private KNOWLEDGE [跨三倉最高節流政策](https://github.com/neveiax/SOURCERUNE-KNOWLEDGE/blob/main/knowledge/canonical/policies/SR-GITHUB-ACTIONS-COST-CONTROL-20261015.md)。
+
 # SOURCERUNE-PREVIEW｜公開協作者現行規則
 
 > 2026-10-14 生效。使用繁體中文。本文件取代舊版 README／AGENTS 內彼此衝突的 UI-only／DRY ONLY／絕對禁止已核准 WASM 等歷史說法；歷史仍可在 Git 紀錄閱讀。
@@ -25,7 +27,7 @@
 
 ## Vx.x.xxx 與不可刪除的證據
 
-`.github/workflows/sr-push-version.yml` 每次分支 push 形成新且不可重用的 `Vx.x.xxx` Git tag。這只證明 push，不是 Release、Pages 部署或音訊驗收。線上版本需 Pages 成功部署的 main SHA；Private 研究分支新版本不得宣稱已公開。
+**現行 V2.0.010：**每次有實質變更的 Commit／PR 記錄仍必須保留 `Vx.x.xxx` 版號與 Git SHA，但 `.github/workflows/sr-push-version.yml` 已經是 **手動** `workflow_dispatch` 才建立不可變 Git Tag，不能再每 Push 自動觸發。正式線上版本仍要核對 Pages 成功的 main SHA；私人研究分支不等於已公開。
 
 SOURCE [#161](https://github.com/ureia-dev/SOURCERUNE/pull/161)／PREVIEW [#35](https://github.com/ureia-dev/SOURCERUNE-PREVIEW/pull/35) **2026-10-14 已關閉且未合併**；CSS 是非必要微調，`PLAY_POINTER_EVENT_NOT_DELIVERED` 失敗原因未證實，不能把關閉解讀成修好了播放音訊，若有實際用戶問題仍由 SOURCE Issue #126 追蹤。同日 SOURCE #68 舊 Mac／Windows Release PR 因未驗收與 merge 衝突關閉，Native 建置需求仍由 Private SOURCE CROSS-08 追蹤。舊 `.github/workflows/original-web-port.yml` 是一次性歷史搬運工具，不是私人 SOURCE 自動鏡像。
 
