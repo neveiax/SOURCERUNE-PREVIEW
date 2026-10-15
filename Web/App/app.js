@@ -983,7 +983,7 @@ audio.addEventListener("error",()=>mark("音檔無法播放，請使用 WAV／�
 audio.addEventListener("seeked",()=>sceneNode?.port?.postMessage({type:"reset"}));
 // Reuse analyser arrays across active frames to avoid per-frame GC churn.
 const timeDomainBuffers=new WeakMap();
-const visualAllocationStats={timeDomain:0,traceScratch:0};
+const visualAllocationStats={timeDomain:0,traceScratch:0,gridBuilds:0};
 window.__sourceruneVisualAllocations=visualAllocationStats;
 function timeDomainBuffer(analyser){
   let buffer=timeDomainBuffers.get(analyser);
@@ -1009,29 +1009,42 @@ function bindSpectrumView(){
     if(rta){rta.classList.toggle("active",spectrumView.rta);rta.setAttribute("aria-pressed",String(spectrumView.rta))}
     if(smoothing){smoothing.classList.toggle("active",spectrumView.smooth);smoothing.setAttribute("aria-pressed",String(spectrumView.smooth));smoothing.textContent=spectrumView.smooth?"1/3":"RAW"}
   };
-  document.querySelectorAll("[data-spectrum-source]").forEach(b=>b.addEventListener("click",()=>{spectrumView.source=b.dataset.spectrumSource;sync()}));
-  $("[data-spectrum-rta]")?.addEventListener("click",()=>{spectrumView.rta=!spectrumView.rta;sync()});
-  $("[data-spectrum-smoothing]")?.addEventListener("click",()=>{spectrumView.smooth=!spectrumView.smooth;spectrumMainPre.reset();spectrumMainPost.reset();sync()});
+  // Audio-paused UI no longer has a continuous RAF: redraw only on user action.
+  const repaintIfIdle=()=>{if(audio.paused&&!document.hidden)spectrum();};
+  document.querySelectorAll("[data-spectrum-source]").forEach(b=>b.addEventListener("click",()=>{spectrumView.source=b.dataset.spectrumSource;sync();repaintIfIdle()}));
+  $("[data-spectrum-rta]")?.addEventListener("click",()=>{spectrumView.rta=!spectrumView.rta;sync();repaintIfIdle()});
+  $("[data-spectrum-smoothing]")?.addEventListener("click",()=>{spectrumView.smooth=!spectrumView.smooth;spectrumMainPre.reset();spectrumMainPost.reset();sync();repaintIfIdle()});
   sync();
 }
+let spectrumGridCache=null;
 function spectrum(){
   const c=$("#spectrumCanvas"),x=c.getContext("2d"),w=c.width,h=c.height;
-  x.clearRect(0,0,w,h);x.fillStyle="#081015";x.fillRect(0,0,w,h);
   const left=38,right=10,top=8,bottom=22,pw=w-left-right,ph=h-top-bottom;
   const lx=f=>left+Math.log10(f/20)/Math.log10(20000/20)*pw;
-  x.lineWidth=1;x.font="10px ui-monospace,Consolas,monospace";x.textBaseline="middle";
-  for(const dbv of [0,-12,-24,-36,-48,-60]){
-    const yy=top+(-dbv/60)*ph;
-    x.strokeStyle=dbv===0?"#31434d":"#1b2a31";
-    x.beginPath();x.moveTo(left,yy);x.lineTo(w-right,yy);x.stroke();
-    x.fillStyle="#71858e";x.textAlign="right";x.fillText(String(dbv),left-6,yy);
+  // Fixed graph axes, labels and background never change between frames.
+  // Cache them in a regular canvas (works in browsers without OffscreenCanvas).
+  if(!spectrumGridCache||spectrumGridCache.width!==w||spectrumGridCache.height!==h){
+    const grid=document.createElement("canvas");
+    grid.width=w;grid.height=h;
+    const bg=grid.getContext("2d");
+    bg.fillStyle="#081015";bg.fillRect(0,0,w,h);
+    bg.lineWidth=1;bg.font="10px ui-monospace,Consolas,monospace";bg.textBaseline="middle";
+    for(const dbv of [0,-12,-24,-36,-48,-60]){
+      const yy=top+(-dbv/60)*ph;
+      bg.strokeStyle=dbv===0?"#31434d":"#1b2a31";
+      bg.beginPath();bg.moveTo(left,yy);bg.lineTo(w-right,yy);bg.stroke();
+      bg.fillStyle="#71858e";bg.textAlign="right";bg.fillText(String(dbv),left-6,yy);
+    }
+    for(const f of [20,50,100,200,500,1000,2000,5000,10000,20000]){
+      const xx=lx(f);
+      bg.strokeStyle="#1b2a31";bg.beginPath();bg.moveTo(xx,top);bg.lineTo(xx,top+ph);bg.stroke();
+      bg.fillStyle="#71858e";bg.textAlign="center";
+      bg.fillText(f>=1000?(f/1000)+"k":String(f),xx,h-9);
+    }
+    spectrumGridCache=grid;
+    visualAllocationStats.gridBuilds++;
   }
-  for(const f of [20,50,100,200,500,1000,2000,5000,10000,20000]){
-    const xx=lx(f);
-    x.strokeStyle="#1b2a31";x.beginPath();x.moveTo(xx,top);x.lineTo(xx,top+ph);x.stroke();
-    x.fillStyle="#71858e";x.textAlign="center";
-    x.fillText(f>=1000?(f/1000)+"k":String(f),xx,h-9);
-  }
+  x.drawImage(spectrumGridCache,0,0);
   if(!outAn)return;
   // The EQ mini/focus analyser always receives POST data, regardless of
   // which *visualisation* the user chooses here. No audio routing changes.

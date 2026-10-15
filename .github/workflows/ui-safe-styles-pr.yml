@@ -61,6 +61,14 @@ jobs:
                    idleAfter.animatedSceneUpdates!==idleBefore.animatedSceneUpdates||
                    idleAfter.idlePasses!==idleBefore.idlePasses)
                   throw Error(ui+" idle render still running "+JSON.stringify({idleBefore,idleAfter}));
+                const background=await page.evaluate(()=>window.__sourceruneVisualAllocations?.gridBuilds);
+                if(background!==1)throw Error(ui+" static spectrum background rebuilt unexpectedly "+background);
+                // The visualization must still react to buttons while paused.
+                await page.$eval('[data-spectrum-rta]',el=>el.click());
+                const backgroundAfter=await page.evaluate(()=>window.__sourceruneVisualAllocations?.gridBuilds);
+                if(backgroundAfter!==1)throw Error(ui+" spectrum grid was rebuilt on idle control changes");
+                await page.$eval('[data-spectrum-rta]',el=>el.click());
+                console.log("SPECTRUM_STATIC_GRID_PASS",ui);
                 console.log("IDLE_RENDER_PASS",ui);
                 // One real-pointer regression per UI, inside the existing Chromium job.
                 const originalMotion=await page.$eval("#sourceNode",el=>Number(el.getAttribute("aria-valuenow")));
