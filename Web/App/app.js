@@ -1189,5 +1189,12 @@ document.addEventListener("visibilitychange",()=>{
   else if(audio.paused)stopVisuals();
   else startVisuals();
 });
+// Browsers suspend visible RAF in background tabs. Preserve the changing
+// APPROACH audio gain/pan there using media timeupdate, without redrawing UI.
+audio.addEventListener("timeupdate",()=>{
+  if(document.hidden&&!audio.paused&&state?.params.motionMode==="APPROACH"&&state.sync)
+    updateApproachAudio();
+});
+
 init().catch(e=>{console.error(e);$("#buildLabel").textContent="WEB TEST · INIT ERROR";mark("INIT ERROR")});
 window.addEventListener("resize",fitRuntimeShell,{passive:true});
