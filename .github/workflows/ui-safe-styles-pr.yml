@@ -335,7 +335,19 @@ jobs:
                 if(!fixture)throw Error(ui+" playback performance fixture missing");
                 await page.waitForFunction(()=>document.querySelector("#stateStatus")?.textContent.includes("AUDIO LOADED"),{timeout:20000});
                 await page.click("#playBtn");
-                await page.waitForFunction(()=>document.querySelector("#audioElement")?.currentTime>.20,{timeout:20000});
+                try{
+                  await page.waitForFunction(()=>document.querySelector("#audioElement")?.currentTime>.20,{timeout:20000});
+                }catch(error){
+                  const diagnostic=await page.evaluate(()=>{
+                    const a=document.querySelector("#audioElement"),b=document.querySelector("#playBtn");
+                    return {status:document.querySelector("#stateStatus")?.textContent,
+                      playButton:b?.textContent,src:!!a?.src,currentTime:a?.currentTime,
+                      duration:a?.duration,paused:a?.paused,readyState:a?.readyState,
+                      networkState:a?.networkState,error:a?.error?.message,
+                      frames:window.__sourceruneRenderStats?.activeFrames};
+                  });
+                  throw Error(ui+" audio playback did not start "+JSON.stringify(diagnostic)+" / "+error.message);
+                }
                 await page.waitForFunction(()=>window.__sourceruneRenderStats?.activeFrames>=4,{timeout:10000});
                 // Give the visual scheduler time to warm up before sampling.
                 await new Promise(resolve=>setTimeout(resolve,120));
