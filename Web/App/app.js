@@ -68,8 +68,8 @@ function syncFullscreenState(){const b=$("#sceneFullscreenBtn");if(b)b.classList
 function restore(s){const snaps=state.snapshots;state=migrateLegacyEq(s);state.snapshots=snaps;refresh()}
 function assetUrl(x){return "../../Assets/UI/"+(state.ui==="UI_01"?x.ui01:x.ui02)}
 function selected(t){return byId.get(state.selection[t])}
-async function init(){[schema,{items:catalog},{presets:scenePresets}]=await Promise.all([fetch("./data/ui_controls.json").then(r=>r.json()),fetch("./data/catalog.json").then(r=>r.json()),fetch("./data/scene_presets_v1.json").then(r=>r.json())]);byId=new Map(catalog.map(x=>[x.id,x]));state=newState();const requestedUi=new URLSearchParams(location.search).get("ui");if(requestedUi==="UI_01"||requestedUi==="UI_02")state.ui=requestedUi;try{userPresets=JSON.parse(localStorage.getItem("sourcerune.userPresets.v1")||"{}")}catch{}mountWebTransport();mountAdvancedDialog();renderPreset();renderNav();bind();workbench=mountWorkbench({audio,getHistory:()=>({undo:undo.length,redo:redo.length}),openAdvanced,groups:schema.groups,savePreset,undo:doUndo,redo:doRedo});refresh();hist();animate();if(new URLSearchParams(location.search).has("test"))$("#diagnosticBar").classList.remove("hidden")}
-function refresh(){document.body.classList.toggle("ui-01",state.ui==="UI_01");document.body.classList.toggle("ui-02",state.ui==="UI_02");applySceneViewportProfile();$$("[data-ui]").forEach(b=>b.classList.toggle("active",b.dataset.ui===state.ui));$$("[data-global-ui]").forEach(b=>b.classList.toggle("active",b.dataset.globalUi===state.ui));$$("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===state.view));$$("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===state.tab));$$(".tab-content").forEach(el=>el.classList.toggle("active",el.dataset.content===state.tab));$$("[data-motion-mode]").forEach(b=>b.classList.toggle("active",b.dataset.motionMode===state.params.motionMode));const presetSelector=$("#presetSelect");if(presetSelector)presetSelector.value=state.preset||"";const presetHero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null;const savedPreset=state.preset?.startsWith("user:")?userPresets[state.preset.slice(5)]:null;$("#sceneTitle").textContent=(presetHero&&scenePresets[presetHero.id]?.name)||presetHero?.name||savedPreset?.name||"Scene View";$("#syncToggle").checked=state.sync;$("#globalBypass").classList.toggle("active",state.globalBypass);$("#seedReadout").textContent=state.seed;$("#syncReadout").textContent=state.sync?"WEB TIMELINE":"MANUAL";const sp=selected("SPACE_ENVIRONMENT"),hero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null,sceneArt=hero&&!String(hero.status||"").includes("art-required")?hero:sp;if(sceneArt){$(".scene-panel")?.style.setProperty("--ui02-scene-bg",`url("${assetUrl(sceneArt)}")`)}renderModules();renderMacros();refreshMiniEq();renderFlow();renderAdvanced();renderMarkers();updateScene();updateGains();updateCurves();fitRuntimeShell();repositionEqFocus();requestAnimationFrame(()=>{if(window.auditReferenceGeometry){const a=window.auditReferenceGeometry();window.__geometryAudit=a;document.body.dataset.geometryOk=a.ok?"1":"0";document.body.dataset.geometryUi=a.ui||"";document.body.dataset.geometryFailures=(a.failures||[]).join(",")}})}
+async function init(){[schema,{items:catalog},{presets:scenePresets}]=await Promise.all([fetch("./data/ui_controls.json").then(r=>r.json()),fetch("./data/catalog.json").then(r=>r.json()),fetch("./data/scene_presets_v1.json").then(r=>r.json())]);byId=new Map(catalog.map(x=>[x.id,x]));state=newState();const requestedUi=new URLSearchParams(location.search).get("ui");if(requestedUi==="UI_01"||requestedUi==="UI_02")state.ui=requestedUi;try{userPresets=JSON.parse(localStorage.getItem("sourcerune.userPresets.v1")||"{}")}catch{}mountWebTransport();mountAdvancedDialog();renderPreset();renderNav();bind();workbench=mountWorkbench({audio,getHistory:()=>({undo:undo.length,redo:redo.length}),openAdvanced,groups:schema.groups,savePreset,undo:doUndo,redo:doRedo});refresh();hist();if(!audio.paused)startVisuals();if(new URLSearchParams(location.search).has("test"))$("#diagnosticBar").classList.remove("hidden")}
+function refresh(){document.body.classList.toggle("ui-01",state.ui==="UI_01");document.body.classList.toggle("ui-02",state.ui==="UI_02");applySceneViewportProfile();$$("[data-ui]").forEach(b=>b.classList.toggle("active",b.dataset.ui===state.ui));$$("[data-global-ui]").forEach(b=>b.classList.toggle("active",b.dataset.globalUi===state.ui));$$("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===state.view));$$("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===state.tab));$$(".tab-content").forEach(el=>el.classList.toggle("active",el.dataset.content===state.tab));$$("[data-motion-mode]").forEach(b=>b.classList.toggle("active",b.dataset.motionMode===state.params.motionMode));const presetSelector=$("#presetSelect");if(presetSelector)presetSelector.value=state.preset||"";const presetHero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null;const savedPreset=state.preset?.startsWith("user:")?userPresets[state.preset.slice(5)]:null;$("#sceneTitle").textContent=(presetHero&&scenePresets[presetHero.id]?.name)||presetHero?.name||savedPreset?.name||"Scene View";$("#syncToggle").checked=state.sync;$("#globalBypass").classList.toggle("active",state.globalBypass);$("#seedReadout").textContent=state.seed;$("#syncReadout").textContent=state.sync?"WEB TIMELINE":"MANUAL";const sp=selected("SPACE_ENVIRONMENT"),hero=state.preset?.startsWith("factory:")?byId.get(state.preset.slice(8)):null,sceneArt=hero&&!String(hero.status||"").includes("art-required")?hero:sp;if(sceneArt){$(".scene-panel")?.style.setProperty("--ui02-scene-bg",`url("${assetUrl(sceneArt)}")`)}renderModules();renderMacros();refreshMiniEq();renderFlow();renderAdvanced();renderMarkers();updateScene();updateGains();updateCurves();fitRuntimeShell();repositionEqFocus();paintIdleVisuals();requestAnimationFrame(()=>{if(window.auditReferenceGeometry){const a=window.auditReferenceGeometry();window.__geometryAudit=a;document.body.dataset.geometryOk=a.ok?"1":"0";document.body.dataset.geometryUi=a.ui||"";document.body.dataset.geometryFailures=(a.failures||[]).join(",")}})}
 function renderPreset(){const fac=catalog?.filter(x=>x.type==="SCENE_PRESET_HERO")||[],usr=Object.entries(userPresets);$("#presetSelect").innerHTML='<option value="">— Select scene preset —</option><optgroup label="Factory scene visuals">'+fac.map(x=>`<option value="factory:${x.id}">${x.name}</option>`).join("")+'</optgroup>'+(usr.length?'<optgroup label="User presets">'+usr.map(([k,v])=>`<option value="user:${escapeUiText(k)}">${escapeUiText(v.name)}</option>`).join("")+'</optgroup>':"");if(state?.preset)$("#presetSelect").value=state.preset}
 function cycleAsset(t,dir){const list=catalog.filter(x=>x.type===t),cur=state.selection[t],i=Math.max(0,list.findIndex(x=>x.id===cur)),n=(i+dir+list.length)%list.length;mut(()=>state.selection[t]=list[n].id)}
 let advancedReturnFocus=null;
@@ -158,7 +158,6 @@ function ui02TransmissionMarkup(){
   const devices=catalog.filter(x=>x.type==="TRANSMISSION");
   return `<label class="ui02-transmission-device"><span>DEVICE</span><select id="ui02TransmissionSelect" aria-label="Transmission device">${devices.map(x=>`<option value="${x.id}" ${x.id===state.selection.TRANSMISSION?"selected":""}>${x.name}</option>`).join("")}</select></label><div class="ui02-transmission-wave"><span>OUTPUT WAVEFORM <em id="ui02SignalStatus">IDLE</em></span><canvas id="ui02BadSignalWaveform" width="160" height="48" role="img" aria-label="Actual output audio waveform while playing"></canvas></div>`;
 }
-let ui02WaveBuffer=null;
 function paintUi02Signal(){
   const canvas=$("#ui02BadSignalWaveform");if(!canvas)return;
   const ctx=canvas.getContext("2d");if(!ctx)return;
@@ -167,11 +166,11 @@ function paintUi02Signal(){
   ctx.clearRect(0,0,w,h);
   ctx.beginPath();ctx.moveTo(0,h/2);ctx.lineTo(w,h/2);ctx.lineWidth=1;ctx.strokeStyle="#405967";ctx.stroke();
   if(!live)return;
-  if(!ui02WaveBuffer||ui02WaveBuffer.length!==outAn.fftSize)ui02WaveBuffer=new Uint8Array(outAn.fftSize);
-  outAn.getByteTimeDomainData(ui02WaveBuffer);
+  const waveBuffer=timeDomainBuffer(outAn);
+  outAn.getByteTimeDomainData(waveBuffer);
   ctx.strokeStyle="#8bcce2";ctx.lineWidth=1.5;ctx.beginPath();
   for(let x=0;x<w;x++){
-    const v=ui02WaveBuffer[Math.floor(x/w*(ui02WaveBuffer.length-1))],y=(1-v/255)*h;
+    const v=waveBuffer[Math.floor(x/w*(waveBuffer.length-1))],y=(1-v/255)*h;
     if(!x)ctx.moveTo(x,y);else ctx.lineTo(x,y);
   }
   ctx.stroke();
@@ -644,15 +643,21 @@ function syncSceneMotionTimeline(){
   const strip=$(".scene-waveform-strip");
   if(!strip)return;
   const active=state?.ui==="UI_01";
-  strip.tabIndex=active?0:-1;
-  strip.setAttribute("role","slider");
-  strip.setAttribute("aria-valuemin","0");
-  strip.setAttribute("aria-valuemax","100");
+  const tab=active?0:-1;
+  if(strip.tabIndex!==tab)strip.tabIndex=tab;
+  for(const [attr,value] of [["role","slider"],["aria-valuemin","0"],["aria-valuemax","100"]]){
+    if(strip.getAttribute(attr)!==value)strip.setAttribute(attr,value);
+  }
   const duration=audio.duration,loaded=Number.isFinite(duration)&&duration>0&&!audio.error;
   const value=loaded?Math.round(Math.max(0,Math.min(100,audio.currentTime/duration*100))):Math.round(state.params.motion);
-  strip.setAttribute("aria-valuenow",String(value));
-  strip.setAttribute("aria-valuetext",loaded?Math.round(audio.currentTime*100)/100+" of "+Math.round(duration*100)/100+" seconds":value+"% of motion path");
-  strip.setAttribute("aria-label",loaded?"Audio timeline position":"Motion timeline position");
+  const dynamicAttributes=[
+    ["aria-valuenow",String(value)],
+    ["aria-valuetext",loaded?Math.round(audio.currentTime*100)/100+" of "+Math.round(duration*100)/100+" seconds":value+"% of motion path"],
+    ["aria-label",loaded?"Audio timeline position":"Motion timeline position"]
+  ];
+  for(const [attr,next] of dynamicAttributes){
+    if(strip.getAttribute(attr)!==next)strip.setAttribute(attr,next);
+  }
 }
 function bindSceneMotionTimeline(){
   const strip=$(".scene-waveform-strip");if(!strip)return;
@@ -860,7 +865,7 @@ if(motionGraph){
   if(motionGraph.getAttribute("tabindex")!==tab)motionGraph.setAttribute("tabindex",tab);
   motionGraph.setAttribute("aria-disabled",ui1?"true":"false");
 }
-const x=110+790*p,y=(ui1?300:325)-55*Math.sin(Math.PI*p),listenerPt=listenerScreenPoint(state.listener,state.ui),listenerX=listenerPt.x,listenerY=listenerPt.y,d=distance();const listenerNode=$("#listenerNode");if(listenerNode){listenerNode.setAttribute("transform",`translate(${listenerX} ${listenerY})`);listenerNode.setAttribute("aria-label",`Listener at ${state.listener.x} m lateral, ${state.listener.z} m forward. Drag or use arrow keys; Home resets.`);}const label=$("#listenerLabel");if(label){label.setAttribute("x",listenerX);label.setAttribute("y",Math.min(405,listenerY+38));label.textContent=`LISTENER  ${state.listener.x.toFixed(1)} / ${state.listener.z.toFixed(1)} m`;}$("#sourceNode").setAttribute("transform",`translate(${x} ${y})`);$("#sourceNode").setAttribute("aria-valuenow",String(state.params.motion));$("#sourceNode").setAttribute("aria-valuetext",state.params.motion+"% of motion path");const mg=$("#motionCarGlyph");if(mg){mg.setAttribute("x",x-28);mg.setAttribute("y",y-62)}$("#distanceLine").setAttribute("x1",x);$("#distanceLine").setAttribute("y1",y);$("#distanceLine").setAttribute("y2",listenerY);$("#distanceLine").setAttribute("x2",listenerX);const cx=(x+listenerX)/2,cy=(y+listenerY)/2-10;const dc=$("#distanceCallout");if(dc){dc.setAttribute("x",cx-40);dc.setAttribute("y",cy-31)}$("#distanceText").setAttribute("x",cx);$("#distanceText").setAttribute("y",cy);$("#distanceText").textContent=d.toFixed(1)+" m";$("#distanceText").setAttribute("aria-valuemax","1100");$("#distanceText").setAttribute("title",`Listener-relative distance (preview geometry): ${d.toFixed(1)} m`);for(const el of [$("#distanceText"),$("#currentDistanceControl")])if(el){el.setAttribute("aria-valuenow",d.toFixed(1));el.setAttribute("aria-valuetext",d.toFixed(1)+" m")}$("#sourceLabel").setAttribute("y",ui1?Math.min(y+27,326):346);$("#motionMode").textContent=state.params.motionMode==="APPROACH"?"APPROACH 1/r":pretty(state.params.motionMode);const mdm=$("#motionDeckMode");if(mdm)mdm.value=state.params.motionMode;const mp=$("#motionDeckPath");if(mp){const mode=state.params.motionMode,pct=p;const path=mode==="APPROACH"?"M12 18 C70 20 165 45 288 82":mode==="LEAVE"?"M12 82 C135 45 230 20 288 18":mode==="STATIC"?"M12 52 L288 52":"M12 82 C85 80 105 18 150 18 C195 18 215 80 288 82";mp.setAttribute("d",path);const dot=$("#motionDeckCurrent");if(dot){// The indicator must sit on the rendered SVG geometry; approximated sine/power
+const x=110+790*p,y=(ui1?300:325)-55*Math.sin(Math.PI*p),listenerPt=listenerScreenPoint(state.listener,state.ui),listenerX=listenerPt.x,listenerY=listenerPt.y,d=distance();const listenerNode=$("#listenerNode");if(listenerNode){listenerNode.setAttribute("transform",`translate(${listenerX} ${listenerY})`);listenerNode.setAttribute("aria-label",`Listener at ${state.listener.x} m lateral, ${state.listener.z} m forward. Drag or use arrow keys; Home resets.`);}const label=$("#listenerLabel");if(label){label.setAttribute("x",listenerX);label.setAttribute("y",Math.min(405,listenerY+38));label.textContent=`LISTENER  ${state.listener.x.toFixed(1)} / ${state.listener.z.toFixed(1)} m`;}$("#sourceNode").setAttribute("transform",`translate(${x} ${y})`);$("#sourceNode").setAttribute("aria-valuenow",String(state.params.motion));$("#sourceNode").setAttribute("aria-valuetext",state.params.motion+"% of motion path");const mg=$("#motionCarGlyph");if(mg){mg.setAttribute("x",x-28);mg.setAttribute("y",y-62)}$("#distanceLine").setAttribute("x1",x);$("#distanceLine").setAttribute("y1",y);$("#distanceLine").setAttribute("y2",listenerY);$("#distanceLine").setAttribute("x2",listenerX);const cx=(x+listenerX)/2,cy=(y+listenerY)/2-10;const dc=$("#distanceCallout");if(dc){dc.setAttribute("x",cx-40);dc.setAttribute("y",cy-31)}$("#distanceText").setAttribute("x",cx);$("#distanceText").setAttribute("y",cy);$("#distanceText").textContent=d.toFixed(1)+" m";$("#distanceText").setAttribute("aria-valuemax","1100");$("#distanceText").setAttribute("title",`Listener-relative distance (preview geometry): ${d.toFixed(1)} m`);for(const el of [$("#distanceText"),$("#currentDistanceControl")])if(el){el.setAttribute("aria-valuenow",d.toFixed(1));el.setAttribute("aria-valuetext",d.toFixed(1)+" m")}$("#sourceLabel").setAttribute("y",ui1?Math.min(y+27,326):346);$("#motionMode").textContent=state.params.motionMode==="APPROACH"?"APPROACH 1/r":pretty(state.params.motionMode);const mdm=$("#motionDeckMode");if(mdm)mdm.value=state.params.motionMode;const mp=$("#motionDeckPath");if(mp){const mode=state.params.motionMode,pct=p;const path=mode==="APPROACH"?"M12 18 C70 20 165 45 288 82":mode==="LEAVE"?"M12 82 C135 45 230 20 288 18":mode==="STATIC"?"M12 52 L288 52":"M12 82 C85 80 105 18 150 18 C195 18 215 80 288 82";if(mp.getAttribute("d")!==path)mp.setAttribute("d",path);const dot=$("#motionDeckCurrent");if(dot){// The indicator must sit on the rendered SVG geometry; approximated sine/power
 // formulas drift away from the actual cubic paths, particularly at pass-by edges.
 const targetX=12+276*pct;
 const total=mp.getTotalLength();
@@ -872,7 +877,7 @@ for(let step=0;step<16;step++){
 }
 const point=mp.getPointAtLength((low+high)/2);
 dot.setAttribute("cx",point.x);
-dot.setAttribute("cy",point.y)}}$("#startDistance").textContent=state.params.startDistance.toFixed(1)+" m";$("#closestDistance").textContent=state.params.closestDistance.toFixed(1)+" m";$("#endDistance").textContent=state.params.endDistance.toFixed(1)+" m";$("#currentDistance").textContent=d.toFixed(1)+" m";$("#speedReadout").textContent=state.params.speed+" km/h";$("#dopplerReadout").textContent=state.params.doppler+"%";$("#widthReadout").textContent=state.params.width+"%";for(const id of ["speed","doppler","width"]){const el=document.querySelector('[data-motion-adjust="'+id+'"]'),v=String(state.params[id]);if(el&&el.getAttribute("aria-valuenow")!==v){el.setAttribute("aria-valuenow",v);el.setAttribute("aria-valuetext",v+(id==="speed"?" km/h":"%"))}}$("#perspectiveReadout").textContent=state.params.perspective+"%";const mr=$$(".motion-readouts>div"),angleFor=id=>-135+macroPct(id)*2.7;if(mr[4]){const scale=Math.max(120,state.params.startDistance,state.params.closestDistance,state.params.endDistance);const dp=Math.max(0,Math.min(1,d/scale));mr[4].style.setProperty("--distance-angle",(-135+dp*270)+"deg")}for(const [idx,id] of [[5,"speed"],[6,"doppler"],[7,"width"]])if(mr[idx])mr[idx].style.setProperty("--angle",angleFor(id)+"deg");const md=$(".macro-motion .macro-knob-readonly");if(md){const pct=Math.max(0,Math.min(100,d));md.style.setProperty("--pct",pct);md.style.setProperty("--angle",(-135+pct*2.7)+"deg");const mv=md.querySelector(".macro-knob-value");if(mv)mv.textContent=d.toFixed(1)+"m"}$("#sceneBuildings").setAttribute("opacity",state.view==="TOP"?".28":".9");if(ui1){syncSceneZoom(state);syncSceneGuide(state.params.motionMode==="APPROACH"?{...state,params:{...state.params,motion:p*100}}:state);const curve=$("#motionPath")?.getAttribute("d");if(curve)$("#motionPathHit")?.setAttribute("d",curve)}}
+dot.setAttribute("cy",point.y)}}$("#startDistance").textContent=state.params.startDistance.toFixed(1)+" m";$("#closestDistance").textContent=state.params.closestDistance.toFixed(1)+" m";$("#endDistance").textContent=state.params.endDistance.toFixed(1)+" m";$("#currentDistance").textContent=d.toFixed(1)+" m";$("#speedReadout").textContent=state.params.speed+" km/h";$("#dopplerReadout").textContent=state.params.doppler+"%";$("#widthReadout").textContent=state.params.width+"%";for(const id of ["speed","doppler","width"]){const el=document.querySelector('[data-motion-adjust="'+id+'"]'),v=String(state.params[id]);if(el&&el.getAttribute("aria-valuenow")!==v){el.setAttribute("aria-valuenow",v);el.setAttribute("aria-valuetext",v+(id==="speed"?" km/h":"%"))}}$("#perspectiveReadout").textContent=state.params.perspective+"%";const mr=$$(".motion-readouts>div"),angleFor=id=>-135+macroPct(id)*2.7;if(mr[4]){const scale=Math.max(120,state.params.startDistance,state.params.closestDistance,state.params.endDistance);const dp=Math.max(0,Math.min(1,d/scale));mr[4].style.setProperty("--distance-angle",(-135+dp*270)+"deg")}for(const [idx,id] of [[5,"speed"],[6,"doppler"],[7,"width"]])if(mr[idx])mr[idx].style.setProperty("--angle",angleFor(id)+"deg");const md=$(".macro-motion .macro-knob-readonly");if(md){const pct=Math.max(0,Math.min(100,d));md.style.setProperty("--pct",pct);md.style.setProperty("--angle",(-135+pct*2.7)+"deg");const mv=md.querySelector(".macro-knob-value");if(mv)mv.textContent=d.toFixed(1)+"m"}$("#sceneBuildings").setAttribute("opacity",state.view==="TOP"?".28":".9");if(ui1){syncSceneZoom(state);syncSceneGuide(state.params.motionMode==="APPROACH"?{...state,params:{...state.params,motion:p*100}}:state);const curve=$("#motionPath")?.getAttribute("d");if(curve){const hit=$("#motionPathHit");if(hit&&hit.getAttribute("d")!==curve)hit.setAttribute("d",curve)}}}
 function updateCurves(){for(const [id,k] of [["directCurve","direct"],["earlyCurve","early"],["tailCurve","tail"]])$("#"+id).style.opacity=.2+.8*state.params[k]/100}
 async function setupAudio(){
   if(sceneNode)return;
@@ -981,10 +986,24 @@ function stop(){audio.pause();if(audio.readyState)audio.currentTime=0;sceneNode?
 for(const event of ["play","pause","ended"])audio.addEventListener(event,()=>$("#playBtn").textContent=audio.paused?"PLAY":"PAUSE");
 audio.addEventListener("error",()=>mark("音檔無法播放，請使用 WAV／瀏覽器支援的格式"));
 audio.addEventListener("seeked",()=>sceneNode?.port?.postMessage({type:"reset"}));
-function stats(a){if(!a)return{peak:-Infinity,rms:-Infinity,pct:0};const d=new Uint8Array(a.fftSize);a.getByteTimeDomainData(d);let p=0,s=0;for(const x of d){const v=(x-128)/128;p=Math.max(p,Math.abs(v));s+=v*v}p=db(p);const r=db(Math.sqrt(s/d.length));return{peak:p,rms:r,pct:Math.max(0,Math.min(100,(p+60)/60*100))}}
+// Reuse analyser arrays across active frames to avoid per-frame GC churn.
+const timeDomainBuffers=new WeakMap();
+const visualAllocationStats={timeDomain:0,traceScratch:0,gridBuilds:0};
+window.__sourceruneVisualAllocations=visualAllocationStats;
+function timeDomainBuffer(analyser){
+  let buffer=timeDomainBuffers.get(analyser);
+  if(!buffer||buffer.length!==analyser.fftSize){
+    buffer=new Uint8Array(analyser.fftSize);
+    timeDomainBuffers.set(analyser,buffer);
+    visualAllocationStats.timeDomain++;
+  }
+  return buffer;
+}
+function stats(a){if(!a)return{peak:-Infinity,rms:-Infinity,pct:0};const d=timeDomainBuffer(a);a.getByteTimeDomainData(d);let p=0,s=0;for(const x of d){const v=(x-128)/128;p=Math.max(p,Math.abs(v));s+=v*v}p=db(p);const r=db(Math.sqrt(s/d.length));return{peak:p,rms:r,pct:Math.max(0,Math.min(100,(p+60)/60*100))}}
 function meters(){const i=stats(inAn),o=stats(outAn);peakIn=Math.max(peakIn,i.peak);peakOut=Math.max(peakOut,o.peak);const im=$("#inMeter"),om=$("#outMeter"),ui2=state?.ui==="UI_02",pct=v=>Math.max(0,Math.min(100,(v+60)/60*100)),iv=meterMode==="RMS"?i.rms:i.peak,ov=meterMode==="RMS"?o.rms:o.peak,ip=meterMode==="RMS"?pct(i.rms):i.pct,op=meterMode==="RMS"?pct(o.rms):o.pct;if(ui2){im.style.width=ip+"%";om.style.width=op+"%";im.style.height="100%";om.style.height="100%"}else{im.style.height=ip+"%";om.style.height=op+"%";im.style.width="";om.style.width=""}$("#peakInValue").textContent=fmt(iv);$("#peakOutValue").textContent=fmt(ov);$("#rmsInValue").textContent=fmt(i.rms);$("#rmsOutValue").textContent=fmt(o.rms)}
 let spectrumBins=null;
 let spectrumPreBins=null;
+let spectrumTraceScratch=null;
 const spectrumView={source:"POST",rta:true,smooth:true};
 const spectrumMainPre=createSpectrumDisplayTrace();
 const spectrumMainPost=createSpectrumDisplayTrace();
@@ -995,29 +1014,42 @@ function bindSpectrumView(){
     if(rta){rta.classList.toggle("active",spectrumView.rta);rta.setAttribute("aria-pressed",String(spectrumView.rta))}
     if(smoothing){smoothing.classList.toggle("active",spectrumView.smooth);smoothing.setAttribute("aria-pressed",String(spectrumView.smooth));smoothing.textContent=spectrumView.smooth?"1/3":"RAW"}
   };
-  document.querySelectorAll("[data-spectrum-source]").forEach(b=>b.addEventListener("click",()=>{spectrumView.source=b.dataset.spectrumSource;sync()}));
-  $("[data-spectrum-rta]")?.addEventListener("click",()=>{spectrumView.rta=!spectrumView.rta;sync()});
-  $("[data-spectrum-smoothing]")?.addEventListener("click",()=>{spectrumView.smooth=!spectrumView.smooth;spectrumMainPre.reset();spectrumMainPost.reset();sync()});
+  // Audio-paused UI no longer has a continuous RAF: redraw only on user action.
+  const repaintIfIdle=()=>{if(audio.paused&&!document.hidden)spectrum();};
+  document.querySelectorAll("[data-spectrum-source]").forEach(b=>b.addEventListener("click",()=>{spectrumView.source=b.dataset.spectrumSource;sync();repaintIfIdle()}));
+  $("[data-spectrum-rta]")?.addEventListener("click",()=>{spectrumView.rta=!spectrumView.rta;sync();repaintIfIdle()});
+  $("[data-spectrum-smoothing]")?.addEventListener("click",()=>{spectrumView.smooth=!spectrumView.smooth;spectrumMainPre.reset();spectrumMainPost.reset();sync();repaintIfIdle()});
   sync();
 }
+let spectrumGridCache=null;
 function spectrum(){
   const c=$("#spectrumCanvas"),x=c.getContext("2d"),w=c.width,h=c.height;
-  x.clearRect(0,0,w,h);x.fillStyle="#081015";x.fillRect(0,0,w,h);
   const left=38,right=10,top=8,bottom=22,pw=w-left-right,ph=h-top-bottom;
   const lx=f=>left+Math.log10(f/20)/Math.log10(20000/20)*pw;
-  x.lineWidth=1;x.font="10px ui-monospace,Consolas,monospace";x.textBaseline="middle";
-  for(const dbv of [0,-12,-24,-36,-48,-60]){
-    const yy=top+(-dbv/60)*ph;
-    x.strokeStyle=dbv===0?"#31434d":"#1b2a31";
-    x.beginPath();x.moveTo(left,yy);x.lineTo(w-right,yy);x.stroke();
-    x.fillStyle="#71858e";x.textAlign="right";x.fillText(String(dbv),left-6,yy);
+  // Fixed graph axes, labels and background never change between frames.
+  // Cache them in a regular canvas (works in browsers without OffscreenCanvas).
+  if(!spectrumGridCache||spectrumGridCache.width!==w||spectrumGridCache.height!==h){
+    const grid=document.createElement("canvas");
+    grid.width=w;grid.height=h;
+    const bg=grid.getContext("2d");
+    bg.fillStyle="#081015";bg.fillRect(0,0,w,h);
+    bg.lineWidth=1;bg.font="10px ui-monospace,Consolas,monospace";bg.textBaseline="middle";
+    for(const dbv of [0,-12,-24,-36,-48,-60]){
+      const yy=top+(-dbv/60)*ph;
+      bg.strokeStyle=dbv===0?"#31434d":"#1b2a31";
+      bg.beginPath();bg.moveTo(left,yy);bg.lineTo(w-right,yy);bg.stroke();
+      bg.fillStyle="#71858e";bg.textAlign="right";bg.fillText(String(dbv),left-6,yy);
+    }
+    for(const f of [20,50,100,200,500,1000,2000,5000,10000,20000]){
+      const xx=lx(f);
+      bg.strokeStyle="#1b2a31";bg.beginPath();bg.moveTo(xx,top);bg.lineTo(xx,top+ph);bg.stroke();
+      bg.fillStyle="#71858e";bg.textAlign="center";
+      bg.fillText(f>=1000?(f/1000)+"k":String(f),xx,h-9);
+    }
+    spectrumGridCache=grid;
+    visualAllocationStats.gridBuilds++;
   }
-  for(const f of [20,50,100,200,500,1000,2000,5000,10000,20000]){
-    const xx=lx(f);
-    x.strokeStyle="#1b2a31";x.beginPath();x.moveTo(xx,top);x.lineTo(xx,top+ph);x.stroke();
-    x.fillStyle="#71858e";x.textAlign="center";
-    x.fillText(f>=1000?(f/1000)+"k":String(f),xx,h-9);
-  }
+  x.drawImage(spectrumGridCache,0,0);
   if(!outAn)return;
   // The EQ mini/focus analyser always receives POST data, regardless of
   // which *visualisation* the user chooses here. No audio routing changes.
@@ -1043,8 +1075,16 @@ function spectrum(){
   const drawTrace=(levels,color,alpha,lineWidth,fill)=>{
     if(!levels)return;
     const count=levels.length,dx=pw/(count-1);
-    const ys=new Float32Array(count),slopes=new Float32Array(count-1);
-    const tangents=new Float32Array(count);
+    // Both traces are rendered serially and can share scratch arrays.
+    if(!spectrumTraceScratch||spectrumTraceScratch.ys.length!==count){
+      spectrumTraceScratch={
+        ys:new Float32Array(count),
+        slopes:new Float32Array(count-1),
+        tangents:new Float32Array(count)
+      };
+      visualAllocationStats.traceScratch++;
+    }
+    const {ys,slopes,tangents}=spectrumTraceScratch;
     for(let i=0;i<count;i++)ys[i]=top+(Math.max(0,Math.min(60,-levels[i]))/60)*ph;
     for(let i=0;i<count-1;i++)slopes[i]=(ys[i+1]-ys[i])/dx;
     tangents[0]=slopes[0];tangents[count-1]=slopes[count-2];
@@ -1074,8 +1114,87 @@ function spectrum(){
   drawTrace(other,"#c5dce5",.38,1,false);
   drawTrace(primary,"#66cce9",1,1.6,true);
 }
-function waveform(){const c=$("#sceneWaveformCanvas");if(!c)return;const x=c.getContext("2d"),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.strokeStyle="#315564";x.lineWidth=1;x.beginPath();x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();if(!inAn)return;const d=new Uint8Array(inAn.fftSize);inAn.getByteTimeDomainData(d);x.strokeStyle="#5cc9ee";x.lineWidth=1.5;x.beginPath();for(let a=0;a<w;a++){const n=Math.floor(a/w*(d.length-1)),yy=d[n]/255*h;a?x.lineTo(a,yy):x.moveTo(a,yy)}x.stroke()}
-function time(){const t=audio.currentTime||0,m=Math.floor(t/60),s=Math.floor(t%60),ms=Math.floor(t%1*1000);$("#transportTime").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}.${String(ms).padStart(3,"0")}`;if(audio.duration)$("#seekSlider").value=Math.round(t/audio.duration*1000);syncSceneTime(state,audio)}
-function animate(){requestAnimationFrame(animate);time();spectrum();waveform();paintUi02Signal();meters();paintAmbienceOutput(outAn,!audio.paused,performance.now());updateScene()}
+function waveform(){const c=$("#sceneWaveformCanvas");if(!c)return;const x=c.getContext("2d"),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.strokeStyle="#315564";x.lineWidth=1;x.beginPath();x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();if(!inAn)return;const d=timeDomainBuffer(inAn);inAn.getByteTimeDomainData(d);x.strokeStyle="#5cc9ee";x.lineWidth=1.5;x.beginPath();for(let a=0;a<w;a++){const n=Math.floor(a/w*(d.length-1)),yy=d[n]/255*h;a?x.lineTo(a,yy):x.moveTo(a,yy)}x.stroke()}
+function time(){
+  const t=audio.currentTime||0,m=Math.floor(t/60),s=Math.floor(t%60),ms=Math.floor(t%1*1000);
+  const elapsed=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}.${String(ms).padStart(3,"0")}`;
+  const readout=$("#transportTime");
+  if(readout.textContent!==elapsed)readout.textContent=elapsed;
+  if(audio.duration){
+    const seek=$("#seekSlider"),position=String(Math.round(t/audio.duration*1000));
+    if(seek.value!==position)seek.value=position;
+  }
+  syncSceneTime(state,audio);
+}
+/* Presentation budget only. AudioContext/DSP processing stays unthrottled. */
+const VISUAL_FRAME_MS=1000/30;
+let visualFrameId=0,lastVisualAt=0,lastAnimatedProgress=NaN;
+const visualRenderStats={activeFrames:0,animatedSceneUpdates:0,idlePasses:0};
+window.__sourceruneRenderStats=visualRenderStats;
+function paintAudioVisuals(now,live){
+  time();spectrum();waveform();paintUi02Signal();meters();
+  paintAmbienceOutput(outAn,live,now);
+}
+function paintIdleVisuals(){
+  if(!state||document.hidden||!audio.paused)return;
+  visualRenderStats.idlePasses++;
+  paintAudioVisuals(performance.now(),false);
+}
+function animate(now){
+  visualFrameId=0;
+  if(document.hidden||audio.paused||audio.ended)return;
+  // Keep synced APPROACH gain/pan automation on its original RAF cadence;
+  // only the visual presentation is rate-limited to 30 FPS.
+  if(state.params.motionMode==="APPROACH"&&state.sync)updateApproachAudio();
+  if(!lastVisualAt||now-lastVisualAt>=VISUAL_FRAME_MS-1){
+    lastVisualAt=now;
+    visualRenderStats.activeFrames++;
+    paintAudioVisuals(now,true);
+    // The scene geometry changes with playback only for synced APPROACH.
+    // Other modes keep the scene still while the audio meters stay live.
+    if(state.params.motionMode==="APPROACH"&&state.sync&&Number.isFinite(audio.duration)&&audio.duration>0){
+      const progress=sceneMotionProgress();
+      if(!Number.isFinite(lastAnimatedProgress)||Math.abs(progress-lastAnimatedProgress)>.0001){
+        updateScene();
+        visualRenderStats.animatedSceneUpdates++;
+        lastAnimatedProgress=progress;
+      }else syncSceneMotionTimeline();
+    }else{
+      syncSceneMotionTimeline();
+      lastAnimatedProgress=NaN;
+    }
+  }
+  visualFrameId=requestAnimationFrame(animate);
+}
+function startVisuals(){
+  if(document.hidden||audio.paused||audio.ended||visualFrameId)return;
+  lastVisualAt=0;
+  lastAnimatedProgress=NaN;
+  visualFrameId=requestAnimationFrame(animate);
+}
+function stopVisuals(){
+  if(visualFrameId){cancelAnimationFrame(visualFrameId);visualFrameId=0;}
+  lastVisualAt=0;
+  lastAnimatedProgress=NaN;
+  if(!document.hidden&&state){updateScene();paintIdleVisuals();}
+}
+for(const event of ["play","playing"])audio.addEventListener(event,startVisuals);
+for(const event of ["pause","ended"])audio.addEventListener(event,stopVisuals);
+for(const event of ["seeked","loadedmetadata","emptied"])audio.addEventListener(event,()=>{
+  if(document.hidden||!state)return;
+  time();updateScene();paintIdleVisuals();
+});
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden)stopVisuals();
+  else if(audio.paused)stopVisuals();
+  else startVisuals();
+});
+// Browsers suspend visible RAF in background tabs. Preserve the changing
+// APPROACH audio gain/pan there using media timeupdate, without redrawing UI.
+audio.addEventListener("timeupdate",()=>{
+  if(document.hidden&&!audio.paused&&state?.params.motionMode==="APPROACH"&&state.sync)
+    updateApproachAudio();
+});
+
 init().catch(e=>{console.error(e);$("#buildLabel").textContent="WEB TEST · INIT ERROR";mark("INIT ERROR")});
 window.addEventListener("resize",fitRuntimeShell,{passive:true});
