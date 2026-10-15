@@ -1,7 +1,11 @@
+# V2.0.002 (2026-10-15): Avoid expensive hosted acceptance on draft research pushes.
+# When moved to Ready for review (and on any later synchronized commit),
+# run unchanged acceptance steps; PR Fast and protected guards remain separate.
 name: Public Original UI CSS Safety Review
 on:
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "Web/App/index.html"
       - "Web/App/app.js"
@@ -16,7 +20,7 @@ permissions:
   contents: read
 jobs:
   public_ui:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: ${{ !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     timeout-minutes: 7
     steps:
