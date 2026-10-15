@@ -46,7 +46,7 @@ jobs:
           const p=require("puppeteer-core"),fs=require("fs");
           const compiledAudio=fs.existsSync("Web/App/audio/public-dsp-manifest.json");
           (async()=>{
-            const browser=await p.launch({executablePath:process.env.CHROME_PATH,headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
+            const browser=await p.launch({executablePath:process.env.CHROME_PATH,headless:true,args:["--no-sandbox","--disable-dev-shm-usage","--autoplay-policy=no-user-gesture-required"]});
             try{
               for(const [ui,w,h] of [["UI_01",1499,807],["UI_02",1672,941]]){
                 const page=await browser.newPage();
