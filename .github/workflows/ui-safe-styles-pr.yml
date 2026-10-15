@@ -334,7 +334,14 @@ jobs:
                 });
                 if(!fixture)throw Error(ui+" playback performance fixture missing");
                 await page.waitForFunction(()=>document.querySelector("#stateStatus")?.textContent.includes("AUDIO LOADED"),{timeout:20000});
-                await page.click("#playBtn");
+                // Perf check measures the playback renderer. The separate
+                // public-audio smoke checks trusted pointer click behavior.
+                const buttonProbe=await page.$eval("#playBtn",el=>{
+                  const r=el.getBoundingClientRect(),top=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+                  return {buttonTarget:top?.id||top?.tagName,hasOnclick:typeof el.onclick,rect:{width:r.width,height:r.height}};
+                });
+                console.log("PERF_AUDIO_PLAY_TRIGGER",ui,JSON.stringify(buttonProbe));
+                await page.$eval("#playBtn",el=>el.click());
                 try{
                   await page.waitForFunction(()=>document.querySelector("#audioElement")?.currentTime>.20,{timeout:20000});
                 }catch(error){
