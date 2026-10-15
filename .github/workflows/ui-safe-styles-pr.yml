@@ -283,6 +283,25 @@ jobs:
                     const b=Number(document.querySelector("#peakOutValue")?.textContent);
                     return Number.isFinite(a)&&Number.isFinite(b)&&b-a>3;
                   },{timeout:15000});
+                  // During continuous playback, analyser buffers and
+                  // spectrum trace scratch should be allocated once, not once
+                  // per frame. Assert this inside the existing audio smoke.
+                  const allocationsBefore=await page.evaluate(()=>({
+                    ...window.__sourceruneVisualAllocations,
+                    frames:window.__sourceruneRenderStats.activeFrames
+                  }));
+                  await new Promise(resolve=>setTimeout(resolve,180));
+                  const allocationsAfter=await page.evaluate(()=>({
+                    ...window.__sourceruneVisualAllocations,
+                    frames:window.__sourceruneRenderStats.activeFrames
+                  }));
+                  if(allocationsBefore.timeDomain<2||allocationsBefore.traceScratch<1||
+                     allocationsAfter.frames<=allocationsBefore.frames||
+                     allocationsAfter.timeDomain!==allocationsBefore.timeDomain||
+                     allocationsAfter.traceScratch!==allocationsBefore.traceScratch)
+                    throw Error("Audio visualization allocates per frame or is stalled "+
+                      JSON.stringify({allocationsBefore,allocationsAfter}));
+                  console.log("VISUAL_BUFFER_REUSE_PASS",ui);
                   await page.$eval("#globalBypass",el=>el.click());
                   await page.waitForFunction(()=>document.querySelector("#blockReadout")?.textContent.includes("BYPASS"),{timeout:12000});
                   console.log("PUBLIC EQ AUDIO PASS: WAV/PLAY/600Hz boost >3dB/real meter/BYPASS");

@@ -981,10 +981,24 @@ function stop(){audio.pause();if(audio.readyState)audio.currentTime=0;sceneNode?
 for(const event of ["play","pause","ended"])audio.addEventListener(event,()=>$("#playBtn").textContent=audio.paused?"PLAY":"PAUSE");
 audio.addEventListener("error",()=>mark("音檔無法播放，請使用 WAV／瀏覽器支援的格式"));
 audio.addEventListener("seeked",()=>sceneNode?.port?.postMessage({type:"reset"}));
-function stats(a){if(!a)return{peak:-Infinity,rms:-Infinity,pct:0};const d=new Uint8Array(a.fftSize);a.getByteTimeDomainData(d);let p=0,s=0;for(const x of d){const v=(x-128)/128;p=Math.max(p,Math.abs(v));s+=v*v}p=db(p);const r=db(Math.sqrt(s/d.length));return{peak:p,rms:r,pct:Math.max(0,Math.min(100,(p+60)/60*100))}}
+// Reuse analyser arrays across active frames to avoid per-frame GC churn.
+const timeDomainBuffers=new WeakMap();
+const visualAllocationStats={timeDomain:0,traceScratch:0};
+window.__sourceruneVisualAllocations=visualAllocationStats;
+function timeDomainBuffer(analyser){
+  let buffer=timeDomainBuffers.get(analyser);
+  if(!buffer||buffer.length!==analyser.fftSize){
+    buffer=new Uint8Array(analyser.fftSize);
+    timeDomainBuffers.set(analyser,buffer);
+    visualAllocationStats.timeDomain++;
+  }
+  return buffer;
+}
+function stats(a){if(!a)return{peak:-Infinity,rms:-Infinity,pct:0};const d=timeDomainBuffer(a);a.getByteTimeDomainData(d);let p=0,s=0;for(const x of d){const v=(x-128)/128;p=Math.max(p,Math.abs(v));s+=v*v}p=db(p);const r=db(Math.sqrt(s/d.length));return{peak:p,rms:r,pct:Math.max(0,Math.min(100,(p+60)/60*100))}}
 function meters(){const i=stats(inAn),o=stats(outAn);peakIn=Math.max(peakIn,i.peak);peakOut=Math.max(peakOut,o.peak);const im=$("#inMeter"),om=$("#outMeter"),ui2=state?.ui==="UI_02",pct=v=>Math.max(0,Math.min(100,(v+60)/60*100)),iv=meterMode==="RMS"?i.rms:i.peak,ov=meterMode==="RMS"?o.rms:o.peak,ip=meterMode==="RMS"?pct(i.rms):i.pct,op=meterMode==="RMS"?pct(o.rms):o.pct;if(ui2){im.style.width=ip+"%";om.style.width=op+"%";im.style.height="100%";om.style.height="100%"}else{im.style.height=ip+"%";om.style.height=op+"%";im.style.width="";om.style.width=""}$("#peakInValue").textContent=fmt(iv);$("#peakOutValue").textContent=fmt(ov);$("#rmsInValue").textContent=fmt(i.rms);$("#rmsOutValue").textContent=fmt(o.rms)}
 let spectrumBins=null;
 let spectrumPreBins=null;
+let spectrumTraceScratch=null;
 const spectrumView={source:"POST",rta:true,smooth:true};
 const spectrumMainPre=createSpectrumDisplayTrace();
 const spectrumMainPost=createSpectrumDisplayTrace();
@@ -1043,8 +1057,16 @@ function spectrum(){
   const drawTrace=(levels,color,alpha,lineWidth,fill)=>{
     if(!levels)return;
     const count=levels.length,dx=pw/(count-1);
-    const ys=new Float32Array(count),slopes=new Float32Array(count-1);
-    const tangents=new Float32Array(count);
+    // Both traces are rendered serially and can share scratch arrays.
+    if(!spectrumTraceScratch||spectrumTraceScratch.ys.length!==count){
+      spectrumTraceScratch={
+        ys:new Float32Array(count),
+        slopes:new Float32Array(count-1),
+        tangents:new Float32Array(count)
+      };
+      visualAllocationStats.traceScratch++;
+    }
+    const {ys,slopes,tangents}=spectrumTraceScratch;
     for(let i=0;i<count;i++)ys[i]=top+(Math.max(0,Math.min(60,-levels[i]))/60)*ph;
     for(let i=0;i<count-1;i++)slopes[i]=(ys[i+1]-ys[i])/dx;
     tangents[0]=slopes[0];tangents[count-1]=slopes[count-2];
@@ -1074,7 +1096,7 @@ function spectrum(){
   drawTrace(other,"#c5dce5",.38,1,false);
   drawTrace(primary,"#66cce9",1,1.6,true);
 }
-function waveform(){const c=$("#sceneWaveformCanvas");if(!c)return;const x=c.getContext("2d"),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.strokeStyle="#315564";x.lineWidth=1;x.beginPath();x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();if(!inAn)return;const d=new Uint8Array(inAn.fftSize);inAn.getByteTimeDomainData(d);x.strokeStyle="#5cc9ee";x.lineWidth=1.5;x.beginPath();for(let a=0;a<w;a++){const n=Math.floor(a/w*(d.length-1)),yy=d[n]/255*h;a?x.lineTo(a,yy):x.moveTo(a,yy)}x.stroke()}
+function waveform(){const c=$("#sceneWaveformCanvas");if(!c)return;const x=c.getContext("2d"),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.strokeStyle="#315564";x.lineWidth=1;x.beginPath();x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();if(!inAn)return;const d=timeDomainBuffer(inAn);inAn.getByteTimeDomainData(d);x.strokeStyle="#5cc9ee";x.lineWidth=1.5;x.beginPath();for(let a=0;a<w;a++){const n=Math.floor(a/w*(d.length-1)),yy=d[n]/255*h;a?x.lineTo(a,yy):x.moveTo(a,yy)}x.stroke()}
 function time(){const t=audio.currentTime||0,m=Math.floor(t/60),s=Math.floor(t%60),ms=Math.floor(t%1*1000);$("#transportTime").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}.${String(ms).padStart(3,"0")}`;if(audio.duration)$("#seekSlider").value=Math.round(t/audio.duration*1000);syncSceneTime(state,audio)}
 /* Presentation budget only. AudioContext/DSP processing stays unthrottled. */
 const VISUAL_FRAME_MS=1000/30;
