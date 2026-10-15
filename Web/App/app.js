@@ -1093,6 +1093,9 @@ function paintIdleVisuals(){
 function animate(now){
   visualFrameId=0;
   if(document.hidden||audio.paused||audio.ended)return;
+  // Keep synced APPROACH gain/pan automation on its original RAF cadence;
+  // only the visual presentation is rate-limited to 30 FPS.
+  if(state.params.motionMode==="APPROACH"&&state.sync)updateApproachAudio();
   if(!lastVisualAt||now-lastVisualAt>=VISUAL_FRAME_MS-1){
     lastVisualAt=now;
     visualRenderStats.activeFrames++;
