@@ -1,7 +1,10 @@
-name: SR push version (every branch push)
+# V2.0.001 (2026-10-15): User-approved Actions minute reduction.
+# Version numbers remain in every research checkpoint/commit; immutable Git tags
+# are requested only when needed via Actions > Run workflow.
+# Do not run a GitHub-hosted job automatically for every branch push.
+name: SR version tag (manual only)
 on:
-  push:
-    branches: ['**']
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -20,7 +23,7 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: true
-      - name: Create immutable version tag for this push
+      - name: Create immutable version tag for manually selected commit
         env:
           SEQUENCE: ${{ github.run_number }}
           COMMIT_SHA: ${{ github.sha }}
@@ -59,7 +62,7 @@ jobs:
               exit 1
             fi
           else
-            git tag -a "$version" "$COMMIT_SHA" -m "SOURCERUNE push $BRANCH_NAME $COMMIT_SHA"
+            git tag -a "$version" "$COMMIT_SHA" -m "SOURCERUNE approved manual version $BRANCH_NAME $COMMIT_SHA"
             git push origin "refs/tags/$version"
           fi
           {
